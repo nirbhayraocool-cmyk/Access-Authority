@@ -1,0 +1,632 @@
+﻿@model Access_Authority.Models.LogInViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login </title>
+
+   
+    <!-- Bootstrap 5 + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* =====================================================
+               ACCESS AUTHORITY LOGIN THEME
+               ===================================================== */
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            /* Access Authority Dark Theme */
+            background: #10131A;
+            background: radial-gradient( circle at 20% 15%, rgba(214, 40, 40, 0.13), transparent 35% ), radial-gradient( circle at 85% 85%, rgba(214, 40, 40, 0.08), transparent 35% ), #10131A;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+            /* =====================================================
+               SUBTLE BACKGROUND GLOW
+               ===================================================== */
+
+            body::before,
+            body::after {
+                content: "";
+                position: absolute;
+                border-radius: 50%;
+                filter: blur(110px);
+                opacity: 0.18;
+                z-index: 0;
+                animation: floatGlow 12s ease-in-out infinite alternate;
+            }
+
+            body::before {
+                width: 420px;
+                height: 420px;
+                background: #d62828;
+                top: -150px;
+                left: -120px;
+            }
+
+            body::after {
+                width: 350px;
+                height: 350px;
+                background: #8f1d1d;
+                bottom: -130px;
+                right: -100px;
+                animation-delay: -6s;
+            }
+
+        /* @@keyframes floatGlow {
+
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(25px, 20px);
+            }
+        } */
+
+
+        /* =====================================================
+               LOGIN CARD
+               ===================================================== */
+
+        .login-card {
+            position: relative;
+            z-index: 2;
+            max-width: 380px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            background: rgba(23, 27, 36, 0.96);
+            box-shadow: 0 25px 65px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.025);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+            .login-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 30px 75px rgba(0, 0, 0, 0.65), 0 0 35px rgba(214, 40, 40, 0.07);
+            }
+
+
+        /* =====================================================
+               LOGIN HEADER
+               ===================================================== */
+
+        .login-header-icon {
+            width: 58px;
+            height: 58px;
+            background: rgba(214, 40, 40, 0.10);
+            border: 1px solid rgba(214, 40, 40, 0.22);
+            border-radius: 12px;
+            padding: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .login-header-icon i {
+                font-size: 1.55rem;
+                color: #d62828;
+            }
+
+        .login-title {
+            color: #f5f5f5;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+        }
+
+        .login-sub {
+            color: rgba(255, 255, 255, 0.48);
+            font-size: 0.84rem;
+        }
+
+
+        /* =====================================================
+               FORM FIELDS
+               ===================================================== */
+
+        .input-group-custom {
+            position: relative;
+        }
+
+        .form-control-sm-custom {
+            padding: 9px 12px 9px 40px;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            border: 1px solid #303540;
+            background: #12151C;
+            color: #f2f2f2;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+            .form-control-sm-custom:hover {
+                border-color: #3a3f4a;
+            }
+
+            .form-control-sm-custom:focus {
+                border-color: #d62828;
+                background: #151922;
+                box-shadow: 0 0 0 3px rgba(214, 40, 40, 0.10);
+                color: #fff;
+            }
+
+            .form-control-sm-custom::placeholder {
+                color: rgba(255, 255, 255, 0.32);
+            }
+
+
+        /* Input Icons */
+
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.38);
+            font-size: 0.95rem;
+            z-index: 4;
+            pointer-events: none;
+            transition: color 0.2s ease;
+        }
+
+        .input-group-custom:focus-within .input-icon {
+            color: #d62828;
+        }
+
+
+        /* =====================================================
+               CAPTCHA
+               ===================================================== */
+
+        .captcha-wrapper {
+            background: #141820;
+            border-radius: 9px;
+            padding: 8px 10px;
+            border: 1px solid #292e38;
+        }
+
+        .captcha-code {
+            background: #1c212b;
+            font-family: "Courier New", monospace;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #f0f0f0;
+            min-width: 90px;
+            text-align: center;
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 1.15rem;
+            border: 1px solid #343a46;
+            user-select: none;
+        }
+
+
+        /* CAPTCHA Refresh */
+
+        .captcha-refresh {
+            background: #1c212b;
+            border: 1px solid #343a46;
+            border-radius: 6px;
+            width: 35px;
+            height: 35px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #aeb4bf;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+            .captcha-refresh:hover {
+                background: rgba(214, 40, 40, 0.12);
+                color: #d62828;
+                border-color: rgba(214, 40, 40, 0.45);
+                transform: rotate(70deg);
+            }
+
+            .captcha-refresh:active {
+                transform: scale(0.92) rotate(0deg);
+            }
+
+
+        /* CAPTCHA Input */
+
+        .captcha-input-wrap input {
+            border: 1px solid #303540;
+            border-radius: 7px;
+            padding: 7px 11px;
+            font-size: 0.88rem;
+            background: #12151C;
+            color: #f0f2f5;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+            .captcha-input-wrap input:focus {
+                border-color: #d62828;
+                background: #151922;
+                box-shadow: 0 0 0 3px rgba(214, 40, 40, 0.10);
+                color: #fff;
+            }
+
+            .captcha-input-wrap input::placeholder {
+                color: rgba(255, 255, 255, 0.30);
+            }
+
+
+        /* =====================================================
+               VALIDATION
+               ===================================================== */
+
+        .field-validation-error {
+            color: #ff8585 !important;
+            font-size: 0.75rem;
+            margin-top: 3px;
+            display: block;
+        }
+
+
+        /* =====================================================
+               GENERAL LOGIN MESSAGE
+               ===================================================== */
+
+        .login-message {
+            font-size: 0.8rem;
+            border-radius: 7px;
+            padding: 7px 11px;
+            display: none;
+        }
+
+            .login-message.error {
+                display: flex;
+                align-items: center;
+                background: rgba(214, 40, 40, 0.10);
+                color: #ff9999;
+                border: 1px solid rgba(214, 40, 40, 0.22);
+            }
+
+            .login-message.success {
+                display: flex;
+                align-items: center;
+                background: rgba(25, 135, 84, 0.10);
+                color: #8bd8ad;
+                border: 1px solid rgba(25, 135, 84, 0.18);
+            }
+
+            .login-message i {
+                font-size: 1rem;
+                margin-right: 6px;
+            }
+
+
+        /* =====================================================
+               CHECKBOX
+               ===================================================== */
+
+        .form-check-input {
+            background-color: #151922;
+            border: 1px solid #3a3f49;
+        }
+
+            .form-check-input:checked {
+                background-color: #d62828;
+                border-color: #d62828;
+            }
+
+            .form-check-input:focus {
+                border-color: #d62828;
+                box-shadow: 0 0 0 3px rgba(214, 40, 40, 0.12);
+            }
+
+        .form-check-label {
+            color: rgba(255, 255, 255, 0.56);
+            font-size: 0.82rem;
+        }
+
+
+        /* =====================================================
+               FORGOT PASSWORD
+               ===================================================== */
+
+        .forgot-link {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.42);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+            .forgot-link:hover {
+                color: #e85b5b;
+                text-decoration: none;
+            }
+
+
+        /* =====================================================
+               SIGN IN BUTTON
+               ===================================================== */
+
+        .btn-signin {
+            padding: 9px 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            background: #d62828;
+            border: 1px solid #d62828;
+            color: #fff;
+            transition: all 0.25s ease;
+            box-shadow: 0 5px 18px rgba(214, 40, 40, 0.20);
+        }
+
+            .btn-signin:hover {
+                transform: translateY(-2px);
+                background: #b91f1f;
+                border-color: #b91f1f;
+                color: #fff;
+                box-shadow: 0 8px 25px rgba(214, 40, 40, 0.30);
+            }
+
+            .btn-signin:active {
+                transform: scale(0.97);
+            }
+
+
+        /* =====================================================
+               SIGN UP / BOTTOM TEXT
+               ===================================================== */
+
+        .signup-text {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+            .signup-text a {
+                color: #e05a5a;
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+                .signup-text a:hover {
+                    text-decoration: underline;
+                    color: #ff7777;
+                }
+
+
+        /* =====================================================
+               RESPONSIVE
+               ===================================================== */
+
+        @@media (max-width: 420px) {
+
+            .login-card {
+                margin: 16px;
+                padding: 20px !important;
+                border-radius: 15px;
+            }
+
+            .captcha-code {
+                font-size: 1rem;
+                min-width: 70px;
+                letter-spacing: 3px;
+                padding: 4px 8px;
+            }
+
+            .captcha-wrapper {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .captcha-box {
+                flex: 1 1 100%;
+                justify-content: space-between;
+            }
+
+            .captcha-input-wrap {
+                flex: 1 1 100%;
+            }
+
+            body::before,
+            body::after {
+                width: 250px;
+                height: 250px;
+                filter: blur(80px);
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    
+    <div class="login-card card p-3 p-sm-4 border-0">
+
+        <!-- Header -->
+        <div class="text-center mb-3">
+            <div class="login-header-icon mb-2">
+                <i class="bi bi-shield-lock-fill"></i>
+            </div>
+
+            <h5 class="login-title mb-0">Welcome To</h5>
+            <p class="login-sub mb-0">Sign in to your account</p>
+        </div>
+
+        <!-- Form -->
+        <form asp-action="Login"
+              asp-controller="Home"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <!-- Backend General Error Message -->
+            @if (ViewData.ModelState[""]?.Errors.Count > 0)
+            {
+                <div class="login-message error mb-2">
+                    <i class="bi bi-exclamation-circle"></i>
+
+                    <span>
+                        @ViewData.ModelState[""]?.Errors[0].ErrorMessage
+                    </span>
+                </div>
+            }
+
+            <!-- Username -->
+            <div class="mb-2">
+
+                <div class="input-group-custom">
+
+                    <i class="bi bi-person input-icon"></i>
+
+                    <input asp-for="UserName"
+                           type="text"
+                           class="form-control form-control-sm-custom w-100"
+                           placeholder="Username"
+                           autocomplete="username" />
+
+                </div>
+
+                <span asp-validation-for="UserName"
+                      class="text-danger"></span>
+
+            </div>
+
+
+            <!-- Password -->
+            <div class="mb-2">
+
+                <div class="input-group-custom">
+
+                    <i class="bi bi-key input-icon"></i>
+
+                    <input asp-for="Password"
+                           type="password"
+                           class="form-control form-control-sm-custom w-100"
+                           placeholder="Password"
+                           autocomplete="current-password" />
+
+                </div>
+
+                <span asp-validation-for="Password"
+                      class="text-danger"></span>
+
+            </div>
+
+
+            <!-- CAPTCHA -->
+            <div class="mb-2">
+
+                <div class="captcha-wrapper d-flex align-items-center gap-2">
+
+                    <div class="captcha-box d-flex align-items-center gap-2 flex-shrink-0">
+
+                        <span class="captcha-code">
+                            @Context.Session.GetString("CaptchaCode")
+                        </span>
+
+                        <!-- Backend CAPTCHA Refresh -->
+                        <a asp-controller="Home"
+                           asp-action="RefreshCaptcha"
+                           class="captcha-refresh"
+                           aria-label="Refresh CAPTCHA">
+
+                            <i class="bi bi-arrow-clockwise"></i>
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="captcha-input-wrap flex-grow-1">
+
+                        <input asp-for="Captcha"
+                               type="text"
+                               class="form-control form-control-sm"
+                               placeholder="Enter CAPTCHA"
+                               autocomplete="off" />
+
+                    </div>
+
+                </div>
+
+                <span asp-validation-for="Captcha"
+                      class="text-danger"></span>
+
+            </div>
+
+
+            <!-- Options -->
+            <div class="d-flex flex-wrap align-items-center justify-content-between mb-3">
+
+                <div class="form-check">
+
+                    <input class="form-check-input"
+                           type="checkbox"
+                           id="rememberMe"
+                           checked />
+
+                    <label class="form-check-label"
+                           for="rememberMe">
+
+                        Remember me
+
+                    </label>
+
+                </div>
+
+
+                <a href="#" class="forgot-link">
+                    Forgot password?
+                </a>
+
+            </div>
+
+
+            <!-- Sign In Button -->
+            <button type="submit"
+                    class="btn btn-primary w-100 btn-signin mb-2">
+
+                <i class="bi bi-box-arrow-in-right me-1"></i>
+
+                Sign In
+
+            </button>
+
+
+            <!-- Sign up -->
+            <p class="signup-text text-center mb-0">
+
+                New user?
+
+                <a href="#">
+                    Create an account
+                </a>
+
+            </p>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

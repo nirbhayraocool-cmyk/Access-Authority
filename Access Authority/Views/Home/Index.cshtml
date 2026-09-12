@@ -1,0 +1,3283 @@
+﻿@model List<Access_Authority.Models.CreateBlog>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="hero-section">
+    <div class="container hero-container px-5">
+
+        <div id="heroContent">
+
+
+            <div class="row align-items-center">
+
+
+                <!--  LEFT -->
+
+                <div class="col-lg-6 hero-left">
+
+
+                    <!-- TRUSTED -->
+
+                    <div class="trusted-badge mb-4">
+
+                        <span class="trusted-dot"></span>
+
+                        TRUSTED BY
+
+                        <span class="counter"
+                              data-target="100"
+                              id="businessCounter">
+
+                            0
+
+                        </span>+
+
+                        BUSINESSES
+
+                    </div>
+
+
+
+                    <!-- HEADING -->
+
+                    <h1 class="hero-heading"
+                        id="heroTitle">
+
+                        Build Your Digital
+
+                        <span>Authority</span>
+
+                    </h1>
+
+
+
+                    <!-- DESCRIPTION -->
+
+                    <p class="hero-description"
+                       id="heroDescription">
+
+                        Access Authority delivers custom
+                        websites, enterprise software, and
+                        intelligent products that scale with
+                        your business — from MVP to enterprise.
+
+                    </p>
+
+
+
+                    <!-- BUTTONS -->
+
+                    <div class="d-flex flex-wrap gap-2 hero-buttons">
+
+                        <a 
+                            asp-action="FreeConsultation"
+                           class="btn consultation-btn">
+
+                            <i class="bi bi-arrow-right me-2">
+                            </i>
+
+                            Free Consultation
+
+                        </a>
+
+
+                        <a asp-action="Product"
+                           class="btn work-btn">
+
+                            View Our Work
+
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- ================= STATS ================= -->
+
+                    <div class="stats-box">
+
+
+                        <div class="row g-0">
+
+
+                            <!-- STAT 1 -->
+
+                            <div class="col-4 stat-item">
+
+                                <div class="stat-number">
+
+                                    <span class="counter"
+                                          id="projectCounter">
+
+                                        0
+
+                                    </span>+
+
+                                </div>
+
+
+                                <div class="stat-title">
+
+                                    PROJECTS DELIVERED
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- STAT 2 -->
+
+                            <div class="col-4 stat-item">
+
+                                <div class="stat-number">
+
+                                    <span class="counter"
+                                          id="clientCounter">
+
+                                        0
+
+                                    </span>+
+
+                                </div>
+
+
+                                <div class="stat-title">
+
+                                    ENTERPRISE CLIENTS
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- STAT 3 -->
+
+                            <div class="col-4 stat-item last-stat">
+
+                                <div class="stat-number">
+
+                                    <span class="counter"
+                                          id="satisfactionCounter">
+
+                                        0
+
+                                    </span>%
+
+                                </div>
+
+
+                                <div class="stat-title">
+
+                                    SATISFACTION RATE
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ================= RIGHT ================= -->
+
+                <div class="col-lg-6 hero-right">
+
+
+                    <div class="hero-image-box">
+
+
+                        <!-- IMAGE -->
+
+                        <img id="heroImage"
+                             src="https://static.vecteezy.com/system/resources/thumbnails/023/056/329/small_2x/programmer-people-working-laptops-or-smartphones-with-ai-artificial-intelligence-software-engineer-coding-on-laptop-computers-with-technology-icons-and-binary-code-big-data-ai-bot-digital-machine-photo.jpg"
+                             class="hero-image"
+                             alt="Development Team">
+
+
+
+                        <!-- PARTNER -->
+
+                        <div class="partner-badge">
+
+                            <i class="bi bi-shield-check">
+                            </i>
+
+                            Trusted Partner
+
+                        </div>
+
+
+
+                        <!-- PROJECT CARD -->
+
+                        <div class="project-card">
+
+
+                            <div class="project-icon">
+
+                                <i class="bi bi-rocket-takeoff"
+                                   id="projectIcon">
+                                </i>
+
+                            </div>
+
+
+                            <div>
+
+                                <div class="project-small">
+
+                                    LATEST PROJECT
+
+                                </div>
+
+
+                                <div class="project-name"
+                                     id="projectName">
+
+                                    ERP Platform Live
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             SCROLL
+        ================================================== -->
+
+        <div class="scroll-container">
+
+            <div class="scroll-title">
+
+                SCROLL
+
+            </div>
+
+
+            <div class="scroll-mouse">
+
+                <span></span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TRUSTED BOTTOM BAR
+===================================================== -->
+
+<section class="trusted-bottom">
+
+    <div class="container">
+
+
+        <div class="d-flex
+                   justify-content-center
+                   align-items-center
+                   flex-wrap
+                   gap-3">
+
+
+            <span class="trusted-by-text">
+
+                TRUSTED BY
+
+            </span>
+
+
+            <span class="trusted-item">
+
+                <i class="bi bi-patch-check-fill"></i>
+
+                100+ Projects
+
+            </span>
+
+
+            <span class="trusted-item">
+
+                <i class="bi bi-patch-check-fill"></i>
+
+                50+ Enterprise Clients
+
+            </span>
+
+
+            <span class="trusted-item">
+
+                <i class="bi bi-patch-check-fill"></i>
+
+                98% Satisfaction
+
+            </span>
+
+
+            <span class="trusted-item">
+
+                <i class="bi bi-patch-check-fill"></i>
+
+                7+ Years Exp
+
+            </span>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- new section -->
+<!-- =====================================================
+     TECHNOLOGY MARQUEE
+===================================================== -->
+
+<section class="technology-marquee">
+
+    <div class="marquee-wrapper">
+
+        <div class="marquee-track">
+
+            <!-- SET 1 -->
+
+            <div class="marquee-item">
+                <i class="bi bi-phone-fill"></i>
+                <span>REACT NATIVE</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-box-fill"></i>
+                <span>FLUTTER</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-atom"></i>
+                <span>REACT</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-boxes"></i>
+                <span>NODE.JS</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-database-fill"></i>
+                <span>POSTGRESQL</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-cloud-fill"></i>
+                <span>AWS</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-cpu-fill"></i>
+                <span>PYTHON</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-box-fill"></i>
+                <span>DOCKER</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-filetype-js"></i>
+                <span>TYPESCRIPT</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-window-stack"></i>
+                <span>NEXT.JS</span>
+            </div>
+
+
+            <!-- SET 2 - DUPLICATE -->
+
+            <div class="marquee-item">
+                <i class="bi bi-phone-fill"></i>
+                <span>REACT NATIVE</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-box-fill"></i>
+                <span>FLUTTER</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-atom"></i>
+                <span>REACT</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-boxes"></i>
+                <span>NODE.JS</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-database-fill"></i>
+                <span>POSTGRESQL</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-cloud-fill"></i>
+                <span>AWS</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-cpu-fill"></i>
+                <span>PYTHON</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-box-fill"></i>
+                <span>DOCKER</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-filetype-js"></i>
+                <span>TYPESCRIPT</span>
+            </div>
+
+            <div class="marquee-item">
+                <i class="bi bi-window-stack"></i>
+                <span>NEXT.JS</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     SERVICES SECTION
+===================================================== -->
+
+<section class="services-section">
+
+    <div class="container px-5">
+
+        <!-- Heading -->
+
+        <div class="services-heading">
+
+            <div class="heading-label">
+                <span></span>
+                WHAT WE DO
+            </div>
+
+            <h2>
+                Services Built for
+                <span>Real Results</span>
+            </h2>
+
+            <p>
+                From concept to code, we craft digital solutions
+                that drive growth,<br> efficiency, and competitive advantage.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             SERVICES GRID
+        ================================================== -->
+
+        <div class="row services-grid g-0">
+
+
+            <!-- ================= CARD 1 ================= -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="bi bi-globe2"></i>
+                    </div>
+
+                    <h3>
+                        Web Development
+                    </h3>
+
+                    <p>
+                        Custom websites and web apps built with
+                        modern frameworks — performant,
+                        and conversion-focused.
+                    </p>
+
+                    <a asp-action="webDevlopment" class="service-link">
+                        Learn More
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= CARD 2 ================= -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="bi bi-boxes"></i>
+                    </div>
+
+                    <h3>
+                        ERP Development
+                    </h3>
+
+                    <p>
+                        Enterprise resource planning systems that
+                        unify operations, streamline workflows,
+                        and deliver real-time insights.
+                    </p>
+
+                    <a asp-action="ERPDevelopment" class="service-link">
+                        Learn More
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= CARD 3 ================= -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="bi bi-code-slash"></i>
+                    </div>
+
+                    <h3>
+                        Custom Software
+                    </h3>
+
+                    <p>
+                        Tailored business solutions engineered
+                        for your unique challenges — from automation
+                        to complex integrations.
+                    </p>
+
+                    <a asp-action="CustomSoftware" class="service-link">
+                        Learn More
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= CARD 4 ================= -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="bi bi-phone"></i>
+                    </div>
+
+                    <h3>
+                        Mobile App Development
+                    </h3>
+
+                    <p>
+                        iOS and Android applications with seamless
+                        UX, built for performance and user retention
+                        across all devices.
+                    </p>
+
+                    <a asp-action="MobileApps" class="service-link">
+                        Learn More
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= CARD 5 ================= -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="bi bi-bezier2"></i>
+                    </div>
+
+                    <h3>
+                        UI/UX Design
+                    </h3>
+
+                    <p>
+                        Research-driven design that turns complex
+                        products into intuitive, delightful experiences
+                        users love.
+                    </p>
+
+                    <a asp-action="UIUXDisign" class="service-link">
+                        Learn More
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= CARD 6 ================= -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="bi bi-brush-fill"></i>
+                    </div>
+
+                    <h3>
+                        Graphic Design
+                    </h3>
+
+                    <p>
+                        Brand identity and visual communication
+                        that positions your business as the clear
+                        authority in your market.
+                    </p>
+
+                    <a asp-action="GraphicDesign" class="service-link">
+                        Learn More
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- =====================================================
+                 7TH SERVICE CARD
+            ===================================================== -->
+
+            <div class="col-12">
+
+                <div class="service-card service-card-last">
+
+                    <div class="service-icon">
+                        <i class="bi bi-camera-video-fill"></i>
+                    </div>
+
+                    <h3>
+                        Video Production
+                    </h3>
+
+                    <p style="white-space: nowrap;">
+                        Marketing and training videos that communicate your
+                        value proposition with clarity, emotion, and cinematic quality.
+                    </p>
+
+                    <a asp-action="VideoProduction" class="service-link">
+                        EXPLORE
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= COUNTER SECTION ================= -->
+
+<section class="counter-section">
+
+    <div class="container px-5">
+
+        <div class="row g-0">
+
+
+            <!-- ================= COUNTER 1 ================= -->
+
+            <div class="col-6 col-lg-3">
+
+                <div class="counter-box">
+
+                    <div class="counter-icon">
+                        <i class="bi bi-rocket-takeoff-fill"></i>
+                    </div>
+
+                    <div class="counter-number">
+
+                        <span class="counter" data-target="100">
+                            100
+                        </span>
+
+                        <small>+</small>
+
+                    </div>
+
+                    <h6>
+                        PROJECTS DELIVERED
+                    </h6>
+
+                    <p>
+                        <span></span>
+                        Across 12 industries
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= COUNTER 2 ================= -->
+
+            <div class="col-6 col-lg-3">
+
+                <div class="counter-box">
+
+                    <div class="counter-icon">
+                        <i class="bi bi-building-fill"></i>
+                    </div>
+
+                    <div class="counter-number">
+
+                        <span class="counter" data-target="50">
+                            50
+                        </span>
+
+                        <small>+</small>
+
+                    </div>
+
+                    <h6>
+                        ENTERPRISE CLIENTS
+                    </h6>
+
+                    <p>
+                        <span></span>
+                        India &amp; abroad
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= COUNTER 3 ================= -->
+
+            <div class="col-6 col-lg-3">
+
+                <div class="counter-box">
+
+                    <div class="counter-icon">
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+
+                    <div class="counter-number">
+
+                        <span class="counter" data-target="98">
+                            98
+                        </span>
+
+                        <small>%</small>
+
+                    </div>
+
+                    <h6>
+                        CLIENT SATISFACTION
+                    </h6>
+
+                    <p>
+                        <span></span>
+                        Based on 200+ reviews
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= COUNTER 4 ================= -->
+
+            <div class="col-6 col-lg-3">
+
+                <div class="counter-box">
+
+                    <div class="counter-icon">
+                        <i class="bi bi-clock-fill"></i>
+                    </div>
+
+                    <div class="counter-number">
+
+                        <span class="counter" data-target="14">
+                            14
+                        </span>
+
+                        <small>wks</small>
+
+                    </div>
+
+                    <h6>
+                        AVG. LAUNCH TIME
+                    </h6>
+
+                    <p>
+                        <span></span>
+                        Kickoff to production
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+<!-- new section  case studie-->
+<section class="services-section">
+    <div class="container px-5 ">
+        <!-- Heading -->
+
+        <div class="services-heading">
+
+            <div class="heading-label">
+                <span></span>
+                WHAT WE DO
+            </div>
+
+            <h2>
+                Case Studies That
+                <span>Speak</span>
+            </h2>
+
+            <p>
+                From concept to code, we craft digital solutions
+                that drive growth,<br> efficiency, and competitive advantage.
+            </p>
+
+        </div>
+        <div class="row g-4">
+
+
+            <!-- =================================================
+                 CARD 1
+            ================================================== -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="case-card">
+
+                    <!-- IMAGE -->
+
+                    <div class="case-image">
+
+                        <img src="/img/photo-secti-01.jpg"
+                             alt="Healthcare ERP">
+
+                        <span class="case-badge">
+                            ERP SYSTEM
+                        </span>
+
+                    </div>
+
+
+                    <!-- CONTENT -->
+
+                    <div class="case-body">
+
+                        <div class="case-industry">
+                            HEALTHCARE INDUSTRY
+                        </div>
+
+                        <h3>
+                            HealthSync – Hospital Management
+                            Platform
+                        </h3>
+
+                        <p>
+                            Built a HIPAA-compliant ERP handling
+                            patient records, billing, inventory &
+                            staff management for a 500-bed
+                            hospital chain.
+                        </p>
+
+
+                        <!-- STATS -->
+
+                        <div class="case-stats">
+
+                            <div>
+                                <strong>60%</strong>
+                                <span>FASTER BILLING</span>
+                            </div>
+
+                            <div>
+                                <strong>50K+</strong>
+                                <span>DAILY TRANSACTIONS</span>
+                            </div>
+
+                            <div>
+                                <strong>11 wks</strong>
+                                <span>LAUNCH TIME</span>
+                            </div>
+
+                        </div>
+
+
+                        <!-- TESTIMONIAL -->
+
+                        <div class="case-review">
+
+                            <div class="review-avatar">
+                                <img src="/img/32.jpg"
+                                     alt="Client">
+                            </div>
+
+                            <p>
+                                "The ERP transformed our operations
+                                completely. Exceptional work by the
+                                Access Authority team."
+                            </p>
+
+                        </div>
+
+
+                        <!-- BUTTON -->
+
+                        <a asp-action="" class="case-btn">
+
+                            Read Full Case Study
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CARD 2
+            ================================================== -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="case-card">
+
+                    <div class="case-image">
+
+                        <img src="/img/section-02.jpg"
+                             alt="Finance Portal">
+
+                        <span class="case-badge">
+                            FINTECH
+                        </span>
+
+                    </div>
+
+
+                    <div class="case-body">
+
+                        <div class="case-industry">
+                            FINANCE SECTOR
+                        </div>
+
+                        <h3>
+                            FinVault – Secure Digital Banking<br>
+                            Portal
+                        </h3>
+
+                        <p>
+                            Developed a secure, scalable banking
+                            portal with real-time fraud detection,
+                            serving 200K+ users with zero downtime.
+                        </p>
+
+
+                        <div class="case-stats">
+
+                            <div>
+                                <strong>200K+</strong>
+                                <span>ACTIVE USERS</span>
+                            </div>
+
+                            <div>
+                                <strong>99.9%</strong>
+                                <span>UPTIME</span>
+                            </div>
+
+                            <div>
+                                <strong>3.2x</strong>
+                                <span>CONVERSION LIFT</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="case-review">
+
+                            <div class="review-avatar">
+
+                                <img src="/img/44.jpg"
+                                     alt="Client">
+
+                            </div>
+
+                            <p>
+                                "Beautiful design, clean architecture.
+                                Highly recommended for any fintech
+                                project."
+                            </p>
+
+                        </div>
+
+
+                        <a asp-action="" class="case-btn">
+
+                            Read Full Case Study
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CARD 3
+            ================================================== -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="case-card">
+
+                    <div class="case-image">
+
+                        <img src="/img/section-03.jpg"
+                             alt="Analytics Dashboard">
+
+                        <span class="case-badge">
+                            ANALYTICS
+                        </span>
+
+                    </div>
+
+
+                    <div class="case-body">
+
+                        <div class="case-industry">
+                            RETAIL INDUSTRY
+                        </div>
+
+                        <h3>
+                            RetailPro – Predictive Analytics
+                            Platform
+                        </h3>
+
+                        <p>
+                            Built a real-time analytics dashboard
+                            for a retail chain with 200+ stores,
+                            enabling data-driven inventory decisions.
+                        </p>
+
+
+                        <div class="case-stats">
+
+                            <div>
+                                <strong>45%</strong>
+                                <span>INVENTORY EFFICIENCY</span>
+                            </div>
+
+                            <div>
+                                <strong>85%</strong>
+                                <span>FORECAST ACCURACY</span>
+                            </div>
+
+                            <div>
+                                <strong>6 wks</strong>
+                                <span>TIME TO MARKET</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="case-review">
+
+                            <div class="review-avatar">
+
+                                <img src="/img/67.jpg"
+                                     alt="Client">
+
+                            </div>
+
+                            <p>
+                                "The insights we get from RetailPro
+                                have completely changed how we manage
+                                our supply chain."
+                            </p>
+
+                        </div>
+
+
+                        <a asp-action="" class="case-btn">
+
+                            Read Full Case Study
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</section>
+<!-- new section -->
+<!-- =====================================================
+     WHY ACCESS AUTHORITY
+===================================================== -->
+
+<section class="why-section">
+
+    <div class="container px-5">
+
+        <!-- Heading -->
+        <div class="why-heading mb-5">
+
+            <div class="section-label">
+                <span></span>
+                WHY ACCESS AUTHORITY
+            </div>
+
+            <h2>
+                6 Reasons Businesses
+                <strong>Choose Us</strong>
+            </h2>
+
+        </div>
+
+
+        <!-- Cards -->
+        <div class="row g-0 why-grid">
+
+
+            <!-- CARD 1 -->
+            <div class="col-lg-4 col-md-6">
+
+                <div class="why-card">
+
+                    <div class="why-number">
+                        01 – TEAM
+                    </div>
+
+                    <h3>
+                        Experienced Engineers
+                    </h3>
+
+                    <p>
+                        Senior developers with 5–15 years in
+                        enterprise and product environments.
+                        No juniors on client projects.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 2 -->
+            <div class="col-lg-4 col-md-6">
+
+                <div class="why-card">
+
+                    <div class="why-number">
+                        02 – APPROACH
+                    </div>
+
+                    <h3>
+                        Custom, Not Cookie-Cutter
+                    </h3>
+
+                    <p>
+                        Every solution is architected from your
+                        specific requirements. We don't retrofit
+                        templates to your problems.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 3 -->
+            <div class="col-lg-4 col-md-6">
+
+                <div class="why-card">
+
+                    <div class="why-number">
+                        03 – PROCESS
+                    </div>
+
+                    <h3>
+                        Radical Transparency
+                    </h3>
+
+                    <p>
+                        Weekly updates, live project dashboards,
+                        and direct access to your team. You always
+                        know exactly where things stand.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 4 -->
+            <div class="col-lg-4 col-md-6">
+
+                <div class="why-card">
+
+                    <div class="why-number">
+                        04 – ARCHITECTURE
+                    </div>
+
+                    <h3>
+                        Built to Scale
+                    </h3>
+
+                    <p>
+                        Cloud-native architecture designed for
+                        10x growth. Your infrastructure grows
+                        with your ambition, not against it.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 5 -->
+            <div class="col-lg-4 col-md-6">
+
+                <div class="why-card">
+
+                    <div class="why-number">
+                        05 – SUPPORT
+                    </div>
+
+                    <h3>
+                        Ongoing Partnership
+                    </h3>
+
+                    <p>
+                        Post-launch support, performance
+                        monitoring, and continuous improvements
+                        are part of every engagement.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 6 -->
+            <div class="col-lg-4 col-md-6">
+
+                <div class="why-card">
+
+                    <div class="why-number">
+                        06 – FOCUS
+                    </div>
+
+                    <h3>
+                        Business-First Thinking
+                    </h3>
+
+                    <p>
+                        Every technical decision is measured
+                        against your business goals. We build
+                        what moves the needle — nothing else.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURED PROJECTS SECTION -->
+
+<section class="work-showcase py-5">
+    <div class="container px-5">
+
+        <!-- TOP HEADING -->
+        <div class="row align-items-end mb-4">
+
+            <!-- LEFT -->
+            <div class="col-lg-7 col-md-6">
+
+                <div class="work-tag">
+                    <span></span>
+                    OUR WORK
+                </div>
+
+                <h2 class="work-heading">
+                    Featured <span>Projects</span>
+                </h2>
+
+            </div>
+
+
+            <!-- RIGHT FILTER BUTTONS -->
+            <div class="col-lg-5 col-md-6">
+
+                <div class="work-filters d-flex justify-content-md-end justify-content-start gap-1">
+
+                    <button class="work-filter active" onclick="location.href='@Url.Action("Projects", "Home")'">
+                        ALL
+                    </button>
+
+                    <button class="work-filter" onclick="location.href='@Url.Action("webDevlopment", "Home")'">
+                        WEB
+                    </button>
+
+                    <button class="work-filter" onclick="location.href='@Url.Action("MobileApps", "Home")'">
+                        MOBILE
+                    </button>
+
+                    <button class="work-filter" onclick="location.href='@Url.Action("ERPDevlopment", "Home")'">
+                        ERP
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROJECT IMAGES -->
+        <div class="row g-1">
+
+
+            <!-- LEFT LARGE IMAGE -->
+            <div class="col-lg-7 col-md-7">
+
+                <div class="work-image work-image-large">
+
+                    <img src="https://t4.ftcdn.net/jpg/02/00/14/63/240_F_200146338_NTWg7HF65p5z6IUIXzxJbkJ5zlEt3gnG.jpg"
+                         class="img-fluid w-100 h-100"
+                         alt="Project">
+
+                    <div class="work-hover">
+
+                        <div>
+                            <small>WEB DEVELOPMENT</small>
+                            <h4>Business Dashboard</h4>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT IMAGE -->
+            <div class="col-lg-5 col-md-5">
+
+                <div class="work-image work-image-right">
+
+                    <img src="https://t4.ftcdn.net/jpg/05/54/46/89/240_F_554468927_iwU3VYIjsaeopAb0WPYxVf21TloEhTEj.jpg"
+                         class="img-fluid w-100 h-100"
+                         alt="Project">
+
+                    <div class="work-hover">
+
+                        <div>
+                            <small>WEB APPLICATION</small>
+                            <h4>Analytics Dashboard</h4>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOTTOM LEFT -->
+            <div class="col-lg-4 col-md-4">
+
+                <div class="work-image work-image-bottom">
+
+                    <img src="https://t4.ftcdn.net/jpg/04/70/10/77/240_F_470107765_vU4r3VmjWuYtHckuiLwousNeDHgnMLUN.jpg"
+                         class="img-fluid w-100 h-100"
+                         alt="Project">
+
+                    <div class="work-hover">
+
+                        <div>
+                            <small>MOBILE APP</small>
+                            <h4>Mobile Application</h4>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOTTOM RIGHT -->
+            <div class="col-lg-3 col-md-3">
+
+                <div class="work-image work-image-bottom">
+
+                    <img src="https://t4.ftcdn.net/jpg/03/23/82/99/240_F_323829966_H32wLhoouiPinJ66KyggCvqQ2dFPuuQ1.jpg"
+                         class="img-fluid w-100 h-100"
+                         alt="Project">
+
+                    <div class="work-hover">
+
+                        <div>
+                            <small>ERP</small>
+                            <h4>ERP Solution</h4>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="text-center pt-3 ">
+                <a asp-action="Projects" class="case-btn">
+
+                    View all Projects
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<!-- new section -->
+<!-- ================================
+     7 STEP DELIVERY PROCESS
+================================ -->
+
+<section class="delivery-process">
+
+    <div class="container px-5">
+
+        <!-- HEADING -->
+        <div class="text-center delivery-heading">
+
+            <div class="delivery-label">
+                <span></span> HOW WE WORK
+            </div>
+
+            <h2>
+                Our 7-Step <span>Delivery Process</span>
+            </h2>
+
+            <p>
+                A proven, repeatable framework that delivers projects on time,
+                within scope, and beyond expectations — every time.
+            </p>
+
+        </div>
+
+
+        <!-- 7 STEPS -->
+        <div class="row delivery-steps">
+
+
+            <!-- STEP 1 -->
+            <div class="col-lg col-md-4 col-6">
+
+                <div class="step-item">
+
+                    <div class="step-box">
+
+                        <i class="bi bi-search"></i>
+
+                        <small>01</small>
+
+                    </div>
+
+                    <h6>Discovery</h6>
+
+                    <p>
+                        Deep dive into your goals,<br>
+                        users, and constraints
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 2 -->
+            <div class="col-lg col-md-4 col-6">
+
+                <div class="step-item">
+
+                    <div class="step-box">
+
+                        <i class="bi bi-map"></i>
+
+                        <small>02</small>
+
+                    </div>
+
+                    <h6>Planning</h6>
+
+                    <p>
+                        Scope, timeline, milestones<br>
+                        locked in
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 3 -->
+            <div class="col-lg col-md-4 col-6">
+
+                <div class="step-item">
+
+                    <div class="step-box">
+
+                        <i class="bi bi-tools"></i>
+
+                        <small>03</small>
+
+                    </div>
+
+                    <h6>Design</h6>
+
+                    <p>
+                        Wireframes and prototypes<br>
+                        approved before code
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 4 -->
+            <div class="col-lg col-md-4 col-6">
+
+                <div class="step-item">
+
+                    <div class="step-box">
+
+                        <i class="bi bi-code-slash"></i>
+
+                        <small>04</small>
+
+                    </div>
+
+                    <h6>Development</h6>
+
+                    <p>
+                        Agile sprints with weekly<br>
+                        demos
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 5 -->
+            <div class="col-lg col-md-4 col-6">
+
+                <div class="step-item">
+
+                    <div class="step-box">
+
+                        <i class="bi bi-eyedropper"></i>
+
+                        <small>05</small>
+
+                    </div>
+
+                    <h6>Testing</h6>
+
+                    <p>
+                        Unit, integration, E2E, security<br>
+                        testing
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 6 -->
+            <div class="col-lg col-md-4 col-6">
+
+                <div class="step-item">
+
+                    <div class="step-box">
+
+                        <i class="bi bi-rocket-takeoff-fill"></i>
+
+                        <small>06</small>
+
+                    </div>
+
+                    <h6>Launch</h6>
+
+                    <p>
+                        CI/CD deployment, zero-<br>
+                        downtime rollout
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 7 -->
+            <div class="col-lg col-md-4 col-6">
+
+                <div class="step-item">
+
+                    <div class="step-box">
+
+                        <i class="bi bi-headset"></i>
+
+                        <small>07</small>
+
+                    </div>
+
+                    <h6>Support</h6>
+
+                    <p>
+                        Ongoing monitoring and<br>
+                        improvements
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================
+         SATISFACTION BAR
+    ================================= -->
+
+    <div class="satisfaction-bar">
+
+        <div class="container px-5">
+
+            <div class="satisfaction-content">
+
+                <div class="satisfaction-icon">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+
+                <div>
+
+                    <h5>
+                        100% Satisfaction Guarantee —
+                        If You're Not Happy, We Don't Stop
+                    </h5>
+
+                    <p>
+                        Every project includes 30 days of free post-launch support.
+                        No questions asked.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     ABOUT US SECTION
+========================================= -->
+
+<section class="py-5 bg-white">
+    <div class="container px-5">
+        <div class="row align-items-center g-5">
+
+            <!-- LEFT CONTENT -->
+            <div class="col-lg-5 col-md-6">
+                <!-- SMALL TITLE -->
+                <div class="text-danger fw-semibold mb-3" style="font-size: 10px; letter-spacing: 1px;">
+                    <span class="d-inline-block bg-danger me-2" style="width: 16px; height: 1px; vertical-align: middle;"></span>
+                    <i class="bi bi-info-circle-fill me-1"></i>
+                    ABOUT US
+                </div>
+
+                <!-- MAIN HEADING -->
+                <h1 class="fw-bold lh-sm mb-3" style="font-size: 32px;">
+                    We Build Digital
+                    <span class="text-danger">Authority</span>
+                    That Matters
+                </h1>
+
+                <!-- PARAGRAPHS -->
+                <p class="text-dark mb-3" style="font-size: 13px; line-height: 1.7;">
+                    Access Authority is a technology partner that helps
+                    businesses transform through custom software, enterprise
+                    solutions, and intelligent products. Founded in 2019,
+                    we've grown from a small team of passionate engineers
+                    to a trusted partner for 50+ enterprises across India.
+                </p>
+                <p class="text-dark mb-4" style="font-size: 13px; line-height: 1.7;">
+                    We don't just build software — we build solutions that
+                    solve real problems, drive revenue, and create lasting
+                    competitive advantage for our clients.
+                </p>
+
+                <!-- STATS (left side) -->
+                <div class="d-flex align-items-center mb-3">
+                    <div class="bg-danger-subtle text-danger d-flex align-items-center justify-content-center flex-shrink-0" style="width: 32px; height: 32px;">
+                        <i class="bi bi-check-circle-fill"></i>
+                    </div>
+                    <div class="ms-2">
+                        <div class="fw-semibold" style="font-size: 12px;">100+ Projects Delivered</div>
+                        <div class="text-secondary" style="font-size: 9px;">Across healthcare, fintech, retail, and more</div>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center mb-3">
+                    <div class="bg-danger-subtle text-danger d-flex align-items-center justify-content-center flex-shrink-0" style="width: 32px; height: 32px;">
+                        <i class="bi bi-check-circle-fill"></i>
+                    </div>
+                    <div class="ms-2">
+                        <div class="fw-semibold" style="font-size: 12px;">98% Client Satisfaction</div>
+                        <div class="text-secondary" style="font-size: 9px;">Based on 200+ reviews from enterprise clients</div>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center mb-4">
+                    <div class="bg-danger-subtle text-danger d-flex align-items-center justify-content-center flex-shrink-0" style="width: 32px; height: 32px;">
+                        <i class="bi bi-check-circle-fill"></i>
+                    </div>
+                    <div class="ms-2">
+                        <div class="fw-semibold" style="font-size: 12px;">7+ Years of Excellence</div>
+                        <div class="text-secondary" style="font-size: 9px;">Building enterprise-grade solutions since 2019</div>
+                    </div>
+                </div>
+
+                <!-- BUTTONS -->
+                <div class="d-flex flex-wrap gap-2">
+                    <a asp-action="AboutUs" class="btn btn-danger rounded-0 fw-semibold px-4 py-2" style="font-size: 11px;">
+                        <i class="bi bi-arrow-right me-1"></i>
+                        Learn More About Us
+                    </a>
+                    <a asp-action="Team" class="btn btn-light border rounded-0 fw-semibold px-4 py-2" style="font-size: 11px;">
+                        <i class="bi bi-person-fill me-1"></i>
+                        Meet the Team
+                    </a>
+
+
+
+                </div>
+            </div>
+
+            <!-- RIGHT IMAGE -->
+            <div class="col-lg-7 col-md-6">
+                <div class="position-relative">
+
+                    <!-- MAIN IMAGE -->
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop" class="img-fluid w-100" alt="Our Team" style="height: 338px; object-fit: cover;">
+
+                    <!-- ==========================================================
+                         THREE FLOATING STAT CARDS (using .float-card + delay)
+                    ========================================================== -->
+                    <!-- 100+ PROJECTS CARD (top-right) -->
+                    <div class="position-absolute bg-white shadow-sm d-flex align-items-center p-3 float-card float-card-1" style="top: -22px; right: -15px; min-width: 108px;">
+                        <div class="bg-danger-subtle text-danger d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                            <i class="bi bi-rocket-takeoff-fill"></i>
+                        </div>
+                        <div class="ms-2">
+                            <div class="fw-bold" style="font-size: 14px;">100+</div>
+                            <div class="text-secondary" style="font-size: 8px;">Projects</div>
+                        </div>
+                    </div>
+
+                    <!-- 7+ YEARS CARD (right-bottom) -->
+                    <div class="position-absolute bg-white shadow-sm d-flex align-items-center p-3 float-card float-card-2" style="bottom: 38px; right: -22px; min-width: 108px;">
+                        <div class="bg-danger-subtle text-danger d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                            <i class="bi bi-trophy-fill"></i>
+                        </div>
+                        <div class="ms-2">
+                            <div class="fw-bold" style="font-size: 14px;">7+</div>
+                            <div class="text-secondary" style="font-size: 8px;">Years</div>
+                        </div>
+                    </div>
+
+                    <!-- 98% SATISFACTION CARD (left-bottom) -->
+                    <div class="position-absolute bg-white shadow-sm d-flex align-items-center p-3 float-card float-card-3" style="bottom: -2px; left: -24px; min-width: 120px;">
+                        <div class="bg-danger-subtle text-danger d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <div class="ms-2">
+                            <div class="fw-bold" style="font-size: 14px;">98%</div>
+                            <div class="text-secondary" style="font-size: 8px;">Satisfaction</div>
+                        </div>
+                    </div>
+
+                    <!-- OUR STORY BUTTON (center-bottom) -->
+                    <a asp-action="Services" class="position-absolute bottom-0 start-50 translate-middle-x bg-dark text-white text-decoration-none px-3 py-2" style="font-size: 10px;">
+                        <i class="bi bi-play-fill me-1"></i>
+                        Our Story
+                    </a>
+
+                </div>
+
+                <!-- CERTIFICATIONS -->
+                <div class="d-flex justify-content-center align-items-center gap-4 mt-3 flex-wrap">
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="bi bi-file-earmark-check-fill text-dark" style="font-size: 12px;"></i>
+                        <span class="cert-badge">ISO 9001 CERTIFIED</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="bi bi-lock-fill text-dark" style="font-size: 12px;"></i>
+                        <span class="cert-badge">GDPR READY</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="bi bi-shield-fill-check text-dark" style="font-size: 12px;"></i>
+                        <span class="cert-badge">SSL SECURED</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- farzi vada -->
+<section class="py-5 bg-black">
+    <div class="container px-5">
+        <!-- header -->
+        <div class="text-danger fw-semibold mb-3" style="font-size: 10px; letter-spacing: 1px; text-transform: uppercase;">
+            <span class="d-inline-block bg-danger me-2 " style="width: 16px; height: 1px; vertical-align: middle;"></span>
+            <i class="bi bi me-1 "></i>
+            Sectors
+        </div>
+
+        <!-- MAIN HEADING -->
+        <h1 class=" lh-sm mb-3 text-white" style="font-size: 32px;">
+            Industries We
+            <span class="text-danger">Serve</span>
+
+        </h1>
+
+        <!-- 6 cards in a responsive grid -->
+        <div class="row g-3 justify-content-center">
+            <!-- 1. Healthcare -->
+            <div class="col-6 col-md-3 col-lg-2">
+                <div class="industry-card">
+                    <i class="bi bi-heart-pulse-fill"></i>
+                    <p>Healthcare</p>
+                </div>
+            </div>
+            <!-- 2. Education -->
+            <div class="col-6 col-md-3 col-lg-2">
+                <div class="industry-card">
+                    <i class="bi bi-book-fill"></i>
+                    <p>Education</p>
+                </div>
+            </div>
+            <!-- 3. Finance -->
+            <div class="col-6 col-md-3 col-lg-2">
+                <div class="industry-card">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    <p>Finance</p>
+                </div>
+            </div>
+            <!-- 4. Manufacturing -->
+            <div class="col-6 col-md-3 col-lg-2">
+                <div class="industry-card">
+                    <i class="bi bi-archive"></i>
+                    <p>Manufacturing</p>
+                </div>
+            </div>
+            <!-- 5. Retail -->
+            <div class="col-6 col-md-3 col-lg-2">
+                <div class="industry-card">
+                    <i class="bi bi-bag-fill"></i>
+                    <p>Retail</p>
+                </div>
+            </div>
+            <!-- 6. Real Estate -->
+            <div class="col-6 col-md-3 col-lg-2">
+                <div class="industry-card">
+                    <i class="bi bi-house-door-fill"></i>
+                    <p>Real Estate</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- new slider -->
+
+<section class="client-review-area">
+
+    <div class="container px-5">
+
+        <!-- HEADING -->
+        <div class="client-review-heading">
+
+            <div class="client-review-label">
+                <span></span>
+                CLIENT REVIEWS
+            </div>
+
+            <h2>
+                What Our Clients <strong>Say</strong>
+            </h2>
+
+        </div>
+
+
+        <!-- SLIDER -->
+        <div class="client-review-slider">
+
+            <div class="client-review-track" id="clientReviewTrack">
+
+
+                <!-- CARD 1 -->
+                <div class="client-review-card active">
+
+                    <div class="client-review-quote">“</div>
+
+                    <div class="client-review-stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "Access Authority transformed our manual billing
+                        process into a fully automated system. The ERP
+                        handles 50,000+ transactions daily without a
+                        hiccup. Exceptional work."
+                    </p>
+
+                    <hr>
+
+                    <div class="client-review-user">
+
+                        <div class="client-review-avatar">
+                            <img src="/img/45.jpg" class="img-fluid rounded-circle " alt="">
+                        </div>
+
+                        <div>
+                            <h6>Rajesh Kumar</h6>
+                            <small>CEO, TechVentures India</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARD 2 -->
+                <div class="client-review-card">
+
+                    <div class="client-review-quote">“</div>
+
+                    <div class="client-review-stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "From discovery to launch in 11 weeks. Their team
+                        was responsive, technically sharp, and delivered a
+                        platform that our customers absolutely love."
+                    </p>
+
+                    <hr>
+
+                    <div class="client-review-user">
+
+                        <div class="client-review-avatar review-avatar-two">
+                            <img src="/img/44.jpg" class="img-fluid rounded-circle " alt="">
+                        </div>
+
+                        <div>
+                            <h6>Priya Sharma</h6>
+                            <small>MD, Shree Enterprises</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARD 3 -->
+                <div class="client-review-card">
+
+                    <div class="client-review-quote">“</div>
+
+                    <div class="client-review-stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "We needed a scalable mobile app for 200K+ users.
+                        Access Authority delivered exactly that —
+                        beautiful design, clean architecture, zero
+                        downtime post-launch."
+                    </p>
+
+                    <hr>
+
+                    <div class="client-review-user">
+
+                        <div class="client-review-avatar review-avatar-three">
+                            <img src="/img/32.jpg" class="img-fluid rounded-circle " alt="">
+                        </div>
+
+                        <div>
+                            <h6>Vikram Patel</h6>
+                            <small>CTO, GlobalCorp</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARD 4 -->
+                <div class="client-review-card">
+
+                    <div class="client-review-quote">“</div>
+
+                    <div class="client-review-stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "The entire development process was smooth and
+                        professional. The final product exceeded our
+                        expectations."
+                    </p>
+
+                    <hr>
+
+                    <div class="client-review-user">
+
+                        <div class="client-review-avatar">
+                            <img src="/img/67 (1).jpg" class="img-fluid rounded-circle " alt="">
+                        </div>
+
+                        <div>
+                            <h6>Amit Mehta</h6>
+                            <small>Director, FutureTech</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARD 5 -->
+                <div class="client-review-card">
+
+                    <div class="client-review-quote">“</div>
+
+                    <div class="client-review-stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "Excellent communication and fantastic technical
+                        execution. Highly recommended for large scale
+                        projects."
+                    </p>
+
+                    <hr>
+
+                    <div class="client-review-user">
+
+                        <div class="client-review-avatar review-avatar-two">
+                            <img src="/img/60.jpg" class="img-fluid rounded-circle " alt="">
+                        </div>
+
+                        <div>
+                            <h6>Shreya Kapoor</h6>
+                            <small>CEO, DigitalWorks</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARD 6 -->
+                <div class="client-review-card">
+
+                    <div class="client-review-quote">“</div>
+
+                    <div class="client-review-stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "A highly reliable team with excellent attention
+                        to detail. We are very happy with the result."
+                    </p>
+
+                    <hr>
+
+                    <div class="client-review-user">
+
+                        <div class="client-review-avatar review-avatar-three">
+                            <img src="/img/28.jpg" class="img-fluid rounded-circle " alt="">
+                        </div>
+
+                        <div>
+                            <h6>Arjun Rao</h6>
+                            <small>CTO, SmartCorp</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DOTS -->
+        <div class="client-review-dots">
+
+            <span class="client-review-dot active-review-dot"></span>
+            <span class="client-review-dot"></span>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- faq section -->
+<!-- ================================
+     UNIQUE FAQ SECTION
+================================ -->
+
+<section class="aa-faq-wrapper">
+
+    <div class="container aa-faq-container">
+
+        <!-- FAQ HEADING -->
+        <div class="aa-faq-heading">
+
+            <div class="aa-faq-label">
+                <span></span>
+                FAQ
+            </div>
+
+            <h2>
+                Frequently Asked <strong>Questions</strong>
+            </h2>
+
+        </div>
+
+
+        <!-- FAQ GRID -->
+        <div class="aa-faq-grid">
+
+
+            <!-- FAQ 1 -->
+            <div class="aa-faq-item">
+
+                <button class="aa-faq-question" type="button">
+                    <span>How long does a typical project take?</span>
+                    <span class="aa-faq-plus">+</span>
+                </button>
+
+                <div class="aa-faq-answer">
+                    <p>
+                        A typical project can take anywhere from 4 to 12
+                        weeks depending on the scope, complexity and
+                        requirements.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- FAQ 2 -->
+            <div class="aa-faq-item">
+
+                <button class="aa-faq-question" type="button">
+                    <span>What is your pricing model?</span>
+                    <span class="aa-faq-plus">+</span>
+                </button>
+
+                <div class="aa-faq-answer">
+                    <p>
+                        Our pricing depends on the project requirements,
+                        features and development timeline. We provide a
+                        customized quote for every project.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- FAQ 3 -->
+            <div class="aa-faq-item">
+
+                <button class="aa-faq-question" type="button">
+                    <span>Do you provide post-launch support?</span>
+                    <span class="aa-faq-plus">+</span>
+                </button>
+
+                <div class="aa-faq-answer">
+                    <p>
+                        Yes. We provide post-launch maintenance, technical
+                        support and updates to keep your product running
+                        smoothly.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- FAQ 4 -->
+            <div class="aa-faq-item">
+
+                <button class="aa-faq-question" type="button">
+                    <span>What if I’m not satisfied with the work?</span>
+                    <span class="aa-faq-plus">+</span>
+                </button>
+
+                <div class="aa-faq-answer">
+                    <p>
+                        We work closely with our clients throughout the
+                        development process and make sure the final product
+                        meets the agreed requirements.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- FAQ 5 -->
+            <div class="aa-faq-item">
+
+                <button class="aa-faq-question" type="button">
+                    <span>What technologies do you use?</span>
+                    <span class="aa-faq-plus">+</span>
+                </button>
+
+                <div class="aa-faq-answer">
+                    <p>
+                        We work with modern technologies including HTML,
+                        CSS, JavaScript, Bootstrap, .NET, databases and
+                        other suitable frameworks.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- FAQ 6 -->
+            <div class="aa-faq-item">
+
+                <button class="aa-faq-question" type="button">
+                    <span>How do you communicate during projects?</span>
+                    <span class="aa-faq-plus">+</span>
+                </button>
+
+                <div class="aa-faq-answer">
+                    <p>
+                        We maintain regular communication through meetings,
+                        messages and progress updates so clients always
+                        know the current project status.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================================
+     UNIQUE CTA SECTION
+================================ -->
+
+<section class="aa-cta-wrapper">
+
+    <div class="container aa-cta-container">
+
+        <div class="aa-cta-content">
+
+            <div class="aa-cta-label">
+                <span></span>
+                LET'S WORK TOGETHER
+            </div>
+
+            <h2>
+                Ready to Build Your
+                <strong>Digital Authority?</strong>
+            </h2>
+
+            <p>
+                Turn your vision into a product that drives real revenue.
+                Book a free strategy session — no commitment, no sales pressure,
+                just honest scoping.
+            </p>
+
+        </div>
+
+
+        <div class="aa-cta-button-box">
+
+            <a asp-action="FreeConsultation" class="aa-cta-button">
+                <span>▣</span>
+                Book Free Strategy Call
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- blog section -->
+
+<section class="aa-blog-area">
+    <div class="container aa-blog-container">
+
+        <!-- HEADING -->
+        <div class="aa-blog-top">
+            <div>
+                <div class="aa-blog-label">
+                    <span></span>
+                    INSIGHTS
+                </div>
+                <h2 class="aa-blog-title">
+                    From the <strong>Blog</strong>
+                </h2>
+            </div>
+            <a asp-action="Blog" class="aa-blog-all-btn">
+                All Articles
+                <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+
+
+        <div class="container">
+
+            <div id="blogCarousel"
+                 class="carousel slide"
+                 data-bs-ride="carousel">
+
+                <div class="carousel-inner">
+
+                    @{
+                        var blogs = Model?.ToList() ?? new List<Access_Authority.Models.CreateBlog>();
+                        var groups = blogs
+                        .Select((blog, index) => new { blog, index })
+                        .GroupBy(x => x.index / 3)
+                        .ToList();
+                    }
+
+                    @for (int g = 0; g < groups.Count; g++)
+                    {
+                        <div class="carousel-item @(g == 0 ? "active" : "")">
+
+                            <div class="row g-4">
+
+                                @foreach (var item in groups[g])
+                                {
+                                    var blog = item.blog;
+
+                                    <div class="col-lg-4 col-md-6">
+
+                                        <div class="blog-card">
+
+                                            <div class="blog-image">
+
+                                                @if (!string.IsNullOrEmpty(blog.FeaturedImage))
+                                                {
+                                                    <img src="@blog.FeaturedImage"
+                                                         alt="@blog.Title">
+                                                }
+                                                else
+                                                {
+                                                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop"
+                                                         alt="@blog.Title">
+                                                }
+
+                                                <span class="blog-badge">
+                                                    @blog.Category
+                                                </span>
+
+                                            </div>
+
+                                            <div class="blog-body">
+
+                                                <div class="blog-meta">
+                                                    <span>
+                                                        <i class="bi bi-calendar3"></i>
+                                                        @blog.CreatedDate.ToLocalTime().ToString("MMM dd, yyyy")
+                                                    </span>
+                                                </div>
+
+                                                <h3>
+                                                    <a asp-controller="Home"
+                                                       asp-action="Blogdetail"
+                                                       asp-route-id="@blog.Id">
+                                                        @blog.Title
+                                                    </a>
+                                                </h3>
+
+                                                <p class="blog-desc">
+
+                                                    @{
+                                                        var plainText =
+                                                        System.Text.RegularExpressions.Regex
+                                                        .Replace(blog.Content ?? "", "<.*?>", "");
+
+                                                        var description =
+                                                        plainText.Length > 120
+                                                        ? plainText.Substring(0, 120) + "..."
+                                                        : plainText;
+                                                    }
+
+                                                    @description
+
+                                                </p>
+
+                                                <div class="blog-author">
+
+                                                    <div class="client-avatar">
+                                                        <div>
+                                                            <img src="~/img/32.jpg"
+                                                                 class="img-fluid rounded-circle"
+                                                                 alt="Admin">
+                                                        </div>
+                                                    </div>
+
+                                                    <span class="author-name">
+                                                        Admin
+                                                    </span>
+
+                                                    <a asp-controller="Home"
+                                                       asp-action="Blogdetail"
+                                                       asp-route-id="@blog.Id"
+                                                       class="blog-read-link">
+
+                                                        Read
+                                                        <i class="bi bi-arrow-right"></i>
+
+                                                    </a>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                }
+
+                            </div>
+
+                        </div>
+                    }
+
+                </div>
+
+
+                <!-- PREVIOUS -->
+
+                <button class="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#blogCarousel"
+                        data-bs-slide="prev">
+
+                    <span class="carousel-control-prev-icon"></span>
+
+                    <span class="visually-hidden">
+                        Previous
+                    </span>
+
+                </button>
+
+
+                <!-- NEXT -->
+
+                <button class="carousel-control-next"
+                        type="button"
+                        data-bs-target="#blogCarousel"
+                        data-bs-slide="next">
+
+                    <span class="carousel-control-next-icon"></span>
+
+                    <span class="visually-hidden">
+                        Next
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+     
+
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    (function() {
+      "use strict";
+
+      // ----- get all counter elements -----
+      const counters = document.querySelectorAll('.counter');
+
+      // store initial values & animation state
+      let animationStarted = false;     // prevent multiple triggers
+      let observer = null;
+
+      // ----- function to run the counting animation -----
+      function startCounters() {
+        if (animationStarted) return;
+        animationStarted = true;
+
+        counters.forEach(counter => {
+          const target = parseInt(counter.getAttribute('data-target'), 10);
+          if (isNaN(target) || target < 0) return;
+
+          // reset to 0 (but only if not already animated)
+          counter.innerText = '0';
+
+          // determine duration & step
+          const duration = 1800; // ms
+          const startTime = performance.now();
+
+          // easing function (ease-out cubic)
+          function easeOutCubic(t) {
+            return 1 - Math.pow(1 - t, 3);
+          }
+
+          function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easedProgress = easeOutCubic(progress);
+            const currentValue = Math.round(easedProgress * target);
+
+            // update text
+            counter.innerText = currentValue;
+
+            if (progress < 1) {
+              requestAnimationFrame(updateCounter);
+            } else {
+              // final value (ensure exact target)
+              counter.innerText = target;
+            }
+          }
+
+          // start animation for this counter
+          requestAnimationFrame(updateCounter);
+        });
+      }
+
+      // ----- Intersection Observer: trigger when section becomes visible -----
+      const section = document.querySelector('.counter-section');
+      if (!section) return;
+
+      // if the section is already visible, start immediately
+      if (section.getBoundingClientRect().top < window.innerHeight) {
+        startCounters();
+      } else {
+        // otherwise set up observer
+        observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !animationStarted) {
+              startCounters();
+              // once started, disconnect observer to save resources
+              observer.disconnect();
+            }
+          });
+        }, {
+          threshold: 0.2,    // 20% of section visible
+          rootMargin: '0px'
+        });
+
+        observer.observe(section);
+      }
+
+      
+      setTimeout(() => {
+        if (!animationStarted) {
+          // check again if section is visible (or just start anyway)
+          startCounters();
+          if (observer) observer.disconnect();
+        }
+      }, 4000);
+
+      
+    })();
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const reviewTrack = document.getElementById("clientReviewTrack");
+
+            const reviewCards = document.querySelectorAll(
+                ".client-review-card"
+            );
+
+            const reviewDots = document.querySelectorAll(
+                ".client-review-dot"
+            );
+
+
+            let currentReviewSlide = 0;
+
+
+            function getReviewsPerSlide() {
+
+                if (window.innerWidth <= 575) {
+                    return 1;
+                }
+
+                if (window.innerWidth <= 991) {
+                    return 2;
+                }
+
+                return 3;
+            }
+
+
+            function showReviewSlide(slideNumber) {
+
+                const reviewsPerSlide = getReviewsPerSlide();
+
+                const totalSlides = Math.ceil(
+                    reviewCards.length / reviewsPerSlide
+                );
+
+
+                if (slideNumber >= totalSlides) {
+                    currentReviewSlide = 0;
+                }
+
+                if (slideNumber < 0) {
+                    currentReviewSlide = totalSlides - 1;
+                }
+
+
+                const cardWidth = 100 / reviewsPerSlide;
+
+                const moveValue =
+                    currentReviewSlide * 100;
+
+
+                reviewTrack.style.transform =
+                    `translateX(-${moveValue}%)`;
+
+
+                /* ACTIVE CARD */
+
+                reviewCards.forEach(function (card) {
+                    card.classList.remove("active");
+                });
+
+
+                const activeCardIndex =
+                    currentReviewSlide * reviewsPerSlide;
+
+                if (reviewCards[activeCardIndex]) {
+                    reviewCards[activeCardIndex]
+                        .classList.add("active");
+                }
+
+
+                /* DOT */
+
+                reviewDots.forEach(function (dot) {
+                    dot.classList.remove(
+                        "active-review-dot"
+                    );
+                });
+
+
+                if (reviewDots[currentReviewSlide]) {
+
+                    reviewDots[currentReviewSlide]
+                        .classList.add(
+                            "active-review-dot"
+                        );
+
+                }
+
+            }
+
+
+            /* DOT CLICK */
+
+            reviewDots.forEach(function (dot, index) {
+
+                dot.addEventListener("click", function () {
+
+                    currentReviewSlide = index;
+
+                    showReviewSlide(
+                        currentReviewSlide
+                    );
+
+                });
+
+            });
+
+
+            /* AUTO SLIDER */
+
+            setInterval(function () {
+
+                currentReviewSlide++;
+
+                showReviewSlide(
+                    currentReviewSlide
+                );
+
+            }, 3000);
+
+
+            /* RESPONSIVE */
+
+            window.addEventListener("resize", function () {
+
+                currentReviewSlide = 0;
+
+                showReviewSlide(
+                    currentReviewSlide
+                );
+
+            });
+
+
+            /* INITIAL */
+
+            showReviewSlide(0);
+
+        });
+        /* =================================================
+                   SLIDE DATA
+                ================================================= */
+
+                const heroSlides = [
+
+
+                    /* ================= SLIDE 1 ================= */
+
+                    {
+
+                        title:
+                        `Build Your Digital <span>Authority</span>`,
+
+                        description:
+                        `Access Authority delivers custom websites,
+                        enterprise software, and intelligent products
+                        that scale with your business — from MVP to
+                        enterprise.`,
+
+                        image:
+                        "https://static.vecteezy.com/system/resources/thumbnails/023/056/329/small_2x/programmer-people-working-laptops-or-smartphones-with-ai-artificial-intelligence-software-engineer-coding-on-laptop-computers-with-technology-icons-and-binary-code-big-data-ai-bot-digital-machine-photo.jpg",
+
+                        businesses: 100,
+
+                        projects: 100,
+
+                        clients: 50,
+
+                        satisfaction: 98,
+
+                        projectName:
+                        "ERP Platform Live"
+
+                    },
+
+
+                    /* ================= SLIDE 2 ================= */
+
+                    {
+
+                        title:
+                        `Grow Your Business <span>Faster</span>`,
+
+                        description:
+                        `Build powerful digital solutions that help
+                        your business reach more customers and grow
+                        faster with modern technology.`,
+
+                        image:
+                        "https://media.licdn.com/dms/image/v2/D4D12AQEHp0DQ5snWuQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1699437533934?e=2147483647&v=beta&t=Icl8EhBAdnoPQiJEuzLjuG6PbsrRioM1ATQAGyS4eLI",
+
+                        businesses: 150,
+
+                        projects: 150,
+
+                        clients: 65,
+
+                        satisfaction: 99,
+
+                        projectName:
+                        "Business Growth Platform"
+
+                    },
+
+
+                    /* ================= SLIDE 3 ================= */
+
+                    {
+
+                        title:
+                        `Smart Digital <span>Solutions</span>`,
+
+                        description:
+                        `From websites to enterprise software,
+                        we build reliable digital products designed
+                        to solve real business problems.`,
+
+                        image:
+                        "https://t4.ftcdn.net/jpg/05/54/46/89/240_F_554468927_iwU3VYIjsaeopAb0WPYxVf21TloEhTEj.jpg",
+
+                        businesses: 200,
+
+                        projects: 200,
+
+                        clients: 80,
+
+                        satisfaction: 99,
+
+                        projectName:
+                        "Smart ERP Platform"
+
+                    }
+
+                ];
+
+
+
+                /* =================================================
+                   CURRENT SLIDE
+                ================================================= */
+
+                let currentSlide = 0;
+
+
+
+                /* =================================================
+                   ELEMENTS
+                ================================================= */
+
+                const heroContent =
+                    document.getElementById(
+                        "heroContent"
+                    );
+
+
+                const heroTitle =
+                    document.getElementById(
+                        "heroTitle"
+                    );
+
+
+                const heroDescription =
+                    document.getElementById(
+                        "heroDescription"
+                    );
+
+
+                const heroImage =
+                    document.getElementById(
+                        "heroImage"
+                    );
+
+
+                const businessCounter =
+                    document.getElementById(
+                        "businessCounter"
+                    );
+
+
+                const projectCounter =
+                    document.getElementById(
+                        "projectCounter"
+                    );
+
+
+                const clientCounter =
+                    document.getElementById(
+                        "clientCounter"
+                    );
+
+
+                const satisfactionCounter =
+                    document.getElementById(
+                        "satisfactionCounter"
+                    );
+
+
+                const projectName =
+                    document.getElementById(
+                        "projectName"
+                    );
+
+
+
+                /* =================================================
+                   COUNTER FUNCTION
+                ================================================= */
+
+                function runCounter(
+                    element,
+                    target
+                ) {
+
+
+                    let current = 0;
+
+
+                    const duration = 1500;
+
+
+                    const stepTime = 20;
+
+
+                    const increment =
+                        target /
+                        (duration / stepTime);
+
+
+                    element.textContent = "0";
+
+
+                    const timer =
+                        setInterval(() => {
+
+
+                            current += increment;
+
+
+                            if (current >= target) {
+
+                                current = target;
+
+                                clearInterval(timer);
+
+                            }
+
+
+                            element.textContent =
+                                Math.floor(current);
+
+
+                        }, stepTime);
+
+                }
+
+
+
+                /* =================================================
+                   RUN ALL COUNTERS
+                ================================================= */
+
+                function startAllCounters(
+                    slide
+                ) {
+
+
+                    runCounter(
+                        businessCounter,
+                        slide.businesses
+                    );
+
+
+                    runCounter(
+                        projectCounter,
+                        slide.projects
+                    );
+
+
+                    runCounter(
+                        clientCounter,
+                        slide.clients
+                    );
+
+
+                    runCounter(
+                        satisfactionCounter,
+                        slide.satisfaction
+                    );
+
+                }
+
+
+
+                /* =================================================
+                   CHANGE CONTENT
+                ================================================= */
+
+                function changeHeroContent() {
+
+
+                    /*
+                        FADE OUT
+                    */
+
+                    heroContent.classList.remove(
+                        "fade-in"
+                    );
+
+
+                    heroContent.classList.add(
+                        "fade-out"
+                    );
+
+
+
+                    /*
+                        Wait for fade-out
+                    */
+
+                    setTimeout(() => {
+
+
+                        /*
+                            NEXT SLIDE
+                        */
+
+                        currentSlide++;
+
+
+                        if (
+                            currentSlide >=
+                            heroSlides.length
+                        ) {
+
+                            currentSlide = 0;
+
+                        }
+
+
+
+                        const slide =
+                            heroSlides[
+                                currentSlide
+                            ];
+
+
+
+                        /*
+                            CHANGE TITLE
+                        */
+
+                        heroTitle.innerHTML =
+                            slide.title;
+
+
+
+                        /*
+                            CHANGE DESCRIPTION
+                        */
+
+                        heroDescription.innerHTML =
+                            slide.description;
+
+
+
+                        /*
+                            CHANGE IMAGE
+                        */
+
+                        heroImage.src =
+                            slide.image;
+
+
+
+                        /*
+                            CHANGE PROJECT
+                        */
+
+                        projectName.textContent =
+                            slide.projectName;
+
+
+
+                        /*
+                            RESET COUNTERS
+                        */
+
+                        businessCounter.textContent =
+                            "0";
+
+                        projectCounter.textContent =
+                            "0";
+
+                        clientCounter.textContent =
+                            "0";
+
+                        satisfactionCounter.textContent =
+                            "0";
+
+
+
+                        /*
+                            FADE IN
+                        */
+
+                        heroContent.classList.remove(
+                            "fade-out"
+                        );
+
+
+                        heroContent.classList.add(
+                            "fade-in"
+                        );
+                        /*
+                            START COUNTERS
+                        */
+
+                        startAllCounters(
+                            slide
+                        );
+
+
+                    }, 700);
+
+                }
+                /*  FIRST SLIDE COUNTERS*/
+
+                startAllCounters(
+                    heroSlides[0]
+                );
+                /* AUTO CHANGE
+                   EVERY 5 SECONDS */
+
+                setInterval(
+                    changeHeroContent,
+                    5000
+                );
+
+        document.querySelectorAll('.aa-mega > a, .aa-company > a, .aa-product > a')
+        .forEach(function(link){
+
+            link.addEventListener('click', function(e){
+
+                if(window.innerWidth < 992){
+
+                    e.preventDefault();
+
+                    const parent = this.parentElement;
+
+                    // dusre dropdown band
+                    document.querySelectorAll('.aa-mega,.aa-company,.aa-product')
+                    .forEach(function(item){
+                        if(item !== parent){
+                            item.classList.remove('show');
+                        }
+                    });
+
+                    parent.classList.toggle('show');
+                }
+
+            });
+
+        });
+
+</script>

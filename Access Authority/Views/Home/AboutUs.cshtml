@@ -1,0 +1,4324 @@
+﻿@* @{
+    ViewData["Title"] = "About Us";
+}
+<style>
+    /* new style  */
+    .aa-section-label {
+        display: flex;
+        align-items: center;
+        font-size: 10px;
+        font-weight: 700;
+        color: #ed0026;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+
+        .aa-section-label span {
+            width: 20px;
+            height: 2px;
+            background: #ed0026;
+            margin-right: 8px;
+            display: inline-block;
+        }
+
+    .aa-main-heading {
+        font-size: 30px;
+        font-weight: 700;
+        color: #111;
+        margin: 0 0 7px;
+    }
+
+        .aa-main-heading span, .aa-who-section h2 span, .aa-tech-section h2 span {
+            color: #ed0026;
+        }
+
+    .aa-section-sub {
+        font-size: 13px;
+        color: #666;
+        line-height: 1.7;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    /* =============================== WHO WE ARE =============================== */
+
+    .aa-who-section {
+        background: #fff;
+        padding: 70px 0;
+    }
+
+        .aa-who-section h2 {
+            font-size: 31px;
+            line-height: 1.25;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 18px;
+        }
+
+    .aa-who-text {
+        font-size: 13px;
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 12px;
+    }
+
+    .aa-who-points {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+        .aa-who-points div {
+            font-size: 10px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .aa-who-points i {
+            color: #ed0026;
+            margin-right: 5px;
+        }
+
+    .aa-who-visual {
+        position: relative;
+        overflow: hidden;
+        border-radius: 6px;
+    }
+
+        .aa-who-visual img {
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            display: block;
+        }
+
+    .aa-visual-card {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        background: rgba(11,11,11,.94);
+        padding: 15px 18px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-left: 3px solid #ed0026;
+    }
+
+    .aa-visual-icon {
+        width: 38px;
+        height: 38px;
+        background: #ed0026;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+    }
+
+    .aa-visual-card strong {
+        color: #fff;
+        font-size: 12px;
+        display: block;
+    }
+
+    .aa-visual-card small {
+        color: #888;
+        font-size: 9px;
+    }
+    /* =============================== SERVICES =============================== */
+
+    .aa-services-section {
+        background: #f7f7f7;
+        padding: 65px 0;
+    }
+
+    .aa-service-card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        padding: 27px 22px 24px;
+        min-height: 220px;
+        position: relative;
+        transition: .3s ease;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+        .aa-service-card:hover {
+            border-color: #ed0026;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,.06);
+        }
+
+    .aa-service-icon {
+        width: 43px;
+        height: 43px;
+        background: #fdecee;
+        color: #ed0026;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 19px;
+        border-radius: 4px;
+        margin-bottom: 18px;
+    }
+
+    .aa-service-card h4 {
+        font-size: 15px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 8px;
+    }
+
+    .aa-service-card p {
+        font-size: 11px;
+        color: #666;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .aa-service-card > span {
+        position: absolute;
+        right: 15px;
+        bottom: 12px;
+        font-size: 25px;
+        font-weight: 800;
+        color: #f1f1f1;
+    }
+    /* =============================== APPROACH =============================== */
+
+    .aa-approach-section {
+        background: #fff;
+        padding: 65px 0;
+    }
+
+    .aa-process-card {
+        min-height: 240px;
+        padding: 28px 22px;
+        border: 1px solid #e5e7eb;
+        position: relative;
+        transition: .3s ease;
+    }
+
+        .aa-process-card:hover {
+            border-color: #ed0026;
+            background: #fafafa;
+        }
+
+    .aa-process-number {
+        position: absolute;
+        top: 15px;
+        right: 17px;
+        font-size: 28px;
+        font-weight: 800;
+        color: #f0f0f0;
+    }
+
+    .aa-process-icon {
+        color: #ed0026;
+        font-size: 27px;
+        margin-bottom: 15px;
+    }
+
+    .aa-process-card h4 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: #111;
+    }
+
+    .aa-process-card p {
+        font-size: 11px;
+        color: #666;
+        line-height: 1.7;
+        margin: 0;
+    }
+    /* =============================== TECHNOLOGY =============================== */
+
+    .aa-tech-section {
+        background: #0b0b0b;
+        color: #fff;
+        padding: 65px 0;
+    }
+
+        .aa-tech-section h2 {
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+
+        .aa-tech-section p {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+
+    .aa-tech-button {
+        display: inline-block;
+        margin-top: 10px;
+        background: #ed0026;
+        color: #fff;
+        padding: 9px 19px;
+        font-size: 10px;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: .3s ease;
+    }
+
+        .aa-tech-button:hover {
+            background: #c9001f;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .aa-tech-button i {
+            margin-left: 7px;
+        }
+
+    .aa-tech-card {
+        background: #151515;
+        border: 1px solid #252525;
+        padding: 19px;
+        min-height: 92px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        transition: .3s ease;
+    }
+
+        .aa-tech-card:hover {
+            border-color: #ed0026;
+            transform: translateY(-3px);
+        }
+
+        .aa-tech-card > i {
+            font-size: 24px;
+            color: #ed0026;
+        }
+
+        .aa-tech-card strong {
+            display: block;
+            color: #fff;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .aa-tech-card small {
+            display: block;
+            color: #777;
+            font-size: 8px;
+        }
+    /* =============================== WHY ACCESS AUTHORITY =============================== */
+
+    .aa-why-section {
+        background: #f7f7f7;
+        padding: 65px 0;
+    }
+
+    .aa-why-card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        padding: 25px 22px;
+        height: 100%;
+        transition: .3s ease;
+        border-radius: 5px;
+    }
+
+        .aa-why-card:hover {
+            border-color: #ed0026;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,.05);
+        }
+
+    .aa-why-icon {
+        color: #ed0026;
+        font-size: 25px;
+        margin-bottom: 14px;
+    }
+
+    .aa-why-card h4 {
+        font-size: 15px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 7px;
+    }
+
+    .aa-why-card p {
+        font-size: 11px;
+        color: #666;
+        line-height: 1.7;
+        margin: 0;
+    }
+    /* =============================== JOURNEY =============================== */
+
+    .timeline-vertical {
+        max-width: 1050px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .timeline-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .timeline-item {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        overflow: hidden;
+        transition: .3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .timeline-item:hover {
+            border-color: #ed0026;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,.07);
+        }
+
+        .timeline-item .timeline-content {
+            padding: 20px 22px 18px;
+            flex: 1;
+        }
+
+        .timeline-item .timeline-year {
+            font-size: 21px;
+            font-weight: 800;
+            color: #ed0026;
+            display: block;
+            margin-bottom: 7px;
+        }
+
+        .timeline-item .timeline-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 7px;
+        }
+
+        .timeline-item .timeline-desc {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .timeline-item .timeline-tag {
+            display: inline-block;
+            font-size: 8px;
+            font-weight: 700;
+            color: #ed0026;
+            background: #fdecee;
+            padding: 4px 12px;
+            margin-top: 10px;
+            border-radius: 3px;
+        }
+
+        .timeline-item .timeline-image {
+            width: 100%;
+            height: 175px;
+            object-fit: cover;
+            display: block;
+            transition: transform .4s ease;
+        }
+
+        .timeline-item:hover .timeline-image {
+            transform: scale(1.025);
+        }
+
+    .journey-highlight {
+        margin-top: 25px;
+        text-align: center;
+        font-size: 11px;
+        color: #777;
+    }
+
+        .journey-highlight i {
+            color: #ed0026;
+            margin-right: 5px;
+        }
+
+        .journey-highlight strong {
+            color: #333;
+        }
+    /* =============================== RESPONSIVE =============================== */
+
+    @@media (max-width: 991px) {
+        .aa-who-section, .aa-services-section, .aa-approach-section, .aa-tech-section, .aa-why-section {
+            padding: 50px 0;
+        }
+
+            .aa-who-section h2, .aa-tech-section h2 {
+                font-size: 27px;
+            }
+
+        .aa-main-heading {
+            font-size: 27px;
+        }
+    }
+
+    @@media (max-width: 767px) {
+        .aa-who-points {
+            grid-template-columns: 1fr;
+        }
+
+        .aa-who-visual img {
+            height: 300px;
+        }
+
+        .timeline-grid {
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        .aa-process-card {
+            min-height: auto;
+        }
+    }
+
+    @@media (max-width: 575px) {
+        .aa-who-section, .aa-services-section, .aa-approach-section, .aa-tech-section, .aa-why-section {
+            padding: 40px 0;
+        }
+
+            .aa-main-heading, .aa-who-section h2, .aa-tech-section h2 {
+                font-size: 22px;
+            }
+
+        .aa-section-sub {
+            font-size: 12px;
+        }
+
+        .aa-who-visual img {
+            height: 240px;
+        }
+
+        .aa-visual-card {
+            bottom: 12px;
+            left: 12px;
+            right: 12px;
+        }
+
+        .aa-tech-card {
+            padding: 14px;
+            min-height: 80px;
+        }
+
+            .aa-tech-card > i {
+                font-size: 20px;
+            }
+
+            .aa-tech-card strong {
+                font-size: 9px;
+            }
+
+            .aa-tech-card small {
+                font-size: 7px;
+            }
+
+        .timeline-item .timeline-image {
+            height: 155px;
+        }
+    }
+    /* new style end */
+  .page-hero-custom {
+        background: #f7f7f7;
+        padding: 55px 0 40px;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+        .page-hero-custom .breadcrumb-custom {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+
+            .page-hero-custom .breadcrumb-custom a {
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+
+                .page-hero-custom .breadcrumb-custom a:hover {
+                    color: #ed0026;
+                }
+
+            .page-hero-custom .breadcrumb-custom .separator {
+                color: #fff;
+                margin: 0 8px;
+            }
+
+            .page-hero-custom .breadcrumb-custom .active {
+                color: #ed0026;
+            }
+
+        .page-hero-custom .est-badge {
+            font-size: 10px;
+            font-weight: 700;
+            color: #ed0026;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .page-hero-custom h1 {
+            font-size: 38px;
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 6px 0;
+            letter-spacing: -0.5px;
+        }
+
+            .page-hero-custom h1 span {
+                color: #ed0026;
+            }
+
+        .page-hero-custom .subtitle {
+            font-size: 14px;
+            color: #555;
+            margin: 0;
+            max-width: 520px;
+            line-height: 1.6;
+        }
+
+        .page-hero-custom .hero-buttons {
+            margin-top: 18px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .page-hero-custom .btn-primary-custom {
+            background: #ed0026;
+            color: #fff;
+            padding: 9px 24px;
+            font-size: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+            .page-hero-custom .btn-primary-custom:hover {
+                background: #c9001f;
+                color: #fff;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(237, 0, 38, 0.25);
+            }
+
+            .page-hero-custom .btn-primary-custom i {
+                margin-right: 6px;
+            }
+
+        .page-hero-custom .btn-outline-custom {
+            background: transparent;
+            color: #f2f2f2;
+            border: 1px solid #ccc;
+            padding: 9px 24px;
+            font-size: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+            .page-hero-custom .btn-outline-custom:hover {
+                border-color: #ed0026;
+                color: #ed0026;
+                transform: translateY(-2px);
+            }
+
+            .page-hero-custom .btn-outline-custom i {
+                margin-right: 6px;
+            }
+
+    /* =====================================================
+               MINI STATS
+            ===================================================== */
+
+    .mini-stats-custom {
+        
+        color: #fff;
+        padding: 22px 0;
+        border-bottom: 1px solid #202020;
+    }
+
+        .mini-stats-custom .stat-block {
+            border-right: 1px solid #292929;
+            padding: 5px 15px;
+            text-align: center;
+        }
+
+            .mini-stats-custom .stat-block:last-child {
+                border-right: none;
+            }
+
+        .mini-stats-custom .stat-number {
+            color: #ed0026;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+            .mini-stats-custom .stat-number .suffix {
+                color: #ed0026;
+            }
+
+        .mini-stats-custom .stat-label {
+            color: #686868;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            margin-top: 5px;
+        }
+
+    /* =====================================================
+               MISSION SECTION
+            ===================================================== */
+
+    .mission-section {
+        background: #ffffff;
+        padding: 10px 0;
+    }
+
+        .mission-section .mission-icon {
+            font-size: 42px;
+            color: #ed0026;
+            opacity: 0.15;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .mission-section .section-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #ed0026;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+            .mission-section .section-label span {
+                display: inline-block;
+                width: 20px;
+                height: 2px;
+                background: #ed0026;
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+
+        .mission-section h2 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 12px 0;
+        }
+
+            .mission-section h2 span {
+                color: #ed0026;
+            }
+
+        .mission-section .mission-desc {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+            .mission-section .mission-desc strong {
+                color: #111;
+                font-weight: 600;
+            }
+
+        .mission-section .mission-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+
+            .mission-section .mission-stats div {
+                text-align: center;
+            }
+
+            .mission-section .mission-stats strong {
+                display: block;
+                font-size: 28px;
+                font-weight: 700;
+                color: #ed0026;
+            }
+
+            .mission-section .mission-stats span {
+                font-size: 10px;
+                color: #777;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+            }
+
+    /* =====================================================
+               JOURNEY SECTION - VERTICAL TIMELINE
+               TEXT UPAR, IMAGE NICHE (PURE ROW COVER)
+            ===================================================== */
+
+    .journey-section {
+        background: #f7f7f7;
+        padding: 60px 0 70px 0;
+    }
+
+        .journey-section .section-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #ed0026;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+            .journey-section .section-label span {
+                display: inline-block;
+                width: 20px;
+                height: 2px;
+                background: #ed0026;
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+
+        .journey-section h2 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 6px 0;
+        }
+
+            .journey-section h2 span {
+                color: #ed0026;
+            }
+
+        .journey-section .journey-sub {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 35px;
+        }
+
+    /* Vertical Timeline - One item per row, text upar, image niche */
+    .timeline-vertical {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .timeline-item {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+    }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item:hover {
+            border-color: #ed0026;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Content - Upar */
+        .timeline-item .timeline-content {
+            padding: 18px 24px 14px;
+            
+        }
+
+        .timeline-item .timeline-year {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ed0026;
+            display: block;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        .timeline-item .timeline-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 4px 0;
+        }
+
+        .timeline-item .timeline-desc {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .timeline-item .timeline-tag {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 700;
+            color: #ed0026;
+            background: #fdecee;
+            padding: 3px 14px;
+            margin-top: 6px;
+            letter-spacing: 0.3px;
+            border-radius: 3px;
+        }
+
+        /* Image - Niche (Full width row cover) */
+        .timeline-item .timeline-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .timeline-item:hover .timeline-image {
+            transform: scale(1.02);
+        }
+
+    /* =====================================================
+               TEAM SECTION
+            ===================================================== */
+
+    .team-section {
+        background: #ffffff;
+        padding: 60px 0;
+    }
+
+        .team-section .section-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #ed0026;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+            .team-section .section-label span {
+                display: inline-block;
+                width: 20px;
+                height: 2px;
+                background: #ed0026;
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+
+        .team-section h2 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 6px 0;
+        }
+
+            .team-section h2 span {
+                color: #ed0026;
+            }
+
+        .team-section .team-sub {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+    .team-card {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        padding: 28px 22px 26px;
+        text-align: center;
+        transition: all 0.3s ease;
+        height: 100%;
+        border-radius: 6px;
+    }
+
+        .team-card:hover {
+            border-color: #ed0026;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .team-card .team-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #ed0026;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 auto 14px;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover .team-avatar {
+            transform: scale(1.05);
+        }
+
+        .team-card .team-avatar.two {
+            background: #2563eb;
+        }
+
+        .team-card .team-avatar.three {
+            background: #0ea5e9;
+        }
+
+        .team-card .team-avatar.four {
+            background: #8b5cf6;
+        }
+
+        .team-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 2px 0;
+        }
+
+        .team-card .team-role {
+            font-size: 11px;
+            color: #ed0026;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .team-card p {
+            font-size: 11px;
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .team-card .team-skills {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+            .team-card .team-skills span {
+                font-size: 8px;
+                font-weight: 600;
+                color: #555;
+                background: #f0f0f0;
+                padding: 2px 12px;
+                letter-spacing: 0.3px;
+                border-radius: 3px;
+                transition: all 0.3s ease;
+            }
+
+        .team-card:hover .team-skills span {
+            background: #fdecee;
+            color: #ed0026;
+        }
+
+    /* =====================================================
+               TESTIMONIALS
+      ===================================================== */
+
+    .testimonials-section {
+        background: #f7f7f7;
+        padding: 60px 0;
+    }
+
+        .testimonials-section .section-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #ed0026;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+            .testimonials-section .section-label span {
+                display: inline-block;
+                width: 20px;
+                height: 2px;
+                background: #ed0026;
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+
+        .testimonials-section h2 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 6px 0;
+        }
+
+            .testimonials-section h2 span {
+                color: #ed0026;
+            }
+
+    .testimonial-card {
+        background: #ffffff;
+        padding: 32px 36px;
+        border-left: 4px solid #ed0026;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+
+        .testimonial-card:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .testimonial-card .quote-icon {
+            font-size: 36px;
+            color: #ed0026;
+            opacity: 0.12;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 15px;
+            font-weight: 400;
+            color: #111;
+            line-height: 1.7;
+            margin: 0 0 16px 0;
+        }
+
+        .testimonial-card .client-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testimonial-card .client-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #ed0026;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+            .testimonial-card .client-avatar.two {
+                background: #2563eb;
+            }
+
+        .testimonial-card .client-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #111;
+            margin: 0;
+        }
+
+        .testimonial-card .client-title {
+            font-size: 12px;
+            color: #777;
+            margin: 0;
+        }
+
+    /* =====================================================
+               CTA SECTION
+     ===================================================== */
+
+    .cta-section {
+        background: #0b0b0b;
+        padding: 50px 0;
+        color: #fff;
+        border-top: 1px solid #202020;
+        border-bottom: 1px solid #202020;
+    }
+
+        .cta-section .section-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #ed0026;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+            .cta-section .section-label span {
+                display: inline-block;
+                width: 20px;
+                height: 2px;
+                background: #ed0026;
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+
+        .cta-section h2 {
+            font-size: 30px;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+        }
+
+            .cta-section h2 span {
+                color: #ed0026;
+            }
+
+        .cta-section p {
+            font-size: 13px;
+            color: #888;
+            max-width: 520px;
+            margin: 0 auto 24px auto;
+            line-height: 1.6;
+        }
+
+        .cta-section .btn-cta-primary {
+            background: #ed0026;
+            color: #fff;
+            padding: 10px 28px;
+            font-size: 11px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+            .cta-section .btn-cta-primary:hover {
+                background: #c9001f;
+                color: #fff;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(237, 0, 38, 0.25);
+            }
+
+            .cta-section .btn-cta-primary i {
+                margin-right: 6px;
+            }
+
+        .cta-section .btn-cta-outline {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 28px;
+            font-size: 11px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+            .cta-section .btn-cta-outline:hover {
+                border-color: #ed0026;
+                color: #ed0026;
+                transform: translateY(-2px);
+            }
+
+            .cta-section .btn-cta-outline i {
+                margin-right: 6px;
+            }
+
+        .cta-section .cta-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+    /* =====================================================
+               TRUSTED BOTTOM
+            ===================================================== */
+
+    .trusted-bottom {
+        background: #0b0b0b;
+        padding: 16px 0;
+        border-bottom: 1px solid #202020;
+    }
+
+    .trusted-by-text {
+        color: #555;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .trusted-item {
+        color: #777;
+        font-size: 8px;
+        font-weight: 600;
+    }
+
+        .trusted-item i {
+            color: #ed0026;
+            font-size: 9px;
+            margin-right: 4px;
+        }
+
+   
+    @@media (max-width: 991px) {
+        .aa-dropdown
+
+    {
+        position: relative;
+        width: 100%;
+        left: 0;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        border: 1px solid #eee;
+        margin-top: 10px;
+        padding: 16px;
+    }
+
+    .aa-mega:hover .aa-dropdown {
+        display: block;
+    }
+
+    .aa-company-dropdown {
+        position: relative;
+        left: 0;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        border: 1px solid #eee;
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    .aa-company:hover .aa-company-dropdown {
+        display: block;
+    }
+
+    .nav-link-custom {
+        padding: 10px 14px !important;
+    }
+
+    .consult-btn {
+        display: inline-block;
+        margin: 10px 0;
+    }
+
+    .page-hero-custom h1 {
+        font-size: 30px;
+    }
+
+    .mission-section h2 {
+        font-size: 26px;
+    }
+
+    .journey-section h2 {
+        font-size: 26px;
+    }
+
+    .team-section h2 {
+        font-size: 26px;
+    }
+
+    .testimonials-section h2 {
+        font-size: 26px;
+    }
+
+    .cta-section h2 {
+        font-size: 26px;
+    }
+
+    .timeline-item .timeline-image {
+        height: 180px;
+    }
+
+    }
+
+    @@media (max-width: 575px) {
+        .page-hero-custom
+
+    {
+        padding: 35px 0 25px;
+    }
+
+    .page-hero-custom h1 {
+        font-size: 24px;
+    }
+
+    .page-hero-custom .subtitle {
+        font-size: 12px;
+    }
+
+    .page-hero-custom .hero-buttons {
+        flex-direction: column;
+    }
+
+    .page-hero-custom .btn-primary-custom,
+    .page-hero-custom .btn-outline-custom {
+        text-align: center;
+    }
+
+    .mini-stats-custom .stat-number {
+        font-size: 22px;
+    }
+
+    .mini-stats-custom .stat-block {
+        border-right: none;
+        padding: 5px 8px;
+    }
+
+    .mission-section {
+        padding: 40px 0;
+    }
+
+        .mission-section h2 {
+            font-size: 22px;
+        }
+
+        .mission-section .mission-stats {
+            gap: 20px;
+        }
+
+            .mission-section .mission-stats strong {
+                font-size: 22px;
+            }
+
+    .journey-section {
+        padding: 40px 0;
+    }
+
+        .journey-section h2 {
+            font-size: 22px;
+        }
+
+    .timeline-item .timeline-image {
+        height: 150px;
+    }
+
+    .timeline-item .timeline-content {
+        padding: 14px 16px 12px;
+    }
+
+    .timeline-item .timeline-year {
+        font-size: 18px;
+    }
+
+    .timeline-item .timeline-title {
+        font-size: 14px;
+    }
+
+    .timeline-item .timeline-desc {
+        font-size: 12px;
+    }
+
+    .team-section {
+        padding: 40px 0;
+    }
+
+        .team-section h2 {
+            font-size: 22px;
+        }
+
+    .team-card .team-avatar {
+        width: 64px;
+        height: 64px;
+        font-size: 22px;
+    }
+
+    .testimonials-section {
+        padding: 40px 0;
+    }
+
+        .testimonials-section h2 {
+            font-size: 22px;
+        }
+
+    .testimonial-card {
+        padding: 20px 16px;
+    }
+
+        .testimonial-card blockquote {
+            font-size: 14px;
+        }
+
+    .cta-section {
+        padding: 40px 0;
+    }
+
+        .cta-section h2 {
+            font-size: 22px;
+        }
+
+        .cta-section .cta-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+
+    .footer-desc {
+        max-width: 100%;
+    }
+
+    }
+</style>
+
+ *@
+
+
+@{
+    ViewData["Title"] = "About Us";
+}
+
+<style>
+
+    /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+    .aa-about-page {
+        overflow: hidden;
+    }
+
+    .aa-section-label {
+        display: flex;
+        align-items: center;
+        font-size: 10px;
+        font-weight: 700;
+        color: #ed0026;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+        .aa-section-label span {
+            display: inline-block;
+            width: 20px;
+            height: 2px;
+            background: #ed0026;
+            margin-right: 8px;
+        }
+
+    .aa-main-heading {
+        font-size: 30px;
+        font-weight: 700;
+        color: #111;
+        margin: 0 0 8px;
+    }
+
+        .aa-main-heading span {
+            color: #ed0026;
+        }
+
+    .aa-section-sub {
+        font-size: 13px;
+        color: #666;
+        line-height: 1.7;
+        max-width: 620px;
+        margin: 0 auto;
+    }
+
+
+    /* =====================================================
+           HERO
+        ===================================================== */
+
+    .page-hero-custom {
+        background: #0b0b0b;
+        padding: 55px 0 0;
+        border-bottom: 1px solid #202020;
+    }
+
+        .page-hero-custom h1 {
+            font-size: 38px;
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 8px;
+            letter-spacing: -0.5px;
+        }
+
+            .page-hero-custom h1 span {
+                color: #ed0026;
+            }
+
+        .page-hero-custom .subtitle {
+            font-size: 14px;
+            color: #999;
+            margin: 0;
+            max-width: 620px;
+            line-height: 1.7;
+        }
+
+    .hero-buttons {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .btn-primary-custom,
+    .btn-outline-custom {
+        padding: 10px 24px;
+        font-size: 10px;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all .3s ease;
+        display: inline-block;
+    }
+
+    .btn-primary-custom {
+        background: #ed0026;
+        color: #fff;
+    }
+
+        .btn-primary-custom:hover {
+            background: #c9001f;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 18px rgba(237,0,38,.25);
+        }
+
+    .btn-outline-custom {
+        background: transparent;
+        color: #fff;
+        border: 1px solid #444;
+    }
+
+        .btn-outline-custom:hover {
+            color: #ed0026;
+            border-color: #ed0026;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary-custom i,
+        .btn-outline-custom i {
+            margin-right: 6px;
+        }
+
+
+    /* =====================================================
+           MINI STATS
+        ===================================================== */
+
+    .mini-stats-custom {
+        color: #fff;
+        padding: 30px 0 22px;
+        margin-top: 35px;
+        border-top: 1px solid #202020;
+    }
+
+    .stat-block {
+        border-right: 1px solid #292929;
+        padding: 5px 15px;
+        text-align: center;
+    }
+
+        .stat-block:last-child {
+            border-right: none;
+        }
+
+    .stat-number {
+        color: #ed0026;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .stat-label {
+        color: #777;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        margin-top: 6px;
+    }
+
+
+    /* =====================================================
+           MISSION
+        ===================================================== */
+
+    .mission-section {
+        background: #fff;
+        padding: 65px 0;
+    }
+
+    .mission-icon {
+        font-size: 38px;
+        color: #ed0026;
+        opacity: .18;
+        margin-bottom: 8px;
+    }
+
+    .mission-section h2 {
+        font-size: 30px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 12px;
+    }
+
+        .mission-section h2 span {
+            color: #ed0026;
+        }
+
+    .mission-desc {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.8;
+        max-width: 650px;
+        margin: 0 auto;
+    }
+
+    .mission-stats {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 35px;
+        margin-top: 28px;
+        flex-wrap: wrap;
+    }
+
+        .mission-stats div {
+            text-align: center;
+        }
+
+        .mission-stats strong {
+            display: block;
+            font-size: 27px;
+            color: #ed0026;
+        }
+
+        .mission-stats span {
+            font-size: 9px;
+            color: #777;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+
+    /* =====================================================
+           WHO WE ARE
+        ===================================================== */
+
+    .aa-who-section {
+        background: #f7f7f7;
+        padding: 70px 0;
+    }
+
+        .aa-who-section h2 {
+            font-size: 31px;
+            line-height: 1.3;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 17px;
+        }
+
+            .aa-who-section h2 span {
+                color: #ed0026;
+            }
+
+    .aa-who-text {
+        font-size: 13px;
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 12px;
+    }
+
+    .aa-who-points {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 11px;
+        margin-top: 22px;
+    }
+
+        .aa-who-points div {
+            font-size: 10px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .aa-who-points i {
+            color: #ed0026;
+            margin-right: 5px;
+        }
+
+    .aa-who-visual {
+        position: relative;
+        overflow: hidden;
+        border-radius: 6px;
+    }
+
+        .aa-who-visual img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            display: block;
+        }
+
+    .aa-visual-card {
+        position: absolute;
+        bottom: 18px;
+        left: 18px;
+        right: 18px;
+        background: rgba(11,11,11,.95);
+        border-left: 3px solid #ed0026;
+        padding: 14px 17px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .aa-visual-icon {
+        width: 38px;
+        height: 38px;
+        background: #ed0026;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+    }
+
+    .aa-visual-card strong {
+        display: block;
+        color: #fff;
+        font-size: 12px;
+    }
+
+    .aa-visual-card small {
+        color: #888;
+        font-size: 9px;
+    }
+
+
+    /* =====================================================
+           WHAT WE DO
+        ===================================================== */
+
+    .aa-services-section {
+        background: #fff;
+        padding: 65px 0;
+    }
+
+    .aa-service-card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        padding: 27px 22px 24px;
+        min-height: 225px;
+        position: relative;
+        border-radius: 5px;
+        transition: .3s ease;
+        overflow: hidden;
+    }
+
+        .aa-service-card:hover {
+            border-color: #ed0026;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,.06);
+        }
+
+    .aa-service-icon {
+        width: 44px;
+        height: 44px;
+        background: #fdecee;
+        color: #ed0026;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        border-radius: 4px;
+        margin-bottom: 17px;
+    }
+
+    .aa-service-card h4 {
+        font-size: 15px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 8px;
+    }
+
+    .aa-service-card p {
+        font-size: 11px;
+        color: #666;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .aa-service-card > span {
+        position: absolute;
+        right: 14px;
+        bottom: 9px;
+        font-size: 26px;
+        font-weight: 800;
+        color: #f1f1f1;
+    }
+
+
+    /* =====================================================
+           OUR APPROACH
+        ===================================================== */
+
+    .aa-approach-section {
+        background: #f7f7f7;
+        padding: 65px 0;
+    }
+
+    .aa-process-card {
+        background: #fff;
+        min-height: 235px;
+        padding: 28px 22px;
+        border: 1px solid #e5e7eb;
+        position: relative;
+        transition: .3s ease;
+    }
+
+        .aa-process-card:hover {
+            border-color: #ed0026;
+            transform: translateY(-3px);
+        }
+
+    .aa-process-number {
+        position: absolute;
+        top: 13px;
+        right: 17px;
+        font-size: 28px;
+        font-weight: 800;
+        color: #f0f0f0;
+    }
+
+    .aa-process-icon {
+        color: #ed0026;
+        font-size: 27px;
+        margin-bottom: 14px;
+    }
+
+    .aa-process-card h4 {
+        font-size: 15px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 8px;
+    }
+
+    .aa-process-card p {
+        font-size: 11px;
+        color: #666;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+
+    /* =====================================================
+           TECHNOLOGY FOUNDATION
+        ===================================================== */
+
+    .aa-tech-section {
+        background: #0b0b0b;
+        padding: 65px 0;
+        color: #fff;
+    }
+
+        .aa-tech-section h2 {
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 14px;
+        }
+
+            .aa-tech-section h2 span {
+                color: #ed0026;
+            }
+
+        .aa-tech-section p {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+
+    .aa-tech-button {
+        display: inline-block;
+        margin-top: 8px;
+        background: #ed0026;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 10px;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: .3s ease;
+    }
+
+        .aa-tech-button:hover {
+            background: #c9001f;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .aa-tech-button i {
+            margin-left: 7px;
+        }
+
+    .aa-tech-card {
+        background: #151515;
+        border: 1px solid #252525;
+        padding: 18px;
+        min-height: 92px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        transition: .3s ease;
+    }
+
+        .aa-tech-card:hover {
+            border-color: #ed0026;
+            transform: translateY(-3px);
+        }
+
+        .aa-tech-card > i {
+            color: #ed0026;
+            font-size: 24px;
+        }
+
+        .aa-tech-card strong {
+            display: block;
+            color: #fff;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .aa-tech-card small {
+            color: #777;
+            font-size: 8px;
+        }
+
+
+    /* =====================================================
+           WHY ACCESS AUTHORITY
+        ===================================================== */
+
+    .aa-why-section {
+        background: #fff;
+        padding: 65px 0;
+    }
+
+    .aa-why-card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        padding: 25px 22px;
+        height: 100%;
+        border-radius: 5px;
+        transition: .3s ease;
+    }
+
+        .aa-why-card:hover {
+            border-color: #ed0026;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,.05);
+        }
+
+    .aa-why-icon {
+        color: #ed0026;
+        font-size: 25px;
+        margin-bottom: 14px;
+    }
+
+    .aa-why-card h4 {
+        font-size: 15px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 7px;
+    }
+
+    .aa-why-card p {
+        font-size: 11px;
+        color: #666;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+
+    /* =====================================================
+           JOURNEY
+           2 CARDS PER ROW
+        ===================================================== */
+
+    .journey-section {
+        background: #f7f7f7;
+        padding: 65px 0 70px;
+    }
+
+        .journey-section h2 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 6px;
+        }
+
+            .journey-section h2 span {
+                color: #ed0026;
+            }
+
+    .journey-sub {
+        font-size: 13px;
+        color: #555;
+        margin-bottom: 35px;
+    }
+
+    .timeline-vertical {
+        max-width: 1050px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .timeline-grid {
+        display: grid;
+        grid-template-columns: repeat(2,minmax(0,1fr));
+        gap: 22px;
+    }
+
+    .timeline-item {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        overflow: hidden;
+        transition: all .3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .timeline-item:hover {
+            border-color: #ed0026;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,.07);
+        }
+
+    .timeline-content {
+        padding: 20px 22px 18px;
+        flex: 1;
+    }
+
+    .timeline-year {
+        font-size: 21px;
+        font-weight: 800;
+        color: #ed0026;
+        display: block;
+        line-height: 1;
+        margin-bottom: 7px;
+    }
+
+    .timeline-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111;
+        margin: 0 0 7px;
+    }
+
+    .timeline-desc {
+        font-size: 12px;
+        color: #555;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .timeline-tag {
+        display: inline-block;
+        font-size: 8px;
+        font-weight: 700;
+        color: #ed0026;
+        background: #fdecee;
+        padding: 4px 12px;
+        margin-top: 10px;
+        border-radius: 3px;
+    }
+
+    .timeline-image {
+        width: 100%;
+        height: 175px;
+        object-fit: cover;
+        display: block;
+        transition: transform .4s ease;
+    }
+
+    .timeline-item:hover .timeline-image {
+        transform: scale(1.025);
+    }
+
+    .journey-highlight {
+        margin-top: 25px;
+        text-align: center;
+        font-size: 11px;
+        color: #777;
+    }
+
+        .journey-highlight i {
+            color: #ed0026;
+            margin-right: 5px;
+        }
+
+        .journey-highlight strong {
+            color: #333;
+        }
+
+
+    /* =====================================================
+           TEAM
+        ===================================================== */
+
+    .team-section {
+        background: #fff;
+        padding: 65px 0;
+    }
+
+    .team-sub {
+        font-size: 13px;
+        color: #555;
+        margin-bottom: 30px;
+    }
+
+    .team-card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        padding: 28px 22px 26px;
+        text-align: center;
+        transition: .3s ease;
+        height: 100%;
+        border-radius: 6px;
+    }
+
+        .team-card:hover {
+            border-color: #ed0026;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,0,0,.06);
+        }
+
+    .team-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: #ed0026;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0 auto 14px;
+        overflow: hidden;
+    }
+
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-avatar.two {
+            background: #2563eb;
+        }
+
+        .team-avatar.three {
+            background: #0ea5e9;
+        }
+
+        .team-avatar.four {
+            background: #8b5cf6;
+        }
+
+    .team-card h4 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111;
+        margin: 0 0 2px;
+    }
+
+    .team-role {
+        font-size: 11px;
+        color: #ed0026;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    .team-card p {
+        font-size: 11px;
+        color: #555;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .team-skills {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+
+        .team-skills span {
+            font-size: 8px;
+            font-weight: 600;
+            color: #555;
+            background: #f0f0f0;
+            padding: 3px 10px;
+            border-radius: 3px;
+        }
+
+    .team-card:hover .team-skills span {
+        background: #fdecee;
+        color: #ed0026;
+    }
+
+
+    /* =====================================================
+           TESTIMONIALS
+        ===================================================== */
+
+    .testimonials-section {
+        background: #f7f7f7;
+        padding: 65px 0;
+    }
+
+    .testimonial-card {
+        background: #fff;
+        padding: 32px 36px;
+        border-left: 4px solid #ed0026;
+        border-radius: 4px;
+        transition: .3s ease;
+        height: 100%;
+    }
+
+        .testimonial-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,.05);
+            transform: translateY(-2px);
+        }
+
+    .quote-icon {
+        font-size: 36px;
+        color: #ed0026;
+        opacity: .12;
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .testimonial-card blockquote {
+        font-size: 15px;
+        color: #111;
+        line-height: 1.7;
+        margin: 0 0 16px;
+    }
+
+    .client-info {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .client-review-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+
+        .client-review-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .client-name {
+        font-size: 14px;
+        font-weight: 700;
+        color: #111;
+        margin: 0;
+    }
+
+    .client-title {
+        font-size: 12px;
+        color: #777;
+        margin: 0;
+    }
+
+
+    /* =====================================================
+           CTA
+        ===================================================== */
+
+    .cta-section {
+        background: #0b0b0b;
+        padding: 55px 0;
+        color: #fff;
+        border-top: 1px solid #202020;
+        border-bottom: 1px solid #202020;
+    }
+
+        .cta-section h2 {
+            font-size: 30px;
+            font-weight: 700;
+            margin: 0 0 8px;
+        }
+
+            .cta-section h2 span {
+                color: #ed0026;
+            }
+
+        .cta-section p {
+            font-size: 13px;
+            color: #888;
+            max-width: 520px;
+            margin: 0 auto 24px;
+            line-height: 1.7;
+        }
+
+    .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    .btn-cta-primary,
+    .btn-cta-outline {
+        padding: 10px 28px;
+        font-size: 11px;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 4px;
+        display: inline-block;
+        transition: .3s ease;
+    }
+
+    .btn-cta-primary {
+        background: #ed0026;
+        color: #fff;
+    }
+
+        .btn-cta-primary:hover {
+            background: #c9001f;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+    .btn-cta-outline {
+        background: transparent;
+        color: #fff;
+        border: 1px solid rgba(255,255,255,.2);
+    }
+
+        .btn-cta-outline:hover {
+            border-color: #ed0026;
+            color: #ed0026;
+            transform: translateY(-2px);
+        }
+
+        .btn-cta-primary i,
+        .btn-cta-outline i {
+            margin-right: 6px;
+        }
+
+
+    /* =====================================================
+           TRUSTED BOTTOM
+        ===================================================== */
+
+    .trusted-bottom {
+        background: #0b0b0b;
+        padding: 17px 0;
+        border-bottom: 1px solid #202020;
+    }
+
+    .trusted-by-text {
+        color: #555;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .trusted-item {
+        color: #777;
+        font-size: 8px;
+        font-weight: 600;
+    }
+
+        .trusted-item i {
+            color: #ed0026;
+            font-size: 9px;
+            margin-right: 4px;
+        }
+
+
+    /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+    @@media (max-width: 991px) {
+
+        .page-hero-custom h1 {
+            font-size: 31px;
+        }
+
+        .mission-section h2,
+        .aa-main-heading,
+        .aa-tech-section h2,
+        .journey-section h2,
+        .cta-section h2 {
+            font-size: 27px;
+        }
+
+        .timeline-grid {
+            grid-template-columns: repeat(2,minmax(0,1fr));
+        }
+
+        .timeline-image {
+            height: 165px;
+        }
+    }
+
+
+    @@media (max-width: 767px) {
+
+        .aa-who-points {
+            grid-template-columns: 1fr;
+        }
+
+        .aa-who-visual img {
+            height: 300px;
+        }
+
+        .timeline-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .aa-process-card {
+            min-height: auto;
+        }
+
+        .stat-block {
+            border-right: none;
+        }
+    }
+
+
+    @@media (max-width: 575px) {
+
+        .page-hero-custom {
+            padding: 38px 0 0;
+        }
+
+            .page-hero-custom h1 {
+                font-size: 24px;
+            }
+
+            .page-hero-custom .subtitle {
+                font-size: 12px;
+            }
+
+        .hero-buttons {
+            flex-direction: column;
+        }
+
+        .btn-primary-custom,
+        .btn-outline-custom {
+            text-align: center;
+        }
+
+        .mini-stats-custom {
+            margin-top: 28px;
+        }
+
+        .stat-number {
+            font-size: 22px;
+        }
+
+        .stat-label {
+            font-size: 7px;
+        }
+
+        .mission-section,
+        .aa-who-section,
+        .aa-services-section,
+        .aa-approach-section,
+        .aa-tech-section,
+        .aa-why-section,
+        .journey-section,
+        .team-section,
+        .testimonials-section {
+            padding: 42px 0;
+        }
+
+            .mission-section h2,
+            .aa-main-heading,
+            .aa-who-section h2,
+            .aa-tech-section h2,
+            .journey-section h2,
+            .cta-section h2 {
+                font-size: 22px;
+            }
+
+        .mission-desc {
+            font-size: 12px;
+        }
+
+        .mission-stats {
+            gap: 20px;
+        }
+
+        .aa-who-visual img {
+            height: 240px;
+        }
+
+        .aa-visual-card {
+            bottom: 12px;
+            left: 12px;
+            right: 12px;
+        }
+
+        .aa-tech-card {
+            padding: 14px;
+            min-height: 80px;
+            gap: 9px;
+        }
+
+            .aa-tech-card > i {
+                font-size: 20px;
+            }
+
+            .aa-tech-card strong {
+                font-size: 9px;
+            }
+
+            .aa-tech-card small {
+                font-size: 7px;
+            }
+
+        .timeline-vertical {
+            padding: 0 10px;
+        }
+
+        .timeline-content {
+            padding: 16px 17px 15px;
+        }
+
+        .timeline-year {
+            font-size: 19px;
+        }
+
+        .timeline-title {
+            font-size: 14px;
+        }
+
+        .timeline-desc {
+            font-size: 11px;
+        }
+
+        .timeline-image {
+            height: 155px;
+        }
+
+        .testimonial-card {
+            padding: 22px 18px;
+        }
+
+            .testimonial-card blockquote {
+                font-size: 13px;
+            }
+
+        .cta-section {
+            padding: 42px 0;
+        }
+
+        .cta-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+</style>
+
+
+<div class="aa-about-page">
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <section class="page-hero-custom">
+
+        <div class="container px-5">
+
+            <h1>
+                We Build <span>Digital Authority</span>
+            </h1>
+
+            <p class="subtitle">
+                Access Authority is a technology partner that helps businesses
+                transform ideas into custom software, digital platforms,
+                enterprise solutions and intelligent products.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a asp-action="AboutUs" class="btn-primary-custom">
+                    <i class="bi bi-arrow-right"></i>
+                    Work With Us
+                </a>
+
+                <a asp-action="Team" class="btn-outline-custom">
+                    <i class="bi bi-people-fill"></i>
+                    Meet Our Team
+                </a>
+
+            </div>
+
+
+            <!-- STATS -->
+
+            <div class="mini-stats-custom">
+
+                <div class="row align-items-center">
+
+                    <div class="col-4 col-lg-3">
+
+                        <div class="stat-block">
+
+                            <div class="stat-number">
+                                7<span>+</span>
+                            </div>
+
+                            <div class="stat-label">
+                                YEARS IN BUSINESS
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-4 col-lg-3">
+
+                        <div class="stat-block">
+
+                            <div class="stat-number">
+                                100<span>+</span>
+                            </div>
+
+                            <div class="stat-label">
+                                PROJECTS DELIVERED
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-4 col-lg-3">
+
+                        <div class="stat-block">
+
+                            <div class="stat-number">
+                                98<span>%</span>
+                            </div>
+
+                            <div class="stat-label">
+                                CLIENT SATISFACTION
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-lg-3 d-none d-lg-block">
+
+                        <div class="stat-block">
+
+                            <div class="stat-number">
+                                12<span>+</span>
+                            </div>
+
+                            <div class="stat-label">
+                                COUNTRIES SERVED
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         MISSION
+    ===================================================== -->
+
+    <section class="mission-section">
+
+        <div class="container text-center">
+
+            <div class="mission-icon">
+                ✦
+            </div>
+
+            <div class="aa-section-label justify-content-center">
+
+                <span></span>
+                OUR MISSION
+
+            </div>
+
+            <h2>
+                Empowering Businesses
+                <span>Through Technology</span>
+            </h2>
+
+            <p class="mission-desc">
+                We believe that technology should be accessible, practical
+                and meaningful for every business. Our mission is to bridge
+                the gap between business vision and technical execution.
+            </p>
+
+            <p class="mission-desc mt-2">
+                <strong>
+                    We don't just build software.
+                </strong>
+                We build solutions that solve real problems,
+                improve operations and create opportunities for growth.
+            </p>
+
+
+            <div class="mission-stats">
+
+                <div>
+                    <strong>7+</strong>
+                    <span>Years of Excellence</span>
+                </div>
+
+                <div>
+                    <strong>100+</strong>
+                    <span>Projects Delivered</span>
+                </div>
+
+                <div>
+                    <strong>98%</strong>
+                    <span>Client Satisfaction</span>
+                </div>
+
+                <div>
+                    <strong>✦</strong>
+                    <span>Technology Partner</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         WHO WE ARE
+    ===================================================== -->
+
+    <section class="aa-who-section">
+
+        <div class="container px-5">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+
+                    <div class="aa-section-label">
+
+                        <span></span>
+                        WHO WE ARE
+
+                    </div>
+
+                    <h2>
+                        Technology That Turns
+                        <span>Ideas Into Impact</span>
+                    </h2>
+
+                    <p class="aa-who-text">
+                        Access Authority is a technology-focused company
+                        helping businesses build, improve and manage their
+                        digital solutions.
+                    </p>
+
+                    <p class="aa-who-text">
+                        We combine technology, creativity and business
+                        understanding to create solutions that are practical,
+                        scalable and designed around real-world requirements.
+                    </p>
+
+                    <p class="aa-who-text">
+                        From websites and custom applications to enterprise
+                        platforms, APIs and digital products, our focus is
+                        on making technology work better for your business.
+                    </p>
+
+
+                    <div class="aa-who-points">
+
+                        <div>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Business-focused solutions
+                        </div>
+
+                        <div>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Responsive applications
+                        </div>
+
+                        <div>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Modern development practices
+                        </div>
+
+                        <div>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Long-term technology partnership
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-6">
+
+                    <div class="aa-who-visual">
+
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1000&h=700&fit=crop"
+                             alt="Access Authority Technology Team">
+
+                        <div class="aa-visual-card">
+
+                            <span class="aa-visual-icon">
+                                <i class="bi bi-lightning-charge-fill"></i>
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Built For Business
+                                </strong>
+
+                                <small>
+                                    Technology with purpose
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         WHAT WE DO
+    ===================================================== -->
+
+    <section class="aa-services-section">
+
+        <div class="container px-5">
+
+            <div class="text-center">
+
+                <div class="aa-section-label justify-content-center">
+
+                    <span></span>
+                    WHAT WE DO
+
+                </div>
+
+                <h2 class="aa-main-heading">
+                    Solutions Built Around
+                    <span>Your Business</span>
+                </h2>
+
+                <p class="aa-section-sub">
+                    We help organizations solve technology challenges through
+                    reliable, modern and scalable digital solutions.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4 mt-3">
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="aa-service-card">
+
+                        <div class="aa-service-icon">
+                            <i class="bi bi-window-stack"></i>
+                        </div>
+
+                        <h4>
+                            Web Solutions
+                        </h4>
+
+                        <p>
+                            Responsive websites and web applications designed
+                            for performance, usability and business growth.
+                        </p>
+
+                        <span>01</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="aa-service-card">
+
+                        <div class="aa-service-icon">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+
+                        <h4>
+                            Custom Software
+                        </h4>
+
+                        <p>
+                            Business applications developed around your
+                            specific workflows, processes and requirements.
+                        </p>
+
+                        <span>02</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="aa-service-card">
+
+                        <div class="aa-service-icon">
+                            <i class="bi bi-diagram-3-fill"></i>
+                        </div>
+
+                        <h4>
+                            Enterprise Solutions
+                        </h4>
+
+                        <p>
+                            Structured digital systems that help organizations
+                            manage operations and improve productivity.
+                        </p>
+
+                        <span>03</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="aa-service-card">
+
+                        <div class="aa-service-icon">
+                            <i class="bi bi-cloud-arrow-up-fill"></i>
+                        </div>
+
+                        <h4>
+                            API &amp; Integration
+                        </h4>
+
+                        <p>
+                            Secure APIs and integrations that connect
+                            applications, systems and business data.
+                        </p>
+
+                        <span>04</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         OUR APPROACH
+    ===================================================== -->
+
+    <section class="aa-approach-section">
+
+        <div class="container px-5">
+
+            <div class="text-center">
+
+                <div class="aa-section-label justify-content-center">
+
+                    <span></span>
+                    OUR APPROACH
+
+                </div>
+
+                <h2 class="aa-main-heading">
+                    From <span>Idea</span> To Digital Reality
+                </h2>
+
+                <p class="aa-section-sub">
+                    A structured approach keeps every project focused,
+                    transparent and aligned with business goals.
+                </p>
+
+            </div>
+
+
+            <div class="row g-0 mt-5">
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="aa-process-card">
+
+                        <div class="aa-process-number">
+                            01
+                        </div>
+
+                        <div class="aa-process-icon">
+                            <i class="bi bi-search"></i>
+                        </div>
+
+                        <h4>
+                            Discover
+                        </h4>
+
+                        <p>
+                            We understand your business, users,
+                            challenges and objectives before
+                            defining the solution.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="aa-process-card">
+
+                        <div class="aa-process-number">
+                            02
+                        </div>
+
+                        <div class="aa-process-icon">
+                            <i class="bi bi-pencil-square"></i>
+                        </div>
+
+                        <h4>
+                            Design
+                        </h4>
+
+                        <p>
+                            We plan the user experience, architecture
+                            and technology required for the solution.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="aa-process-card">
+
+                        <div class="aa-process-number">
+                            03
+                        </div>
+
+                        <div class="aa-process-icon">
+                            <i class="bi bi-code-square"></i>
+                        </div>
+
+                        <h4>
+                            Develop
+                        </h4>
+
+                        <p>
+                            Our team builds clean, responsive and
+                            scalable digital products.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="aa-process-card">
+
+                        <div class="aa-process-number">
+                            04
+                        </div>
+
+                        <div class="aa-process-icon">
+                            <i class="bi bi-rocket-takeoff-fill"></i>
+                        </div>
+
+                        <h4>
+                            Deliver
+                        </h4>
+
+                        <p>
+                            We test, refine and deliver solutions
+                            ready to create measurable business value.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TECHNOLOGY FOUNDATION
+    ===================================================== -->
+
+    <section class="aa-tech-section">
+
+        <div class="container px-5">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-5">
+
+                    <div class="aa-section-label">
+
+                        <span></span>
+                        TECHNOLOGY FOUNDATION
+
+                    </div>
+
+                    <h2>
+                        Built With
+                        <span>Modern Technology</span>
+                    </h2>
+
+                    <p>
+                        Technology should not only solve today's problems.
+                        It should provide a strong foundation for tomorrow's
+                        growth. Our solutions focus on maintainability,
+                        performance, security and scalability.
+                    </p>
+
+                    <a asp-action="Services" class="aa-tech-button">
+
+                        Explore Our Solutions
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-lg-7">
+
+                    <div class="row g-3">
+
+
+                        <div class="col-6">
+
+                            <div class="aa-tech-card">
+
+                                <i class="bi bi-filetype-html"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Web Technologies
+                                    </strong>
+
+                                    <small>
+                                        Responsive &amp; modern interfaces
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-6">
+
+                            <div class="aa-tech-card">
+
+                                <i class="bi bi-braces"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Application Development
+                                    </strong>
+
+                                    <small>
+                                        Scalable business applications
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-6">
+
+                            <div class="aa-tech-card">
+
+                                <i class="bi bi-database-fill"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Data &amp; Databases
+                                    </strong>
+
+                                    <small>
+                                        Structured and reliable systems
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-6">
+
+                            <div class="aa-tech-card">
+
+                                <i class="bi bi-cloud-fill"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Cloud &amp; APIs
+                                    </strong>
+
+                                    <small>
+                                        Connected digital ecosystems
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-6">
+
+                            <div class="aa-tech-card">
+
+                                <i class="bi bi-phone-fill"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Responsive Design
+                                    </strong>
+
+                                    <small>
+                                        Mobile-first experiences
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-6">
+
+                            <div class="aa-tech-card">
+
+                                <i class="bi bi-shield-lock-fill"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Security
+                                    </strong>
+
+                                    <small>
+                                        Secure application foundation
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         WHY ACCESS AUTHORITY
+    ===================================================== -->
+
+    <section class="aa-why-section">
+
+        <div class="container px-5">
+
+            <div class="text-center">
+
+                <div class="aa-section-label justify-content-center">
+
+                    <span></span>
+                    WHY ACCESS AUTHORITY
+
+                </div>
+
+                <h2 class="aa-main-heading">
+                    More Than A
+                    <span>Technology Vendor</span>
+                </h2>
+
+                <p class="aa-section-sub">
+                    We focus on building relationships and solutions
+                    that continue to create value beyond project delivery.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4 mt-3">
+
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="aa-why-card">
+
+                        <div class="aa-why-icon">
+                            <i class="bi bi-bullseye"></i>
+                        </div>
+
+                        <h4>
+                            Business First
+                        </h4>
+
+                        <p>
+                            We start with the business problem instead
+                            of simply starting with technology.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="aa-why-card">
+
+                        <div class="aa-why-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+
+                        <h4>
+                            Reliable Solutions
+                        </h4>
+
+                        <p>
+                            We focus on clean implementation, reliability
+                            and a strong foundation for future growth.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="aa-why-card">
+
+                        <div class="aa-why-icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+
+                        <h4>
+                            Collaborative Team
+                        </h4>
+
+                        <p>
+                            We work closely with clients throughout the
+                            journey to keep communication clear and simple.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="aa-why-card">
+
+                        <div class="aa-why-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+
+                        <h4>
+                            Built To Scale
+                        </h4>
+
+                        <p>
+                            Our solutions are planned with future users,
+                            features and business growth in mind.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="aa-why-card">
+
+                        <div class="aa-why-icon">
+                            <i class="bi bi-lightbulb-fill"></i>
+                        </div>
+
+                        <h4>
+                            Innovation Mindset
+                        </h4>
+
+                        <p>
+                            We continuously explore better approaches,
+                            technologies and digital experiences.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="aa-why-card">
+
+                        <div class="aa-why-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+
+                        <h4>
+                            Long-Term Support
+                        </h4>
+
+                        <p>
+                            Our relationship doesn't have to end after
+                            delivery. We continue to evolve solutions
+                            with changing business needs.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         JOURNEY
+         TWO CARDS PER ROW
+    ===================================================== -->
+
+    <section class="journey-section">
+
+        <div class="container px-5">
+
+            <div class="text-center">
+
+                <div class="aa-section-label justify-content-center">
+
+                    <span></span>
+                    OUR JOURNEY
+
+                </div>
+
+                <h2>
+                    The Access Authority
+                    <span>Story</span>
+                </h2>
+
+                <p class="journey-sub">
+                    From technology vision to building reliable digital
+                    solutions for modern businesses
+                </p>
+
+            </div>
+
+
+            <div class="timeline-vertical">
+
+                <div class="timeline-grid">
+
+
+                    <!-- 2019 -->
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-content">
+
+                            <span class="timeline-year">
+                                2019
+                            </span>
+
+                            <h4 class="timeline-title">
+                                The Vision Begins
+                            </h4>
+
+                            <p class="timeline-desc">
+                                Access Authority began with a clear vision
+                                to help businesses turn ideas into practical,
+                                scalable and reliable digital solutions.
+                            </p>
+
+                            <span class="timeline-tag">
+                                Foundation &amp; Vision
+                            </span>
+
+                        </div>
+
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&h=500&fit=crop"
+                             class="timeline-image"
+                             alt="Technology Vision">
+
+                    </div>
+
+
+                    <!-- 2020 -->
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-content">
+
+                            <span class="timeline-year">
+                                2020
+                            </span>
+
+                            <h4 class="timeline-title">
+                                Building Our First Solutions
+                            </h4>
+
+                            <p class="timeline-desc">
+                                We started delivering custom software and
+                                business-focused technology solutions designed
+                                around real operational requirements.
+                            </p>
+
+                            <span class="timeline-tag">
+                                Product Development
+                            </span>
+
+                        </div>
+
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&h=500&fit=crop"
+                             class="timeline-image"
+                             alt="Software Development">
+
+                    </div>
+
+
+                    <!-- 2021 -->
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-content">
+
+                            <span class="timeline-year">
+                                2021
+                            </span>
+
+                            <h4 class="timeline-title">
+                                Expanding Technology Expertise
+                            </h4>
+
+                            <p class="timeline-desc">
+                                Our capabilities expanded across modern web
+                                applications, enterprise systems, databases
+                                and custom technology development.
+                            </p>
+
+                            <span class="timeline-tag">
+                                Technology Expansion
+                            </span>
+
+                        </div>
+
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&h=500&fit=crop"
+                             class="timeline-image"
+                             alt="Technology Development">
+
+                    </div>
+
+
+                    <!-- 2022 -->
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-content">
+
+                            <span class="timeline-year">
+                                2022
+                            </span>
+
+                            <h4 class="timeline-title">
+                                Growth Through Innovation
+                            </h4>
+
+                            <p class="timeline-desc">
+                                We focused on creating smarter digital
+                                experiences by combining technology,
+                                user experience and business understanding.
+                            </p>
+
+                            <span class="timeline-tag">
+                                Innovation &amp; Growth
+                            </span>
+
+                        </div>
+
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=500&fit=crop"
+                             class="timeline-image"
+                             alt="Business Innovation">
+
+                    </div>
+
+
+                    <!-- 2023 -->
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-content">
+
+                            <span class="timeline-year">
+                                2023
+                            </span>
+
+                            <h4 class="timeline-title">
+                                Strengthening Digital Solutions
+                            </h4>
+
+                            <p class="timeline-desc">
+                                Access Authority continued strengthening its
+                                development capabilities with a focus on
+                                secure, responsive and business-ready platforms.
+                            </p>
+
+                            <span class="timeline-tag">
+                                Digital Transformation
+                            </span>
+
+                        </div>
+
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&h=500&fit=crop"
+                             class="timeline-image"
+                             alt="Digital Transformation">
+
+                    </div>
+
+
+                    <!-- 2024 -->
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-content">
+
+                            <span class="timeline-year">
+                                2024
+                            </span>
+
+                            <h4 class="timeline-title">
+                                Delivering Business Impact
+                            </h4>
+
+                            <p class="timeline-desc">
+                                Our journey moved beyond development,
+                                helping businesses improve digital presence,
+                                streamline processes and create better experiences.
+                            </p>
+
+                            <span class="timeline-tag">
+                                Business Impact
+                            </span>
+
+                        </div>
+
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=900&h=500&fit=crop"
+                             class="timeline-image"
+                             alt="Business Collaboration">
+
+                    </div>
+
+
+                    <!-- 2025 -->
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-content">
+
+                            <span class="timeline-year">
+                                2025
+                            </span>
+
+                            <h4 class="timeline-title">
+                                Building What's Next
+                            </h4>
+
+                            <p class="timeline-desc">
+                                We continue exploring modern technologies
+                                and smarter approaches to create scalable,
+                                future-ready digital products.
+                            </p>
+
+                            <span class="timeline-tag">
+                                Future Ready
+                            </span>
+
+                        </div>
+
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=900&h=500&fit=crop"
+                             class="timeline-image"
+                             alt="Future Ready Technology">
+
+                    </div>
+
+
+                    <!-- TODAY -->
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-content">
+
+                            <span class="timeline-year">
+                                Today
+                            </span>
+
+                            <h4 class="timeline-title">
+                                Your Technology Partner
+                            </h4>
+
+                            <p class="timeline-desc">
+                                Today, Access Authority continues helping
+                                businesses transform ideas into dependable
+                                digital solutions through technology,
+                                creativity and business strategy.
+                            </p>
+
+                            <span class="timeline-tag">
+                                Our Journey Continues
+                            </span>
+
+                        </div>
+
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=900&h=500&fit=crop"
+                             class="timeline-image"
+                             alt="Technology Partnership">
+
+                    </div>
+
+                </div>
+
+
+                <div class="journey-highlight">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                    Every milestone has one goal —
+                    <strong>
+                        building technology that creates real business value.
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    @* <!-- =====================================================
+         LEADERSHIP TEAM
+    ===================================================== -->
+
+    <section class="team-section">
+
+        <div class="container px-5">
+
+            <div class="text-center">
+
+                <div class="aa-section-label justify-content-center">
+
+                    <span></span>
+                    LEADERSHIP TEAM
+
+                </div>
+
+                <h2 class="aa-main-heading">
+                    The People Behind
+                    <span>The Authority</span>
+                </h2>
+
+                <p class="team-sub">
+                    Meet the visionaries driving our success
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+
+                <!-- TEAM 1 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="team-card">
+
+                        <div class="team-avatar">
+
+                            <img src="~/img/67.jpg"
+                                 alt="Rahul Mehta">
+
+                        </div>
+
+                        <h4>
+                            Rahul Mehta
+                        </h4>
+
+                        <div class="team-role">
+                            CEO &amp; Founder
+                        </div>
+
+                        <p>
+                            15+ years in enterprise software,
+                            strategy and technology leadership.
+                        </p>
+
+                        <div class="team-skills">
+
+                            <span>Strategy</span>
+                            <span>Leadership</span>
+                            <span>Innovation</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TEAM 2 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="team-card">
+
+                        <div class="team-avatar two">
+
+                            <img src="~/img/44.jpg"
+                                 alt="Priya Singh">
+
+                        </div>
+
+                        <h4>
+                            Priya Singh
+                        </h4>
+
+                        <div class="team-role">
+                            CTO
+                        </div>
+
+                        <p>
+                            Technology leader focused on cloud,
+                            architecture and modern applications.
+                        </p>
+
+                        <div class="team-skills">
+
+                            <span>Cloud</span>
+                            <span>AI</span>
+                            <span>Architecture</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TEAM 3 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="team-card">
+
+                        <div class="team-avatar three">
+
+                            <img src="~/img/45.jpg"
+                                 alt="Vikram Rao">
+
+                        </div>
+
+                        <h4>
+                            Vikram Rao
+                        </h4>
+
+                        <div class="team-role">
+                            VP of Engineering
+                        </div>
+
+                        <p>
+                            Engineering professional focused on
+                            full-stack development and scalability.
+                        </p>
+
+                        <div class="team-skills">
+
+                            <span>Full-Stack</span>
+                            <span>DevOps</span>
+                            <span>Scalability</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TEAM 4 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="team-card">
+
+                        <div class="team-avatar four">
+
+                            <img src="~/img/28.jpg"
+                                 alt="Anjali Kapoor">
+
+                        </div>
+
+                        <h4>
+                            Anjali Kapoor
+                        </h4>
+
+                        <div class="team-role">
+                            Head of Product
+                        </div>
+
+                        <p>
+                            Product professional focused on strategy,
+                            user experience and digital products.
+                        </p>
+
+                        <div class="team-skills">
+
+                            <span>Product</span>
+                            <span>UX</span>
+                            <span>Strategy</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section> *@
+
+
+
+    <!-- =====================================================
+         TESTIMONIALS
+    ===================================================== -->
+
+    <section class="testimonials-section">
+
+        <div class="container px-5">
+
+            <div class="text-center">
+
+                <div class="aa-section-label justify-content-center">
+
+                    <span></span>
+                    TESTIMONIALS
+
+                </div>
+
+                <h2 class="aa-main-heading">
+                    What Our
+                    <span>Clients Say</span>
+                </h2>
+
+            </div>
+
+
+            <div class="row g-4 justify-content-center mt-2">
+
+
+                <!-- REVIEW 1 -->
+
+                <div class="col-lg-6">
+
+                    <div class="testimonial-card">
+
+                        <div class="quote-icon">
+                            ✦
+                        </div>
+
+                        <blockquote>
+                            "Access Authority transformed our entire
+                            digital infrastructure. Their team's expertise
+                            and dedication are unmatched."
+                        </blockquote>
+
+                        <div class="client-info">
+
+                            <div class="client-review-avatar">
+
+                                <img src="~/img/32.jpg"
+                                     alt="Suresh Kumar">
+
+                            </div>
+
+                            <div>
+
+                                <p class="client-name">
+                                    Suresh Kumar
+                                </p>
+
+                                <p class="client-title">
+                                    CEO, TechVision Inc.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REVIEW 2 -->
+
+                <div class="col-lg-6">
+
+                    <div class="testimonial-card">
+
+                        <div class="quote-icon">
+                            ✦
+                        </div>
+
+                        <blockquote>
+                            "Working with Access Authority has been
+                            a game-changer. Their technology approach
+                            helped us improve efficiency and accuracy."
+                        </blockquote>
+
+                        <div class="client-info">
+
+                            <div class="client-review-avatar">
+
+                                <img src="~/img/28.jpg"
+                                     alt="Neha Sharma">
+
+                            </div>
+
+                            <div>
+
+                                <p class="client-name">
+                                    Neha Sharma
+                                </p>
+
+                                <p class="client-title">
+                                    COO, FinCore Solutions
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CTA
+    ===================================================== -->
+
+    <section class="cta-section">
+
+        <div class="container px-5 text-center">
+
+            <div class="aa-section-label justify-content-center">
+
+                <span></span>
+                JOIN US
+
+            </div>
+
+            <h2>
+                Join Us in Building
+                <span>The Future</span>
+            </h2>
+
+            <p>
+                We're always looking for talented people who want
+                to make a difference. Explore careers with us and
+                be part of something extraordinary.
+            </p>
+
+
+            <div class="cta-buttons">
+
+                <a asp-action="Career"
+                   class="btn-cta-primary">
+
+                    <i class="bi bi-briefcase-fill"></i>
+                    View Open Positions
+
+                </a>
+
+
+                <a asp-action="Contact"
+                   class="btn-cta-outline">
+
+                    <i class="bi bi-envelope-fill"></i>
+                    Get in Touch
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TRUSTED BOTTOM
+    ===================================================== -->
+
+    <section class="trusted-bottom">
+
+        <div class="container">
+
+            <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
+
+                <span class="trusted-by-text">
+                    TRUSTED BY
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    100+ Projects
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    98% Satisfaction
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    7+ Years
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    12+ Countries
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</div>
+

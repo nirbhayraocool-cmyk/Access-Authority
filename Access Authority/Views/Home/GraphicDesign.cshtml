@@ -1,0 +1,1411 @@
+﻿@{
+    ViewData["Title"] = "Graphic Design";
+}
+
+<style>
+
+    /* =========================
+           GLOBAL
+        ========================= */
+
+    .graphic-page {
+        font-family: inherit;
+        color: #111;
+        background: #fff;
+    }
+
+        
+    /* =========================
+           HERO
+        ========================= */
+
+    .graphic-hero {
+        min-height: 620px;
+        background: linear-gradient(90deg, rgba(0,0,0,.96) 0%, rgba(0,0,0,.80) 48%, rgba(0,0,0,.35) 100%), url('https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1800&q=90&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .graphic-hero::after {
+            content: "";
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border: 1px solid rgba(237,0,28,.45);
+            border-radius: 50%;
+            right: -100px;
+            bottom: -130px;
+        }
+
+    .graphic-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 760px;
+    }
+
+    .hero-label {
+        color: #ed001c;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        margin-bottom: 22px;
+        text-transform: uppercase;
+    }
+
+    .graphic-hero h1 {
+        color: #fff;
+        font-size: 72px;
+        line-height: 1;
+        font-weight: 750;
+        margin-bottom: 24px;
+        letter-spacing: -2px;
+    }
+
+        .graphic-hero h1 span {
+            color: #ed001c;
+        }
+
+    .hero-description {
+        color: #ddd;
+        max-width: 680px;
+        font-size: 18px;
+        line-height: 1.75;
+        margin-bottom: 35px;
+    }
+
+    .hero-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 25px;
+        background: #ed001c;
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        transition: .3s ease;
+    }
+
+        .hero-btn:hover {
+            background: #fff;
+            color: #111;
+            transform: translateY(-3px);
+        }
+
+    /* =========================
+           COMMON SECTION
+        ========================= */
+
+    .section {
+        padding: 100px 0;
+    }
+
+    .section-label {
+        font-size: 12px;
+        color: #ed001c;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+
+    .section-title {
+        font-size: 42px;
+        line-height: 1.15;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 20px;
+        letter-spacing: -.5px;
+    }
+
+    .section-text {
+        color: #707070;
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    /* =========================
+           SECOND SECTION
+           IMAGE + COMPACT RIGHT CONTENT
+        ========================= */
+
+    .what-we-do {
+        background: #fff;
+    }
+
+        .what-we-do .row {
+            align-items: center;
+        }
+
+    .brand-image-wrapper {
+        position: relative;
+    }
+
+    .brand-image {
+        width: 100%;
+        height: 430px;
+        object-fit: cover;
+        display: block;
+        border-radius: 3px;
+    }
+
+    .brand-image-badge {
+        position: absolute;
+        left: 25px;
+        bottom: 25px;
+        background: #ed001c;
+        color: #fff;
+        padding: 11px 17px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.3px;
+    }
+
+    /* IMPORTANT:
+           RIGHT CONTENT COMPACT
+        */
+
+    .what-we-do .right-content {
+        height: 430px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 45px;
+    }
+
+    .what-we-do .section-label {
+        margin-bottom: 10px;
+        font-size: 11px;
+    }
+
+    .what-we-do .section-title {
+        font-size: 34px;
+        line-height: 1.18;
+        font-weight: 650;
+        margin-bottom: 15px;
+    }
+
+    .what-we-do .section-text {
+        font-size: 14px;
+        line-height: 1.65;
+        margin-bottom: 9px;
+    }
+
+    .design-list {
+        list-style: none;
+        padding: 0;
+        margin: 14px 0 12px;
+    }
+
+        .design-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+            .design-list li i {
+                color: #ed001c;
+                font-size: 15px;
+            }
+
+    .brand-stat {
+        display: flex;
+        gap: 45px;
+        border-top: 1px solid #e5e5e5;
+        padding-top: 13px;
+        margin-top: 7px;
+    }
+
+        .brand-stat strong {
+            display: block;
+            font-size: 17px;
+            font-weight: 650;
+            color: #111;
+            line-height: 1.2;
+        }
+
+        .brand-stat span {
+            display: block;
+            font-size: 11px;
+            color: #888;
+            margin-top: 3px;
+        }
+
+    /* =========================
+           DESIGN SOLUTIONS
+        ========================= */
+
+    .solutions-section {
+        background: #f6f6f6;
+    }
+
+    .solutions-heading {
+        max-width: 650px;
+        margin-bottom: 55px;
+    }
+
+        .solutions-heading h2 {
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 15px;
+        }
+
+        .solutions-heading p {
+            color: #777;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+    .solution-item {
+        background: #fff;
+        min-height: 250px;
+        padding: 30px;
+        position: relative;
+        border: 1px solid #e6e6e6;
+        transition: .35s ease;
+        overflow: hidden;
+    }
+
+        .solution-item::before {
+            content: "";
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            right: -22px;
+            top: -22px;
+            background: #ed001c;
+            transform: rotate(45deg);
+            transition: .35s ease;
+        }
+
+    .solution-number {
+        font-size: 12px;
+        color: #aaa;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 25px;
+    }
+
+    .solution-icon {
+        width: 48px;
+        height: 48px;
+        border: 1px solid #ed001c;
+        color: #ed001c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 19px;
+        margin-bottom: 20px;
+        transition: .35s ease;
+    }
+
+    .solution-item h4 {
+        font-size: 19px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .solution-item p {
+        color: #777;
+        font-size: 13px;
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    .solution-item:hover {
+        transform: translateY(-7px);
+        border-color: #ed001c;
+        box-shadow: 0 18px 35px rgba(0,0,0,.09);
+    }
+
+        .solution-item:hover .solution-icon {
+            background: #ed001c;
+            color: #fff;
+            transform: rotate(-5deg);
+        }
+
+    /* =========================
+           BRAND SYSTEM
+        ========================= */
+
+    .brand-system {
+        background: #fff;
+    }
+
+    .brand-system-heading {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 60px;
+    }
+
+        .brand-system-heading h2 {
+            font-size: 43px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .brand-system-heading p {
+            color: #777;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+    .brand-system-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .brand-system-box {
+        padding: 35px 25px;
+        border-right: 1px solid #ddd;
+        position: relative;
+        transition: .3s ease;
+    }
+
+        .brand-system-box:last-child {
+            border-right: none;
+        }
+
+        .brand-system-box .number {
+            color: #ed001c;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        .brand-system-box h4 {
+            font-size: 21px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .brand-system-box p {
+            font-size: 13px;
+            color: #777;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .brand-system-box:hover {
+            background: #0d0d0d;
+            color: #fff;
+        }
+
+            .brand-system-box:hover p {
+                color: #aaa;
+            }
+
+    /* =========================
+           CREATIVE IMPACT
+        ========================= */
+
+    .impact-section {
+        background: #0d0d0d;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .impact-section::before {
+            content: "DESIGN";
+            position: absolute;
+            right: -30px;
+            bottom: -50px;
+            font-size: 160px;
+            font-weight: 900;
+            color: rgba(255,255,255,.025);
+            letter-spacing: -10px;
+        }
+
+    .impact-title {
+        font-size: 45px;
+        line-height: 1.15;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 20px;
+    }
+
+        .impact-title span {
+            color: #ed001c;
+        }
+
+    .impact-text {
+        color: #aaa;
+        font-size: 15px;
+        line-height: 1.8;
+        max-width: 620px;
+    }
+
+    .impact-points {
+        margin-top: 45px;
+    }
+
+    .impact-point {
+        display: flex;
+        gap: 20px;
+        padding: 20px 0;
+        border-bottom: 1px solid #292929;
+    }
+
+        .impact-point:first-child {
+            border-top: 1px solid #292929;
+        }
+
+        .impact-point span {
+            font-size: 14px;
+            color: #ed001c;
+            font-weight: 700;
+            min-width: 35px;
+        }
+
+        .impact-point h5 {
+            color: #fff;
+            font-size: 17px;
+            margin: 0 0 5px;
+            font-weight: 650;
+        }
+
+        .impact-point p {
+            color: #888;
+            font-size: 13px;
+            margin: 0;
+        }
+
+    /* =========================
+           DELIVERABLES
+        ========================= */
+
+    .deliverables-section {
+        background: #f6f6f6;
+    }
+
+    .deliverable-box {
+        background: #fff;
+        padding: 30px;
+        height: 100%;
+        border-left: 3px solid #ed001c;
+        transition: .3s ease;
+    }
+
+        .deliverable-box:hover {
+            transform: translateX(7px);
+            box-shadow: 0 12px 30px rgba(0,0,0,.08);
+        }
+
+        .deliverable-box h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .deliverable-box p {
+            color: #777;
+            font-size: 13px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+    /* =========================
+           TESTIMONIAL
+        ========================= */
+
+    .testimonial-section {
+        background: #dbd4d6;
+        padding: 90px 0;
+    }
+
+    .testimonial-mark {
+        color: #ed001c;
+        font-size: 55px;
+        line-height: 1;
+        font-weight: 700;
+    }
+
+    .testimonial-text {
+        max-width: 800px;
+        font-size: 25px;
+        line-height: 1.55;
+        font-weight: 500;
+        color: #222;
+        margin: 20px auto 25px;
+    }
+
+    .testimonial-name {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #111;
+    }
+
+    /* =========================
+           CTA
+        ========================= */
+
+    .graphic-cta {
+        background: #0d0d0d;
+        padding: 90px 0;
+        text-align: center;
+    }
+
+        .graphic-cta h2 {
+            color: #fff;
+            font-size: 45px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+            .graphic-cta h2 span {
+                color: #ed001c;
+            }
+
+        .graphic-cta p {
+            color: #aaa;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+    .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 28px;
+        background: #ed001c;
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        transition: .3s ease;
+    }
+
+        .cta-btn:hover {
+            background: #fff;
+            color: #111;
+            transform: translateY(-3px);
+        }
+
+    /* =========================
+           WHATSAPP
+        ========================= */
+
+    .whatsapp-btn {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        width: 54px;
+        height: 54px;
+        background: #25d366;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 27px;
+        z-index: 9999;
+        text-decoration: none;
+        box-shadow: 0 6px 20px rgba(0,0,0,.2);
+        transition: .3s ease;
+    }
+
+        .whatsapp-btn:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+    /* =========================
+           RESPONSIVE
+        ========================= */
+
+    @@media (max-width: 991px) {
+        .graphic-hero
+
+    {
+        min-height: 540px;
+    }
+
+    .graphic-hero h1 {
+        font-size: 55px;
+    }
+
+    .what-we-do .right-content {
+        height: auto;
+        padding-left: 15px;
+        margin-top: 35px;
+    }
+
+    .brand-system-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .brand-system-box:nth-child(2) {
+        border-right: none;
+    }
+
+    .brand-system-box:nth-child(-n+2) {
+        border-bottom: 1px solid #ddd;
+    }
+
+    }
+
+    @@media (max-width: 767px) {
+        .section
+
+    {
+        padding: 70px 0;
+    }
+
+    .graphic-hero {
+        min-height: 500px;
+    }
+
+        .graphic-hero h1 {
+            font-size: 43px;
+            letter-spacing: -1px;
+        }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .section-title,
+    .solutions-heading h2,
+    .brand-system-heading h2,
+    .impact-title,
+    .graphic-cta h2 {
+        font-size: 32px;
+    }
+
+    .brand-image {
+        height: 350px;
+    }
+
+    .what-we-do .right-content {
+        padding-left: 0;
+    }
+
+    .brand-system-row {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-system-box {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+        .brand-system-box:last-child {
+            border-bottom: none;
+        }
+
+    .testimonial-text {
+        font-size: 19px;
+    }
+
+    .graphic-cta {
+        padding: 70px 20px;
+    }
+
+    }
+</style>
+
+
+<div class="graphic-page">
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="graphic-hero">
+
+        <div class="container px-5">
+
+            <div class="graphic-hero-content">
+
+                <div class="hero-label">
+                    Graphic Design
+                </div>
+
+                <h1>
+                    Build a Brand<br />
+                    People <span>Remember.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Brand identity and visual communication that positions
+                    your business as the clear authority in your market.
+                    From a powerful logo to everyday marketing creatives,
+                    we create visuals that make your business look
+                    professional, consistent and impossible to overlook.
+                </p>
+
+                <a href="/Home/Contact" class="hero-btn">
+                    Start Your Brand
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         WHAT WE DO
+    ========================= -->
+
+    <section class="section what-we-do">
+
+        <div class="container px-5">
+
+            <div class="row">
+
+                <!-- IMAGE -->
+
+                <div class="col-lg-6">
+
+                    <div class="brand-image-wrapper">
+
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1000&q=85&auto=format&fit=crop"
+                             class="brand-image"
+                             alt="Graphic Design and Brand Identity">
+
+                        <div class="brand-image-badge">
+                            VISUAL IDENTITY & BRAND DESIGN
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT CONTENT -->
+
+                <div class="col-lg-6">
+
+                    <div class="right-content">
+
+                        <div class="section-label">
+                            Visual Communication
+                        </div>
+
+                        <h2 class="section-title">
+                            Give Your Brand a
+                            <span style="color:#ed001c;">
+                                Distinct Visual Voice
+                            </span>
+                        </h2>
+
+                        <p class="section-text">
+                            Good design makes your business look professional.
+                            Great design makes people remember it.
+                        </p>
+
+                        <p class="section-text">
+                            We create visual systems that turn your ideas,
+                            values and personality into a brand people can
+                            recognize across every touchpoint.
+                        </p>
+
+                        <ul class="design-list">
+
+                            <li>
+                                <i class="bi bi-check2"></i>
+                                Strong and memorable visual identity
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check2"></i>
+                                Consistent colors, typography and layouts
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check2"></i>
+                                Marketing designs built for real business goals
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check2"></i>
+                                Digital and print-ready creative assets
+                            </li>
+
+                        </ul>
+
+                        <div class="brand-stat">
+
+                            <div>
+                                <strong>01</strong>
+                                <span>Brand Direction</span>
+                            </div>
+
+                            <div>
+                                <strong>02</strong>
+                                <span>Visual System</span>
+                            </div>
+
+                            <div>
+                                <strong>03</strong>
+                                <span>Creative Assets</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DESIGN SOLUTIONS
+    ========================= -->
+
+    <section class="section solutions-section">
+
+        <div class="container px-5">
+
+            <div class="solutions-heading">
+
+                <div class="section-label">
+                    What We Design
+                </div>
+
+                <h2>
+                    Design That Works
+                    <span style="color:#ed001c;">
+                        Beyond Decoration.
+                    </span>
+                </h2>
+
+                <p>
+                    Every visual has a job to do. Whether it is building
+                    recognition, communicating an offer or making your
+                    product stand out, our designs are created with purpose.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="solution-item">
+
+                        <div class="solution-number">01</div>
+
+                        <div class="solution-icon">
+                            <i class="bi bi-bezier2"></i>
+                        </div>
+
+                        <h4>Logo & Identity</h4>
+
+                        <p>
+                            Distinctive logos and identity systems that
+                            give your business a recognizable face.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="solution-item">
+
+                        <div class="solution-number">02</div>
+
+                        <div class="solution-icon">
+                            <i class="bi bi-megaphone"></i>
+                        </div>
+
+                        <h4>Marketing Creatives</h4>
+
+                        <p>
+                            Campaign graphics designed to communicate
+                            offers clearly and attract attention.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="solution-item">
+
+                        <div class="solution-number">03</div>
+
+                        <div class="solution-icon">
+                            <i class="bi bi-instagram"></i>
+                        </div>
+
+                        <h4>Social Media Design</h4>
+
+                        <p>
+                            Scroll-stopping posts, stories and promotional
+                            graphics built around your brand language.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="solution-item">
+
+                        <div class="solution-number">04</div>
+
+                        <div class="solution-icon">
+                            <i class="bi bi-box-seam"></i>
+                        </div>
+
+                        <h4>Packaging Design</h4>
+
+                        <p>
+                            Packaging visuals that communicate quality
+                            and help products stand apart on the shelf.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="solution-item">
+
+                        <div class="solution-number">05</div>
+
+                        <div class="solution-icon">
+                            <i class="bi bi-file-earmark-richtext"></i>
+                        </div>
+
+                        <h4>Business Materials</h4>
+
+                        <p>
+                            Professional brochures, profiles, presentations,
+                            stationery and company collateral.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="solution-item">
+
+                        <div class="solution-number">06</div>
+
+                        <div class="solution-icon">
+                            <i class="bi bi-display"></i>
+                        </div>
+
+                        <h4>Digital Graphics</h4>
+
+                        <p>
+                            Website banners, advertisements, promotional
+                            visuals and other digital-first creatives.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BRAND SYSTEM
+    ========================= -->
+
+    <section class="section brand-system">
+
+        <div class="container px-5">
+
+            <div class="brand-system-heading">
+
+                <div class="section-label">
+                    Brand Building Blocks
+                </div>
+
+                <h2>
+                    One Brand.
+                    <span style="color:#ed001c;">
+                        One Visual Language.
+                    </span>
+                </h2>
+
+                <p>
+                    A professional brand is more than a logo. It is the
+                    relationship between every visual element your audience sees.
+                </p>
+
+            </div>
+
+
+            <div class="brand-system-row">
+
+                <div class="brand-system-box">
+
+                    <div class="number">01</div>
+
+                    <h4>Logo</h4>
+
+                    <p>
+                        A recognizable symbol that gives your business
+                        an identity people can instantly associate with.
+                    </p>
+
+                </div>
+
+
+                <div class="brand-system-box">
+
+                    <div class="number">02</div>
+
+                    <h4>Color</h4>
+
+                    <p>
+                        A carefully selected palette that creates emotion,
+                        recognition and consistency across platforms.
+                    </p>
+
+                </div>
+
+
+                <div class="brand-system-box">
+
+                    <div class="number">03</div>
+
+                    <h4>Typography</h4>
+
+                    <p>
+                        Fonts and hierarchy chosen to make your brand
+                        communication clear, confident and distinctive.
+                    </p>
+
+                </div>
+
+
+                <div class="brand-system-box">
+
+                    <div class="number">04</div>
+
+                    <h4>Imagery</h4>
+
+                    <p>
+                        Photography, graphics and visual direction that
+                        give your brand a consistent personality.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CREATIVE IMPACT
+    ========================= -->
+
+    <section class="section impact-section">
+
+        <div class="container px-5">
+
+            <div class="row">
+
+                <div class="col-lg-6">
+
+                    <div class="section-label">
+                        Creative Impact
+                    </div>
+
+                    <h2 class="impact-title">
+                        Design Should
+                        <span>Move Business.</span>
+                    </h2>
+
+                    <p class="impact-text">
+                        We don't design simply to make something look good.
+                        We think about where the design will appear, who will
+                        see it and what that person should understand or feel.
+                    </p>
+
+                </div>
+
+
+                <div class="col-lg-6">
+
+                    <div class="impact-points">
+
+                        <div class="impact-point">
+
+                            <span>01</span>
+
+                            <div>
+                                <h5>Recognition</h5>
+                                <p>
+                                    Make your business easier to identify
+                                    across every customer touchpoint.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="impact-point">
+
+                            <span>02</span>
+
+                            <div>
+                                <h5>Clarity</h5>
+                                <p>
+                                    Communicate your message without
+                                    overwhelming your audience.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="impact-point">
+
+                            <span>03</span>
+
+                            <div>
+                                <h5>Credibility</h5>
+                                <p>
+                                    A polished visual presence builds
+                                    confidence before the first conversation.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="impact-point">
+
+                            <span>04</span>
+
+                            <div>
+                                <h5>Consistency</h5>
+                                <p>
+                                    Keep every marketing channel visually
+                                    connected to the same brand.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DELIVERABLES
+    ========================= -->
+
+    <section class="section deliverables-section">
+
+        <div class="container px-5">
+
+            <div class="row g-4">
+
+                <div class="col-lg-4">
+
+                    <div class="section-label">
+                        What You Get
+                    </div>
+
+                    <h2 class="section-title">
+                        Ready-to-Use
+                        <span style="color:#ed001c;">
+                            Brand Assets.
+                        </span>
+                    </h2>
+
+                    <p class="section-text">
+                        We deliver practical creative assets that your team
+                        can confidently use across marketing, sales and
+                        day-to-day business communication.
+                    </p>
+
+                </div>
+
+
+                <div class="col-lg-4">
+
+                    <div class="deliverable-box">
+
+                        <h4>Brand Starter Kit</h4>
+
+                        <p>
+                            Logo variations, color palette, typography,
+                            brand elements and basic usage direction.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4">
+
+                    <div class="deliverable-box">
+
+                        <h4>Marketing Kit</h4>
+
+                        <p>
+                            Social creatives, promotional banners,
+                            campaign graphics and digital advertisements.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4 offset-lg-4">
+
+                    <div class="deliverable-box">
+
+                        <h4>Business Kit</h4>
+
+                        <p>
+                            Company profiles, presentations, brochures,
+                            business cards and professional stationery.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4">
+
+                    <div class="deliverable-box">
+
+                        <h4>Digital Kit</h4>
+
+                        <p>
+                            Website graphics, web banners, thumbnails
+                            and platform-ready digital assets.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TESTIMONIAL
+    ========================= -->
+
+    <section class="testimonial-section">
+
+        <div class="container text-center px-5">
+
+            <div class="testimonial-mark">
+                “
+            </div>
+
+            <p class="testimonial-text">
+                They understood what our brand needed instead of simply
+                making things look attractive. Our entire visual presence
+                now feels professional, consistent and much more memorable.
+            </p>
+
+            <div class="testimonial-name">
+                — CLIENT FEEDBACK
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================= -->
+
+    <section class="graphic-cta">
+
+        <div class="container">
+
+            <h2>
+                Ready to Give Your Brand
+                <span>a Stronger Identity?</span>
+            </h2>
+
+            <p>
+                Let's create visuals that make your business look
+                as strong as the work you deliver.
+            </p>
+
+            <a href="/Home/Contact" class="cta-btn">
+                Let's Create Together
+                <i class="bi bi-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         WHATSAPP
+    ========================= -->
+
+    <a href="https://wa.me/919999999999"
+       class="whatsapp-btn"
+       target="_blank"
+       aria-label="Chat on WhatsApp">
+
+        <i class="bi bi-whatsapp"></i>
+
+    </a>
+
+</div>

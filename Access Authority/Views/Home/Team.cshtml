@@ -1,0 +1,1647 @@
+﻿@{
+    ViewData["Title"] = "Our Team";
+}
+<style>
+    /* ===== TEAM PAGE HERO ===== */ 
+
+    .page-hero-custom {
+        background: #f7f7f7;
+        padding: 55px 0 40px;
+        border-bottom: 1px solid #e8e8e8;
+    }
+    /* Breadcrumb */
+
+    .breadcrumb-custom {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        font-size: 14px;
+    }
+
+        .breadcrumb-custom a {
+            color: #d62828;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+            .breadcrumb-custom a:hover {
+                color: #a91f1f;
+            }
+
+        .breadcrumb-custom span {
+            color: #777;
+            font-weight: 500;
+        }
+    /* Heading */
+
+    .page-hero-custom h1 {
+        font-size: 46px;
+        line-height: 1.2;
+        font-weight: 800;
+        color: #171717;
+        margin-bottom: 12px;
+    }
+    /* Description */
+
+    .page-hero-custom p {
+        max-width: 700px;
+        font-size: 16px;
+        line-height: 1.7;
+        color: #666;
+        margin-bottom: 0;
+    }
+    /* Responsive */
+
+    @@media (max-width: 767px) {
+        .page-hero-custom {
+            padding: 45px 0 35px;
+        }
+
+            .page-hero-custom h1 {
+                font-size: 36px;
+            }
+
+            .page-hero-custom p {
+                font-size: 15px;
+            }
+    }
+</style>
+
+<style>
+
+    /* ===== TEAM SECTION =========== */
+    .team-section {
+        background: #ffffff;
+        padding: 60px 0;
+    }
+
+        .team-section .section-label,
+        .expertise-section .section-label,
+        .working-section .section-label,
+        .technology-section .section-label,
+        .values-section .section-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #ed0026;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+            .team-section .section-label span,
+            .expertise-section .section-label span,
+            .working-section .section-label span,
+            .technology-section .section-label span,
+            .values-section .section-label span {
+                display: inline-block;
+                width: 20px;
+                height: 2px;
+                background: #ed0026;
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+
+        .team-section h2,
+        .expertise-section h2,
+        .working-section h2,
+        .technology-section h2,
+        .values-section h2 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 6px 0;
+        }
+
+            .team-section h2 span,
+            .expertise-section h2 span,
+            .working-section h2 span,
+            .technology-section h2 span,
+            .values-section h2 span {
+                color: #ed0026;
+            }
+
+        .team-section .team-sub,
+        .expertise-section .section-sub,
+        .working-section .section-sub,
+        .technology-section .section-sub,
+        .values-section .section-sub {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+
+    /* =====================================================
+                           TEAM CARDS
+        ===================================================== */
+
+    .team-card {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        padding: 28px 22px 26px;
+        text-align: center;
+        transition: all 0.3s ease;
+        height: 100%;
+        border-radius: 6px;
+    }
+
+        .team-card:hover {
+            border-color: #ed0026;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .team-card .team-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #ed0026;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 auto 14px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .team-card:hover .team-avatar {
+            transform: scale(1.05);
+        }
+
+        .team-card .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-card .team-avatar.two {
+            background: #2563eb;
+        }
+
+        .team-card .team-avatar.three {
+            background: #0ea5e9;
+        }
+
+        .team-card .team-avatar.four {
+            background: #8b5cf6;
+        }
+
+        .team-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 2px 0;
+        }
+
+        .team-card .team-role {
+            font-size: 11px;
+            color: #ed0026;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .team-card p {
+            font-size: 11px;
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .team-card .team-skills {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+            .team-card .team-skills span {
+                font-size: 8px;
+                font-weight: 600;
+                color: #555;
+                background: #f0f0f0;
+                padding: 2px 12px;
+                letter-spacing: 0.3px;
+                border-radius: 3px;
+                transition: all 0.3s ease;
+            }
+
+        .team-card:hover .team-skills span {
+            background: #fdecee;
+            color: #ed0026;
+        }
+
+
+    /* =====================================================
+                        TEAM EXPERTISE SECTION
+        ===================================================== */
+
+    .expertise-section {
+        background: #f7f7f7;
+        padding: 60px 0;
+    }
+
+    .expertise-card {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        padding: 28px 24px;
+        height: 100%;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+    }
+
+        .expertise-card:hover {
+            border-color: #ed0026;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+
+    .expertise-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fdecee;
+        color: #ed0026;
+        border-radius: 5px;
+        font-size: 21px;
+        margin-bottom: 16px;
+    }
+
+    .expertise-card h4 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 8px;
+    }
+
+    .expertise-card p {
+        font-size: 12px;
+        color: #555;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+
+    /* =====================================================
+                        HOW OUR TEAM WORKS
+        ===================================================== */
+
+    .working-section {
+        background: #ffffff;
+        padding: 60px 0;
+    }
+
+    .working-card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        padding: 25px 22px;
+        height: 100%;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+        .working-card:hover {
+            border-color: #ed0026;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+
+    .working-number {
+        font-size: 32px;
+        font-weight: 800;
+        color: #ed0026;
+        line-height: 1;
+        margin-bottom: 12px;
+    }
+
+    .working-card h4 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 7px;
+    }
+
+    .working-card p {
+        font-size: 12px;
+        color: #555;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+
+    /* =====================================================
+                        TECHNOLOGY & DELIVERY
+        ===================================================== */
+
+    .technology-section {
+        background: #f7f7f7;
+        padding: 60px 0;
+    }
+
+    .technology-box {
+        background: #0b0b0b;
+        border: 1px solid #202020;
+        padding: 35px 30px;
+        border-radius: 6px;
+        height: 100%;
+    }
+
+        .technology-box h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+            .technology-box h4 span {
+                color: #ed0026;
+            }
+
+        .technology-box p {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+    .technology-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+        .technology-list span {
+            font-size: 9px;
+            font-weight: 600;
+            color: #ddd;
+            border: 1px solid #333;
+            padding: 5px 12px;
+            border-radius: 3px;
+        }
+
+    .delivery-box {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        padding: 35px 30px;
+        border-radius: 6px;
+        height: 100%;
+    }
+
+    .delivery-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 17px;
+    }
+
+        .delivery-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .delivery-item i {
+            color: #ed0026;
+            font-size: 18px;
+            margin-top: 2px;
+        }
+
+        .delivery-item h5 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 3px;
+        }
+
+        .delivery-item p {
+            font-size: 11px;
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+
+    /* =====================================================
+                        TEAM VALUES
+        ===================================================== */
+
+    .values-section {
+        background: #ffffff;
+        padding: 60px 0;
+    }
+
+    .value-card {
+        text-align: center;
+        padding: 25px 20px;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        height: 100%;
+        transition: all 0.3s ease;
+    }
+
+        .value-card:hover {
+            border-color: #ed0026;
+            transform: translateY(-4px);
+        }
+
+    .value-icon {
+        font-size: 32px;
+        color: #ed0026;
+        margin-bottom: 12px;
+    }
+
+    .value-card h4 {
+        font-size: 15px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 7px;
+    }
+
+    .value-card p {
+        font-size: 11px;
+        color: #555;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+
+    /* =====================================================
+                           TESTIMONIALS
+        ===================================================== */
+
+    .testimonials-section {
+        background: #f7f7f7;
+        padding: 60px 0;
+    }
+
+        .testimonials-section .section-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #ed0026;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+            .testimonials-section .section-label span {
+                display: inline-block;
+                width: 20px;
+                height: 2px;
+                background: #ed0026;
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+
+        .testimonials-section h2 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 6px 0;
+        }
+
+            .testimonials-section h2 span {
+                color: #ed0026;
+            }
+
+    .testimonial-card {
+        background: #ffffff;
+        padding: 32px 36px;
+        border-left: 4px solid #ed0026;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+
+        .testimonial-card:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .testimonial-card .quote-icon {
+            font-size: 36px;
+            color: #ed0026;
+            opacity: 0.12;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 15px;
+            font-weight: 400;
+            color: #111;
+            line-height: 1.7;
+            margin: 0 0 16px 0;
+        }
+
+        .testimonial-card .client-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testimonial-card .client-review-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #ed0026;
+            flex-shrink: 0;
+        }
+
+            .testimonial-card .client-review-avatar img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .testimonial-card .client-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #111;
+            margin: 0;
+        }
+
+        .testimonial-card .client-title {
+            font-size: 12px;
+            color: #777;
+            margin: 0;
+        }
+
+
+    /* =====================================================
+                           CTA SECTION
+        ===================================================== */
+
+    .cta-section {
+        background: #0b0b0b;
+        padding: 50px 0;
+        color: #fff;
+        border-top: 1px solid #202020;
+        border-bottom: 1px solid #202020;
+    }
+
+        .cta-section .section-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #ed0026;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+            .cta-section .section-label span {
+                display: inline-block;
+                width: 20px;
+                height: 2px;
+                background: #ed0026;
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+
+        .cta-section h2 {
+            font-size: 30px;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+        }
+
+            .cta-section h2 span {
+                color: #ed0026;
+            }
+
+        .cta-section p {
+            font-size: 13px;
+            color: #888;
+            max-width: 520px;
+            margin: 0 auto 24px auto;
+            line-height: 1.6;
+        }
+
+        .cta-section .btn-cta-primary {
+            background: #ed0026;
+            color: #fff;
+            padding: 10px 28px;
+            font-size: 11px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+            .cta-section .btn-cta-primary:hover {
+                background: #c9001f;
+                color: #fff;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(237, 0, 38, 0.25);
+            }
+
+            .cta-section .btn-cta-primary i {
+                margin-right: 6px;
+            }
+
+        .cta-section .btn-cta-outline {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 28px;
+            font-size: 11px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+            .cta-section .btn-cta-outline:hover {
+                border-color: #ed0026;
+                color: #ed0026;
+                transform: translateY(-2px);
+            }
+
+            .cta-section .btn-cta-outline i {
+                margin-right: 6px;
+            }
+
+        .cta-section .cta-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+
+    /* =====================================================
+                           TRUSTED BOTTOM
+        ===================================================== */
+
+    .trusted-bottom {
+        background: #0b0b0b;
+        padding: 16px 0;
+        border-bottom: 1px solid #202020;
+    }
+
+    .trusted-by-text {
+        color: #555;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .trusted-item {
+        color: #777;
+        font-size: 8px;
+        font-weight: 600;
+    }
+
+        .trusted-item i {
+            color: #ed0026;
+            font-size: 9px;
+            margin-right: 4px;
+        }
+
+
+    /* =====================================================
+                           RESPONSIVE
+        ===================================================== */
+
+    @@media (max-width: 991px) {
+
+        .team-section h2,
+        .expertise-section h2,
+        .working-section h2,
+        .technology-section h2,
+        .values-section h2,
+        .testimonials-section h2 {
+            font-size: 26px;
+        }
+    }
+
+    @@media (max-width: 575px) {
+
+        .team-section,
+        .expertise-section,
+        .working-section,
+        .technology-section,
+        .values-section,
+        .testimonials-section {
+            padding: 40px 0;
+        }
+
+            .team-section h2,
+            .expertise-section h2,
+            .working-section h2,
+            .technology-section h2,
+            .values-section h2,
+            .testimonials-section h2 {
+                font-size: 22px;
+            }
+
+        .team-card .team-avatar {
+            width: 64px;
+            height: 64px;
+            font-size: 22px;
+        }
+
+        .testimonial-card {
+            padding: 20px 16px;
+        }
+
+            .testimonial-card blockquote {
+                font-size: 14px;
+            }
+
+        .cta-section {
+            padding: 40px 0;
+        }
+
+            .cta-section h2 {
+                font-size: 22px;
+            }
+
+            .cta-section .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+    }
+
+</style>
+<section class="page-hero-custom bg-black"> 
+    <div class="container px-5"> 
+        <div class="row">
+        <div class="col-lg-12"> 
+            <div class="breadcrumb-custom"> 
+                <a asp-controller="Home" 
+                asp-action="Index">
+                    Home</a> <span>/</span> 
+                    <span>Team</span>
+                    </div> 
+                    <h1 class="text-danger">Our Team</h1> 
+                    <p> Meet the talented people behind Access Authority, working together to build innovative and reliable digital solutions. </p> 
+                </div> 
+                </div> 
+                </div> 
+                </section>
+<!-- =====================================================
+     OUR TEAM
+===================================================== -->
+
+<section class="team-section">
+
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-label justify-content-center">
+                <span></span>
+                OUR TEAM
+            </div>
+
+            <h2>
+                The People Behind <span>Access Authority</span>
+            </h2>
+
+            <p class="team-sub">
+                A dedicated team combining technology, strategy and creativity
+                to build reliable digital solutions for modern businesses.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- CEO -->
+            <div class="col-lg-3 col-md-6">
+
+                <div class="team-card">
+
+                    <div class="team-avatar">
+
+                        <img src="~/img/67.jpg"
+                             class="img-fluid rounded-circle"
+                             alt="CEO and Founder">
+
+                    </div>
+
+                    <h4>Rahul Mehta</h4>
+
+                    <div class="team-role">
+                        CEO &amp; Founder
+                    </div>
+
+                    <p>
+                        Provides strategic direction and leads the organization
+                        toward sustainable digital growth and innovation.
+                    </p>
+
+                    <div class="team-skills">
+                        <span>Leadership</span>
+                        <span>Strategy</span>
+                        <span>Growth</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CTO -->
+            <div class="col-lg-3 col-md-6">
+
+                <div class="team-card">
+
+                    <div class="team-avatar two">
+
+                        <img src="~/img/44.jpg"
+                             class="img-fluid rounded-circle"
+                             alt="Chief Technology Officer">
+
+                    </div>
+
+                    <h4>Priya Singh</h4>
+
+                    <div class="team-role">
+                        Chief Technology Officer
+                    </div>
+
+                    <p>
+                        Drives technology decisions and ensures our solutions
+                        are secure, scalable and built for long-term performance.
+                    </p>
+
+                    <div class="team-skills">
+                        <span>Technology</span>
+                        <span>Cloud</span>
+                        <span>Security</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ENGINEERING -->
+            <div class="col-lg-3 col-md-6">
+
+                <div class="team-card">
+
+                    <div class="team-avatar three">
+
+                        <img src="~/img/45.jpg"
+                             class="img-fluid rounded-circle"
+                             alt="Project and Engineering Lead">
+
+                    </div>
+
+                    <h4>Vikram Rao</h4>
+
+                    <div class="team-role">
+                        Project &amp; Engineering Lead
+                    </div>
+
+                    <p>
+                        Converts business requirements into dependable software
+                        solutions while managing development and delivery.
+                    </p>
+
+                    <div class="team-skills">
+                        <span>Development</span>
+                        <span>APIs</span>
+                        <span>DevOps</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT -->
+            <div class="col-lg-3 col-md-6">
+
+                <div class="team-card">
+
+                    <div class="team-avatar four">
+
+                        <img src="~/img/28.jpg"
+                             class="img-fluid rounded-circle"
+                             alt="Product and UI UX Lead">
+
+                    </div>
+
+                    <h4>Anjali Kapoor</h4>
+
+                    <div class="team-role">
+                        Product &amp; UI/UX Lead
+                    </div>
+
+                    <p>
+                        Shapes intuitive digital experiences by combining
+                        product thinking, user research and modern design.
+                    </p>
+
+                    <div class="team-skills">
+                        <span>UI/UX</span>
+                        <span>Product</span>
+                        <span>Research</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+ 
+</section>
+
+<!-- =====================================================
+     TEAM EXPERTISE
+===================================================== -->
+
+<section class="expertise-section">
+
+    
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-label justify-content-center">
+                <span></span>
+                TEAM EXPERTISE
+            </div>
+
+            <h2>
+                Skills That <span>Drive Results</span>
+            </h2>
+
+            <p class="section-sub">
+                Our multidisciplinary team brings together the expertise required
+                to design, develop and deliver complete digital solutions.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="expertise-card">
+
+                    <div class="expertise-icon">
+                        <i class="bi bi-code-slash"></i>
+                    </div>
+
+                    <h4>Software Development</h4>
+
+                    <p>
+                        Modern web applications, APIs and business platforms
+                        designed for performance, maintainability and scalability.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="expertise-card">
+
+                    <div class="expertise-icon">
+                        <i class="bi bi-cloud-check"></i>
+                    </div>
+
+                    <h4>Cloud &amp; Infrastructure</h4>
+
+                    <p>
+                        Reliable cloud-ready architecture and infrastructure
+                        solutions that support secure and scalable operations.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="expertise-card">
+
+                    <div class="expertise-icon">
+                        <i class="bi bi-window-stack"></i>
+                    </div>
+
+                    <h4>UI/UX &amp; Product</h4>
+
+                    <p>
+                        User-focused interfaces and product experiences that
+                        keep technology simple, intuitive and effective.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="expertise-card">
+
+                    <div class="expertise-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <h4>Security &amp; Quality</h4>
+
+                    <p>
+                        Security-conscious development and quality practices
+                        that help create dependable enterprise solutions.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</section>
+
+<!-- =====================================================
+     HOW OUR TEAM WORKS
+===================================================== -->
+
+<section class="working-section">
+
+    ```
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-label justify-content-center">
+                <span></span>
+                HOW WE WORK
+            </div>
+
+            <h2>
+                From Idea to <span>Digital Solution</span>
+            </h2>
+
+            <p class="section-sub">
+                Our teams work together through a clear and practical process
+                to turn business ideas into reliable technology.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="working-card">
+
+                    <div class="working-number">
+                        01
+                    </div>
+
+                    <h4>Understand</h4>
+
+                    <p>
+                        We understand your business goals, users, challenges
+                        and technical requirements before starting development.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="working-card">
+
+                    <div class="working-number">
+                        02
+                    </div>
+
+                    <h4>Plan &amp; Design</h4>
+
+                    <p>
+                        Our product and technical teams create the right
+                        architecture, user experience and development plan.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="working-card">
+
+                    <div class="working-number">
+                        03
+                    </div>
+
+                    <h4>Build &amp; Test</h4>
+
+                    <p>
+                        Developers build the solution while testing every
+                        important component for quality and reliability.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="working-card">
+
+                    <div class="working-number">
+                        04
+                    </div>
+
+                    <h4>Deliver &amp; Support</h4>
+
+                    <p>
+                        We deliver production-ready solutions and continue
+                        supporting improvements, maintenance and growth.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</section>
+
+<!-- =====================================================
+     TECHNOLOGY & DELIVERY
+===================================================== -->
+
+<section class="technology-section">
+
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-label justify-content-center">
+                <span></span>
+                TECHNOLOGY &amp; DELIVERY
+            </div>
+
+            <h2>
+                Built With the <span>Right Foundation</span>
+            </h2>
+
+            <p class="section-sub">
+                Access Authority combines modern development practices with
+                business-focused delivery to create technology that lasts.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-lg-6">
+
+                <div class="technology-box">
+
+                    <h4>
+                        Technology <span>Stack</span>
+                    </h4>
+
+                    <p>
+                        Our technical teams work across modern technologies
+                        to create secure, responsive and scalable applications.
+                    </p>
+
+                    <div class="technology-list">
+
+                        <span>ASP.NET Core</span>
+                        <span>C#</span>
+                        <span>Web API</span>
+                        <span>SQL Server</span>
+                        <span>JavaScript</span>
+                        <span>Bootstrap</span>
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>Cloud</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-6">
+
+                <div class="delivery-box">
+
+                    <div class="delivery-item">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <div>
+
+                            <h5>Business-Focused Solutions</h5>
+
+                            <p>
+                                Technology decisions are aligned with actual
+                                business requirements and measurable outcomes.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="delivery-item">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <div>
+
+                            <h5>Scalable Architecture</h5>
+
+                            <p>
+                                Solutions are structured to support future
+                                growth, changing requirements and new users.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="delivery-item">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <div>
+
+                            <h5>Quality-Driven Development</h5>
+
+                            <p>
+                                Development and testing work together to maintain
+                                reliability throughout the delivery lifecycle.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="delivery-item">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <div>
+
+                            <h5>Long-Term Partnership</h5>
+
+                            <p>
+                                Our relationship continues beyond launch through
+                                support, improvements and ongoing collaboration.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+   
+</section>
+
+<!-- =====================================================
+     TEAM VALUES
+===================================================== -->
+
+<section class="values-section">
+
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-label justify-content-center">
+                <span></span>
+                OUR VALUES
+            </div>
+
+            <h2>
+                What Defines <span>Our Team</span>
+            </h2>
+
+            <p class="section-sub">
+                The principles that guide the way our people build products,
+                solve problems and work with clients.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="value-card">
+
+                    <div class="value-icon">
+                        <i class="bi bi-lightbulb-fill"></i>
+                    </div>
+
+                    <h4>Innovation</h4>
+
+                    <p>
+                        We continuously explore better ways to solve complex
+                        business and technology challenges.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="value-card">
+
+                    <div class="value-icon">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+
+                    <h4>Collaboration</h4>
+
+                    <p>
+                        Designers, developers and business teams work together
+                        to create stronger solutions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="value-card">
+
+                    <div class="value-icon">
+                        <i class="bi bi-shield-lock-fill"></i>
+                    </div>
+
+                    <h4>Trust</h4>
+
+                    <p>
+                        We believe in transparent communication, responsible
+                        technology and dependable delivery.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="value-card">
+
+                    <div class="value-icon">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+
+                    <h4>Growth</h4>
+
+                    <p>
+                        We build solutions that help our clients and our team
+                        continuously move forward.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</section>
+
+<!-- =====================================================
+     TESTIMONIALS
+===================================================== -->
+
+<section class="testimonials-section">
+
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-label justify-content-center">
+                <span></span>
+                TESTIMONIALS
+            </div>
+
+            <h2>
+                What Our <span>Clients Say</span>
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4 justify-content-center mt-2">
+
+            <div class="col-lg-6">
+
+                <div class="testimonial-card">
+
+                    <div class="quote-icon">
+                        ✦
+                    </div>
+
+                    <blockquote>
+                        "Access Authority transformed our entire digital
+                        infrastructure. Their team's expertise and dedication
+                        are unmatched. We've seen a 3x increase in operational efficiency."
+                    </blockquote>
+
+                    <div class="client-info">
+
+                        <div class="client-review-avatar">
+
+                            <img src="~/img/32.jpg"
+                                 class="img-fluid rounded-circle"
+                                 alt="Suresh Kumar">
+
+                        </div>
+
+                        <div>
+
+                            <p class="client-name">
+                                Suresh Kumar
+                            </p>
+
+                            <p class="client-title">
+                                CEO, TechVision Inc.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-6">
+
+                <div class="testimonial-card">
+
+                    <div class="quote-icon">
+                        ✦
+                    </div>
+
+                    <blockquote>
+                        "Working with Access Authority has been a game-changer.
+                        Their AI solution helped us reduce costs by 40% while
+                        improving accuracy. Highly recommended!"
+                    </blockquote>
+
+                    <div class="client-info">
+
+                        <div class="client-review-avatar">
+
+                            <img src="~/img/28.jpg"
+                                 class="img-fluid rounded-circle"
+                                 alt="Neha Sharma">
+
+                        </div>
+
+                        <div>
+
+                            <p class="client-name">
+                                Neha Sharma
+                            </p>
+
+                            <p class="client-title">
+                                COO, FinCore Solutions
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</section>
+
+<!-- =====================================================
+     CTA SECTION
+===================================================== -->
+
+<section class="cta-section">
+
+    <div class="container px-5 text-center">
+
+        <div class="section-label justify-content-center">
+            <span></span>
+            JOIN US
+        </div>
+
+        <h2>
+            Join Us in Building <span>The Future</span>
+        </h2>
+
+        <p>
+            We're always looking for talented people who want to make a difference.
+            Explore careers with us and be part of something extraordinary.
+        </p>
+
+        <div class="cta-buttons">
+
+            <a href="#" class="btn-cta-primary">
+                <i class="bi bi-briefcase-fill"></i>
+                View Open Positions
+            </a>
+
+            <a href="#" class="btn-cta-outline">
+                <i class="bi bi-envelope-fill"></i>
+                Get in Touch
+            </a>
+
+        </div>
+
+    </div>
+   
+</section>
+
+<!-- =====================================================
+     TRUSTED BOTTOM BAR
+===================================================== -->
+
+<section class="trusted-bottom">
+
+    <div class="container">
+
+        <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
+
+            <span class="trusted-by-text">
+                TRUSTED BY
+            </span>
+
+            <span class="trusted-item">
+                <i class="bi bi-patch-check-fill"></i>
+                100+ Projects
+            </span>
+
+            <span class="trusted-item">
+                <i class="bi bi-patch-check-fill"></i>
+                98% Satisfaction
+            </span>
+
+            <span class="trusted-item">
+                <i class="bi bi-patch-check-fill"></i>
+                7+ Years
+            </span>
+
+            <span class="trusted-item">
+                <i class="bi bi-patch-check-fill"></i>
+                12+ Countries
+            </span>
+
+        </div>
+
+    </div>
+   
+</section>

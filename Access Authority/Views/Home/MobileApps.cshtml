@@ -1,0 +1,1446 @@
+﻿@{
+    ViewData["Title"] = "Mobile Apps";
+}
+
+<style>
+
+    /* =====================================================
+           BREADCRUMB
+        ===================================================== */
+
+    .breadcrumb-section {
+        background: #0d0d0d;
+        height: 50px;
+        display: flex;
+        align-items: center;
+    }
+
+    .breadcrumb {
+        margin: 0;
+    }
+
+    .breadcrumb-item {
+        font-size: 14px;
+    }
+
+        .breadcrumb-item a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: red;
+            font-weight: 600;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            color: #fff;
+        }
+
+
+    /* =====================================================
+           HERO
+        ===================================================== */
+
+    .hero {
+        min-height: 500px;
+        background: radial-gradient(circle at 80% 45%, rgba(237, 0, 28, 0.18), transparent 32%), linear-gradient(110deg, #0b090a 0%, #11090b 55%, #12090b 100%);
+        color: white;
+        padding: 65px 0 70px;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        padding-top: 25px;
+    }
+
+    .back-link {
+        color: #ed001c;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+        .back-link:hover {
+            color: #ff3348;
+        }
+
+    .hero-icon {
+        margin-top: 22px;
+        width: 70px;
+        height: 70px;
+        background: #20090d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        clip-path: polygon( 0 0, 82% 0, 100% 20%, 100% 100%, 20% 100%, 0 80% );
+        border: 1px solid rgba(237, 0, 28, 0.25);
+    }
+
+        .hero-icon i {
+            color: #ed001c;
+            font-size: 31px;
+        }
+
+    .hero h1 {
+        font-size: 54px;
+        font-weight: 700;
+        margin-top: 18px;
+        line-height: 1.1;
+        letter-spacing: -1px;
+    }
+
+        .hero h1 span {
+            color: #ed001c;
+        }
+
+    .hero-description {
+        color: #9b9b9b;
+        font-size: 18px;
+        line-height: 1.65;
+        max-width: 600px;
+        margin-top: 14px;
+    }
+
+    .hero-buttons {
+        margin-top: 25px;
+    }
+
+    .consultation-btn {
+        background: #ed001c;
+        color: #fff;
+        border: none;
+        padding: 13px 25px;
+        font-weight: 600;
+        border-radius: 2px;
+        transition: .3s ease;
+    }
+
+        .consultation-btn:hover {
+            background: #c90018;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+    .work-btn {
+        background: transparent;
+        color: #fff;
+        border: 1px solid #4b4b4b;
+        padding: 12px 24px;
+        border-radius: 2px;
+        transition: .3s ease;
+    }
+
+        .work-btn:hover {
+            border-color: #ed001c;
+            color: #ed001c;
+        }
+
+
+    /* =====================================================
+           HERO MOBILE APP FRAME
+        ===================================================== */
+
+    .hero-visual {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 15px 0;
+    }
+
+    .mobile-frame {
+        position: relative;
+        width: 215px;
+        height: 350px;
+        background: #050505;
+        border: 8px solid #242424;
+        border-radius: 35px;
+        padding: 8px;
+        box-shadow: 0 0 0 1px #555, 0 25px 60px rgba(0, 0, 0, .55), 0 0 55px rgba(237, 0, 28, .14);
+        transform: rotate(4deg);
+        transition: .4s ease;
+    }
+
+        .mobile-frame:hover {
+            transform: rotate(0deg) translateY(-8px);
+            box-shadow: 0 0 0 1px #777, 0 30px 70px rgba(0, 0, 0, .65), 0 0 65px rgba(237, 0, 28, .20);
+        }
+
+        .mobile-frame::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 75px;
+            height: 18px;
+            background: #050505;
+            border-radius: 0 0 12px 12px;
+            z-index: 3;
+        }
+
+        .mobile-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 25px;
+            display: block;
+        }
+
+    .mobile-frame-badge {
+        position: absolute;
+        right: -70px;
+        bottom: 50px;
+        background: #ed001c;
+        color: #fff;
+        padding: 10px 14px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        box-shadow: 0 8px 25px rgba(237, 0, 28, .25);
+    }
+
+        .mobile-frame-badge i {
+            margin-right: 5px;
+        }
+
+
+    /* =====================================================
+           COMMON
+        ===================================================== */
+
+    .section {
+        padding: 90px 0;
+    }
+
+    .section-title-small {
+        color: #ed001c;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .section-title {
+        font-size: 38px;
+        font-weight: 700;
+        line-height: 1.15;
+        color: #111;
+    }
+
+    .section-text {
+        color: #666;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+
+    /* =====================================================
+           WHAT WE DO
+        ===================================================== */
+
+    .what-we-do {
+        background: #fff;
+    }
+
+    .feature-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 25px;
+    }
+
+        .feature-list li {
+            margin-bottom: 17px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .feature-list i {
+            color: #ed001c;
+            margin-right: 9px;
+        }
+
+    .stats {
+        margin-top: 35px;
+    }
+
+    .stat-number {
+        font-size: 18px;
+        font-weight: 700;
+        color: #111;
+    }
+
+    .stat-text {
+        color: #777;
+        font-size: 12px;
+        margin-top: 3px;
+    }
+
+    .work-image-wrapper {
+        position: relative;
+        padding: 12px;
+        background: #f7f7f7;
+        border: 1px solid #e5e5e5;
+    }
+
+        .work-image-wrapper::after {
+            content: "";
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            right: -8px;
+            bottom: -8px;
+            border-right: 3px solid #ed001c;
+            border-bottom: 3px solid #ed001c;
+            pointer-events: none;
+        }
+
+    .work-image {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        border-radius: 2px;
+        display: block;
+    }
+
+    .work-link {
+        color: #ed001c;
+        text-decoration: none;
+        font-size: 13px;
+        padding: 10px 25px;
+        font-weight: 600;
+        display: inline-block;
+        border: 1px solid #ed001c;
+        margin-top: 18px;
+        transition: .3s ease;
+    }
+
+        .work-link:hover {
+            color: #fff;
+            background: #ed001c;
+        }
+
+
+    /* =====================================================
+           DIVIDER
+        ===================================================== */
+
+    .red-divider {
+        text-align: center;
+        color: #ed001c;
+        letter-spacing: 7px;
+        font-size: 12px;
+        margin: 0 auto;
+    }
+
+
+    /* =====================================================
+           PROCESS
+        ===================================================== */
+
+    .process-section {
+        background: #f7f7f7;
+    }
+
+    .process-card {
+        position: relative;
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        padding: 30px;
+        height: 100%;
+        transition: .3s ease;
+    }
+
+        .process-card:hover {
+            transform: translateY(-6px);
+            border-color: #ed001c;
+            box-shadow: 0 12px 30px rgba(0,0,0,.07);
+        }
+
+    .process-number {
+        color: #ed001c;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .service-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff0f2;
+        color: #ed001c;
+        font-size: 18px;
+    }
+
+    .process-card h4 {
+        font-size: 20px;
+        margin-top: 25px;
+        font-weight: 700;
+        color: #111;
+    }
+
+    .process-card p {
+        color: #777;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-top: 12px;
+    }
+
+
+    /* =====================================================
+           TECHNOLOGY
+        ===================================================== */
+
+    .technology {
+        padding: 80px 0;
+        background: #f8fafc;
+    }
+
+    .technology-box {
+        position: relative;
+        height: 130px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all .35s ease;
+    }
+
+        .technology-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #ed001c;
+            transition: width .35s ease;
+        }
+
+        .technology-box img {
+            max-width: 105px;
+            max-height: 70px;
+            object-fit: contain;
+            transition: .35s ease;
+        }
+
+        .technology-box:hover {
+            transform: translateY(-7px);
+            border-color: #ed001c;
+            box-shadow: 0 15px 35px rgba(0,0,0,.08);
+        }
+
+            .technology-box:hover::before {
+                width: 100%;
+            }
+
+            .technology-box:hover img {
+                transform: scale(1.08);
+            }
+
+
+    /* =====================================================
+           WHY US
+        ===================================================== */
+
+    .why-section {
+        background: #fff;
+    }
+
+    .why-box {
+        padding: 25px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+        .why-box h4 {
+            font-size: 19px;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .why-box p {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-top: 10px;
+        }
+
+
+    /* =====================================================
+           TESTIMONIAL
+        ===================================================== */
+
+    .testimonial-section {
+        padding: 70px 0;
+        background: #fff;
+    }
+
+    .testimonial {
+        background: #dbd4d6;
+        color: #141313;
+        padding: 55px 80px;
+        margin: 0;
+        position: relative;
+        border-left: 4px solid #ed001c;
+    }
+
+        .testimonial::before {
+            content: "“";
+            position: absolute;
+            top: 20px;
+            left: 35px;
+            color: #ed001c;
+            font-size: 70px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+    .testimonial-text {
+        color: #0e0101;
+        font-size: 17px;
+        line-height: 1.8;
+        font-style: italic;
+        margin: 0;
+    }
+
+    .profile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 28px;
+    }
+
+        .profile img {
+            width: 55px;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+    .profile-name {
+        font-weight: 700;
+        color: #111;
+    }
+
+    .profile-role {
+        color: #666;
+        font-size: 13px;
+        margin-top: 3px;
+    }
+
+
+    /* =====================================================
+           CTA
+        ===================================================== */
+
+    .cta-section {
+        background: #0d0d0d;
+        padding: 85px 0;
+        color: #fff;
+        text-align: center;
+    }
+
+        .cta-section h2 {
+            font-size: 42px;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            color: #999;
+            font-size: 17px;
+            margin-top: 12px;
+        }
+
+    .cta-buttons {
+        margin-top: 25px;
+    }
+
+    .services-btn {
+        color: #fff;
+        border: 1px solid #555;
+        padding: 13px 25px;
+        text-decoration: none;
+        margin-left: 8px;
+        transition: .3s ease;
+    }
+
+        .services-btn:hover {
+            color: #fff;
+            border-color: #ed001c;
+        }
+
+
+    /* =====================================================
+           WHATSAPP
+        ===================================================== */
+
+    .whatsapp {
+        position: fixed;
+        right: 27px;
+        bottom: 25px;
+        width: 49px;
+        height: 49px;
+        background: #20d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 25px;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0,0,0,.3);
+    }
+
+
+    /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+    @@media (max-width: 991px) {
+
+        .hero {
+            min-height: auto;
+            padding: 50px 0 60px;
+        }
+
+        .hero-content {
+            padding-top: 0;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+        }
+
+        .hero-visual {
+            margin-top: 45px;
+        }
+
+        .mobile-frame {
+            width: 220px;
+            height: 400px;
+        }
+
+        .mobile-frame-badge {
+            right: -45px;
+        }
+
+        .work-image {
+            margin-top: 40px;
+        }
+
+        .testimonial {
+            padding: 45px 50px;
+        }
+    }
+
+
+    @@media (max-width: 576px) {
+
+        .hero {
+            padding: 40px 0 50px;
+        }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+        .hero-description {
+            font-size: 16px;
+        }
+
+        .hero-buttons .btn {
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        .mobile-frame {
+            width: 195px;
+            height: 355px;
+            transform: rotate(2deg);
+        }
+
+        .mobile-frame-badge {
+            right: -35px;
+            font-size: 8px;
+            padding: 8px 10px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 32px;
+        }
+
+        .testimonial-section {
+            padding: 45px 0;
+        }
+
+        .testimonial {
+            padding: 45px 25px 35px;
+        }
+
+            .testimonial::before {
+                left: 15px;
+            }
+
+        .testimonial-text {
+            font-size: 15px;
+        }
+
+        .cta-section h2 {
+            font-size: 32px;
+        }
+
+        .cta-section p {
+            font-size: 15px;
+        }
+
+        .services-btn {
+            display: inline-block;
+            margin: 5px;
+        }
+    }
+
+</style>
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="container px-5">
+
+        <div class="row align-items-center">
+
+            <!-- LEFT CONTENT -->
+
+            <div class="col-lg-7">
+
+                <div class="hero-content">
+
+                    <div class="hero-icon">
+                        <i class="bi bi-phone"></i>
+                    </div>
+
+                    <h1>
+                        Mobile <span>Apps</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        We build powerful iOS and Android applications that
+                        deliver seamless user experiences, strong performance,
+                        and measurable business results.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-2 hero-buttons">
+
+                        <a href="#" class="btn consultation-btn">
+                            <i class="bi bi-send-fill"></i>
+                            &nbsp; Get a Free Quote
+                        </a>
+
+                        <a href="#process" class="btn work-btn">
+                            <i class="bi bi-arrow-down"></i>
+                            See Our Process
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT MOBILE APP FRAME -->
+
+            <div class="col-lg-5">
+
+                <div class="hero-visual">
+
+                    <div class="mobile-frame">
+
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=700&q=85&auto=format&fit=crop"
+                             alt="Mobile App Development">
+
+                        <div class="mobile-frame-badge">
+                            <i class="bi bi-phone-fill"></i>
+                            iOS & ANDROID
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+   
+</section>
+
+<!-- =====================================================
+     WHAT WE DO
+===================================================== -->
+
+<section class="section what-we-do">
+
+    <div class="container px-5">
+
+        <div class="row align-items-center">
+
+            <!-- LEFT CONTENT -->
+
+            <div class="col-lg-6">
+
+                <div class="section-title-small">
+                    What We Do
+                </div>
+
+                <h2 class="section-title mt-3">
+                    Mobile Experiences
+                    <span style="color:#ed001c;">That People Love</span>
+                </h2>
+
+                <p class="section-text mt-4">
+
+                    From startup ideas to enterprise applications, we design
+                    and develop mobile apps that are intuitive, scalable,
+                    secure, and built around your users.
+
+                </p>
+
+
+                <div class="d-flex flex-column flex-md-row gap-3">
+
+                    <ul class="feature-list">
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            iOS application development
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Android application development
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Cross-platform mobile apps
+                        </li>
+
+                    </ul>
+
+
+                    <ul class="feature-list">
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            UI/UX focused app design
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            API & backend integration
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            App maintenance & support
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="row stats">
+
+                    <div class="col-4">
+
+                        <div class="stat-number">
+                            30+
+                        </div>
+
+                        <div class="stat-text">
+                            Apps Delivered
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-4">
+
+                        <div class="stat-number">
+                            4.8/5
+                        </div>
+
+                        <div class="stat-text">
+                            Avg App Rating
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-4">
+
+                        <div class="stat-number">
+                            99%
+                        </div>
+
+                        <div class="stat-text">
+                            Client Satisfaction
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT IMAGE -->
+
+            <div class="col-lg-6">
+
+                <div class="work-image-wrapper">
+
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&q=85&auto=format&fit=crop"
+                         class="work-image"
+                         alt="iOS and Android App Development">
+
+                </div>
+
+                <a href="#" class="work-link">
+                    Explore Our Apps
+                    <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+  
+</section>
+
+<div class="red-divider">
+    ✦ ✦ ✦
+</div>
+
+<!-- =====================================================
+     PROCESS
+===================================================== -->
+
+<section class="section process-section" id="process">
+
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-title-small">
+                Our Process
+            </div>
+
+            <h2 class="section-title mt-3">
+                From Idea To App Store
+            </h2>
+
+            <p class="section-text mt-3">
+                A structured development process that turns your idea
+                into a successful mobile application.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 mt-4">
+
+            <!-- 01 -->
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="process-card">
+
+                    <div class="process-number">
+
+                        01
+
+                        <div class="service-icon float-end">
+                            <i class="bi bi-lightbulb"></i>
+                        </div>
+
+                    </div>
+
+                    <h4>
+                        Strategy
+                    </h4>
+
+                    <p>
+                        We understand your idea, users, business goals,
+                        and define the right mobile app strategy.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 02 -->
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="process-card">
+
+                    <div class="process-number">
+
+                        02
+
+                        <div class="service-icon float-end">
+                            <i class="bi bi-bezier2"></i>
+                        </div>
+
+                    </div>
+
+                    <h4>
+                        UI/UX Design
+                    </h4>
+
+                    <p>
+                        We create clean, intuitive interfaces and
+                        interactive prototypes for your users.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 03 -->
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="process-card">
+
+                    <div class="process-number">
+
+                        03
+
+                        <div class="service-icon float-end">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+
+                    </div>
+
+                    <h4>
+                        Development
+                    </h4>
+
+                    <p>
+                        Our developers build secure, scalable and
+                        high-performance iOS and Android applications.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 04 -->
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="process-card">
+
+                    <div class="process-number">
+
+                        04
+
+                        <div class="service-icon float-end">
+                            <i class="bi bi-cloud-arrow-up"></i>
+                        </div>
+
+                    </div>
+
+                    <h4>
+                        Launch
+                    </h4>
+
+                    <p>
+                        We test, deploy and publish your app with
+                        ongoing maintenance and support.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+   
+</section>
+
+<div class="red-divider">
+    ✦ ✦ ✦
+</div>
+
+<!-- =====================================================
+     TECHNOLOGY
+===================================================== -->
+
+<section class="section technology">
+
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-title-small">
+                Technology Stack
+            </div>
+
+            <h2 class="section-title mt-3">
+                Technologies We Use
+            </h2>
+
+            <p class="section-text mt-3">
+                Modern technologies for reliable and high-performance
+                mobile applications.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 mt-4">
+
+            <!-- Swift -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg"
+                         alt="Swift">
+
+                </div>
+
+            </div>
+
+
+            <!-- Kotlin -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg"
+                         alt="Kotlin">
+
+                </div>
+
+            </div>
+
+
+            <!-- Flutter -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+                         alt="Flutter">
+
+                </div>
+
+            </div>
+
+
+            <!-- React Native -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                         alt="React Native">
+
+                </div>
+
+            </div>
+
+
+            <!-- Firebase -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                         alt="Firebase">
+
+                </div>
+
+            </div>
+
+
+            <!-- Node.js -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                         alt="Node.js">
+
+                </div>
+
+            </div>
+
+
+            <!-- Android -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg"
+                         alt="Android">
+
+                </div>
+
+            </div>
+
+
+            <!-- Apple -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg"
+                         alt="Apple">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</section>
+
+<!-- =====================================================
+     WHY CHOOSE US
+===================================================== -->
+
+@* <section class="section why-section">
+
+    ```
+    <div class="container px-5">
+
+        <div class="row">
+
+            <div class="col-lg-5">
+
+                <div class="section-title-small">
+                    Why Choose Us
+                </div>
+
+                <h2 class="section-title mt-3">
+                    Apps Built For
+                    <span style="color:#ed001c;">Real Growth</span>
+                </h2>
+
+                <p class="section-text mt-4">
+                    We combine thoughtful design, modern technology and
+                    business strategy to create mobile applications that
+                    users enjoy and businesses can scale.
+                </p>
+
+            </div>
+
+
+            <div class="col-lg-7">
+
+                <div class="why-box">
+
+                    <h4>
+                        <i class="bi bi-speedometer2 me-2"
+                           style="color:#ed001c;"></i>
+                        High Performance
+                    </h4>
+
+                    <p>
+                        Fast loading, smooth animations and optimized
+                        performance across different devices.
+                    </p>
+
+                </div>
+
+
+                <div class="why-box">
+
+                    <h4>
+                        <i class="bi bi-shield-check me-2"
+                           style="color:#ed001c;"></i>
+                        Secure & Scalable
+                    </h4>
+
+                    <p>
+                        Secure architecture and scalable backend
+                        integration designed for growing businesses.
+                    </p>
+
+                </div>
+
+
+                <div class="why-box">
+
+                    <h4>
+                        <i class="bi bi-people me-2"
+                           style="color:#ed001c;"></i>
+                        User-Centered Design
+                    </h4>
+
+                    <p>
+                        Every screen is designed around usability,
+                        accessibility and a smooth customer experience.
+                    </p>
+
+                </div>
+
+
+                <div class="why-box">
+
+                    <h4>
+                        <i class="bi bi-headset me-2"
+                           style="color:#ed001c;"></i>
+                        Long-Term Support
+                    </h4>
+
+                    <p>
+                        From app launch to future improvements, our team
+                        remains available for continuous support.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    ```
+
+</section> *@
+
+<!-- =====================================================
+     TESTIMONIAL
+===================================================== -->
+
+<section class="testimonial-section">
+
+  
+    <div class="container px-5">
+
+        <div class="testimonial text-center">
+
+            <p class="testimonial-text">
+
+                "Access Authority transformed our idea into a powerful
+                mobile application. The team delivered a beautiful,
+                fast and user-friendly experience that our customers
+                genuinely enjoy."
+
+            </p>
+
+
+            <div class="profile">
+
+                <img src="https://randomuser.me/api/portraits/men/52.jpg"
+                     alt="Suresh Kumar">
+
+                <div>
+
+                    <div class="profile-name">
+                        Suresh Kumar
+                    </div>
+
+                    <div class="profile-role">
+                        CEO, TechVision Inc.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</section>
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta-section">
+
+  
+    <div class="container px-5">
+
+        <h2>
+            Ready To Build Your Mobile App?
+        </h2>
+
+        <p>
+            Let's turn your idea into a powerful iOS & Android
+            application that users love.
+        </p>
+
+
+        <div class="cta-buttons">
+
+            <a href="#" class="btn consultation-btn">
+                <i class="bi bi-phone-fill"></i>
+                Get a Free Quote
+            </a>
+
+
+            <a href="#process" class="btn services-btn">
+                See Our Process
+                <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+
+        </div>
+
+    </div>
+    
+</section>
+
+<!-- =====================================================
+     WHATSAPP
+===================================================== -->
+
+<a href="#"
+   class="whatsapp"
+   title="Chat on WhatsApp">
+
+    <i class="bi bi-whatsapp"></i>
+   
+
+</a>

@@ -1,0 +1,326 @@
+﻿@model List<Access_Authority.Models.CreateBlog>
+
+@{
+    Layout = "_Layout1";
+
+    var totalPosts = ViewBag.TotalPosts ?? 0;
+    var publishedPosts = Model?.Count(x => x.Status.ToLower() == "published") ?? 0;
+    var draftPosts = Model?.Count(x => x.Status.ToLower() == "draft") ?? 0;
+    var pendingPosts = Model?.Count(x => x.Status.ToLower() == "pending") ?? 0;
+
+    int currentPage = ViewBag.CurrentPage ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
+    int totalBlogs = ViewBag.TotalBlogs ?? 0;
+}
+<style>
+   
+    /* Dark Cards */
+    .card-dark {
+        background-color: #1c1c1c;
+        border: 1px solid #2a2a2a;
+        color: #e0e0e0;
+    }
+
+        .card-dark .card-header {
+            border-bottom: 1px solid #2a2a2a;
+            background-color: transparent;
+        }
+
+        .card-dark .card-footer {
+            border-top: 1px solid #2a2a2a;
+            background-color: transparent;
+        }
+
+    /* Dark Table */
+    .table-dark-custom {
+        color: #e0e0e0;
+        border-color: #2a2a2a;
+    }
+
+        .table-dark-custom td,
+        .table-dark-custom th {
+            border-color: #2a2a2a;
+            padding: 12px 16px;
+            vertical-align: middle;
+        }
+
+        .table-dark-custom tbody tr:hover {
+            background-color: #282828;
+        }
+
+        .table-dark-custom thead th {
+            background-color: #0a0a0a;
+            color: #a0a0a0;
+            font-weight: 600;
+            border-bottom: 2px solid #2a2a2a;
+        }
+
+    /* Dark form controls */
+    .form-control-dark {
+        background-color: #1c1c1c;
+        border: 1px solid #2a2a2a;
+        color: #ffffff;
+    }
+
+        .form-control-dark:focus {
+            background-color: #1c1c1c;
+            border-color: #0d6efd;
+            color: #ffffff;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+    .status-badge {
+        font-size: 0.7rem;
+       
+    }
+
+    /* Dark pagination */
+    .page-link-dark {
+        background-color: #1c1c1c;
+        border-color: #2a2a2a;
+        color: #e0e0e0;
+    }
+
+        .page-link-dark:hover {
+            background-color: #2a2a2a;
+            border-color: #3a3a3a;
+            color: #ffffff;
+        }
+
+    .page-item.active .page-link-dark {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        color: #ffffff;
+    }
+
+  
+</style>
+
+    <div class="container bg-dark px-5">
+        <div class="row ">
+
+         
+
+            <!-- ========== MAIN CONTENT (Blog Page) ========== -->
+        <main class=" p-4">
+
+                <!-- Top Bar -->
+                <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+                    <h4 class="text-white fw-light">
+                        Blog <span class="text-secondary">/ All Posts</span>
+                    </h4>
+                   
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="row g-3 mb-4">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card card-dark p-3">
+                            <span class="text-secondary">Total Posts</span>
+                        <h2 class="text-white fw-bold">@totalPosts</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card card-dark p-3">
+                            <span class="text-secondary">Published</span>
+                        <h2 class="text-success fw-bold">@publishedPosts</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card card-dark p-3">
+                            <span class="text-secondary">Drafts</span>
+                        <h2 class="text-warning fw-bold">@draftPosts</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card card-dark p-3">
+                            <span class="text-secondary">Pending</span>
+                        <h2 class="text-white fw-bold">@pendingPosts</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Posts Table -->
+                <div class="card card-dark">
+                    <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
+                        <span class="fw-semibold">Recent Blog Posts</span>
+                        @* <button class="btn btn-primary btn-sm">
+                            <i class="bi bi-plus-lg"></i> Create New
+                        </button> *@
+                    <a asp-action="CreateBlog" class="btn btn-danger btn-sm"> <i class="bi bi-plus-lg"></i> Create New </a>
+                    </div>
+
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table  table-hover table-dark">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Title</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th class="text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                            <tbody>
+
+                                @if (Model != null && Model.Any())
+                                {
+                                    int count = 1;
+
+                                    foreach (var blog in Model)
+                                    {
+                                        <tr>
+                                            <td>@count</td>
+
+                                            <td class="text-white fw-medium">
+                                                @blog.Title
+                                            </td>
+
+                                            <td>
+                                                @blog.Category
+                                            </td>
+
+                                            <td>
+                                                @if (blog.Status.ToLower() == "published")
+                                                {
+                                                    <span class="badge bg-success status-badge">
+                                                        Published
+                                                    </span>
+                                                }
+                                                else if (blog.Status.ToLower() == "draft")
+                                                {
+                                                    <span class="badge bg-warning text-dark status-badge">
+                                                        Draft
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-secondary status-badge">
+                                                        @blog.Status
+                                                    </span>
+                                                }
+                                            </td>
+
+                                            <td>
+                                                @blog.CreatedDate.ToLocalTime().ToString("dd MMM, yyyy")
+                                            </td>
+
+                                            <td class="text-center">
+
+                                                <!-- VIEW -->
+                                                <a asp-action="ViewBlog"
+                                                   asp-route-id="@blog.Id"
+                                                   class="btn btn-outline-secondary btn-sm"
+                                                   title="View">
+                                                    <i class="bi bi-eye"></i>
+                                                </a>
+
+                                                <!-- DELETE -->
+                                                <form asp-action="DeleteBlog"
+                                                      asp-route-id="@blog.Id"
+                                                      method="post"
+                                                      class="d-inline delete-blog-form">
+
+                                                    @Html.AntiForgeryToken()
+
+                                                    <button type="submit"
+                                                            class="btn btn-outline-danger btn-sm"
+                                                            title="Delete">
+                                                        <i class="bi bi-trash3"></i>
+                                                    </button>
+
+                                                </form>
+
+                                            </td>
+                                        </tr>
+
+                                        count++;
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="6"
+                                            class="text-center text-secondary py-4">
+                                            No blog posts found.
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Table Footer with Pagination -->
+                    <div class="card-footer d-flex flex-wrap justify-content-between align-items-center">
+                    @* <span class="text-secondary">
+                        Showing @((currentPage - 1) * 5 + 1)
+                        -
+                        @(Math.Min(currentPage * 5, totalBlogs))
+                        of @totalBlogs posts
+                    </span> *@
+                    <div class="text-secondary small mt-2">
+                        Page @currentPage of @totalPages
+                    </div>
+                        <nav>
+                        <ul class="pagination pagination-sm m-0">
+
+                            <!-- Previous -->
+                            <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                                <a class="page-link page-link-dark"
+                                   asp-action="Blog"
+                                   asp-route-page="@(currentPage - 1)">
+                                    Previous
+                                </a>
+                            </li>
+
+                            <!-- Page Numbers -->
+                            @for (int i = 1; i <= totalPages; i++)
+                            {
+                                <li class="page-item @(i == currentPage ? "active" : "")">
+                                    <a class="page-link page-link-dark"
+                                       asp-action="Blog"
+                                       asp-route-page="@i">
+                                        @i
+                                    </a>
+                                </li>
+                            }
+
+                            <!-- Next -->
+                            <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                                <a class="page-link page-link-dark"
+                                   asp-action="Blog"
+                                   asp-route-page="@(currentPage + 1)">
+                                    Next
+                                </a>
+                            </li>
+                           
+                        </ul>
+                       
+                        </nav>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+@if (TempData["Success"] != null)
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: '@TempData["Success"]',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true
+            });
+        });
+    </script>
+}
+}
+   

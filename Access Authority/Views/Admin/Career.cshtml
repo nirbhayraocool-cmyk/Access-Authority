@@ -1,0 +1,1085 @@
+﻿@{
+    var applications = ViewBag.CareerApplications
+        as List<Access_Authority.Models.CareerViewModel>;
+
+}
+@model List<Access_Authority.Models.CareerPosition>
+@{
+    Layout = "_Layout1";
+    var totalPositions = Model?.Count ?? 0;
+    var openPositions = Model?.Count(x => x.Status == "Open") ?? 0;
+    var closedPositions = Model?.Count(x => x.Status == "Closed") ?? 0;
+}
+
+    <style>
+  
+        .card-dark {
+            background-color: #1c1c1c;
+            border: 1px solid #2a2a2a;
+            color: #e0e0e0;
+        }
+
+            .card-dark .card-header {
+                border-bottom: 1px solid #2a2a2a;
+                background-color: transparent;
+            }
+
+        /* Dark Table */
+        .table-dark-custom {
+            color: #e0e0e0;
+            border-color: #2a2a2a;
+        }
+
+            .table-dark-custom td,
+            .table-dark-custom th {
+                border-color: #2a2a2a;
+                padding: 12px 16px;
+                vertical-align: middle;
+            }
+
+            .table-dark-custom tbody tr:hover {
+                background-color: #282828;
+            }
+
+            .table-dark-custom thead th {
+                background-color: #0a0a0a;
+                color: #a0a0a0;
+                font-weight: 600;
+            }
+
+        /* Dark Form Controls */
+        .form-control-dark,
+        .form-select-dark {
+            background-color: #121212;
+            border: 1px solid #2a2a2a;
+            color: #ffffff;
+        }
+
+            .form-control-dark:focus,
+            .form-select-dark:focus {
+                background-color: #121212;
+                border-color: #0d6efd;
+                color: #ffffff;
+                box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+            }
+
+            .form-control-dark::placeholder {
+                color: #6c757d;
+            }
+
+        .form-label {
+            color: #b0b0b0;
+            font-weight: 500;
+        }
+
+        /* Dark Modal */
+        .modal-content {
+            background-color: #1c1c1c;
+            border: 1px solid #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        .modal-header,
+        .modal-footer {
+            border-color: #2a2a2a;
+        }
+
+        .btn-close {
+            filter: invert(1);
+        }
+
+        .status-badge {
+            font-size: 0.7rem;
+            padding: 5px 12px;
+        }
+
+        @@media (max-width: 768px) {
+            .sidebar
+
+        {
+            min-height: auto;
+            margin-bottom: 20px;
+        }
+
+        }
+    </style>
+
+
+<body class="bg-dark">
+    <div class="container px-5">
+        <div class="row g-0">
+
+           
+            <main class="col p-4">
+
+                <!-- Page Header -->
+                <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+                    <h4 class="text-white fw-light">Career <span class="text-secondary">/ Positions</span></h4>
+                    
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#addCareerModal">
+                        <i class="bi bi-plus-lg"></i> Add New Position
+                    </button>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="row g-3 mb-4">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card card-dark p-3">
+                            <span class="text-secondary">Total Positions</span>
+                            <h2 class="text-white fw-bold">
+                                @ViewBag.TotalPositions
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card card-dark p-3">
+                            <span class="text-secondary">Open</span>
+                            <h2 class="text-success fw-bold">
+                                @openPositions
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card card-dark p-3">
+                            <span class="text-secondary">Closed</span>
+                            <h2 class="text-danger fw-bold">
+                                @closedPositions
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card card-dark p-3"
+                             role="button"
+                             data-bs-toggle="modal"
+                             data-bs-target="#applicantsModal"
+                             style="cursor: pointer;">
+
+                            <span class="text-secondary">
+                                Applicants
+                            </span>
+
+                            <h2 class="text-primary fw-bold">
+                                @ViewBag.TotalApplicants
+                            </h2>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Applicants Modal -->
+                <div class="modal fade" id="applicantsModal" tabindex="-1" aria-hidden="true">
+
+                    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+
+                                <!-- LEFT -->
+                                <div>
+                                    <h5 class="modal-title text-white">
+                                        <i class="bi bi-people text-primary me-2"></i>
+                                        Career Applications
+                                    </h5>
+
+                                    <small class="text-secondary">
+                                        All applicants who submitted the career application
+                                    </small>
+                                </div>
+
+                                <!-- RIGHT -->
+                                <div class="d-flex align-items-center gap-2">
+
+                                    <!-- POSITION DROPDOWN -->
+                                    <form asp-controller="Admin"
+                                          asp-action="Career"
+                                          method="get"
+                                          class="m-0">
+
+                                        <!-- Position pagination ko preserve kare -->
+                                        <input type="hidden"
+                                               name="page"
+                                               value="@ViewBag.CurrentPage" />
+
+                                        <!-- Filter change hone par applicant page 1 se start -->
+                                        <input type="hidden"
+                                               name="applicantPage"
+                                               value="1" />
+
+                                        <select name="positionId"
+                                                class="form-select form-select-dark"
+                                                style="width:220px;"
+                                                onchange="this.form.submit()">
+
+                                            <option value="">All Positions</option>
+
+                                            @foreach (var position in ViewBag.AllCareerPositions)
+                                            {
+                                                if (ViewBag.SelectedPositionId == position.Id)
+                                                {
+                                                    <option value="@position.Id" selected>
+                                                        @position.JobTitle
+                                                    </option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@position.Id">
+                                                        @position.JobTitle
+                                                    </option>
+                                                }
+                                            }
+
+                                        </select>
+
+                                    </form>
+
+                                    <!-- CLOSE -->
+                                    <button type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal">
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="modal-body">
+
+                                @if (applications != null && applications.Any())
+                                {
+                                    <div class="table-responsive">
+
+                                        <table class="table table-dark table-hover align-middle">
+
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Applicant</th>
+                                                    <th>Position</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th>LinkedIn</th>
+                                                    <th>Resume</th>
+                                                    <th>Applied At</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+
+                                                @{
+                                                    int applicantCount = 1;
+                                                }
+
+                                                @foreach (var applicant in applications)
+                                                {
+                                                    <tr>
+
+                                                        <td>
+                                                            @applicantCount
+                                                        </td>
+
+                                                        <td>
+                                                            <strong class="text-white">
+                                                                @applicant.FullName
+                                                            </strong>
+                                                        </td>
+
+                                                        <td>
+                                                            @if (applicant.CareerPosition != null)
+                                                            {
+                                                                <span class="badge bg-primary">
+                                                                    @applicant.CareerPosition.JobTitle
+                                                                </span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="text-secondary">N/A</span>
+                                                            }
+                                                        </td>
+
+                                                        <td>
+                                                            @applicant.EmailAddress
+                                                        </td>
+
+                                                        <td>
+                                                            @applicant.PhoneNumber
+                                                        </td>
+
+                                                        <td>
+                                                            @if (!string.IsNullOrEmpty(applicant.LinkedInProfile))
+                                                            {
+                                                                <a href="@applicant.LinkedInProfile"
+                                                                   target="_blank"
+                                                                   class="btn btn-outline-primary btn-sm">
+                                                                    <i class="bi bi-linkedin"></i>
+                                                                    View
+                                                                </a>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="text-secondary">
+                                                                    N/A
+                                                                </span>
+                                                            }
+                                                        </td>
+
+                                                        <td>
+                                                            @if (!string.IsNullOrEmpty(applicant.ResumeFilePath))
+                                                            {
+                                                                <a href="@applicant.ResumeFilePath"
+                                                                   target="_blank"
+                                                                   class="btn btn-danger btn-sm">
+                                                                    <i class="bi bi-file-earmark-text"></i>
+                                                                    Resume
+                                                                </a>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="text-secondary">
+                                                                    N/A
+                                                                </span>
+                                                            }
+                                                        </td>
+
+                                                        <td>
+                                                            <span class="text-secondary">
+                                                                @applicant.AppliedAt.ToString("dd MMM yyyy")
+                                                            </span>
+
+                                                            <br />
+
+                                                            <small class="text-secondary">
+                                                                @applicant.AppliedAt.ToString("hh:mm tt")
+                                                            </small>
+                                                        </td>
+                                                        <td class="text-center">
+
+                                                            <!-- VIEW -->
+                                                            <button type="button"
+                                                                    class="btn btn-outline-primary btn-sm view-application"
+                                                                    data-id="@applicant.Id">
+                                                                <i class="bi bi-eye"></i>
+                                                                View
+                                                            </button>
+
+                                                            <!-- DELETE -->
+                                                            <form asp-controller="Admin"
+                                                                  asp-action="DeleteApplication"
+                                                                  asp-route-id="@applicant.Id"
+                                                                  method="post"
+                                                                  class="d-inline delete-application-form">
+
+                                                                @Html.AntiForgeryToken()
+
+                                                                <button type="submit"
+                                                                        class="btn btn-outline-danger btn-sm">
+                                                                    <i class="bi bi-trash3"></i>
+                                                                    Delete
+                                                                </button>
+
+                                                            </form>
+
+                                                        </td>
+                                                    </tr>
+
+                                                    applicantCount++;
+                                                }
+
+                                            </tbody>
+
+                                        </table>
+                                     
+                                        @{
+                                            int applicantCurrentPage = ViewBag.ApplicantCurrentPage ?? 1;
+                                            int applicantTotalPages = ViewBag.ApplicantTotalPages ?? 1;
+                                        }
+
+                                        <div class="d-flex justify-content-between align-items-center mt-3">
+
+                                            <span class="text-secondary">
+                                                Page @applicantCurrentPage of @applicantTotalPages
+                                            </span>
+
+                                            <nav>
+                                                <ul class="pagination pagination-sm m-0">
+
+                                                    <!-- PREVIOUS -->
+                                                    <li class="page-item @(applicantCurrentPage <= 1 ? "disabled" : "")">
+
+                                                        @if (applicantCurrentPage > 1)
+                                                        {
+                                                            <a class="page-link"
+                                                               asp-controller="Admin"
+                                                               asp-action="Career"
+                                                               asp-route-page="@ViewBag.CurrentPage"
+                                                               asp-route-applicantPage="@(applicantCurrentPage - 1)"
+                                                               style="background:#1c1c1c;
+                                      border-color:#2a2a2a;
+                                      color:#e0e0e0;">
+                                                                Prev
+                                                            </a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="page-link"
+                                                                  style="background:#1c1c1c;
+                                         border-color:#2a2a2a;
+                                         color:#666;">
+                                                                Prev
+                                                            </span>
+                                                        }
+
+                                                    </li>
+
+
+                                                    <!-- PAGE NUMBERS -->
+                                                    @for (int i = 1; i <= applicantTotalPages; i++)
+                                                    {
+                                                        <li class="page-item @(i == applicantCurrentPage ? "active" : "")">
+
+                                                            <a class="page-link"
+                                                               asp-controller="Admin"
+                                                               asp-action="Career"
+                                                               asp-route-page="@ViewBag.CurrentPage"
+                                                               asp-route-applicantPage="@i"
+                                                               style="background:@(i == applicantCurrentPage ? "#0d6efd" : "#1c1c1c");
+                                      border-color:@(i == applicantCurrentPage ? "#0d6efd" : "#2a2a2a");
+                                      color:#fff;">
+                                                                @i
+                                                            </a>
+
+                                                        </li>
+                                                    }
+
+
+                                                    <!-- NEXT -->
+                                                    <li class="page-item @(applicantCurrentPage >= applicantTotalPages ? "disabled" : "")">
+
+                                                        @if (applicantCurrentPage < applicantTotalPages)
+                                                        {
+                                                            <a class="page-link"
+                                                               asp-controller="Admin"
+                                                               asp-action="Career"
+                                                               asp-route-page="@ViewBag.CurrentPage"
+                                                               asp-route-applicantPage="@(applicantCurrentPage + 1)"
+                                                               style="background:#1c1c1c;
+                                      border-color:#2a2a2a;
+                                      color:#e0e0e0;">
+                                                                Next
+                                                            </a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="page-link"
+                                                                  style="background:#1c1c1c;
+                                         border-color:#2a2a2a;
+                                         color:#666;">
+                                                                Next
+                                                            </span>
+                                                        }
+
+                                                    </li>
+
+                                                </ul>
+                                            </nav>
+
+                                        </div>
+                                     
+                                    </div>
+                                
+                                }
+                                else
+                                {
+                                    <div class="text-center py-5">
+
+                                        <i class="bi bi-person-x fs-1 text-secondary"></i>
+
+                                        <h5 class="text-white mt-3">
+                                            No Applications
+                                        </h5>
+
+                                        <p class="text-secondary mb-0">
+                                            No career applications have been submitted yet.
+                                        </p>
+
+                                    </div>
+                                }
+
+                            </div>
+
+
+                            <div class="modal-footer">
+
+                                <span class="text-secondary me-auto">
+                                    Total Applicants:
+                                    <strong class="text-white">
+                                        @ViewBag.TotalApplicants
+                                    </strong>
+                                </span>
+
+                                <button type="button"
+                                        class="btn btn-secondary"
+                                        data-bs-dismiss="modal">
+                                    Close
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- Career Table -->
+                <div class="card card-dark">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span class="fw-semibold">All Positions</span>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Position Title</th>
+                                        @* <th>Department</th> *@
+                                        <th>Location</th>
+                                        <th>Type</th>
+                                        <th>Status</th>
+                                        <th>Posted Date</th>
+                                        <th class="text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null && Model.Any())
+                                    {
+                                        int count = 1;
+
+                                        foreach (var position in Model)
+                                        {
+                                            <tr>
+                                                <td>@count</td>
+
+                                                <td class="text-white fw-medium">
+                                                    @position.JobTitle
+                                                </td>
+
+                                                @* <td>
+                                                    -
+                                                </td> *@
+
+                                                <td>
+                                                    @position.Location
+                                                </td>
+
+                                                <td>
+                                                    @position.Type
+                                                </td>
+
+                                                <td>
+                                                    @if (position.Status == "Open")
+                                                    {
+                                                        <span class="badge bg-success status-badge">
+                                                            Open
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="badge bg-secondary status-badge">
+                                                            Closed
+                                                        </span>
+                                                    }
+                                                </td>
+
+                                                <td>
+                                                    @position.PostedDate.ToString("MMM dd, yyyy")
+                                                </td>
+
+                                                <td class="text-center">
+                                                    <a asp-controller="Admin"
+                                                       asp-action="EditPosition"
+                                                       asp-route-id="@position.Id"
+                                                       class="btn btn-outline-primary btn-sm">
+                                                        <i class="bi bi-pencil"></i>
+                                                    </a>
+
+                                                    <!-- DELETE -->
+                                                    <form asp-controller="Admin"
+                                                          asp-action="DeletePosition"
+                                                          asp-route-id="@position.Id"
+                                                          method="post"
+                                                          class="d-inline delete-position-form">
+
+                                                        @Html.AntiForgeryToken()
+
+                                                        <button type="submit"
+                                                                class="btn btn-outline-danger btn-sm">
+                                                            <i class="bi bi-trash3"></i>
+                                                        </button>
+
+                                                    </form>
+                                                </td>
+                                            </tr>
+
+                                            count++;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="8" class="text-center text-secondary py-4">
+                                                No positions available.
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                   
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+
+                        @{
+                            int currentPage = ViewBag.CurrentPage ?? 1;
+                            int totalPages = ViewBag.TotalPages ?? 1;
+                        }
+
+                        <span class="text-secondary">
+                            Page @currentPage of @totalPages
+                        </span>
+
+                        <nav>
+                            <ul class="pagination pagination-sm m-0">
+
+                                <!-- PREVIOUS -->
+                                <li class="page-item @(currentPage <= 1 ? "disabled" : "")">
+
+                                    @if (currentPage > 1)
+                                    {
+                                        <a class="page-link"
+                                           asp-controller="Admin"
+                                           asp-action="Career"
+                                           asp-route-page="@(currentPage - 1)"
+                                           style="background:#1c1c1c;
+                                  border-color:#2a2a2a;
+                                  color:#e0e0e0;">
+                                            Prev
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <span class="page-link"
+                                              style="background:#1c1c1c;
+                                     border-color:#2a2a2a;
+                                     color:#666;">
+                                            Prev
+                                        </span>
+                                    }
+
+                                </li>
+
+                                <!-- PAGE NUMBERS -->
+                                @for (int i = 1; i <= totalPages; i++)
+                                {
+                                    <li class="page-item @(i == currentPage ? "active" : "")">
+
+                                        <a class="page-link"
+                                           asp-controller="Admin"
+                                           asp-action="Career"
+                                           asp-route-page="@i"
+                                           style="background:@(i == currentPage ? "#0d6efd" : "#1c1c1c");
+                                  border-color:@(i == currentPage ? "#0d6efd" : "#2a2a2a");
+                                  color:#fff;">
+                                            @i
+                                        </a>
+
+                                    </li>
+                                }
+
+                                <!-- NEXT -->
+                                <li class="page-item @(currentPage >= totalPages ? "disabled" : "")">
+
+                                    @if (currentPage < totalPages)
+                                    {
+                                        <a class="page-link"
+                                           asp-controller="Admin"
+                                           asp-action="Career"
+                                           asp-route-page="@(currentPage + 1)"
+                                           style="background:#1c1c1c;
+                                  border-color:#2a2a2a;
+                                  color:#e0e0e0;">
+                                            Next
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <span class="page-link"
+                                              style="background:#1c1c1c;
+                                     border-color:#2a2a2a;
+                                     color:#666;">
+                                            Next
+                                        </span>
+                                    }
+
+                                </li>
+
+                            </ul>
+                        </nav>
+
+                    </div>
+                
+
+                </div>
+
+            </main>
+        </div>
+    </div>
+   
+<div class="modal fade" id="addCareerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title text-white">
+                    <i class="bi bi-person-plus text-primary me-2"></i>
+                    Career Application
+                </h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+            </div>
+
+                <form asp-controller="Admin"
+                      asp-action="AddPosition"
+                      method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="mb-3">
+                        <label for="posTitle" class="form-label">Job Title <span class="text-danger">*</span></label>
+                        <input type="text"
+                               class="form-control form-control-dark"
+                               id="posTitle"
+                               name="JobTitle"
+                               placeholder="e.g. Senior Frontend Developer"
+                               required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="posDesc" class="form-label">Description <span class="text-danger">*</span></label>
+                        <textarea class="form-control form-control-dark"
+                                  id="posDesc"
+                                  name="Description"
+                                  rows="3"
+                                  placeholder="Brief description of the role..."
+                                  required></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="posLocation" class="form-label">Location</label>
+                            <input type="text"
+                                   class="form-control form-control-dark"
+                                   id="posLocation"
+                                   name="Location"
+                                   placeholder="Remote / New York" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="posType" class="form-label">Type</label>
+                            <select class="form-select form-select-dark"
+                                    id="posType"
+                                    name="Type">
+
+                                <option value="Full-time">Full-time</option>
+                                <option value="Part-time">Part-time</option>
+                                <option value="Contract">Contract</option>
+                                <option value="Internship">Internship</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger w-100  mb-2" >
+                        <i class="bi bi-send"></i> Publish Position
+                    </button>
+                </form>
+
+        </div>
+    </div>
+</div>
+    <div class="modal fade" id="viewApplicationModal" tabindex="-1">
+
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title text-white">
+                        <i class="bi bi-person-vcard text-primary me-2"></i>
+                        Application Details
+                    </h5>
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <label class="form-label">Full Name</label>
+                            <div id="viewFullName" class="text-white"></div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Email</label>
+                            <div id="viewEmail" class="text-white"></div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Phone</label>
+                            <div id="viewPhone" class="text-white"></div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Position</label>
+                            <div id="viewPosition" class="text-white"></div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">LinkedIn</label>
+                            <div id="viewLinkedIn"></div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Resume</label>
+                            <div id="viewResume"></div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Applied At</label>
+                            <div id="viewAppliedAt" class="text-white"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (TempData["Success"] != null)
+    {
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                Swal.fire({
+                    icon: "success",
+                    title: "Success!",
+                    text: "@TempData["Success"]",
+                    confirmButtonText: "OK"
+                });
+            });
+        </script>
+    }
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            document.querySelectorAll(".view-application").forEach(function (button) {
+
+                button.addEventListener("click", async function () {
+
+                    const id = this.getAttribute("data-id");
+
+                    try {
+
+                        const response = await fetch(
+                            `/Admin/ViewApplication?id=${id}`
+                        );
+
+                        if (!response.ok) {
+                            throw new Error("Application not found");
+                        }
+
+                        const data = await response.json();
+
+                        document.getElementById("viewFullName").textContent =
+                            data.fullName || "N/A";
+
+                        document.getElementById("viewEmail").textContent =
+                            data.emailAddress || "N/A";
+
+                        document.getElementById("viewPhone").textContent =
+                            data.phoneNumber || "N/A";
+
+                        document.getElementById("viewAppliedAt").textContent =
+                            data.appliedAt
+                                ? new Date(data.appliedAt).toLocaleString()
+                                : "N/A";
+
+
+                        // LinkedIn
+                        if (data.linkedInProfile) {
+
+                            document.getElementById("viewLinkedIn").innerHTML =
+                                `<a href="${data.linkedInProfile}"
+                                    target="_blank"
+                                    class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-linkedin"></i>
+                                    Open LinkedIn
+                                </a>`;
+
+                        } else {
+
+                            document.getElementById("viewLinkedIn").innerHTML =
+                                `<span class="text-secondary">N/A</span>`;
+
+                        }
+
+
+                        // Resume
+                        if (data.resumeFilePath) {
+
+                            document.getElementById("viewResume").innerHTML =
+                                `<a href="${data.resumeFilePath}"
+                                    target="_blank"
+                                    class="btn btn-danger btn-sm">
+                                    <i class="bi bi-file-earmark-text"></i>
+                                    View Resume
+                                </a>`;
+
+                        } else {
+
+                            document.getElementById("viewResume").innerHTML =
+                                `<span class="text-secondary">N/A</span>`;
+
+                        }
+
+
+                        // Position
+                           document.getElementById("viewPosition").textContent =
+        data.position || "N/A";
+
+
+                        const modal =
+                            new bootstrap.Modal(
+                                document.getElementById("viewApplicationModal")
+                            );
+
+                        modal.show();
+
+                    }
+                    catch (error) {
+
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error",
+                            text: "Unable to load application details."
+                        });
+
+                    }
+
+                });
+
+            });
+
+
+            // DELETE CONFIRMATION
+            document.querySelectorAll(".delete-application-form")
+                .forEach(function (form) {
+
+                    form.addEventListener("submit", function (e) {
+
+                        e.preventDefault();
+
+                        Swal.fire({
+                            title: "Are you sure?",
+                            text: "This application will be permanently deleted!",
+                            icon: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#dc3545",
+                            cancelButtonColor: "#6c757d",
+                            confirmButtonText: "Yes, delete it!",
+                            cancelButtonText: "Cancel"
+                        }).then((result) => {
+
+                            if (result.isConfirmed) {
+                                form.submit();
+                            }
+
+                        });
+
+                    });
+
+                });
+
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            document.querySelectorAll(".delete-position-form").forEach(function (form) {
+
+                form.addEventListener("submit", function (e) {
+
+                    e.preventDefault();
+
+                    Swal.fire({
+                        title: "Are you sure?",
+                        text: "This position will be permanently deleted!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#dc3545",
+                        cancelButtonColor: "#6c757d",
+                        confirmButtonText: "Yes, delete it!",
+                        cancelButtonText: "Cancel"
+                    }).then((result) => {
+
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+
+                    });
+
+                });
+
+            });
+
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- tumhara existing JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const params = new URLSearchParams(window.location.search);
+            const applicantPage = params.get("applicantPage");
+
+            if (applicantPage) {
+
+                const applicantsModal =
+                    document.getElementById("applicantsModal");
+
+                if (applicantsModal) {
+
+                    const modal =
+                        new bootstrap.Modal(applicantsModal);
+
+                    modal.show();
+                }
+            }
+
+        });
+    </script>
+   
+</body>

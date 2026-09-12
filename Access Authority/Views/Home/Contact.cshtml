@@ -1,0 +1,1019 @@
+﻿@model Access_Authority.Models.ContactViewModel
+@{
+    ViewData["Title"] = "Contact";
+}
+<style>
+
+   
+    .contact-success-message {
+        width: 100%;
+        padding: 14px 18px;
+        margin-bottom: 20px;
+        border-radius: 6px;
+        background: #d1e7dd;
+        color: #0f5132;
+        border: 1px solid #badbcc;
+        font-size: 15px;
+        font-weight: 500;
+    }
+   
+    .page-hero-custom {
+        background: #f7f7f7;
+        padding: 55px 0 40px;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+        .page-hero-custom .breadcrumb-custom {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            color: #999;
+            margin-bottom: 14px;
+        }
+
+            .page-hero-custom .breadcrumb-custom a {
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+
+                .page-hero-custom .breadcrumb-custom a:hover {
+                    color: #ed0026;
+                }
+
+            .page-hero-custom .breadcrumb-custom .separator {
+                color: #fff;
+                margin: 0 8px;
+            }
+
+            .page-hero-custom .breadcrumb-custom .active {
+                color: #ed0026;
+            }
+
+        .page-hero-custom h1 {
+            font-size: 38px;
+            font-weight: 800;
+            color: #a5a3a3;
+            margin: 0 0 6px 0;
+            letter-spacing: -0.5px;
+        }
+
+            .page-hero-custom h1 span {
+                color: #ed0026;
+            }
+
+        .page-hero-custom .subtitle {
+            font-size: 14px;
+            color: #666666;
+            margin: 0;
+            max-width: 520px;
+            line-height: 1.6;
+        }
+
+        .page-hero-custom .available-badge {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            color: #ed0026;
+            background: #fdecee;
+            padding: 4px 16px;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+    /* =====================================================
+               CONTACT SECTION - MAIN
+            ===================================================== */
+
+    .contact-main-section {
+        background: #ffffff;
+        padding: 60px 0;
+    }
+
+    /* CONTACT INFORMATION*/
+
+    .contact-info-wrapper {
+        width: 100%;
+    }
+
+        /* Section Label */
+        .contact-info-wrapper .section-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #f00020;
+            margin-bottom: 8px;
+        }
+
+            .contact-info-wrapper .section-label span {
+                width: 16px;
+                height: 1px;
+                background: #f00020;
+                display: inline-block;
+            }
+
+            .contact-info-wrapper .section-label i {
+                font-size: 9px;
+                color: #f00020;
+            }
+
+
+        /* Heading */
+        .contact-info-wrapper h2 {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.25;
+            margin: 0 0 5px 0;
+            color: #111;
+        }
+
+            .contact-info-wrapper h2 span {
+                color: #f00020;
+            }
+
+
+        /* Description */
+        .contact-info-wrapper .info-desc {
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.65;
+            color: #222;
+            margin: 0 0 26px 0;
+            max-width: 430px;
+        }
+
+
+    /* =====================================================
+       PHONE / EMAIL / LOCATION
+    ===================================================== */
+
+    .contact-info-item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-height: 79px;
+        padding: 13px 16px;
+        margin-bottom: 10px;
+        background: #f8f8f8;
+        border: 1px solid #dedede;
+        box-sizing: border-box;
+    }
+
+
+        /* Icon Box */
+        .contact-info-item .info-icon-box {
+            width: 35px;
+            height: 35px;
+            min-width: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 14px;
+            background: #fff0f2;
+        }
+
+
+            /* Red Icon */
+            .contact-info-item .info-icon-box i {
+                color: #f00020;
+                font-size: 13px;
+            }
+
+
+        /* Content */
+        .contact-info-item .info-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+
+            /* PHONE / EMAIL / LOCATION */
+            .contact-info-item .info-content h6 {
+                font-size: 8px;
+                font-weight: 600;
+                letter-spacing: 0.6px;
+                color: #111;
+                margin: 0 0 3px 0;
+                line-height: 1;
+            }
+
+
+            /* Main Value */
+            .contact-info-item .info-content .info-value {
+                font-size: 12px;
+                font-weight: 600;
+                color: #111;
+                margin: 0 0 2px 0;
+                line-height: 1.3;
+            }
+
+
+            /* Detail */
+            .contact-info-item .info-content .info-detail {
+                font-size: 9px;
+                font-weight: 400;
+                color: #444;
+                margin: 0;
+                line-height: 1.3;
+            }
+
+
+    /* 
+       CONNECT WITH US  */
+
+    .connect-section {
+        border-top: 1px solid #dedede;
+        margin-top: 25px;
+        padding-top: 14px;
+    }
+
+    .connect-title {
+        font-size: 9px;
+        font-weight: 500;
+        color: #111;
+        margin-bottom: 12px;
+    }
+
+    .social-links-C {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .social-link-C {
+        width: 33px;
+        height: 33px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #dcdcdc;
+        background: #fff;
+        color: #111;
+        text-decoration: none;
+        transition: 0.2s ease;
+    }
+
+        .social-link-C i {
+            font-size: 14px;
+        }
+
+        .social-link-C:hover {
+            color: #f00020;
+            border-color: #f00020;
+        }
+        .contact-info-item:hover{
+        color: #f00020;
+        border-color: #f00020;
+        }
+        
+
+    /* Right side - Form */
+    .form-wrapper .section-label {
+        font-size: 10px;
+        font-weight: 700;
+        color: #ed0026;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+
+        .form-wrapper .section-label span {
+            display: inline-block;
+            width: 20px;
+            height: 2px;
+            background: #ed0026;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+    .form-wrapper h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #111;
+        margin: 0 0 6px 0;
+        line-height: 1.2;
+    }
+
+        .form-wrapper h2 span {
+            color: #ed0026;
+        }
+
+    .form-wrapper {
+        border: 0.5px solid transparent;
+        border-radius: 10px;
+        padding: 10px;
+        transition: border-color 0.3s ease;
+    }
+
+        .form-wrapper:hover {
+            border-color: #ed0026;
+        }
+
+    .form-wrapper .form-subtitle {
+        font-size: 13px;
+        color: #555;
+        margin-bottom: 22px;
+    }
+
+    .form-wrapper .form-control-custom {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #e0e0e0;
+        background: #fcfcfc;
+        font-size: 12px;
+        color: #333;
+        outline: none;
+        transition: all 0.3s ease;
+        border-radius: 4px;
+    }
+
+        .form-wrapper .form-control-custom:focus {
+            border-color: #ed0026;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(237, 0, 38, 0.06);
+        }
+
+        .form-wrapper .form-control-custom::placeholder {
+            color: #aaa;
+            font-size: 12px;
+        }
+
+    .form-wrapper .form-label-custom {
+        font-size: 11px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 4px;
+        letter-spacing: 0.3px;
+    }
+
+        .form-wrapper .form-label-custom .required {
+            color: #ed0026;
+        }
+
+    .form-wrapper .form-control-custom.textarea {
+        min-height: 110px;
+        resize: vertical;
+    }
+
+    .form-wrapper select.form-control-custom {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        padding-right: 36px;
+    }
+
+    .form-wrapper .form-check {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .form-wrapper .form-check-input {
+        width: 16px;
+        height: 16px;
+        border-radius: 3px;
+        border: 2px solid #ddd;
+        margin: 0;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+        .form-wrapper .form-check-input:checked {
+            background-color: #ed0026;
+            border-color: #ed0026;
+        }
+
+        .form-wrapper .form-check-input:focus {
+            box-shadow: 0 0 0 3px rgba(237, 0, 38, 0.1);
+        }
+
+    .form-wrapper .form-check-label {
+        font-size: 11px;
+        color: #555;
+        cursor: pointer;
+    }
+
+        .form-wrapper .form-check-label a {
+            color: #ed0026;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+            .form-wrapper .form-check-label a:hover {
+                text-decoration: underline;
+            }
+
+    .form-wrapper .btn-submit {
+        background: #ed0026;
+        color: #fff;
+        padding: 11px 34px;
+        font-size: 11px;
+        font-weight: 700;
+        border: none;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        letter-spacing: 0.3px;
+    }
+
+        .form-wrapper .btn-submit:hover {
+            background: #c9001f;
+            color: #fff;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(237, 0, 38, 0.25);
+        }
+
+        .form-wrapper .btn-submit i {
+            margin-right: 8px;
+        }
+
+    .form-wrapper .security-note {
+        font-size: 10px;
+        color: #999;
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+        .form-wrapper .security-note i {
+            color: #ed0026;
+            font-size: 12px;
+        }
+
+    /* ======== TRUSTED BOTTOM */
+
+    .trusted-bottom {
+        background: #0b0b0b;
+        padding: 16px 0;
+        border-top: 1px solid #202020;
+        border-bottom: 1px solid #202020;
+    }
+
+    .trusted-by-text {
+        color: #555;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .trusted-item {
+        color: #777;
+        font-size: 8px;
+        font-weight: 600;
+    }
+
+        .trusted-item i {
+            color: #ed0026;
+            font-size: 9px;
+            margin-right: 4px;
+        }
+
+    /* =====================================================
+               WHATSAPP BUTTON
+            ===================================================== */
+
+    .whatsapp-button {
+        position: fixed;
+        right: 20px;
+        bottom: 25px;
+        width: 44px;
+        height: 44px;
+        background: #25d366;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        text-decoration: none;
+        z-index: 9999;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+        transition: 0.3s;
+    }
+
+        .whatsapp-button:hover {
+            color: white;
+            transform: scale(1.08);
+        }
+
+    /* RESPONSIVE */
+
+    @@media (max-width: 991px) {
+        .aa-dropdown
+
+    {
+        position: relative;
+        width: 100%;
+        left: 0;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        border: 1px solid #eee;
+        margin-top: 10px;
+        padding: 16px;
+    }
+
+    .aa-mega:hover .aa-dropdown {
+        display: block;
+    }
+
+    .aa-company-dropdown {
+        position: relative;
+        left: 0;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        border: 1px solid #eee;
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    .aa-company:hover .aa-company-dropdown {
+        display: block;
+    }
+
+    .nav-link-custom {
+        padding: 10px 14px !important;
+    }
+
+    .consult-btn {
+        display: inline-block;
+        margin: 10px 0;
+    }
+
+    .page-hero-custom h1 {
+        font-size: 30px;
+    }
+
+    .contact-info-wrapper h2 {
+        font-size: 26px;
+    }
+
+    .form-wrapper h2 {
+        font-size: 24px;
+    }
+
+    .contact-main-section {
+        padding: 40px 0;
+    }
+
+    .contact-info-wrapper .info-desc {
+        max-width: 100%;
+    }
+
+    }
+
+    @@media (max-width: 575px) {
+        .page-hero-custom
+
+    {
+        padding: 35px 0 25px;
+    }
+
+    .page-hero-custom h1 {
+        font-size: 24px;
+    }
+
+    .page-hero-custom .subtitle {
+        font-size: 12px;
+    }
+
+    .contact-main-section {
+        padding: 30px 0;
+    }
+
+    .contact-info-wrapper h2 {
+        font-size: 22px;
+    }
+
+    .form-wrapper h2 {
+        font-size: 20px;
+    }
+
+    .contact-info-item .info-content .info-value {
+        font-size: 13px;
+    }
+
+    .form-wrapper .btn-submit {
+        width: 100%;
+    }
+
+    .footer-desc {
+        max-width: 100%;
+    }
+
+    }
+</style>
+    <section class="page-hero-custom bg-black">
+
+        <div class="container px-5">
+
+            <div class="breadcrumb-custom">
+                <a href="Index">Home</a>
+                <span class="separator">/</span>
+                <span class="active">Contact</span>
+            </div>
+
+            <div class="available-badge">
+                <i class="bi bi-clock-fill me-1"></i>
+                AVAILABLE 24/7
+            </div>
+
+            <h1>
+                Let's Build Something <span>Amazing</span> Together.
+            </h1>
+
+            <p class="subtitle">
+                Whether you have a project in mind, need consultation, or just want to explore possibilities — we're here
+                to help. Fill out the form and our team will reach out within 2 business hours.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTACT MAIN SECTION
+    ===================================================== -->
+
+    <section class="contact-main-section">
+
+        <div class="container px-5">
+
+            <div class="row g-5">
+
+                <!-- ============ LEFT: CONTACT INFO ============ -->
+
+                <div class="col-lg-5">
+
+                <div class="contact-info-wrapper pt-3">
+
+                    <!-- Section Label -->
+                    <div class="section-label">
+                        <span></span>
+                        <i class="bi bi-info-circle-fill"></i>
+                        CONTACT INFORMATION
+                    </div>
+
+                    <!-- Heading -->
+                    <h2>
+                        Let's Start a <span>Conversation</span>
+                    </h2>
+
+                    <!-- Description -->
+                    <p class="info-desc">
+                        We're passionate about solving complex problems with elegant
+                        technology. Tell us about your challenge, and we'll craft a solution that works.
+                    </p>
+
+                    <!-- Phone -->
+                    <div class="contact-info-item">
+
+                        <div class="info-icon-box">
+                            <i class="bi bi-telephone-fill"></i>
+                        </div>
+
+                        <div class="info-content">
+                            <h6>PHONE</h6>
+                            <p class="info-value">+91 99999 99999</p>
+                            <p class="info-detail">Mon-Fri, 9AM - 8PM</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Email -->
+                    <div class="contact-info-item">
+
+                        <div class="info-icon-box">
+                            <i class="bi bi-envelope-fill"></i>
+                        </div>
+
+                        <div class="info-content">
+                            <h6>EMAIL</h6>
+                            <p class="info-value">hello@accessauthority.com</p>
+                            <p class="info-detail">We reply within 2 hours</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Location -->
+                    <div class="contact-info-item">
+
+                        <div class="info-icon-box">
+                            <i class="bi bi-geo-alt-fill"></i>
+                        </div>
+
+                        <div class="info-content">
+                            <h6>LOCATION</h6>
+                            <p class="info-value">Infocity Tower, Kanpur</p>
+                            <p class="info-detail">Uttar Pradesh, India</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Connect With Us -->
+                    <div class="connect-section">
+
+                        <div class="connect-title">
+                            CONNECT WITH US
+                        </div>
+
+                        <div class="social-links-C">
+
+                            <a href="https://www.linkedin.com/" class="social-link-C">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+
+                            <a href="https://x.com/" class="social-link-C">
+                                <i class="bi bi-twitter"></i>
+                            </a>
+
+                            <a href="https://www.youtube.com/" class="social-link-C">
+                                <i class="bi bi-youtube"></i>
+                            </a>
+
+                            <a href="https://www.github.com/" class="social-link-C">
+                                <i class="bi bi-github"></i>
+                            </a>
+
+                            <a href="https://www.instagram.com/" class="social-link-C">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                </div>
+
+
+                <!-- ============ RIGHT: CONTACT FORM ============ -->
+
+                <div class="col-lg-7">
+
+                    <div class="form-wrapper">
+
+                        <div class="section-label">
+                            <span></span>
+                            SEND US A MESSAGE
+                        </div>
+
+                        <h2>
+                            Fill in the details and <span>we'll get back to you</span>
+                        </h2>
+
+                        <p class="form-subtitle">
+                            We're passionate about solving complex problems with elegant technology. Tell us about your
+                            challenge, and we'll craft a solution that works.
+                        </p>
+
+                    <form id="contactForm" asp-controller="Home" asp-action="Contact" method="post">
+
+                        @Html.AntiForgeryToken()
+
+                        <div id="contactSuccess" class="contact-success-message" style="display:none;">
+                            Your message has been sent successfully!
+                        </div>
+
+                        <div class="row g-3">
+
+                            <!-- Full Name -->
+                            <div class="col-md-6">
+
+                                <label class="form-label-custom">
+                                    FULL NAME <span class="required">*</span>
+                                </label>
+
+                                <input type="text"
+                                       asp-for="FullName"
+                                       class="form-control-custom"
+                                       placeholder="e.g., Rajesh Kumar"
+                                       required>
+
+                            </div>
+
+                            <!-- Email -->
+                            <div class="col-md-6">
+
+                                <label class="form-label-custom">
+                                    EMAIL ADDRESS <span class="required">*</span>
+                                </label>
+
+                                <input type="email"
+                                       asp-for="Email"
+                                       class="form-control-custom"
+                                       placeholder="you@company.com"
+                                       required>
+
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="col-md-6">
+
+                                <label class="form-label-custom">
+                                    PHONE NUMBER <span class="required">*</span>
+                                </label>
+
+                                <input type="tel"
+                                       asp-for="Phone"
+                                       class="form-control-custom"
+                                       placeholder="+91 98765 43210"
+                                       required>
+
+                            </div>
+
+                            <!-- Service Interest -->
+                            <div class="col-md-6">
+
+                                <label class="form-label-custom">
+                                    SERVICE INTEREST
+                                </label>
+
+                                <select asp-for="ServiceInterest"
+                                        class="form-control-custom">
+
+                                    <option value="">Select a service...</option>
+                                    <option value="web">Web Development</option>
+                                    <option value="erp">ERP Development</option>
+                                    <option value="software">Custom Software</option>
+                                    <option value="mobile">Mobile App Development</option>
+                                    <option value="uiux">UI/UX Design</option>
+                                    <option value="video">Video Production</option>
+
+                                </select>
+
+                            </div>
+
+                            <!-- Project Details -->
+                            <div class="col-12">
+
+                                <label class="form-label-custom">
+                                    PROJECT DETAILS <span class="required">*</span>
+                                </label>
+
+                                <textarea asp-for="ProjectDetails"
+                                          class="form-control-custom textarea"
+                                          placeholder="Tell us about your project, goals, timeline, and budget..."
+                                          required></textarea>
+
+                            </div>
+
+                            <!-- Privacy Policy Checkbox -->
+                            <div class="col-12">
+
+                                <div class="form-check">
+
+                                    <input class="form-check-input"
+                                           asp-for="PrivacyAccepted"
+                                           type="checkbox"
+                                           id="privacyCheck">
+
+                                    <label class="form-check-label" for="privacyCheck">
+                                        I agree to the
+                                        <a href="#">Privacy Policy</a>
+                                        and consent to being contacted.
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="col-12">
+
+                                <button type="submit" class="btn-submit">
+                                    <i class="bi bi-send-fill"></i>
+                                    Send Message
+                                </button>
+
+                                <div class="security-note">
+                                    <i class="bi bi-shield-lock-fill"></i>
+                                    Your information is safe with us. We never share your data.
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TRUSTED BOTTOM BAR
+    ===================================================== -->
+
+    <section class="trusted-bottom">
+
+        <div class="container">
+
+            <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
+
+                <span class="trusted-by-text">TRUSTED BY</span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    500+ Happy Clients
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    98% Satisfaction
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    2hr Response Time
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    24/7 Support
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const form = document.getElementById("contactForm");
+        const successMessage = document.getElementById("contactSuccess");
+
+        form.addEventListener("submit", async function (e) {
+
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+            try {
+
+                const response = await fetch(form.action, {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (response.ok) {
+
+                    const result = await response.json();
+
+                    if (result.success) {
+
+                        // Pehle form reset
+                        form.reset();
+
+                        // Form ke andar message show
+                        successMessage.textContent = result.message;
+                        successMessage.style.display = "block";
+
+                        // 5 second baad message hide
+                        setTimeout(function () {
+                            successMessage.style.display = "none";
+                        }, 5000);
+                    }
+
+                } else {
+
+                    successMessage.textContent =
+                        "Message could not be sent.";
+
+                    successMessage.style.display = "block";
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                successMessage.textContent =
+                    "Something went wrong. Please try again.";
+
+                successMessage.style.display = "block";
+            }
+
+        });
+
+    });
+</script>

@@ -1,0 +1,1498 @@
+﻿@{
+    ViewData["Title"] = "UI/UX Design";
+}
+
+<style>
+
+    /* =====================================================
+           BREADCRUMB
+        ===================================================== */
+
+    .breadcrumb-section {
+        background: #0d0d0d;
+        height: 50px;
+        display: flex;
+        align-items: center;
+    }
+
+    .breadcrumb {
+        margin: 0;
+    }
+
+    .breadcrumb-item {
+        font-size: 14px;
+    }
+
+        .breadcrumb-item a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: #ed001c;
+            font-weight: 600;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            color: #fff;
+        }
+
+
+    /* =====================================================
+           HERO
+        ===================================================== */
+
+    .hero {
+        min-height: 435px;
+        background: radial-gradient( circle at 75% 45%, rgba(55, 0, 5, 0.30), transparent 38% ), linear-gradient( 110deg, #0b090a 0%, #11090b 55%, #12090b 100% );
+        color: white;
+        padding: 55px 0 60px;
+    }
+
+    .back-link {
+        color: #ed001c;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+        .back-link:hover {
+            color: #ff3348;
+        }
+
+    .hero-icon {
+        margin-top: 22px;
+        width: 70px;
+        height: 70px;
+        background: #20090d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        clip-path: polygon( 0 0, 82% 0, 100% 20%, 100% 100%, 20% 100%, 0 80% );
+    }
+
+        .hero-icon i {
+            color: #ed001c;
+            font-size: 31px;
+        }
+
+    .hero h1 {
+        font-size: 54px;
+        font-weight: 700;
+        margin-top: 18px;
+        line-height: 1.1;
+    }
+
+        .hero h1 span {
+            color: #ed001c;
+        }
+
+    .hero-description {
+        color: #9b9b9b;
+        font-size: 18px;
+        line-height: 1.65;
+        max-width: 600px;
+        margin-top: 14px;
+    }
+
+    .hero-buttons {
+        margin-top: 25px;
+    }
+
+    .consultation-btn {
+        background: #ed001c;
+        color: #fff;
+        border: none;
+        padding: 14px 26px;
+        font-weight: 600;
+        clip-path: polygon( 0 0, 94% 0, 100% 20%, 100% 100%, 6% 100%, 0 80% );
+    }
+
+        .consultation-btn:hover {
+            background: #c90018;
+            color: #fff;
+        }
+
+    .work-btn {
+        background: transparent;
+        color: #fff;
+        border: 1px solid #4b4b4b;
+        padding: 13px 25px;
+    }
+
+        .work-btn:hover {
+            border-color: #ed001c;
+            color: #ed001c;
+        }
+
+
+    /* =====================================================
+           COMMON
+        ===================================================== */
+
+    .section {
+        padding: 90px 0;
+    }
+
+    .section-title-small {
+        color: #ed001c;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .section-title {
+        font-size: 38px;
+        font-weight: 700;
+        line-height: 1.15;
+        color: #111;
+    }
+
+    .section-text {
+        color: #666;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+
+    /* =====================================================
+           WHAT WE DO
+        ===================================================== */
+
+    .what-we-do {
+        background: #fff;
+    }
+
+        .what-we-do .section-title-small {
+            color: #ed001c;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+
+        .what-we-do .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #111;
+            margin-top: 12px !important;
+            margin-bottom: 0;
+            max-width: 520px;
+        }
+
+        .what-we-do .section-text {
+            color: #666;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.75;
+            max-width: 560px;
+            margin-top: 18px !important;
+            margin-bottom: 0;
+        }
+
+
+        /* ================= FEATURE LIST ================= */
+
+        .what-we-do .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 22px 0 0 0;
+            width: 100%;
+        }
+
+            .what-we-do .feature-list li {
+                margin-bottom: 13px;
+                color: #333;
+                font-size: 13px;
+                font-weight: 500;
+                line-height: 1.5;
+                white-space: nowrap;
+            }
+
+            .what-we-do .feature-list i {
+                color: #ed001c;
+                font-size: 12px;
+                margin-right: 8px;
+            }
+
+
+        /* ================= STATS ================= */
+
+        .what-we-do .stats {
+            margin-top: 28px;
+        }
+
+        .what-we-do .stat-number {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.2;
+        }
+
+        .what-we-do .stat-text {
+            color: #777;
+            font-size: 11px;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-top: 4px;
+        }
+
+    /* UI UX IMAGE */
+
+    .work-image {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        border-radius: 3px;
+        display: block;
+    }
+
+    .work-link {
+        color: #ed001c;
+        text-decoration: none;
+        font-size: 14px;
+        padding: 10px 26px;
+        font-weight: 600;
+        display: inline-block;
+        border: 1px solid #ed001c;
+        margin-top: 18px;
+        transition: .3s ease;
+    }
+
+        .work-link:hover {
+            color: #fff;
+            background: #ed001c;
+        }
+
+
+    /* =====================================================
+           DIVIDER
+        ===================================================== */
+
+    .red-divider {
+        text-align: center;
+        color: #ed001c;
+        letter-spacing: 7px;
+        font-size: 12px;
+        margin: 0 auto;
+        padding: 5px 0;
+    }
+
+
+    /* =====================================================
+           DESIGN INTELLIGENCE
+        ===================================================== */
+
+    .design-section {
+        background: #f7f7f7;
+    }
+
+    .design-card {
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        padding: 30px;
+        height: 100%;
+        position: relative;
+        transition: .3s ease;
+        overflow: hidden;
+    }
+
+        .design-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #ed001c;
+            transition: .3s ease;
+        }
+
+        .design-card:hover {
+            transform: translateY(-6px);
+            border-color: #ed001c;
+            box-shadow: 0 12px 30px rgba(0,0,0,.08);
+        }
+
+            .design-card:hover::before {
+                width: 100%;
+            }
+
+    .design-number {
+        color: #ed001c;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .design-icon {
+        width: 48px;
+        height: 48px;
+        background: #fff0f2;
+        color: #ed001c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        float: right;
+        font-size: 20px;
+    }
+
+    .design-card h4 {
+        clear: both;
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 45px;
+        color: #111;
+    }
+
+    .design-card p {
+        color: #777;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+
+
+    /* =====================================================
+           DESIGN TOOLKIT
+        ===================================================== */
+
+    .technology {
+        padding: 80px 0;
+        background: #f8fafc;
+    }
+
+    .technology-box {
+        position: relative;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 16px;
+        font-size: 17px;
+        font-weight: 600;
+        color: #1e293b;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all .35s ease;
+        padding: 20px;
+    }
+
+        .technology-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient( 90deg, #ed001c, #111 );
+            transition: width .35s ease;
+        }
+
+        .technology-box:hover {
+            transform: translateY(-8px);
+            border-color: #ed001c;
+            box-shadow: 0 15px 35px rgba(0,0,0,.10);
+            background: #fff;
+        }
+
+            .technology-box:hover::before {
+                width: 100%;
+            }
+
+    .technology-icon {
+        width: 52px;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        background: #fff0f2;
+        color: #ed001c;
+        font-size: 25px;
+        transition: all .35s ease;
+    }
+
+    .technology-box:hover .technology-icon {
+        transform: rotate(-5deg) scale(1.1);
+        background: #ed001c;
+        color: #fff;
+    }
+
+    .technology-box span {
+        transition: all .3s ease;
+    }
+
+    .technology-box:hover span {
+        color: #ed001c;
+    }
+
+
+    /* =====================================================
+   WHY US - ATTRACTIVE BOX
+===================================================== */
+
+.why-box {
+    padding: 28px 24px;
+    border: 1px solid #e3e3e3;
+    background:#fff;
+    height: 100%;
+    min-height: 245px;
+    position: relative;
+    overflow: hidden;
+    transition: all .35s ease;
+}
+
+/* Top red line */
+
+.why-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #ed001c;
+    transition: width .35s ease;
+}
+
+/* Icon */
+
+.why-box .design-icon {
+    width: 52px;
+    height: 52px;
+    background: #fff0f2;
+    color: #ed001c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px !important;
+    font-size: 21px;
+    border: 1px solid #f5d5d9;
+    transition: all .35s ease;
+}
+
+/* Heading */
+
+.why-box h4 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 10px;
+    transition: all .3s ease;
+}
+
+/* Description */
+
+.why-box p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-top: 0;
+    margin-bottom: 0;
+    transition: all .3s ease;
+}
+
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+.why-box:hover {
+    transform: translateY(-8px);
+    border-color: #ed001c;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.10);
+}
+
+/* Red top line */
+
+.why-box:hover::before {
+    width: 100%;
+}
+
+/* Icon hover */
+
+.why-box:hover .design-icon {
+    background: #ed001c;
+    color: #fff;
+    border-color: #ed001c;
+    transform: translateY(-4px) rotate(-5deg) scale(1.08);
+    box-shadow: 0 8px 18px rgba(237, 0, 28, 0.25);
+}
+
+/* Heading hover */
+
+.why-box:hover h4 {
+    color: #ed001c;
+}
+
+/* Text */
+
+.why-box:hover p {
+    color: #555;
+}
+
+    /* =====================================================
+           TESTIMONIAL
+        ===================================================== */
+
+    .testimonial {
+        background: #dbd4d6;
+        color: #141313;
+        padding: 70px 8%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .testimonial-text {
+        color: #0e0101;
+        font-size: 18px;
+        line-height: 1.8;
+        font-style: italic;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .profile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+        .profile img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+    .profile-name {
+        font-weight: 700;
+        text-align: left;
+    }
+
+    .profile-role {
+        color: #666;
+        font-size: 13px;
+        text-align: left;
+        margin-top: 3px;
+    }
+
+
+    /* =====================================================
+           CTA
+        ===================================================== */
+
+    .cta-section {
+        background: #0d0d0d;
+        padding: 85px 0;
+        color: #fff;
+        text-align: center;
+    }
+
+        .cta-section h2 {
+            font-size: 42px;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            color: #999;
+            font-size: 17px;
+            margin-top: 12px;
+        }
+
+    .cta-buttons {
+        margin-top: 25px;
+    }
+
+    .services-btn {
+        color: #fff;
+        border: 1px solid #555;
+        padding: 13px 25px;
+        text-decoration: none;
+        margin-left: 8px;
+        transition: .3s ease;
+    }
+
+        .services-btn:hover {
+            color: #fff;
+            border-color: #ed001c;
+        }
+
+
+    /* =====================================================
+           WHATSAPP
+        ===================================================== */
+
+    .whatsapp {
+        position: fixed;
+        right: 27px;
+        bottom: 25px;
+        width: 49px;
+        height: 49px;
+        background: #20d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 25px;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0,0,0,.3);
+    }
+
+
+    /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+    @@media(max-width: 991px) {
+
+        .hero h1 {
+            font-size: 45px;
+        }
+
+        .work-image {
+            margin-top: 40px;
+        }
+
+        .section {
+            padding: 70px 0;
+        }
+
+        .testimonial {
+            padding: 60px 5%;
+        }
+    }
+
+
+    @@media(max-width: 576px) {
+
+        .hero {
+            padding: 40px 0 50px;
+        }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+        .hero-description {
+            font-size: 16px;
+        }
+
+        .consultation-btn,
+        .work-btn {
+            margin-bottom: 10px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 32px;
+        }
+
+        .cta-section h2 {
+            font-size: 32px;
+        }
+
+        .testimonial {
+            padding: 45px 20px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+        }
+
+        .work-image {
+            height: 300px;
+        }
+
+        .technology-box {
+            height: 105px;
+            font-size: 14px;
+        }
+    }
+
+</style>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="container px-5">
+
+        <div class="hero-icon">
+            <i class="bi bi-palette-fill"></i>
+        </div>
+
+        <h1>
+            UI/UX <span>Design</span>
+        </h1>
+
+        <p class="hero-description">
+            We create research-driven digital experiences that are
+            intuitive, accessible, visually engaging, and designed
+            around the people who use them.
+        </p>
+
+        <div class="d-flex flex-wrap gap-2 hero-buttons">
+
+            <a href="#" class="btn consultation-btn">
+
+                <i class="bi bi-send-fill"></i>
+                &nbsp; Start a Design Project
+
+            </a>
+
+            <a href="#design-process" class="btn work-btn">
+
+                <i class="bi bi-arrow-down"></i>
+                Explore Our Approach
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHAT WE DO
+===================================================== -->
+
+<section class="section what-we-do">
+
+    <div class="container px-5">
+
+        <div class="row align-items-center">
+
+            <!-- LEFT CONTENT -->
+
+            <div class="col-lg-6">
+
+                <div class="section-title-small">
+                    Research-Driven Design
+                </div>
+
+                <h2 class="section-title mt-3">
+                    Interfaces Built Around
+                    <span style="color:#ed001c;">Real Users</span>
+                </h2>
+
+                <p class="section-text mt-4">
+
+                    Great design starts with understanding people.
+                    We combine user research, interaction design,
+                    information architecture, and visual design to
+                    create digital products that feel simple,
+                    purposeful, and natural to use.
+
+                </p>
+
+                <p class="section-text">
+
+                    From the first user journey to the final polished
+                    interface, every design decision is connected to
+                    a real user need and a clear business objective.
+
+                </p>
+
+
+                <div class="d-flex flex-column flex-md-row gap-4">
+
+                    <ul class="feature-list">
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            User research & discovery
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            User personas & journey mapping
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Wireframes & interactive prototypes
+                        </li>
+
+                    </ul>
+
+
+                    <ul class="feature-list">
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Responsive interface design
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Usability testing
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Design systems & UI libraries
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- STATS -->
+
+                <div class="row stats">
+
+                    <div class="col-4">
+
+                        <div class="stat-number">
+                            40+
+                        </div>
+
+                        <div class="stat-text">
+                            Interfaces Designed
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-4">
+
+                        <div class="stat-number">
+                            95%
+                        </div>
+
+                        <div class="stat-text">
+                            User Satisfaction
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-4">
+
+                        <div class="stat-number">
+                            2x
+                        </div>
+
+                        <div class="stat-text">
+                            Faster User Journeys
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT IMAGE -->
+
+            <div class="col-lg-6">
+
+                <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=900&q=80&auto=format&fit=crop"
+                     class="work-image"
+                     alt="UI UX Design Workspace">
+
+                <a href="#" class="work-link">
+
+                    Explore Our Designs
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="red-divider">
+    ✦ ✦ ✦
+</div>
+
+
+<!-- =====================================================
+     DESIGN INTELLIGENCE
+===================================================== -->
+
+<section class="section design-section" id="design-process">
+
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-title-small">
+                Design Intelligence
+            </div>
+
+            <h2 class="section-title mt-3">
+                From Insight to Experience
+            </h2>
+
+            <p class="section-text mt-3">
+                A thoughtful approach that turns user problems
+                into simple and meaningful digital experiences.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 mt-4">
+
+
+            <!-- RESEARCH -->
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="design-card">
+
+                    <div class="design-number">
+                        01
+                    </div>
+
+                    <div class="design-icon">
+                        <i class="bi bi-search"></i>
+                    </div>
+
+                    <h4>
+                        Research
+                    </h4>
+
+                    <p>
+                        We study users, business goals, behaviours,
+                        pain points, and existing experiences to
+                        uncover meaningful design opportunities.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- JOURNEY -->
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="design-card">
+
+                    <div class="design-number">
+                        02
+                    </div>
+
+                    <div class="design-icon">
+                        <i class="bi bi-diagram-3-fill"></i>
+                    </div>
+
+                    <h4>
+                        Map & Define
+                    </h4>
+
+                    <p>
+                        We organise insights into personas,
+                        user journeys, information architecture,
+                        and clearly defined experience goals.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROTOTYPE -->
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="design-card">
+
+                    <div class="design-number">
+                        03
+                    </div>
+
+                    <div class="design-icon">
+                        <i class="bi bi-bezier2"></i>
+                    </div>
+
+                    <h4>
+                        Prototype
+                    </h4>
+
+                    <p>
+                        Ideas become wireframes and interactive
+                        prototypes so flows can be explored
+                        before development begins.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- VALIDATE -->
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="design-card">
+
+                    <div class="design-number">
+                        04
+                    </div>
+
+                    <div class="design-icon">
+                        <i class="bi bi-check2-circle"></i>
+                    </div>
+
+                    <h4>
+                        Validate
+                    </h4>
+
+                    <p>
+                        We test important interactions, collect
+                        feedback, refine the experience, and
+                        prepare polished designs for development.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="red-divider">
+    ✦ ✦ ✦
+</div>
+
+
+<!-- =====================================================
+     DESIGN TOOLKIT
+===================================================== -->
+
+<section class="section technology">
+
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-title-small">
+                Design Toolkit
+            </div>
+
+            <h2 class="section-title mt-3">
+                Tools Behind the Experience
+            </h2>
+
+            <p class="section-text mt-3">
+                Modern design tools help us turn ideas into
+                clear, scalable, and developer-ready experiences.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 mt-4">
+
+
+            <!-- FIGMA -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <div class="technology-icon">
+                        <i class="bi bi-bezier2"></i>
+                    </div>
+
+                    <span>
+                        Figma
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- FIGJAM -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <div class="technology-icon">
+                        <i class="bi bi-diagram-3-fill"></i>
+                    </div>
+
+                    <span>
+                        FigJam
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ADOBE XD -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <div class="technology-icon">
+                        <i class="bi bi-vector-pen"></i>
+                    </div>
+
+                    <span>
+                        Adobe XD
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PHOTOSHOP -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <div class="technology-icon">
+                        <i class="bi bi-image"></i>
+                    </div>
+
+                    <span>
+                        Photoshop
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ILLUSTRATOR -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <div class="technology-icon">
+                        <i class="bi bi-vector-pen"></i>
+                    </div>
+
+                    <span>
+                        Illustrator
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- MIRO -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <div class="technology-icon">
+                        <i class="bi bi-grid-3x3-gap-fill"></i>
+                    </div>
+
+                    <span>
+                        Miro
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- DESIGN SYSTEM -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <div class="technology-icon">
+                        <i class="bi bi-layers-fill"></i>
+                    </div>
+
+                    <span>
+                        Design Systems
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROTOTYPING -->
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="technology-box">
+
+                    <div class="technology-icon">
+                        <i class="bi bi-phone-fill"></i>
+                    </div>
+
+                    <span>
+                        Prototyping
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHY CHOOSE US
+===================================================== -->
+
+<section class="section why-section">
+
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-title-small">
+                Why Our Design
+            </div>
+
+            <h2 class="section-title text-white mt-3">
+                Design That Works Beyond Looks
+            </h2>
+
+            <p class="section-text mt-3">
+                We balance usability, visual clarity, accessibility,
+                and business goals to create experiences people enjoy using.
+            </p>
+
+        </div>
+
+
+        <div class="row mt-4">
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="why-box">
+
+                    <div class="design-icon mb-3">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+
+                    <h4>
+                        User First
+                    </h4>
+
+                    <p>
+                        Decisions are based on real user needs,
+                        behaviours, and expectations.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="why-box">
+
+                    <div class="design-icon mb-3">
+                        <i class="bi bi-lightbulb-fill"></i>
+                    </div>
+
+                    <h4>
+                        Clear Thinking
+                    </h4>
+
+                    <p>
+                        We simplify complex workflows into
+                        intuitive and easy-to-follow experiences.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="why-box">
+
+                    <div class="design-icon mb-3">
+                        <i class="bi bi-phone-fill"></i>
+                    </div>
+
+                    <h4>
+                        Responsive
+                    </h4>
+
+                    <p>
+                        Interfaces are designed to feel consistent
+                        across desktop, tablet, and mobile devices.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="why-box">
+
+                    <div class="design-icon mb-3">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+
+                    <h4>
+                        Business Focused
+                    </h4>
+
+                    <p>
+                        Better experiences help users complete
+                        tasks while supporting your business goals.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TESTIMONIAL
+===================================================== -->
+
+<div class="testimonial">
+
+    <p class="testimonial-text">
+
+        "The team transformed our complicated product into a
+        clean and intuitive experience. Their research-first
+        approach helped us understand what our users actually
+        needed, and the final interface was far beyond what
+        we expected."
+
+    </p>
+
+
+    <div class="profile">
+
+        <img src="https://randomuser.me/api/portraits/women/44.jpg"
+             alt="Priya Sharma">
+
+        <div>
+
+            <div class="profile-name">
+                Priya Sharma
+            </div>
+
+            <div class="profile-role">
+                Product Manager, FinTech Solutions
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta-section">
+
+    <div class="container px-5">
+
+        <h2>
+            Ready to Improve Your Digital Experience?
+        </h2>
+
+        <p>
+            Let's turn your users' needs into an interface
+            that feels simple, useful, and memorable.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="#"
+               class="btn consultation-btn">
+
+                <i class="bi bi-send-fill"></i>
+                Start Your UX Project
+
+            </a>
+
+
+            <a href="#design-process"
+               class="btn work-btn">
+
+                <i class="bi bi-arrow-down"></i>
+                Our Design Approach
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHATSAPP
+===================================================== -->
+
+<a href="#"
+   class="whatsapp">
+
+    <i class="bi bi-whatsapp"></i>
+
+</a>

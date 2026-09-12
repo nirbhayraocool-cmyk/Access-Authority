@@ -1,0 +1,106 @@
+﻿
+@model Access_Authority.Models.ContactViewModel
+
+@{
+    Layout = "_Layout1";
+}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    
+    .contact-detail {
+        margin-top: 8px;
+        padding: 12px 15px;
+        border: 1px solid #1e1c1c;
+        border-radius: 6px;
+    }
+
+    .contact-message {
+        margin-top: 8px;
+        border: 1px solid #1e1c1c;
+        border-radius: 6px;
+        padding:12px 15px;
+        line-height: 1.6;
+    }
+</style>
+<body class="bg-dark">
+<div class="container p-5">
+
+        <div class="card shadow-sm bg-dark " style="color:#adb5bd">
+
+        <div class="card-header text-danger">
+            <h4 class="mb-0">Contact Message</h4>
+        </div>
+
+        <div class="card-body"  >
+
+            <div class="row g-4 ">
+
+                <div class="col-md-6 ">
+                    <label class="">Full Name</label>
+                    <div class="contact-detail">
+                        @Model.FullName
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="">Email Address</label>
+                    <div class="contact-detail">
+                        @Model.Email
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="">Phone Number</label>
+                    <div class="contact-detail">
+                        @Model.Phone
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="">Service Interest</label>
+                    <div class="contact-detail">
+                        @Model.ServiceInterest
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label class="">Project Details</label>
+
+                    <div class="contact-message">
+                        @Model.ProjectDetails
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="">Privacy Accepted</label>
+                    <div class="contact-detail">
+                        @(Model.PrivacyAccepted ? "Yes" : "No")
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="">Submitted On</label>
+                    <div class="contact-detail">
+                        @Model.CreatedAt.ToString("dd-MM-yyyy hh:mm tt")
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-4">
+
+                <a asp-controller="Admin"
+                   asp-action="Contact"
+                   class="btn btn-secondary">
+                    Back
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</body>

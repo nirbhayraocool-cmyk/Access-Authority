@@ -1,0 +1,344 @@
+﻿
+@model Access_Authority.Models.CareerPosition
+
+@{
+    ViewData["Title"] = "Edit Position";
+    Layout = "_Layout1";
+}
+
+<style>
+    .edit-page {
+        background: #111111;
+        min-height: calc(100vh - 70px);
+        padding: 30px;
+        color: #ffffff;
+    }
+
+    .edit-card {
+        background: #1c1c1c;
+        border: 1px solid #2d2d2d;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+    }
+
+    .edit-card-header {
+        background: #202020;
+        border-bottom: 1px solid #303030;
+        padding: 20px 25px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+        .edit-card-header h4 {
+            margin: 0;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .edit-card-header i {
+            color: #dc3545;
+        }
+
+    .edit-card-body {
+        padding: 30px;
+    }
+
+    .form-label {
+        color: #dddddd;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+
+    .form-control,
+    .form-select {
+        background-color: #252525;
+        border: 1px solid #3a3a3a;
+        color: #ffffff;
+        border-radius: 7px;
+        padding: 11px 13px;
+    }
+
+        .form-control::placeholder {
+            color: #777777;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            background-color: #252525;
+            color: #ffffff;
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.15);
+        }
+
+        .form-select option {
+            background: #252525;
+            color: #ffffff;
+        }
+
+    textarea.form-control {
+        resize: vertical;
+        min-height: 130px;
+    }
+
+    .field-group {
+        margin-bottom: 22px;
+    }
+
+    .validation-message {
+        display: block;
+        margin-top: 5px;
+        font-size: 13px;
+    }
+
+    .btn-save {
+        background: #dc3545;
+        border: 1px solid #dc3545;
+        color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 7px;
+        font-weight: 500;
+    }
+
+        .btn-save:hover {
+            background: #bb2d3b;
+            border-color: #bb2d3b;
+            color: #ffffff;
+        }
+
+    .btn-cancel {
+        background: #2b2b2b;
+        border: 1px solid #444444;
+        color: #dddddd;
+        padding: 10px 20px;
+        border-radius: 7px;
+        font-weight: 500;
+    }
+
+        .btn-cancel:hover {
+            background: #363636;
+            border-color: #555555;
+            color: #ffffff;
+        }
+
+    .form-divider {
+        border-top: 1px solid #303030;
+        margin: 28px 0;
+    }
+
+    @@media (max-width: 768px) {
+        .edit-page
+
+    {
+        padding: 15px;
+    }
+
+    .edit-card-body {
+        padding: 20px;
+    }
+
+    .edit-card-header {
+        padding: 17px 20px;
+    }
+
+        .edit-card-header h4 {
+            font-size: 18px;
+        }
+
+    }
+</style>
+
+
+<div class="edit-page">
+
+    <div class="container-fluid">
+
+        <div class="edit-card">
+
+            <!-- Header -->
+            <div class="edit-card-header">
+
+                <h4>
+                    <i class="bi bi-pencil-square me-2"></i>
+                    Edit Career Position
+                </h4>
+
+            </div>
+
+
+            <!-- Form -->
+            <div class="edit-card-body">
+
+                <form asp-controller="Admin"
+                      asp-action="EditPosition"
+                      method="post">
+
+                    @Html.AntiForgeryToken()
+
+                    <input type="hidden" asp-for="Id" />
+
+
+                    <!-- Job Title -->
+                    <div class="field-group">
+
+                        <label asp-for="JobTitle"
+                               class="form-label">
+                            Job Title
+                        </label>
+
+                        <input asp-for="JobTitle"
+                               class="form-control"
+                               placeholder="Enter job title" />
+
+                        <span asp-validation-for="JobTitle"
+                              class="text-danger validation-message">
+                        </span>
+
+                    </div>
+
+
+                    <!-- Description -->
+                    <div class="field-group">
+
+                        <label asp-for="Description"
+                               class="form-label">
+                            Description
+                        </label>
+
+                        <textarea asp-for="Description"
+                                  class="form-control"
+                                  rows="5"
+                                  placeholder="Enter job description"></textarea>
+
+                        <span asp-validation-for="Description"
+                              class="text-danger validation-message">
+                        </span>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <!-- Location -->
+                        <div class="col-md-6">
+
+                            <div class="field-group">
+
+                                <label asp-for="Location"
+                                       class="form-label">
+                                    Location
+                                </label>
+
+                                <input asp-for="Location"
+                                       class="form-control"
+                                       placeholder="Remote / Delhi / Mumbai" />
+
+                                <span asp-validation-for="Location"
+                                      class="text-danger validation-message">
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Type -->
+                        <div class="col-md-6">
+
+                            <div class="field-group">
+
+                                <label asp-for="Type"
+                                       class="form-label">
+                                    Job Type
+                                </label>
+
+                                <select asp-for="Type"
+                                        class="form-select">
+
+                                    <option value="Full-time">
+                                        Full-time
+                                    </option>
+
+                                    <option value="Part-time">
+                                        Part-time
+                                    </option>
+
+                                    <option value="Contract">
+                                        Contract
+                                    </option>
+
+                                    <option value="Internship">
+                                        Internship
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Divider -->
+                    <div class="form-divider"></div>
+
+
+                    <!-- Status -->
+                    <div class="field-group">
+
+                        <label asp-for="Status"
+                               class="form-label">
+                            Status
+                        </label>
+
+                        <select asp-for="Status"
+                                class="form-select">
+
+                            <option value="Open">
+                                Open
+                            </option>
+
+                            <option value="Closed">
+                                Closed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Buttons -->
+                    <div class="d-flex gap-2 mt-4">
+
+                        <button type="submit"
+                                class="btn btn-save">
+
+                            <i class="bi bi-check-lg me-1"></i>
+                            Save Changes
+
+                        </button>
+
+
+                        <a asp-controller="Admin"
+                           asp-action="Career"
+                           class="btn btn-cancel">
+
+                            <i class="bi bi-x-lg me-1"></i>
+                            Cancel
+
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,931 @@
+﻿
+@{
+    
+    ViewData["Title"] = "Product";
+}
+
+    <style>
+         .page-hero-custom {
+            background: #f7f7f7;
+            padding: 55px 0 40px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+           .page-hero-custom .breadcrumb-custom {
+                font-size: 10px;
+                font-weight: 600;
+                letter-spacing: 0.8px;
+                color: #999;
+                margin-bottom: 14px;
+            }
+
+        .page-hero-custom .breadcrumb-custom a {
+                    color: #fff;
+                    text-decoration: none;
+                    transition: color 0.2s;
+                }
+
+                   .page-hero-custom .breadcrumb-custom a:hover {
+                        color: #ed0026;
+                    }
+
+                .page-hero-custom .breadcrumb-custom .separator {
+                    color: #ccc;
+                    margin: 0 8px;
+                }
+
+                .page-hero-custom .breadcrumb-custom .active {
+                    color: #ed0026;
+                }
+
+            .page-hero-custom h1 {
+                font-size: 38px;
+                font-weight: 800;
+                color: #fff;
+                margin: 0 0 6px 0;
+                letter-spacing: -0.5px;
+            }
+
+                .page-hero-custom h1 span {
+                    color: #ed0026;
+                }
+
+            .page-hero-custom .subtitle {
+                font-size: 14px;
+                color: #555;
+                margin: 0;
+                max-width: 520px;
+                line-height: 1.6;
+            }
+
+        /* Mini Stats */
+        .mini-stats-custom {
+            background: #0b0b0b;
+            color: #fff;
+            padding: 22px 0;
+            border-bottom: 1px solid #202020;
+        }
+
+            .mini-stats-custom .stat-block {
+                border-right: 1px solid #292929;
+                padding: 5px 15px;
+                text-align: center;
+            }
+
+                .mini-stats-custom .stat-block:last-child {
+                    border-right: none;
+                }
+
+            .mini-stats-custom .stat-number {
+                color: #ed0026;
+                font-size: 28px;
+                font-weight: 700;
+                line-height: 1;
+            }
+
+                .mini-stats-custom .stat-number .suffix {
+                    color: #ed0026;
+                }
+
+            .mini-stats-custom .stat-label {
+                color: #686868;
+                font-size: 8px;
+                font-weight: 700;
+                letter-spacing: 0.8px;
+                margin-top: 5px;
+            }
+
+        /* Product Cards */
+        .product-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            padding: 28px 26px 26px;
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .product-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: #ed0026;
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 0.4s ease;
+            }
+
+            .product-card:hover::before {
+                transform: scaleX(1);
+            }
+
+            .product-card:hover {
+                border-color: #ed0026;
+                transform: translateY(-4px);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+            }
+
+            .product-card .product-badge {
+                display: inline-block;
+                font-size: 8px;
+                font-weight: 700;
+                color: #ed0026;
+                background: #fdecee;
+                padding: 2px 14px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                margin-bottom: 12px;
+            }
+
+            .product-card .product-icon {
+                width: 52px;
+                height: 52px;
+                background: #fdecee;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #ed0026;
+                font-size: 24px;
+                margin-bottom: 14px;
+                transition: all 0.3s ease;
+            }
+
+            .product-card:hover .product-icon {
+                background: #ed0026;
+                color: #fff;
+                transform: scale(1.06);
+            }
+
+            .product-card h3 {
+                font-size: 18px;
+                font-weight: 700;
+                color: #111;
+                margin: 0 0 4px 0;
+            }
+
+            .product-card .product-tagline {
+                font-size: 12px;
+                color: #ed0026;
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+
+            .product-card p {
+                font-size: 12px;
+                color: #555;
+                line-height: 1.7;
+                margin: 0 0 14px 0;
+            }
+
+            .product-card .feature-list {
+                list-style: none;
+                padding: 0;
+                margin: 0 0 16px 0;
+            }
+
+                .product-card .feature-list li {
+                    font-size: 11px;
+                    color: #333;
+                    padding: 4px 0;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                    .product-card .feature-list li i {
+                        color: #ed0026;
+                        font-size: 10px;
+                    }
+
+            .product-card .product-actions {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                padding-top: 14px;
+                border-top: 1px solid #eee;
+                flex-wrap: wrap;
+            }
+
+            .product-card .btn-demo {
+                background: #ed0026;
+                color: #fff;
+                padding: 6px 18px;
+                font-size: 10px;
+                font-weight: 700;
+                text-decoration: none;
+                clip-path: polygon(0 0, 94% 0, 100% 25%, 100% 100%, 6% 100%, 0 75%);
+                transition: background 0.2s;
+            }
+
+                .product-card .btn-demo:hover {
+                    background: #c9001f;
+                    color: #fff;
+                }
+
+            .product-card .btn-learn {
+                color: #111;
+                font-size: 10px;
+                font-weight: 700;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                transition: color 0.2s;
+            }
+
+                .product-card .btn-learn:hover {
+                    color: #ed0026;
+                }
+
+                .product-card .btn-learn i {
+                    font-size: 12px;
+                    transition: transform 0.2s;
+                }
+
+                .product-card .btn-learn:hover i {
+                    transform: translateX(4px);
+                }
+
+        /* Why Products */
+        .why-products-section {
+            background: #f7f7f7;
+            padding: 60px 0;
+        }
+
+        .why-product-card {
+            background: #ffffff;
+            padding: 28px 24px;
+            border: 1px solid #e5e7eb;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+            .why-product-card:hover {
+                border-color: #ed0026;
+                transform: translateY(-4px);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+            }
+
+            .why-product-card .why-icon {
+                width: 48px;
+                height: 48px;
+                margin: 0 auto 14px;
+                background: #fdecee;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #ed0026;
+                font-size: 20px;
+                transition: all 0.3s ease;
+            }
+
+            .why-product-card:hover .why-icon {
+                background: #ed0026;
+                color: #fff;
+                transform: scale(1.06);
+            }
+
+            .why-product-card h4 {
+                font-size: 15px;
+                font-weight: 700;
+                color: #111;
+                margin: 0 0 6px 0;
+            }
+
+            .why-product-card p {
+                font-size: 12px;
+                color: #555;
+                line-height: 1.7;
+                margin: 0;
+            }
+
+        /* Compare Table */
+        .compare-section {
+            background: #ffffff;
+            padding: 60px 0;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+            .compare-table th,
+            .compare-table td {
+                padding: 14px 18px;
+                text-align: center;
+                border: 1px solid #e5e7eb;
+            }
+
+            .compare-table th {
+                background: #f7f7f7;
+                font-weight: 700;
+                color: #111;
+                font-size: 13px;
+            }
+
+                .compare-table th:first-child {
+                    text-align: left;
+                    background: transparent;
+                    font-size: 12px;
+                    color: #555;
+                }
+
+            .compare-table td:first-child {
+                text-align: left;
+                font-weight: 600;
+                color: #333;
+                font-size: 12px;
+            }
+
+            .compare-table .check {
+                color: #ed0026;
+                font-size: 18px;
+            }
+
+            .compare-table .cross {
+                color: #ccc;
+                font-size: 18px;
+            }
+
+            .compare-table .highlight {
+                background: #fdecee;
+            }
+
+        /* Responsive */
+        @@media (max-width: 991px) {
+            .page-hero-custom h1 {
+                font-size: 30px;
+            }
+
+            .mini-stats-custom .stat-block {
+                border-right: none;
+                padding: 5px 8px;
+            }
+
+            .compare-table {
+                font-size: 10px;
+            }
+
+                .compare-table th,
+                .compare-table td {
+                    padding: 10px 12px;
+                }
+        }
+
+        @@media (max-width: 575px) {
+            .page-hero-custom {
+                padding: 35px 0 25px;
+            }
+
+                .page-hero-custom h1 {
+                    font-size: 24px;
+                }
+
+                .page-hero-custom .subtitle {
+                    font-size: 12px;
+                }
+
+            .mini-stats-custom .stat-number {
+                font-size: 22px;
+            }
+
+            .product-card {
+                padding: 20px 16px;
+            }
+
+                .product-card h3 {
+                    font-size: 16px;
+                }
+
+            .compare-table {
+                font-size: 9px;
+            }
+
+                .compare-table th,
+                .compare-table td {
+                    padding: 8px 6px;
+                }
+
+                .compare-table .check,
+                .compare-table .cross {
+                    font-size: 14px;
+                }
+        }
+    </style>
+    <section class="page-hero-custom bg-black mini-stats-custom">
+
+        <div class="container px-5">
+
+            <div class="breadcrumb-custom">
+                <a href="#">Home</a>
+                <span class="separator">/</span>
+                <span class="active">Products</span>
+            </div>
+
+            <h1>
+                Our <span>Products</span>
+            </h1>
+
+            <p class="subtitle">
+                Enterprise-Grade Products — Built by engineers, trusted by enterprises. Our products are designed to
+                solve complex business challenges with simplicity and power.
+            </p>
+
+        </div>
+
+
+        <div class="container pt-3">
+
+            <div class="row g-0 align-items-center">
+
+                <div class="col-4 col-lg-3">
+                    <div class="stat-block">
+                        <div class="stat-number">
+                            10<span class="suffix">+</span>
+                        </div>
+                        <div class="stat-label">PRODUCTS LAUNCHED</div>
+                    </div>
+                </div>
+
+                <div class="col-4 col-lg-3">
+                    <div class="stat-block">
+                        <div class="stat-number">
+                            500<span class="suffix">+</span>
+                        </div>
+                        <div class="stat-label">ENTERPRISE CLIENTS</div>
+                    </div>
+                </div>
+
+                <div class="col-4 col-lg-3">
+                    <div class="stat-block">
+                        <div class="stat-number">
+                            99.9<span class="suffix">%</span>
+                        </div>
+                        <div class="stat-label">UPTIME GUARANTEE</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 d-none d-lg-block">
+                    <div class="stat-block" style="border-right: none;">
+                        <div class="stat-number">
+                            3
+                        </div>
+                        <div class="stat-label">PRODUCT SUITE</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRODUCTS GRID-->
+
+    <section class="services-section">
+
+        <div class="container px-5">
+
+            <!-- HEADING -->
+
+            <div class="services-heading text-center">
+
+                <div class="heading-label justify-content-center">
+                    <span></span>
+                    OUR PRODUCT SUITE
+                </div>
+
+                <h2>
+                    Enterprise-grade solutions designed to <br><span>power your business</span>
+                </h2>
+
+            </div>
+
+
+            <!-- PRODUCTS GRID -->
+
+            <div class="row g-4">
+
+
+                <!-- PRODUCT 1: AccessERP -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="product-card">
+
+                        <span class="product-badge">FLAGSHIP</span>
+
+                        <div class="product-icon">
+                            <i class="bi bi-boxes"></i>
+                        </div>
+
+                        <h3>AccessERP™</h3>
+
+                        <div class="product-tagline">Enterprise Resource Planning</div>
+
+                        <p>
+                            A comprehensive ERP solution that unifies finance, HR, inventory, and operations into a
+                            single intelligent platform.
+                        </p>
+
+                        <ul class="feature-list">
+                            <li><i class="bi bi-check-circle-fill"></i> Real-time business intelligence</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Automated workflows &amp; approvals</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Multi-company &amp; multi-currency support</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Cloud-native &amp; mobile-ready</li>
+                            <li><i class="bi bi-check-circle-fill"></i> 200+ pre-built modules</li>
+                        </ul>
+
+                        <div class="product-actions">
+                            <a href="#" class="btn-demo">Request Demo</a>
+                            <a href="#" class="btn-learn">
+                                Learn More
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 2: AccessCRM -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="product-card">
+
+                        <span class="product-badge">POPULAR</span>
+
+                        <div class="product-icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+
+                        <h3>AccessCRM™</h3>
+
+                        <div class="product-tagline">Customer Relationship Management</div>
+
+                        <p>
+                            An intelligent CRM that helps you build better customer relationships, automate sales
+                            processes, and drive revenue growth.
+                        </p>
+
+                        <ul class="feature-list">
+                            <li><i class="bi bi-check-circle-fill"></i> 360° customer view</li>
+                            <li><i class="bi bi-check-circle-fill"></i> AI-powered lead scoring</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Automated email campaigns</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Sales pipeline management</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Advanced analytics &amp; reporting</li>
+                        </ul>
+
+                        <div class="product-actions">
+                            <a href="#" class="btn-demo">Request Demo</a>
+                            <a href="#" class="btn-learn">
+                                Learn More
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 3: AccessAI -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="product-card">
+
+                        <span class="product-badge">INNOVATION</span>
+
+                        <div class="product-icon">
+                            <i class="bi bi-cpu-fill"></i>
+                        </div>
+
+                        <h3>AccessAI™</h3>
+
+                        <div class="product-tagline">Artificial Intelligence Platform</div>
+
+                        <p>
+                            An enterprise AI platform that brings the power of machine learning and natural language
+                            processing to your business operations.
+                        </p>
+
+                        <ul class="feature-list">
+                            <li><i class="bi bi-check-circle-fill"></i> Custom LLM integration</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Document processing &amp; OCR</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Predictive analytics</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Intelligent chatbots</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Enterprise-grade security</li>
+                        </ul>
+
+                        <div class="product-actions">
+                            <a href="#" class="btn-demo">Request Demo</a>
+                            <a href="#" class="btn-learn">
+                                Learn More
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         WHY OUR PRODUCTS
+    ===================================================== -->
+
+    <section class="why-products-section">
+
+        <div class="container px-5">
+
+            <div class="text-center mb-5">
+
+                <div class="heading-label justify-content-center">
+                    <span></span>
+                    WHY OUR PRODUCTS
+                </div>
+
+                <h2 style="font-size: 30px; font-weight: 700; color: #111; margin: 0;">
+                    Built for <span style="color: #ed0026;">Enterprise Scale</span>
+                </h2>
+
+                <p style="font-size: 13px; color: #555; margin: 6px 0 0;">
+                    Every product is engineered with enterprise-grade standards
+                </p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Reason 1 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="why-product-card">
+
+                        <div class="why-icon">
+                            <i class="bi bi-shield-lock-fill"></i>
+                        </div>
+
+                        <h4>Enterprise Security</h4>
+
+                        <p>
+                            SOC2 compliant, end-to-end encryption, and enterprise-grade authentication.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Reason 2 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="why-product-card">
+
+                        <div class="why-icon">
+                            <i class="bi bi-cloud-fill"></i>
+                        </div>
+
+                        <h4>Cloud-Native Architecture</h4>
+
+                        <p>
+                            Built for the cloud with microservices, auto-scaling, and high availability.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Reason 3 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="why-product-card">
+
+                        <div class="why-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+
+                        <h4>24/7 Enterprise Support</h4>
+
+                        <p>
+                            Dedicated support team with SLAs, training, and implementation assistance.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Reason 4 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="why-product-card">
+
+                        <div class="why-icon">
+                            <i class="bi bi-code-square"></i>
+                        </div>
+
+                        <h4>API-First Design</h4>
+
+                        <p>
+                            Every product comes with comprehensive APIs for seamless integration.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         COMPARE PRODUCTS TABLE
+    ===================================================== -->
+
+    <section class="compare-section">
+
+        <div class="container px-5">
+
+            <div class="text-center mb-5">
+
+                <div class="heading-label justify-content-center">
+                    <span></span>
+                    COMPARE PRODUCTS
+                </div>
+
+                <h2 style="font-size: 30px; font-weight: 700; color: #111; margin: 0;">
+                    Find the <span style="color: #ed0026;">Right Solution</span>
+                </h2>
+
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="compare-table">
+
+                    <thead>
+                        <tr>
+                            <th style="text-align: left;">Features</th>
+                            <th>AccessERP™</th>
+                            <th>AccessCRM™</th>
+                            <th>AccessAI™</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Real-time Analytics</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>AI-Powered Insights</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Custom Workflows</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="cross">✗</span></td>
+                        </tr>
+                        <tr>
+                            <td>API Integration</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Mobile App</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="cross">✗</span></td>
+                        </tr>
+                        <tr>
+                            <td>Custom LLM Training</td>
+                            <td><span class="cross">✗</span></td>
+                            <td><span class="cross">✗</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CTA SECTION
+    ===================================================== -->
+
+    <section class="aa-cta-wrapper">
+
+        <div class="container aa-cta-container">
+
+            <div class="aa-cta-content">
+
+                <div class="aa-cta-label">
+                    <span></span>
+                    READY TO SCALE
+                </div>
+
+                <h2>
+                    Ready to <strong>Transform</strong> Your Business?
+                </h2>
+
+                <p>
+                    Schedule a personalized demo and see how our products can help you scale.
+                </p>
+
+            </div>
+
+            <div class="aa-cta-button-box" style="display: flex; gap: 12px; flex-wrap: wrap;">
+
+                <a href="#" class="aa-cta-button">
+                    <span>▣</span>
+                    Schedule a Demo
+                </a>
+
+                <a href="#" class="aa-cta-button" style="background: transparent; border: 1px solid rgba(255,255,255,0.2);">
+                    <span>▣</span>
+                    View Products
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TRUSTED BOTTOM BAR
+    ===================================================== -->
+
+    <section class="trusted-bottom">
+
+        <div class="container">
+
+            <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
+
+                <span class="trusted-by-text">TRUSTED BY</span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    500+ Enterprise Clients
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    99.9% Uptime
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    10+ Products
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    200+ Modules
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>

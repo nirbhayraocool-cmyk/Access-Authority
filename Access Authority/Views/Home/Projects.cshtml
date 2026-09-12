@@ -1,0 +1,1489 @@
+﻿@model List<Access_Authority.Models.Project>
+
+@{
+    ViewData["Title"] = "Project Features";
+}
+
+<style>
+
+    /* =========================================
+       PROJECT FEATURES PAGE
+    ========================================= */
+
+    .project-page {
+        background: #fff;
+        color: #111;
+    }
+
+    
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .project-hero {
+        min-height: 510px;
+        background:
+            linear-gradient(90deg,
+                rgba(5,5,5,.97) 0%,
+                rgba(5,5,5,.88) 50%,
+                rgba(5,5,5,.55) 100%),
+            url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1800&q=90&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .project-hero::before {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border: 1px solid rgba(237,0,28,.30);
+        border-radius: 50%;
+        right: -180px;
+        top: -160px;
+    }
+
+    .project-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 780px;
+    }
+
+    .project-label {
+        color: #ed001c;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    .project-hero h1 {
+        color: #fff;
+        font-size: 54px;
+        line-height: 1.02;
+        font-weight: 750;
+        letter-spacing: -2px;
+        margin-bottom: 25px;
+    }
+
+    .project-hero h1 span {
+        color: #ed001c;
+    }
+
+    .project-hero p {
+        max-width: 690px;
+        color: #ccc;
+        font-size: 14px;
+        line-height: 1.75;
+        margin-bottom: 32px;
+    }
+
+    .project-hero-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #ed001c;
+        color: #fff;
+        padding: 14px 22px;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 700;
+        transition: .3s ease;
+    }
+
+    .project-hero-btn:hover {
+        background: #fff;
+        color: #111;
+        transform: translateY(-3px);
+    }
+
+    /* =========================================
+       INTRO
+    ========================================= */
+
+    .project-intro {
+        padding: 95px 0;
+        background: #fff;
+    }
+
+    .intro-label {
+        color: #ed001c;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+    }
+
+    .intro-title {
+        font-size: 43px;
+        line-height: 1.15;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .intro-title span {
+        color: #ed001c;
+    }
+
+    .intro-text {
+        color: #777;
+        font-size: 15px;
+        line-height: 1.8;
+        max-width: 650px;
+    }
+
+    .project-mini-card {
+        border-left: 3px solid #ed001c;
+        padding: 20px 22px;
+        background: #f7f7f7;
+        margin-bottom: 15px;
+        transition: .3s ease;
+    }
+
+    .project-mini-card:hover {
+        transform: translateX(7px);
+        background: #111;
+        color: #fff;
+    }
+
+    .project-mini-card h5 {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+    .project-mini-card p {
+        margin: 0;
+        color: #777;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .project-mini-card:hover p {
+        color: #aaa;
+    }
+
+    /* =========================================
+       PROJECT ARCHITECTURE
+    ========================================= */
+
+    .architecture-section {
+        background: #f5f5f5;
+        padding: 100px 0;
+    }
+
+    .architecture-heading {
+        max-width: 680px;
+        margin-bottom: 55px;
+    }
+
+    .architecture-heading .label {
+        color: #ed001c;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+    }
+
+    .architecture-heading h2 {
+        font-size: 43px;
+        line-height: 1.15;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .architecture-heading h2 span {
+        color: #ed001c;
+    }
+
+    .architecture-heading p {
+        color: #777;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .architecture-flow {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        background: #fff;
+        border: 1px solid #ddd;
+    }
+
+    .architecture-step {
+        padding: 35px 25px;
+        min-height: 230px;
+        border-right: 1px solid #ddd;
+        position: relative;
+        transition: .35s ease;
+    }
+
+    .architecture-step:last-child {
+        border-right: none;
+    }
+
+    .architecture-step-number {
+        font-size: 12px;
+        color: #ed001c;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+
+    .architecture-step i {
+        font-size: 25px;
+        margin-bottom: 18px;
+        display: block;
+    }
+
+    .architecture-step h4 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 9px;
+    }
+
+    .architecture-step p {
+        color: #777;
+        font-size: 13px;
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    .architecture-step:hover {
+        background: #111;
+        color: #fff;
+    }
+
+    .architecture-step:hover p {
+        color: #aaa;
+    }
+
+    /* =========================================
+       CORE FEATURES
+    ========================================= */
+
+    .core-features {
+        padding: 100px 0;
+        background: #fff;
+    }
+
+    .core-heading {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 55px;
+    }
+
+    .core-heading .label {
+        color: #ed001c;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+    }
+
+    .core-heading h2 {
+        font-size: 43px;
+        font-weight: 700;
+        line-height: 1.15;
+        margin-bottom: 15px;
+    }
+
+    .core-heading h2 span {
+        color: #ed001c;
+    }
+
+    .core-heading p {
+        color: #777;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .feature-card {
+        height: 100%;
+        min-height: 245px;
+        padding: 30px;
+        border: 1px solid #ddd;
+        position: relative;
+        overflow: hidden;
+        transition: .35s ease;
+        background: #fff;
+    }
+
+    .feature-card::after {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 3px;
+        left: 0;
+        bottom: 0;
+        background: #ed001c;
+        transition: .35s ease;
+    }
+
+    .feature-icon {
+        width: 52px;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff0f2;
+        color: #ed001c;
+        font-size: 21px;
+        margin-bottom: 22px;
+        transition: .35s ease;
+    }
+
+    .feature-card h4 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .feature-card p {
+        color: #777;
+        font-size: 13px;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-8px);
+        border-color: #ed001c;
+        box-shadow: 0 18px 35px rgba(0,0,0,.09);
+    }
+
+    .feature-card:hover .feature-icon {
+        background: #ed001c;
+        color: #fff;
+        transform: rotate(-5deg);
+    }
+
+    .feature-card:hover::after {
+        width: 100%;
+    }
+
+    /* =========================================
+       TECHNOLOGY SECTION
+    ========================================= */
+
+    .technology-section {
+        background: #0d0d0d;
+        color: #fff;
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .technology-section::before {
+        content: "BUILD";
+        position: absolute;
+        right: -30px;
+        bottom: -50px;
+        color: rgba(255,255,255,.025);
+        font-size: 170px;
+        font-weight: 900;
+    }
+
+    .technology-label {
+        color: #ed001c;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+    }
+
+    .technology-title {
+        color: #fff;
+        font-size: 40px;
+        line-height: 1.10;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .technology-title span {
+        color: #ed001c;
+    }
+
+    .technology-description {
+        color: #aaa;
+        font-size: 15px;
+        line-height: 1.8;
+        max-width: 570px;
+    }
+
+    .technology-list {
+        margin-top: 35px;
+    }
+
+    .technology-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid #292929;
+        padding: 18px 0;
+    }
+
+    .technology-item:last-child {
+        border-bottom: 1px solid #292929;
+    }
+
+    .technology-item strong {
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .technology-item span {
+        color: #777;
+        font-size: 12px;
+    }
+
+    /* =========================================
+       WORKFLOW
+    ========================================= */
+
+    .workflow-section {
+        background: #f6f6f6;
+        padding: 100px 0;
+    }
+
+    .workflow-title {
+        font-size: 43px;
+        font-weight: 700;
+        line-height: 1.15;
+        margin-bottom: 18px;
+    }
+
+    .workflow-title span {
+        color: #ed001c;
+    }
+
+    .workflow-text {
+        color: #777;
+        font-size: 15px;
+        line-height: 1.75;
+        max-width: 550px;
+    }
+
+    .workflow-list {
+        margin-top: 40px;
+    }
+
+    .workflow-row {
+        display: flex;
+        gap: 25px;
+        padding: 23px 0;
+        border-top: 1px solid #ddd;
+    }
+
+    .workflow-row:last-child {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .workflow-number {
+        min-width: 40px;
+        height: 40px;
+        border: 1px solid #ed001c;
+        color: #ed001c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .workflow-row h5 {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .workflow-row p {
+        color: #777;
+        font-size: 13px;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* =========================================
+       SECURITY + PERFORMANCE
+    ========================================= */
+
+    .quality-section {
+        padding: 100px 0;
+        background: #fff;
+    }
+
+    .quality-box {
+        padding: 35px;
+        height: 100%;
+        background: #111;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .quality-box.red-box {
+        background: #ed001c;
+    }
+
+    .quality-box i {
+        font-size: 28px;
+        margin-bottom: 25px;
+        display: block;
+    }
+
+    .quality-box h4 {
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    .quality-box p {
+        color: #aaa;
+        font-size: 13px;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .quality-box.red-box p {
+        color: #fff;
+        opacity: .9;
+    }
+
+    /* =========================================
+       DELIVERY
+    ========================================= */
+
+    .delivery-section {
+        padding: 100px 0;
+        background: #f6f6f6;
+    }
+
+    .delivery-heading {
+        max-width: 650px;
+        margin-bottom: 50px;
+    }
+
+    .delivery-heading .label {
+        color: #ed001c;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+    }
+
+    .delivery-heading h2 {
+        font-size: 43px;
+        line-height: 1.15;
+        font-weight: 700;
+    }
+
+    .delivery-heading h2 span {
+        color: #ed001c;
+    }
+
+    .delivery-card {
+        background: #fff;
+        padding: 28px;
+        border: 1px solid #e0e0e0;
+        height: 100%;
+        transition: .3s ease;
+    }
+
+    .delivery-card:hover {
+        border-color: #ed001c;
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,.07);
+    }
+
+    .delivery-card h5 {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 9px;
+    }
+
+    .delivery-card p {
+        color: #777;
+        font-size: 13px;
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    /* =========================================
+       CTA
+    ========================================= */
+
+    .project-cta {
+        padding: 95px 0;
+        background: #0d0d0d;
+        text-align: center;
+    }
+
+    .project-cta h2 {
+        color: #fff;
+        font-size: 45px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .project-cta h2 span {
+        color: #ed001c;
+    }
+
+    .project-cta p {
+        color: #aaa;
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+
+    .project-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 28px;
+        background: #ed001c;
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        transition: .3s ease;
+    }
+
+    .project-cta-btn:hover {
+        background: #fff;
+        color: #111;
+        transform: translateY(-3px);
+    }
+
+  
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @@media (max-width: 991px) {
+
+        .project-hero h1 {
+            font-size: 55px;
+        }
+
+        .architecture-flow {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .architecture-step:nth-child(2) {
+            border-right: none;
+        }
+
+        .architecture-step:nth-child(-n+2) {
+            border-bottom: 1px solid #ddd;
+        }
+    }
+
+    @@media (max-width: 767px) {
+
+        .project-hero {
+            min-height: 520px;
+        }
+
+        .project-hero h1 {
+            font-size: 43px;
+        }
+
+        .project-hero p {
+            font-size: 15px;
+        }
+
+        .project-intro,
+        .architecture-section,
+        .core-features,
+        .technology-section,
+        .workflow-section,
+        .quality-section,
+        .delivery-section {
+            padding: 70px 0;
+        }
+
+        .intro-title,
+        .architecture-heading h2,
+        .core-heading h2,
+        .technology-title,
+        .workflow-title,
+        .delivery-heading h2,
+        .project-cta h2 {
+            font-size: 32px;
+        }
+
+        .architecture-flow {
+            grid-template-columns: 1fr;
+        }
+
+        .architecture-step {
+            border-right: none;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .architecture-step:last-child {
+            border-bottom: none;
+        }
+    }
+
+</style>
+
+
+<div class="project-page">
+
+    <!-- =========================================
+         HERO
+    ========================================= -->
+
+    <section class="project-hero">
+
+        <div class="container px-5">
+
+            <div class="project-hero-content">
+
+                <div class="project-label">
+                    Project Features
+                </div>
+
+                <h1>
+                    We Don't Just Build
+                    <span>Projects.</span>
+                </h1>
+
+                <p>
+                    We build complete digital solutions designed around
+                    your business goals. From planning and architecture
+                    to development, database integration, security and
+                    deployment — every part of the project is built to work
+                    together as one reliable system.
+                </p>
+
+                <a href="/Home/Contact" class="project-hero-btn">
+                    Discuss Your Project
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         INTRO
+    ========================================= -->
+
+    <section class="project-intro">
+
+        <div class="container px-5">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-7">
+
+                    <div class="intro-label">
+                        Built Around Your Business
+                    </div>
+
+                    <h2 class="intro-title">
+                        From an Idea to a
+                        <span>Working Product.</span>
+                    </h2>
+
+                    <p class="intro-text">
+                        Every project starts with a requirement. We turn that
+                        requirement into a structured digital product with
+                        clear functionality, scalable architecture and a
+                        smooth user experience.
+                    </p>
+
+                    <p class="intro-text">
+                        Whether it is a business website, admin dashboard,
+                        CRM, ERP, custom web application or API-based system,
+                        we focus on building something your team can actually
+                        use and grow with.
+                    </p>
+
+                </div>
+
+
+                <div class="col-lg-5">
+
+                    <div class="project-mini-card">
+
+                        <h5>
+                            Requirement First
+                        </h5>
+
+                        <p>
+                            We understand what the business actually needs
+                            before development begins.
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-mini-card">
+
+                        <h5>
+                            Modular Development
+                        </h5>
+
+                        <p>
+                            Features are developed in structured modules
+                            so the project remains easier to maintain.
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-mini-card">
+
+                        <h5>
+                            Built to Grow
+                        </h5>
+
+                        <p>
+                            The architecture is planned with future features,
+                            users and business expansion in mind.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================================
+         TECHNOLOGY
+    ========================================= -->
+
+    <section class="technology-section">
+
+        <div class="container px-5">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+
+                    <div class="technology-label">
+                        Technology Foundation
+                    </div>
+
+                    <h2 class="technology-title">
+                        Built With the
+                        <span>Right Stack.</span>
+                    </h2>
+
+                    <p class="technology-description">
+                        Technology is selected according to project
+                        requirements, performance needs, maintainability
+                        and future scalability.
+                    </p>
+
+                    <div class="technology-list">
+
+                        <div class="technology-item">
+                            <strong>ASP.NET Core</strong>
+                            <span>Application Development</span>
+                        </div>
+
+                        <div class="technology-item">
+                            <strong>C#</strong>
+                            <span>Business Logic</span>
+                        </div>
+
+                        <div class="technology-item">
+                            <strong>SQL Server</strong>
+                            <span>Data Management</span>
+                        </div>
+
+                        <div class="technology-item">
+                            <strong>HTML / CSS / JavaScript</strong>
+                            <span>Front-End</span>
+                        </div>
+
+                        <div class="technology-item">
+                            <strong>REST API</strong>
+                            <span>System Integration</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-6">
+
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&q=85&auto=format&fit=crop"
+                         style="width:100%; height:470px; object-fit:cover;"
+                         alt="Software Development Technology">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================================
+         SECURITY & PERFORMANCE
+    ========================================= -->
+
+    <section class="quality-section">
+
+        <div class="container px-5">
+
+            <div class="row g-4">
+
+                <div class="col-lg-4">
+
+                    <div class="quality-box red-box">
+
+                        <i class="bi bi-shield-lock"></i>
+
+                        <h4>Security</h4>
+
+                        <p>
+                            Authentication, authorization, validation and
+                            secure data handling are considered throughout
+                            the project.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4">
+
+                    <div class="quality-box">
+
+                        <i class="bi bi-lightning-charge"></i>
+
+                        <h4>Performance</h4>
+
+                        <p>
+                            Clean architecture, efficient queries and
+                            optimized application flow help keep the
+                            project responsive.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4">
+
+                    <div class="quality-box">
+
+                        <i class="bi bi-tools"></i>
+
+                        <h4>Maintainability</h4>
+
+                        <p>
+                            Organized code and modular functionality make
+                            future updates and new features easier to manage.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- =========================================
+         ARCHITECTURE
+    ========================================= -->
+
+    <section class="architecture-section">
+
+        <div class="container px-5">
+
+            @* <div class="architecture-heading text-center">
+
+                <div class="label ">
+                    How A Project Comes Together
+                </div>
+
+                <h2>
+                    Every Layer Has a
+                    <span>Purpose.</span>
+                </h2>
+
+                <p>
+                    A strong project is not just about writing code.
+                    Front-end, back-end, database and infrastructure must
+                    communicate correctly to create one dependable system.
+                </p>
+
+            </div> *@
+
+
+            <div class="architecture-flow">
+
+                <div class="architecture-step">
+
+                    <div class="architecture-step-number">
+                        01
+                    </div>
+
+                    <i class="bi bi-window"></i>
+
+                    <h4>Front-End</h4>
+
+                    <p>
+                        Responsive interfaces, forms, dashboards and
+                        user interactions designed for real users.
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-step">
+
+                    <div class="architecture-step-number">
+                        02
+                    </div>
+
+                    <i class="bi bi-cpu"></i>
+
+                    <h4>Back-End</h4>
+
+                    <p>
+                        Business logic, authentication, APIs and
+                        application functionality working behind the scenes.
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-step">
+
+                    <div class="architecture-step-number">
+                        03
+                    </div>
+
+                    <i class="bi bi-database"></i>
+
+                    <h4>Database</h4>
+
+                    <p>
+                        Structured data storage, relationships, queries
+                        and reliable data management.
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-step">
+
+                    <div class="architecture-step-number">
+                        04
+                    </div>
+
+                    <i class="bi bi-cloud-check"></i>
+
+                    <h4>Deployment</h4>
+
+                    <p>
+                        Testing, configuration and deployment so the
+                        finished project is ready for actual use.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         CORE FEATURES
+    ========================================= -->
+    <!-- =========================================
+         CORE FEATURES
+    ========================================= -->
+
+    <section class="core-features">
+
+        <div class="container px-5">
+
+            <div class="core-heading">
+
+                <div class="label">
+                    Core Project Features
+                </div>
+
+                <h2>
+                    Functionality That Makes
+                    <span>Projects Useful.</span>
+                </h2>
+
+                <p>
+                    We build features around the way your business works —
+                    not simply around a predefined template.
+                </p>
+
+            </div>
+
+            <div class="row g-4">
+
+                @if (Model != null && Model.Count > 0)
+                {
+                    foreach (var project in Model)
+                    {
+                        <div class="col-lg-4 col-md-6">
+
+                            <div class="feature-card">
+
+                                @if (!string.IsNullOrEmpty(project.HeroImage))
+                                {
+                                    <div class="project-image">
+                                        <img src="@project.HeroImage"
+                                             alt="@project.Title">
+                                    </div>
+                                }
+
+                                <div class="feature-icon">
+                                    <i class="bi bi-folder-check"></i>
+                                </div>
+
+                                <div class="project-category">
+                                    @project.Category
+                                </div>
+
+                                <h4>
+                                    @project.Title
+                                </h4>
+
+                                <p>
+                                    @project.ShortDescription
+                                </p>
+
+                                <a asp-controller="Home"
+                                   asp-action="ProjectDetail"
+                                   asp-route-id="@project.Id"
+                                   class="project-view-btn">
+                                    View Case Study
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+
+                            </div>
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-12">
+                        <div class="feature-card">
+
+                            <div class="feature-icon">
+                                <i class="bi bi-folder-x"></i>
+                            </div>
+
+                            <h4>No Projects Available</h4>
+
+                            <p>
+                                Projects added from the admin dashboard
+                                will appear here automatically.
+                            </p>
+
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+  
+    <!-- =========================================
+         DEVELOPMENT WORKFLOW
+    ========================================= -->
+
+    @* <section class="workflow-section">
+
+        <div class="container px-5">
+
+            <div class="row">
+
+                <div class="col-lg-5">
+
+                    <div class="intro-label">
+                        Development Workflow
+                    </div>
+
+                    <h2 class="workflow-title">
+                        From Planning
+                        <span>to Production.</span>
+                    </h2>
+
+                    <p class="workflow-text">
+                        A structured development process helps us keep the
+                        project organized, reduce unnecessary changes and
+                        deliver features in a controlled way.
+                    </p>
+
+                </div>
+
+
+                <div class="col-lg-7">
+
+                    <div class="workflow-list">
+
+                        <div class="workflow-row">
+
+                            <div class="workflow-number">
+                                01
+                            </div>
+
+                            <div>
+                                <h5>Requirement Analysis</h5>
+
+                                <p>
+                                    Understand the business, users,
+                                    workflows and required functionality.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="workflow-row">
+
+                            <div class="workflow-number">
+                                02
+                            </div>
+
+                            <div>
+                                <h5>Planning & Architecture</h5>
+
+                                <p>
+                                    Define modules, database structure,
+                                    application flow and technology stack.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="workflow-row">
+
+                            <div class="workflow-number">
+                                03
+                            </div>
+
+                            <div>
+                                <h5>Development</h5>
+
+                                <p>
+                                    Build the interface, business logic,
+                                    APIs and database functionality.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="workflow-row">
+
+                            <div class="workflow-number">
+                                04
+                            </div>
+
+                            <div>
+                                <h5>Testing & Refinement</h5>
+
+                                <p>
+                                    Check functionality, responsiveness,
+                                    validation, security and performance.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="workflow-row">
+
+                            <div class="workflow-number">
+                                05
+                            </div>
+
+                            <div>
+                                <h5>Deployment</h5>
+
+                                <p>
+                                    Configure the application and prepare
+                                    the final project for production use.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section> *@
+
+
+  
+
+
+    <!-- =========================================
+         PROJECT DELIVERY
+    ========================================= -->
+
+    <section class="delivery-section">
+
+        <div class="container px-5">
+
+            <div class="delivery-heading">
+
+                <div class="label">
+                    What We Deliver
+                </div>
+
+                <h2>
+                    More Than Just
+                    <span>Source Code.</span>
+                </h2>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="delivery-card">
+
+                        <h5>Working Application</h5>
+
+                        <p>
+                            A complete functional project based on the
+                            approved requirements and features.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="delivery-card">
+
+                        <h5>Database Integration</h5>
+
+                        <p>
+                            Structured database with required tables,
+                            relationships and application connectivity.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="delivery-card">
+
+                        <h5>Responsive Interface</h5>
+
+                        <p>
+                            A polished interface that works across
+                            different screen sizes and devices.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="delivery-card">
+
+                        <h5>Future Ready</h5>
+
+                        <p>
+                            A foundation that can be extended with new
+                            modules, users and business requirements.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         CTA
+    ========================================= -->
+
+    <section class="project-cta">
+
+        <div class="container">
+
+            <h2>
+                Have a Project
+                <span>in Mind?</span>
+            </h2>
+
+            <p>
+                Tell us what you want to build and let's turn the idea
+                into a working digital product.
+            </p>
+
+            <a href="/Home/Contact" class="project-cta-btn">
+                Start Your Project
+                <i class="bi bi-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </section>
+
+
+  
+
+</div>

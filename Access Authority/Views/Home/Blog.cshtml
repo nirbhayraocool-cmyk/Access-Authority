@@ -1,0 +1,571 @@
+﻿@model List<Access_Authority.Models.CreateBlog>
+
+@{
+    ViewData["Title"] = "Blog";
+}
+<style>
+ 
+    .page-hero-custom {
+        background: #f7f7f7;
+        padding: 55px 0 40px;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+        .page-hero-custom .breadcrumb-custom {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            color: #999;
+            margin-bottom: 14px;
+        }
+
+            .page-hero-custom .breadcrumb-custom a {
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+
+                .page-hero-custom .breadcrumb-custom a:hover {
+                    color: #ed0026;
+                }
+
+            .page-hero-custom .breadcrumb-custom .separator {
+                color: #ccc;
+                margin: 0 8px;
+            }
+
+            .page-hero-custom .breadcrumb-custom .active {
+                color: #ed0026;
+            }
+
+        .page-hero-custom h1 {
+            font-size: 38px;
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 6px 0;
+            letter-spacing: -0.5px;
+        }
+
+            .page-hero-custom h1 span {
+                color: #ed0026;
+            }
+
+        .page-hero-custom .subtitle {
+            font-size: 14px;
+            color: #555;
+            margin: 0;
+            max-width: 520px;
+            line-height: 1.6;
+        }
+
+    /* Blog Cards */
+    .blog-card {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+
+        .blog-card:hover {
+            border-color: #ed0026;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .blog-card .blog-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+            .blog-card .blog-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+            }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-card .blog-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: #ed0026;
+            color: #fff;
+            padding: 4px 14px;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .blog-card .blog-body {
+            padding: 20px 22px 22px;
+        }
+
+        .blog-card .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #999;
+            font-size: 10px;
+            margin-bottom: 10px;
+        }
+
+            .blog-card .blog-meta i {
+                margin-right: 3px;
+                font-size: 10px;
+            }
+
+            .blog-card .blog-meta .separator {
+                color: #ddd;
+            }
+
+        .blog-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 8px 0;
+            line-height: 1.3;
+        }
+
+            .blog-card h3 a {
+                color: #111;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+
+                .blog-card h3 a:hover {
+                    color: #ed0026;
+                }
+
+        .blog-card .blog-desc {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.7;
+            margin: 0 0 14px 0;
+        }
+
+        .blog-card .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-top: 14px;
+            border-top: 1px solid #eee;
+        }
+
+            .blog-card .blog-author .avatar {
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                background: #ed0026;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+                font-weight: 700;
+                flex-shrink: 0;
+            }
+
+                .blog-card .blog-author .avatar.two {
+                    background: #2563eb;
+                }
+
+                .blog-card .blog-author .avatar.three {
+                    background: #0ea5e9;
+                }
+
+                .blog-card .blog-author .avatar.four {
+                    background: #8b5cf6;
+                }
+
+                .blog-card .blog-author .avatar.five {
+                    background: #f59e0b;
+                }
+
+                .blog-card .blog-author .avatar.six {
+                    background: #10b981;
+                }
+
+            .blog-card .blog-author .author-name {
+                font-size: 12px;
+                font-weight: 600;
+                color: #111;
+            }
+
+                .blog-card .blog-author .author-name small {
+                    font-weight: 400;
+                    color: #999;
+                }
+
+        .blog-card .blog-read-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #ed0026;
+            font-size: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-left: auto;
+            transition: color 0.2s;
+        }
+
+            .blog-card .blog-read-link i {
+                transition: transform 0.2s;
+            }
+
+            .blog-card .blog-read-link:hover i {
+                transform: translateX(4px);
+            }
+
+    .client-avatar {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: #ed0026;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 18px;
+        flex-shrink: 0;
+    }
+    /* Newsletter Section */
+    .newsletter-section {
+        background: #0b0b0b;
+        padding: 50px 0;
+        color: #fff;
+    }
+
+        .newsletter-section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+        }
+
+            .newsletter-section h2 span {
+                color: #ed0026;
+            }
+
+        .newsletter-section p {
+            font-size: 13px;
+            color: #888;
+            margin: 0 0 18px 0;
+        }
+
+        .newsletter-section .newsletter-form {
+            display: flex;
+            gap: 10px;
+            max-width: 460px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+            .newsletter-section .newsletter-form input {
+                flex: 1;
+                min-width: 200px;
+                padding: 10px 16px;
+                border: 1px solid #333;
+                background: #1a1a1a;
+                color: #fff;
+                font-size: 12px;
+                outline: none;
+                transition: border-color 0.2s;
+            }
+
+                .newsletter-section .newsletter-form input:focus {
+                    border-color: #ed0026;
+                }
+
+                .newsletter-section .newsletter-form input::placeholder {
+                    color: #666;
+                }
+
+            .newsletter-section .newsletter-form .btn-subscribe {
+                background: #ed0026;
+                color: #fff;
+                padding: 10px 24px;
+                font-size: 11px;
+                font-weight: 700;
+                border: none;
+                clip-path: polygon(0 0, 94% 0, 100% 25%, 100% 100%, 6% 100%, 0 75%);
+                transition: background 0.2s;
+                cursor: pointer;
+            }
+
+                .newsletter-section .newsletter-form .btn-subscribe:hover {
+                    background: #c9001f;
+                }
+
+    /* Responsive */
+    @@media (max-width: 991px) {
+        .page-hero-custom h1
+
+    {
+        font-size: 30px;
+    }
+
+    .blog-card .blog-image {
+        height: 180px;
+    }
+
+    }
+
+    @@media (max-width: 575px) {
+        .page-hero-custom
+
+    {
+        padding: 35px 0 25px;
+    }
+
+    .page-hero-custom h1 {
+        font-size: 24px;
+    }
+
+    .page-hero-custom .subtitle {
+        font-size: 12px;
+    }
+
+    .blog-card .blog-image {
+        height: 160px;
+    }
+
+    .blog-card h3 {
+        font-size: 14px;
+    }
+
+    .newsletter-section h2 {
+        font-size: 22px;
+    }
+
+    .newsletter-section .newsletter-form input {
+        min-width: 100%;
+    }
+
+    .newsletter-section .newsletter-form .btn-subscribe {
+        width: 100%;
+    }
+
+    }
+</style>
+
+    <section class="page-hero-custom bg-black">
+
+        <div class="container px-5">
+
+            <div class="breadcrumb-custom">
+                <a href="#">Home</a>
+                <span class="separator">/</span>
+                <span class="active">Blog</span>
+            </div>
+
+            <h1>
+                Our <span>Blog</span>
+            </h1>
+
+            <p class="subtitle">
+                Insights for Tech Leaders — Practical advice, industry trends, and deep dives into the technology that's
+                shaping the future of business.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BLOG GRID
+    ===================================================== -->
+
+    <section class="services-section">
+
+        <div class="container px-5">
+
+        <div class="row g-4">
+
+            @if (Model != null && Model.Any())
+            {
+                foreach (var blog in Model)
+                {
+                    <div class="col-lg-4 col-md-6">
+
+                        <div class="blog-card">
+
+                            <div class="blog-image">
+
+                                @if (!string.IsNullOrEmpty(blog.FeaturedImage))
+                                {
+                                    <img src="@blog.FeaturedImage"
+                                         alt="@blog.Title">
+                                }
+                                else
+                                {
+                                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop"
+                                         alt="@blog.Title">
+                                }
+
+                                <span class="blog-badge">
+                                    @blog.Category
+                                </span>
+
+                            </div>
+
+                            <div class="blog-body">
+
+                                <div class="blog-meta">
+
+                                    <span>
+                                        <i class="bi bi-calendar3"></i>
+                                        @blog.CreatedDate.ToLocalTime().ToString("MMM dd, yyyy")
+                                    </span>
+
+                                </div>
+
+                                <h3>
+                                    <a asp-controller="Home"
+                                       asp-action="Blogdetail"
+                                       asp-route-id="@blog.Id">
+                                        @blog.Title
+                                    </a>
+                                </h3>
+
+                                <p class="blog-desc">
+                                    @{
+                                        var plainText = System.Text.RegularExpressions.Regex
+                                        .Replace(blog.Content ?? "", "<.*?>", "");
+
+                                        var description = plainText.Length > 120
+                                        ? plainText.Substring(0, 120) + "..."
+                                        : plainText;
+                                    }
+
+                                    @description
+                                </p>
+
+                                <div class="blog-author">
+
+                                    <div class="client-avatar">
+                                        <div>
+                                            <img src="~/img/32.jpg"
+                                                 class="img-fluid rounded-circle"
+                                                 alt="Admin">
+                                        </div>
+                                    </div>
+
+                                    <span class="author-name">
+                                        Admin
+                                    </span>
+
+                                    <a asp-controller="Home"
+                                       asp-action="Blogdetail"
+                                       asp-route-id="@blog.Id"
+                                       class="blog-read-link">
+
+                                        Read
+                                        <i class="bi bi-arrow-right"></i>
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 text-center py-5">
+                    <h4>No blog posts available.</h4>
+                </div>
+            }
+
+        </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NEWSLETTER SECTION
+    ===================================================== -->
+
+    <section class="newsletter-section">
+
+        <div class="container px-5 text-center">
+
+            <h2>
+                Get Weekly <span>Insights</span>
+            </h2>
+
+            <p>
+                Subscribe to our newsletter for the latest tech trends and practical advice.
+            </p>
+
+            <form class="newsletter-form">
+
+                <input type="email" placeholder="Your email address" required>
+
+                <button type="submit" class="btn-subscribe">
+                    <i class="bi bi-envelope-fill me-2"></i>
+                    Subscribe
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TRUSTED BOTTOM BAR
+    ===================================================== -->
+
+    <section class="trusted-bottom">
+
+        <div class="container">
+
+            <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
+
+                <span class="trusted-by-text">TRUSTED BY</span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    6+ Blog Posts
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    5 min Avg Read
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    6 Categories
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    Weekly Newsletter
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+  

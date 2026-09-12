@@ -1,0 +1,1009 @@
+﻿@model List<Access_Authority.Models.Project>
+
+@{
+    ViewData["Title"] = "Projects";
+    Layout = "_Layout1";
+
+    int currentPage = ViewBag.CurrentPage ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
+    int totalProjects = ViewBag.TotalProjects ?? (Model?.Count ?? 0);
+}
+
+<style>
+
+    /* =========================================
+           PROJECT PAGE
+        ========================================= */
+
+    .projects-page {
+        background: #10131A;
+        min-height: 100vh;
+        color: #fff;
+        padding: 30px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    /* =========================================
+           HEADER
+        ========================================= */
+
+    .projects-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .projects-heading h2 {
+        margin: 0;
+        color: #fff;
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    .projects-heading p {
+        margin: 7px 0 0;
+        color: #858c98;
+        font-size: 14px;
+    }
+
+
+    /* =========================================
+           ADD PROJECT
+        ========================================= */
+
+    .btn-add-project {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 11px 20px;
+        background: #E0A458;
+        color: #10131A;
+        border: 1px solid #E0A458;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: .3s;
+    }
+
+        .btn-add-project:hover {
+            background: transparent;
+            color: #E0A458;
+        }
+
+
+    /* =========================================
+           COUNT
+        ========================================= */
+
+    .project-count {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #8d95a3;
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+        .project-count strong {
+            color: #E0A458;
+        }
+
+
+    /* =========================================
+           TABLE CARD
+        ========================================= */
+
+    .project-table-card {
+        width: 100%;
+        background: #171B24;
+        border: 1px solid rgba(255,255,255,.07);
+        border-radius: 12px;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+
+    /* =========================================
+           TABLE WRAPPER
+           NO HORIZONTAL SCROLLBAR
+        ========================================= */
+
+    .project-table-wrapper {
+        width: 100%;
+        overflow: hidden;
+    }
+
+
+    /* =========================================
+           TABLE
+        ========================================= */
+
+    .project-table {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        table-layout: fixed;
+        border-collapse: collapse;
+        margin: 0;
+    }
+
+
+        /* =========================================
+           TABLE HEADER
+        ========================================= */
+
+        .project-table thead {
+            background: #1D222C;
+        }
+
+        .project-table th {
+            padding: 14px 8px;
+            color: #E0A458;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            white-space: normal;
+            word-break: break-word;
+        }
+
+
+        /* =========================================
+           TABLE BODY
+        ========================================= */
+
+        .project-table td {
+            padding: 14px 8px;
+            color: #c3c8d0;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+            vertical-align: middle;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+        }
+
+        .project-table tbody tr {
+            transition: .2s;
+        }
+
+            .project-table tbody tr:hover {
+                background: #1C212B;
+            }
+
+            .project-table tbody tr:last-child td {
+                border-bottom: none;
+            }
+
+
+        /* =========================================
+           COLUMN WIDTHS
+        ========================================= */
+
+        .project-table th:nth-child(1),
+        .project-table td:nth-child(1) {
+            width: 5%;
+            text-align: center;
+        }
+
+        .project-table th:nth-child(2),
+        .project-table td:nth-child(2) {
+            width: 9%;
+            text-align: center;
+        }
+
+        .project-table th:nth-child(3),
+        .project-table td:nth-child(3) {
+            width: 12%;
+        }
+
+        .project-table th:nth-child(4),
+        .project-table td:nth-child(4) {
+            width: 10%;
+        }
+
+        .project-table th:nth-child(5),
+        .project-table td:nth-child(5) {
+            width: 18%;
+        }
+
+        .project-table th:nth-child(6),
+        .project-table td:nth-child(6) {
+            width: 10%;
+        }
+
+        .project-table th:nth-child(7),
+        .project-table td:nth-child(7) {
+            width: 10%;
+        }
+
+        .project-table th:nth-child(8),
+        .project-table td:nth-child(8) {
+            width: 9%;
+        }
+
+        .project-table th:nth-child(9),
+        .project-table td:nth-child(9) {
+            width: 9%;
+        }
+
+        .project-table th:nth-child(10),
+        .project-table td:nth-child(10) {
+            width: 8%;
+            text-align: center;
+        }
+
+
+    /* =========================================
+           IMAGE
+        ========================================= */
+
+    .project-image {
+        width: 60px;
+        height: 42px;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 1px solid rgba(255,255,255,.08);
+        display: block;
+        margin: auto;
+    }
+
+    .project-image-placeholder {
+        width: 60px;
+        height: 42px;
+        border-radius: 6px;
+        background: #10131A;
+        color: #626a77;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+    }
+
+
+    /* =========================================
+           TITLE
+        ========================================= */
+
+    .project-title {
+        color: #fff;
+        font-weight: 600;
+        min-width: 0;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+
+
+    /* =========================================
+           CATEGORY
+        ========================================= */
+
+    .category-badge {
+        display: inline-block;
+        padding: 5px 8px;
+        border-radius: 20px;
+        background: rgba(224,164,88,.10);
+        color: #E0A458;
+        border: 1px solid rgba(224,164,88,.18);
+        font-size: 11px;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+
+    /* =========================================
+           DESCRIPTION
+        ========================================= */
+
+    .description-text {
+        max-width: none;
+        color: #9299a5;
+        line-height: 1.45;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+
+
+    /* =========================================
+           ACTION
+        ========================================= */
+
+    .action-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        white-space: nowrap;
+    }
+
+        .action-wrapper form {
+            margin: 0;
+            padding: 0;
+        }
+
+
+    /* =========================================
+           VIEW + DELETE
+        ========================================= */
+
+    .btn-project-view,
+    .btn-project-delete {
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        transition: .25s;
+        padding: 0;
+        cursor: pointer;
+        box-sizing: border-box;
+    }
+
+
+    /* VIEW */
+
+    .btn-project-view {
+        color: #E0A458;
+        border: 1px solid rgba(224,164,88,.35);
+        background: rgba(224,164,88,.08);
+        text-decoration: none;
+    }
+
+        .btn-project-view:hover {
+            background: #E0A458;
+            color: #10131A;
+        }
+
+
+    /* DELETE */
+
+    .btn-project-delete {
+        color: #C6614E;
+        border: 1px solid rgba(198,97,78,.35);
+        background: rgba(198,97,78,.08);
+    }
+
+        .btn-project-delete:hover {
+            background: #C6614E;
+            color: #fff;
+        }
+
+
+    /* =========================================
+           PAGINATION
+        ========================================= */
+
+    .project-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 20px;
+        background: #171B24;
+        border-top: 1px solid rgba(255,255,255,.06);
+        flex-wrap: wrap;
+    }
+
+    .pagination-btn {
+        min-width: 36px;
+        height: 36px;
+        padding: 0 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        border-radius: 6px;
+        border: 1px solid rgba(224,164,88,.25);
+        background: rgba(224,164,88,.06);
+        color: #c3c8d0;
+        text-decoration: none;
+        font-size: 13px;
+        transition: .25s;
+        box-sizing: border-box;
+    }
+
+        .pagination-btn:hover {
+            background: #E0A458;
+            border-color: #E0A458;
+            color: #10131A;
+        }
+
+        .pagination-btn.active {
+            background: #E0A458;
+            border-color: #E0A458;
+            color: #10131A;
+            font-weight: 700;
+        }
+
+
+    /* =========================================
+           EMPTY
+        ========================================= */
+
+    .empty-projects {
+        text-align: center;
+        padding: 70px 20px;
+    }
+
+    .empty-projects-icon {
+        width: 65px;
+        height: 65px;
+        margin: 0 auto 18px;
+        border-radius: 50%;
+        background: rgba(224,164,88,.08);
+        color: #E0A458;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+    }
+
+    .empty-projects h4 {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .empty-projects p {
+        color: #777f8d;
+        margin-bottom: 22px;
+    }
+
+
+    /* =========================================
+           MOBILE
+        ========================================= */
+
+    @@media (max-width: 991px) {
+
+        .projects-page {
+            padding: 20px;
+        }
+
+        .project-table th {
+            font-size: 10px;
+            padding: 10px 5px;
+        }
+
+        .project-table td {
+            font-size: 12px;
+            padding: 10px 5px;
+        }
+
+        .project-image {
+            width: 50px;
+            height: 36px;
+        }
+
+        .project-image-placeholder {
+            width: 50px;
+            height: 36px;
+        }
+
+        .btn-project-view,
+        .btn-project-delete {
+            width: 29px;
+            height: 29px;
+        }
+    }
+
+
+    @@media (max-width: 767px) {
+
+        .projects-page {
+            padding: 15px;
+        }
+
+        .projects-heading h2 {
+            font-size: 25px;
+        }
+
+        .btn-add-project {
+            width: 100%;
+        }
+
+        .project-table th,
+        .project-table td {
+            font-size: 10px;
+            padding: 7px 4px;
+        }
+
+        .project-image {
+            width: 40px;
+            height: 30px;
+        }
+
+        .project-image-placeholder {
+            width: 40px;
+            height: 30px;
+        }
+
+        .category-badge {
+            font-size: 9px;
+            padding: 4px 5px;
+        }
+
+        .project-pagination {
+            padding: 15px 8px;
+        }
+    }
+
+</style>
+
+
+<div class="projects-page">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
+    <div class="projects-header">
+
+        <div class="projects-heading">
+
+            <h2>
+                Projects
+            </h2>
+
+            <p>
+                Manage your projects and case studies
+            </p>
+
+        </div>
+
+
+        <a asp-controller="Admin"
+           asp-action="CreateProject"
+           class="btn-add-project">
+
+            <i class="bi bi-plus-lg"></i>
+
+            Add Project
+
+        </a>
+
+    </div>
+
+
+
+    <!-- =========================================
+         PROJECT COUNT
+    ========================================= -->
+
+    <div class="project-count">
+
+        <i class="bi bi-folder2-open"></i>
+
+        Total Projects:
+
+        <strong>
+            @totalProjects
+        </strong>
+
+    </div>
+
+
+
+    <!-- =========================================
+         PROJECT TABLE
+    ========================================= -->
+
+    <div class="project-table-card">
+
+
+        @if (Model != null && Model.Any())
+        {
+
+            <div class="project-table-wrapper">
+
+                <table class="project-table">
+
+
+                    <!-- HEADER -->
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Id</th>
+
+                            <th>Image</th>
+
+                            <th>Project</th>
+
+                            <th>Category</th>
+
+                            <th>Description</th>
+
+                            <th>Client</th>
+
+                            @* <th>Industry</th>
+
+                            <th>Duration</th> *@
+
+                            <th>Created</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+
+                    <!-- BODY -->
+
+                    <tbody>
+
+
+                        @foreach (var project in Model)
+                        {
+
+                            <tr>
+
+
+                                <!-- ID -->
+
+                                <td>
+                                    @project.Id
+                                </td>
+
+
+
+                                <!-- IMAGE -->
+
+                                <td>
+
+                                    @if (!string.IsNullOrWhiteSpace(project.HeroImage))
+                                    {
+
+                                        <img src="@project.HeroImage"
+                                             alt="@project.Title"
+                                             class="project-image" />
+
+                                    }
+                                    else
+                                    {
+
+                                        <div class="project-image-placeholder">
+
+                                            <i class="bi bi-image"></i>
+
+                                        </div>
+
+                                    }
+
+                            </td>
+
+
+
+                            <!-- PROJECT -->
+
+                            <td>
+
+                                <div class="project-title">
+
+                                    @project.Title
+
+                                </div>
+
+                            </td>
+
+
+
+                            <!-- CATEGORY -->
+
+                            <td>
+
+                                <span class="category-badge">
+
+                                    @(string.IsNullOrWhiteSpace(project.Category)
+                                                                    ? "-"
+                                                                    : project.Category)
+
+                            </span>
+
+                                </td>
+
+
+
+                                <!-- DESCRIPTION -->
+
+                                <td>
+
+                                    <div class="description-text">
+
+                                @if (!string.IsNullOrWhiteSpace(project.ShortDescription))
+                                        {
+
+                                            if (project.ShortDescription.Length > 90)
+                                            {
+
+                                                @project.ShortDescription.Substring(0, 90)
+
+                                                <span>...</span>
+
+                                            }
+                                            else
+                                            {
+
+                                                @project.ShortDescription
+
+                                            }
+
+                                        }
+                                        else
+                                        {
+
+                                            <span>-</span>
+
+                                        }
+
+                                </div>
+
+                            </td>
+
+
+
+                            <!-- CLIENT -->
+
+                            <td>
+
+                                @(string.IsNullOrWhiteSpace(project.Client)
+                                                            ? "-"
+                                                            : project.Client)
+
+                            </td>
+
+
+
+                        @*     <!-- INDUSTRY -->
+
+                            <td>
+
+                                @(string.IsNullOrWhiteSpace(project.Industry)
+                                                            ? "-"
+                                                            : project.Industry)
+
+                            </td>
+
+
+
+                            <!-- DURATION -->
+
+                            <td>
+
+                                @(string.IsNullOrWhiteSpace(project.Duration)
+                                                            ? "-"
+                                                            : project.Duration)
+
+                        </td> *@
+
+
+
+                                <!-- CREATED -->
+
+                                <td>
+
+                                    @project.CreatedDate.ToString("dd-MM-yyyy")
+
+                                </td>
+
+
+
+                                <!-- ACTION -->
+
+                                <td>
+
+                                    <div class="action-wrapper">
+
+
+                                        <!-- VIEW -->
+
+                                        <a asp-controller="Home"
+                                           asp-action="ProjectDetail"
+                                           asp-route-id="@project.Id"
+                                           class="btn-project-view"
+                                           title="View Project">
+
+                                            <i class="bi bi-eye-fill"></i>
+
+                                        </a>
+
+
+
+                                        <!-- DELETE -->
+
+                                        <form asp-controller="Admin"
+                                              asp-action="DeleteProject"
+                                              asp-route-id="@project.Id"
+                                              method="post">
+
+                                            @Html.AntiForgeryToken()
+
+                                            <button type="submit"
+                                                    class="btn-project-delete"
+                                                    title="Delete Project">
+
+                                                <i class="bi bi-trash3-fill"></i>
+
+                                            </button>
+
+                                        </form>
+
+
+                                    </div>
+
+                                </td>
+
+
+                            </tr>
+
+                                        }
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 PAGINATION
+            ========================================= -->
+            @if (totalPages > 1)
+            {
+
+                <div class="project-pagination">
+
+
+                    @if (currentPage > 1)
+                    {
+
+                        <a asp-controller="Admin"
+                           asp-action="Projects"
+                           asp-route-page="@(currentPage - 1)"
+                           class="pagination-btn">
+
+                            <i class="bi bi-chevron-left"></i>
+
+                            Previous
+
+                        </a>
+
+                    }
+
+
+                    @for (int i = 1; i <= totalPages; i++)
+                    {
+
+                        if (i == currentPage)
+                        {
+
+                            <span class="pagination-btn active">
+                                @i
+                            </span>
+
+                        }
+                        else
+                        {
+
+                            <a asp-controller="Admin"
+                               asp-action="Projects"
+                               asp-route-page="@i"
+                               class="pagination-btn">
+
+                                @i
+
+                            </a>
+
+                        }
+
+                    }
+
+
+                    @if (currentPage < totalPages)
+                    {
+
+                        <a asp-controller="Admin"
+                           asp-action="Projects"
+                           asp-route-page="@(currentPage + 1)"
+                           class="pagination-btn">
+
+                            Next
+
+                            <i class="bi bi-chevron-right"></i>
+
+                        </a>
+
+                    }
+
+
+                </div>
+
+            }
+
+
+        }
+        else
+        {
+
+            <!-- =========================================
+                 EMPTY STATE
+            ========================================= -->
+
+            <div class="empty-projects">
+
+                <div class="empty-projects-icon">
+
+                    <i class="bi bi-folder-x"></i>
+
+                </div>
+
+                <h4>
+                    No Projects Found
+                </h4>
+
+                <p>
+                    There are currently no projects available in the database.
+                </p>
+
+                <a asp-controller="Admin"
+                   asp-action="CreateProject"
+                   class="btn-add-project">
+
+                    <i class="bi bi-plus-lg"></i>
+
+                    Add Your First Project
+
+                </a>
+
+            </div>
+
+        }
+
+
+    </div>
+
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (TempData["Success"] != null)
+    {
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: '@TempData["Success"]',
+                confirmButtonColor: '#E0A458',
+                background: '#171B24',
+                color: '#fff'
+            });
+        </script>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: '@TempData["Error"]',
+                confirmButtonColor: '#C6614E',
+                background: '#171B24',
+                color: '#fff'
+            });
+        </script>
+    }
+

@@ -1,0 +1,1317 @@
+﻿
+@{
+    ViewData["Title"] = "Web Development";
+}
+
+
+<style>
+
+.breadcrumb-section {
+    background: #0d0d0d;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb {
+    margin: 0;
+}
+
+.breadcrumb-item {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.breadcrumb-item a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: #ed001c;
+    font-weight: 600;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: #777;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 435px;
+    background:
+        radial-gradient(
+            circle at 75% 45%,
+            rgba(55, 0, 5, 0.30),
+            transparent 38%
+        ),
+        linear-gradient(
+            110deg,
+            #0b090a 0%,
+            #11090b 55%,
+            #12090b 100%
+        );
+    color: #fff;
+    padding: 60px 0 65px;
+}
+
+.back-link {
+    color: #ed001c;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.back-link:hover {
+    color: #ff3348;
+}
+
+.hero-icon {
+    margin-top: 15px;
+    width: 70px;
+    height: 70px;
+    background: #20090d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(
+        0 0,
+        82% 0,
+        100% 20%,
+        100% 100%,
+        20% 100%,
+        0 80%
+    );
+}
+
+.hero-icon i {
+    color: #ed001c;
+    font-size: 31px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 0;
+    line-height: 1.1;
+    letter-spacing: -0.7px;
+}
+
+.hero h1 span {
+    color: #ed001c;
+}
+
+.hero-description {
+    color: #a2a2a2;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.7;
+    max-width: 600px;
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+
+.hero-buttons {
+    margin-top: 28px;
+}
+
+
+/*   COMMON BUTTONS  */
+
+.consultation-btn {
+    background: #ed001c;
+    color: #fff;
+    border: 1px solid #ed001c;
+    padding: 12px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+}
+
+.consultation-btn:hover {
+    background: #c90018;
+    border-color: #c90018;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.work-btn {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 12px 24px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+}
+
+.work-btn:hover {
+    color: #fff;
+    border-color: #ed001c;
+    background: rgba(237, 0, 28, 0.08);
+}
+
+
+/* =========================================================
+   COMMON SECTIONS
+========================================================= */
+
+.section {
+    padding: 85px 0;
+}
+
+.section-title-small {
+    color: #ed001c;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.section-title {
+    color: #111;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.4px;
+}
+
+.section-text {
+    color: #666;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.75;
+}
+
+
+    /* ================= WHAT WE DO ================= */
+
+    .what-we-do {
+        background: #fff;
+    }
+
+        .what-we-do .section-title-small {
+            color: #ed001c;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+
+        .what-we-do .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #111;
+            margin-top: 12px !important;
+            margin-bottom: 0;
+            max-width: 520px;
+        }
+
+        .what-we-do .section-text {
+            color: #666;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.75;
+            max-width: 560px;
+            margin-top: 18px !important;
+            margin-bottom: 0;
+        }
+
+
+        /* ================= FEATURE LIST ================= */
+
+        .what-we-do .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 22px 0 0 0;
+            width: 100%;
+        }
+
+            .what-we-do .feature-list li {
+                margin-bottom: 13px;
+                color: #333;
+                font-size: 13px;
+                font-weight: 500;
+                line-height: 1.5;
+                white-space: nowrap;
+            }
+
+            .what-we-do .feature-list i {
+                color: #ed001c;
+                font-size: 12px;
+                margin-right: 8px;
+            }
+
+
+        /* ================= STATS ================= */
+
+        .what-we-do .stats {
+            margin-top: 28px;
+        }
+
+        .what-we-do .stat-number {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.2;
+        }
+
+        .what-we-do .stat-text {
+            color: #777;
+            font-size: 11px;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-top: 4px;
+        }
+
+
+        /* ================= WORK IMAGE ================= */
+
+        .what-we-do .work-image {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+
+        .what-we-do .work-link {
+            color: #ed001c;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 9px 22px;
+            display: inline-block;
+            border: 1px solid #ed001c;
+            margin-top: 16px;
+            transition: all 0.25s ease;
+        }
+
+            .what-we-do .work-link:hover {
+                color: #fff;
+                background: #ed001c;
+            }
+.what-we-do .work-link i {
+    font-size: 13px;
+    transition: transform 0.25s ease;
+}
+
+.what-we-do .work-link:hover {
+    color: #fff;
+    background: #ed001c;
+    border-color: #ed001c;
+}
+
+.what-we-do .work-link:hover i {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.red-divider {
+    text-align: center;
+    color: #ed001c;
+    letter-spacing: 7px;
+    font-size: 11px;
+    line-height: 1;
+    margin: 0;
+}
+
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.process-section {
+    background: #f7f7f7;
+}
+
+.process-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    padding: 28px;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.process-card:hover {
+    transform: translateY(-5px);
+    border-color: #ed001c;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.process-number {
+    color: #ed001c;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.process-card .service-icon {
+    color: #ed001c;
+    font-size: 20px;
+}
+
+.process-card h4 {
+    color: #111;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 22px;
+    margin-bottom: 0;
+}
+
+.process-card p {
+    color: #777;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.7;
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   TECHNOLOGY
+========================================================= */
+
+.technology {
+    padding: 80px 0;
+    background: #f8fafc;
+}
+
+.technology-box {
+    position: relative;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+
+.technology-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        #2563eb,
+        #7c3aed
+    );
+    transition: width 0.35s ease;
+}
+
+.technology-box img {
+    max-width: 75%;
+    max-height: 75%;
+    object-fit: contain;
+    transition: all 0.35s ease;
+}
+
+.technology-box:hover {
+    transform: translateY(-6px);
+    border-color: #c7d2fe;
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.10);
+}
+
+.technology-box:hover::before {
+    width: 100%;
+}
+
+.technology-box:hover img {
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   WHY US
+========================================================= */
+
+.why-section {
+    background: #fff;
+}
+
+.why-box {
+    padding: 25px 0;
+}
+
+.why-box h4 {
+    color: #111;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.why-box p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-top: 10px;
+}
+
+
+/* =========================================================
+   TESTIMONIAL
+========================================================= */
+
+.testimonial {
+    width: 100%;
+    background: #dbd4d6;
+    color: #141313;
+    text-align: center;
+    margin: 0;
+    padding: 70px 60px;
+}
+
+.testimonial-text {
+    max-width: 850px;
+    color: #222;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.8;
+    font-style: italic;
+    margin: 0 auto;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 28px;
+}
+
+.profile img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.profile-name {
+    color: #111;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.profile-role {
+    color: #777;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 3px;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta-section {
+    background: #0d0d0d;
+    padding: 80px 0;
+    color: #fff;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.cta-section p {
+    color: #999;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-top: 14px;
+    margin-bottom: 0;
+}
+
+.cta-section .hero-buttons {
+    justify-content: center;
+    margin-top: 28px;
+}
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+.whatsapp {
+    position: fixed;
+    right: 27px;
+    bottom: 25px;
+    width: 49px;
+    height: 49px;
+    background: #20d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 25px;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.25s ease;
+}
+
+.whatsapp:hover {
+    color: #fff;
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@@media (max-width: 991px) {
+
+    .hero {
+        min-height: auto;
+        padding: 50px 0 55px;
+    }
+
+    .hero h1 {
+        font-size: 44px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+        max-width: 550px;
+    }
+
+    .section {
+        padding: 70px 0;
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+
+    .what-we-do .work-image {
+        height: 380px;
+        margin-top: 35px;
+    }
+
+    .technology {
+        padding: 70px 0;
+    }
+
+    .testimonial {
+        padding: 60px 45px;
+    }
+
+    .cta-section {
+        padding: 70px 0;
+    }
+
+    .cta-section h2 {
+        font-size: 34px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@@media (max-width: 576px) {
+
+    .hero {
+        padding: 40px 0 50px;
+    }
+
+    .hero-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .hero-icon i {
+        font-size: 26px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+        line-height: 1.15;
+    }
+
+    .hero-description {
+        font-size: 15px;
+        line-height: 1.65;
+    }
+
+    .hero-buttons {
+        margin-top: 22px;
+    }
+
+    .consultation-btn,
+    .work-btn {
+        font-size: 12px;
+        padding: 11px 18px;
+    }
+
+    .section {
+        padding: 55px 0;
+    }
+
+    .section-title {
+        font-size: 29px;
+    }
+
+    .section-text {
+        font-size: 14px;
+    }
+
+    /* What We Do */
+
+    .what-we-do .section-title {
+        font-size: 29px;
+    }
+
+    .what-we-do .section-text {
+        font-size: 14px;
+    }
+
+    .what-we-do .feature-list {
+        margin-top: 15px;
+    }
+
+    .what-we-do .feature-list li {
+        font-size: 12px;
+        white-space: normal;
+        margin-bottom: 11px;
+    }
+
+    .what-we-do .stats {
+        margin-top: 20px;
+    }
+
+    .what-we-do .stat-number {
+        font-size: 16px;
+    }
+
+    .what-we-do .stat-text {
+        font-size: 10px;
+    }
+
+    .what-we-do .work-image {
+        height: 280px;
+        margin-top: 30px;
+    }
+
+    /* Process */
+
+    .process-card {
+        padding: 24px;
+    }
+
+    .process-card h4 {
+        font-size: 19px;
+    }
+
+    /* Technology */
+
+    .technology {
+        padding: 55px 0;
+    }
+
+    .technology-box {
+        height: 100px;
+        border-radius: 10px;
+    }
+
+    /* Testimonial */
+
+    .testimonial {
+        padding: 50px 25px;
+    }
+
+    .testimonial-text {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .profile {
+        margin-top: 22px;
+    }
+
+    .profile img {
+        width: 48px;
+        height: 48px;
+        margin-right: 12px;
+    }
+
+    .profile-name {
+        font-size: 13px;
+    }
+
+    .profile-role {
+        font-size: 11px;
+    }
+
+    /* CTA */
+
+    .cta-section {
+        padding: 60px 20px;
+    }
+
+    .cta-section h2 {
+        font-size: 30px;
+    }
+
+    .cta-section p {
+        font-size: 14px;
+    }
+
+    .cta-section .hero-buttons {
+        justify-content: center;
+    }
+
+    .whatsapp {
+        right: 18px;
+        bottom: 18px;
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+    }
+}
+
+</style>
+
+
+    <section class="hero">
+
+        <div class="container px-5">
+
+            
+
+
+            <div class="hero-icon">
+
+                <i class="bi bi-globe2"></i>
+
+            </div>
+
+
+            <h1>
+                Web <span>Development</span>
+            </h1>
+
+
+            <p class="hero-description">
+                We build custom websites and web applications that are fast,
+                secure, and conversion-focused.
+            </p>
+        <div class="d-flex flex-wrap gap-2 hero-buttons">
+
+            <a href="#"
+               class="btn consultation-btn">
+
+                <i class="bi bi-send-fill"></i>
+                &nbsp; Get a Free Quote
+
+            </a>
+
+
+            <a href="#"
+               class="btn work-btn">
+                <i class="bi bi-arrow-down"></i>
+                See Our Process
+
+            </a>
+
+        </div>
+        </div>
+
+    </section>
+
+
+    <!-- ================= WHAT WE DO ================= -->
+
+    <section class="section what-we-do">
+
+        <div class="container px-5">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-6">
+
+                    <div class="section-title-small">
+                        What We Do
+                    </div>
+
+                    <h2 class="section-title mt-3">
+                        Custom Web Solutions
+                    <span class="text-danger">That Drive Results</span>
+                    </h2>
+
+                    <p class="section-text mt-4">
+
+                        Using modern frameworks like React, Next.js,
+                        and Node.js, we create digital experiences that
+                        drive results. Our web development services are
+                        designed to help you build a strong online presence
+                        and achieve your business goals.
+
+                    </p>
+
+                    <div class="d-flex flex-column flex-md-row gap-3">
+                        <ul class="feature-list list-content">
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Custom website design & development
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                E-commerce platforms
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Content management systems
+                            </li>
+
+
+
+                        </ul>
+                        <ul class="feature-list list-content">
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Performance optimization
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                SEO-friendly architecture
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Mobile-first responsive design
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row stats">
+
+                        <div class="col-4">
+
+                            <div class="stat-number">
+                                50+
+                            </div>
+
+                            <div class="stat-text">
+                                Web Projects
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-4">
+
+                            <div class="stat-number">
+                                99.9%
+                            </div>
+
+                            <div class="stat-text">
+                                Uptime
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-4">
+
+                            <div class="stat-number">
+                                2x
+                            </div>
+
+                            <div class="stat-text">
+                                Avg Conversion Increase
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-6">
+
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80&auto=format&fit=crop"
+                         class="work-image"
+                         alt="Web Development">
+
+                    <a href="#" class="work-link">
+                        See Our Work
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="red-divider">
+        ✦ ✦ ✦
+    </div>
+
+
+    <!-- ================= PROCESS ================= -->
+
+    <section class="section process-section" id="process">
+
+        <div class="container px-5">
+
+            <div class="text-center">
+
+                <div class="section-title-small">
+                    Our Process
+                </div>
+
+                <h2 class="section-title mt-3">
+                    How We Work
+                </h2>
+
+                <p class="section-text mt-3">
+                    A proven methodology that delivers results every time
+                </p>
+
+            </div>
+
+
+            <div class="row g-4 mt-4">
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="process-card">
+
+                        <div class="process-number">
+                            01
+                        <div class=" service-icon float-end">
+                            <i class="bi bi-globe2"></i>
+                        </div>
+                        </div>
+                    
+
+                        <h4>
+                            Discovery
+                        </h4>
+
+                        <p>
+                            We understand your goals, audience,
+                            and requirements.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="process-card">
+
+                        <div class="process-number">
+                            02
+                        <div class=" service-icon float-end">
+                            <i class="bi bi-bezier2"></i>
+                        </div>
+                        </div>
+
+                        <h4>
+                            Design
+                        </h4>
+
+                        <p>
+                            Wireframes and prototypes approved
+                            before development.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="process-card">
+
+                        <div class="process-number">
+                            03
+                        <div class=" service-icon float-end">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+                        </div>
+
+                        <h4>
+                            Development
+                        </h4>
+
+                        <p>
+                            Agile sprints with weekly demos
+                            and feedback.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="process-card">
+
+                        <div class="process-number">
+                            04
+                        <div class=" service-icon float-end">
+                            <i class="bi bi-boxes"></i>
+                        </div>
+                        </div>
+
+                        <h4>
+                            Launch
+                        </h4>
+
+                        <p>
+                            Deployment with zero downtime
+                            and post-launch support.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="red-divider">
+        ✦ ✦ ✦
+    </div>
+
+
+    <!-- ================= TECHNOLOGY ================= -->
+
+<section class="section technology">
+
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-title-small">
+                Technology Stack
+            </div>
+
+            <h2 class="section-title mt-3">
+                Tools We Use
+            </h2>
+
+            <p class="section-text mt-3">
+                Modern, enterprise-grade technologies for every project
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 mt-4">
+
+            <!-- React -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="technology-box">
+                    <div class="">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSULCtSje1r_jJTr34CQ26RQ-GT5DQ4ueanprPHBaT14erp_wsbj9ssCXc&s=10" class="img-fluid w-100 h-100 object-fit-contain" alt="Alternate Text" />
+                    </div>
+                    
+                </div>
+            </div>
+
+
+            <!-- Node -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="technology-box">
+                    <div class="">
+                        <img src="https://admin.wac.co/uploads/Node_js_Architecture_A_Comprehensive_Guide_1_af37a73e1e.png" class="img-fluid w-100 h-100 object-fit-contain" alt="Alternate Text" />
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- PostgreSQL -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="technology-box">
+                    <div class="">
+                        <img src="https://cdn.prod.website-files.com/6389bf5874f977eedcfb83d3/69a81d511b30dc4de494a9be_postgresql_db%402x.png" class="img-fluid w-100 h-100 object-fit-contain" alt="Alternate Text" />
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- AWS -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="technology-box">
+                    <div class="">
+                        <img src="https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2023/02/16/aws_bp_primarylogo_01.png" class="img-fluid w-100 h-100 object-fit-contain" alt="Alternate Text" />
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- TypeScript -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="technology-box">
+                    <div class="">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQERkHG0f26Z67Az2gpMRJ5tZQR1FpCoN7ihQXVJNTzlDJsW_PmMSDRcjko&s=10" class="img-fluid w-100 h-100 object-fit-contain" alt="Alternate Text" />
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Next JS -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="technology-box">
+                    <div class="">
+                        <img src="https://decentro.tech/blog/wp-content/uploads/Thanks-NextJS.jpeg" class="img-fluid w-100 h-100 object-fit-contain" alt="Alternate Text" />
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Docker -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="technology-box">
+                    <div class="">
+                        <img src="https://images.viblo.asia/c0004cd9-86e7-468d-a9af-a5c33309db60.jpg" class="img-fluid w-100 h-100 object-fit-contain" alt="Alternate Text" />
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Git -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="technology-box">
+                    <div class="">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSULCtSje1r_jJTr34CQ26RQ-GT5DQ4ueanprPHBaT14erp_wsbj9ssCXc&s=10" class="img-fluid w-100 h-100 object-fit-contain" alt="Alternate Text" />
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+    <!-- TESTIMONIAL -->
+
+    <div class="testimonial text-center ">
+
+        <p class="testimonial-text px-5 ">
+
+            "Access Authority built a website that not only looks
+            amazing but also converts at 2x the industry average.
+            Their team understood our vision and delivered beyond
+            expectations."
+
+        </p>
+
+
+        <div class="profile ">
+
+            <img src="https://randomuser.me/api/portraits/men/52.jpg"
+                 alt="Suresh Kumar">
+
+            <div>
+
+                <div class="profile-name">
+                    Suresh Kumar
+                </div>
+
+                <div class="profile-role">
+                    CEO, TechVision Inc.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ================= CTA ================= -->
+
+    <section class="cta-section">
+
+        <div class="container px-5">
+
+            <h2>
+                Ready to Build Your Website?
+            </h2>
+
+            <p>
+                Let's create a web presence that stands out
+                and drives results.
+            </p>
+
+
+        <div class=" flex-wrap gap-2 hero-buttons">
+
+            <a href="#"
+               class="btn consultation-btn">
+
+                Get a Free Quote
+
+            </a>
+
+
+            <a href="#"
+               class="btn work-btn">
+                
+                See Our Process
+
+            </a>
+
+        </div>
+
+        </div>
+
+    </section>

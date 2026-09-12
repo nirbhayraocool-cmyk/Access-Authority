@@ -1,0 +1,826 @@
+﻿
+@{
+    ViewData["Title"] = "Free Consultation";
+}
+
+<style>
+
+    /* =========================================================
+           PAGE HERO / BREADCRUMB
+           ========================================================= */
+
+    .consultation-hero {
+        background: #f7f7f7;
+        padding: 55px 0 45px;
+        border-bottom: 1px solid #e8e8e8;
+    }
+
+    .consultation-breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        font-size: 14px;
+    }
+
+        .consultation-breadcrumb a {
+            color: #d62828;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+            .consultation-breadcrumb a:hover {
+                color: #a91f1f;
+            }
+
+        .consultation-breadcrumb span {
+            color: #777;
+        }
+
+    .consultation-hero h1 {
+        color: #f7f7f7;
+        font-size: 46px;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 14px;
+        letter-spacing: -0.7px;
+    }
+
+        .consultation-hero h1 span {
+            color: #d62828;
+        }
+
+    .consultation-hero p {
+        max-width: 720px;
+        color: #666;
+        font-size: 16px;
+        line-height: 1.75;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+           MAIN CONSULTATION SECTION
+           ========================================================= */
+
+    .consultation-section {
+        background: #fff;
+        padding: 75px 0;
+    }
+
+    /* LEFT CONTENT */
+
+    .consultation-content {
+        padding-right: 35px;
+    }
+
+    .consultation-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #d62828;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.8px;
+        margin-bottom: 17px;
+    }
+
+        .consultation-label span {
+            width: 35px;
+            height: 2px;
+            background: #d62828;
+            display: inline-block;
+        }
+
+    .consultation-content h2 {
+        color: #171717;
+        font-size: 36px;
+        line-height: 1.25;
+        font-weight: 800;
+        margin-bottom: 18px;
+    }
+
+        .consultation-content h2 span {
+            color: #d62828;
+        }
+
+    .consultation-content > p {
+        color: #666;
+        font-size: 15px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+
+    /* BENEFITS */
+
+    .consultation-benefits {
+        display: flex;
+        flex-direction: column;
+        gap: 17px;
+    }
+
+    .consultation-benefit {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .consultation-benefit-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff0f0;
+        border: 1px solid #f1cccc;
+        border-radius: 6px;
+        color: #d62828;
+        font-size: 18px;
+    }
+
+    .consultation-benefit h5 {
+        color: #222;
+        font-size: 15px;
+        font-weight: 700;
+        margin: 0 0 4px;
+    }
+
+    .consultation-benefit p {
+        color: #777;
+        font-size: 13px;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+
+    /* =========================================================
+           CONSULTATION FORM
+           ========================================================= */
+
+    .consultation-form-card {
+        background: #fff;
+        border: 1px solid #e4e4e4;
+        border-radius: 9px;
+        padding: 34px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07);
+    }
+
+    .consultation-form-heading {
+        margin-bottom: 25px;
+    }
+
+        .consultation-form-heading h3 {
+            color: #202020;
+            font-size: 24px;
+            font-weight: 750;
+            margin-bottom: 7px;
+        }
+
+        .consultation-form-heading p {
+            color: #777;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+    .consultation-form-label {
+        display: block;
+        color: #333;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 7px;
+    }
+
+    .consultation-form-control {
+        width: 100%;
+        height: 46px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px 13px;
+        font-size: 14px;
+        color: #333;
+        background: #fff;
+        outline: none;
+        transition: all 0.25s ease;
+    }
+
+        .consultation-form-control:focus {
+            border-color: #d62828;
+            box-shadow: 0 0 0 3px rgba(214, 40, 40, 0.08);
+        }
+
+    textarea.consultation-form-control {
+        height: 115px;
+        resize: vertical;
+    }
+
+    .consultation-form-group {
+        margin-bottom: 18px;
+    }
+
+    .consultation-submit {
+        width: 100%;
+        height: 48px;
+        border: 1px solid #d62828;
+        border-radius: 5px;
+        background: #d62828;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+        .consultation-submit i {
+            margin-left: 7px;
+        }
+
+        .consultation-submit:hover {
+            background: #b91f1f;
+            border-color: #b91f1f;
+            transform: translateY(-1px);
+        }
+
+    .consultation-note {
+        text-align: center;
+        color: #999;
+        font-size: 11px;
+        margin: 13px 0 0;
+    }
+
+
+    /* =========================================================
+           WHY ACCESS AUTHORITY
+           ========================================================= */
+
+    .consultation-why {
+        background: #f7f7f7;
+        padding: 70px 0;
+        border-top: 1px solid #ededed;
+    }
+
+    .consultation-section-heading {
+        text-align: center;
+        max-width: 680px;
+        margin: 0 auto 45px;
+    }
+
+        .consultation-section-heading .label {
+            color: #d62828;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            margin-bottom: 12px;
+        }
+
+        .consultation-section-heading h2 {
+            color: #171717;
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .consultation-section-heading p {
+            color: #707070;
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+
+    /* WHY CARDS */
+
+    .consultation-info-card {
+        height: 100%;
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 7px;
+        padding: 27px 24px;
+        transition: all 0.3s ease;
+    }
+
+        .consultation-info-card:hover {
+            border-color: #e1b5b5;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+    .consultation-info-icon {
+        width: 48px;
+        height: 48px;
+        background: #fff0f0;
+        border: 1px solid #f1cccc;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #d62828;
+        font-size: 20px;
+        margin-bottom: 18px;
+    }
+
+    .consultation-info-card h4 {
+        color: #222;
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 9px;
+    }
+
+    .consultation-info-card p {
+        color: #777;
+        font-size: 13px;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+
+    /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+    @@media (max-width: 991px) {
+
+        .consultation-content {
+            padding-right: 0;
+            margin-bottom: 45px;
+        }
+
+        .consultation-hero h1 {
+            font-size: 42px;
+        }
+    }
+
+
+    @@media (max-width: 767px) {
+
+        .consultation-hero {
+            padding: 45px 0 35px;
+        }
+
+            .consultation-hero h1 {
+                font-size: 35px;
+            }
+
+            .consultation-hero p {
+                font-size: 15px;
+            }
+
+        .consultation-section {
+            padding: 55px 0;
+        }
+
+        .consultation-content h2 {
+            font-size: 30px;
+        }
+
+        .consultation-form-card {
+            padding: 25px 20px;
+        }
+
+        .consultation-section-heading h2 {
+            font-size: 29px;
+        }
+
+        .consultation-why {
+            padding: 55px 0;
+        }
+    }
+
+</style>
+
+
+<!-- =========================================================
+     HERO / BREADCRUMB
+     ========================================================= -->
+
+<section class="consultation-hero bg-black">
+
+    <div class="container px-5">
+
+        <div class="consultation-breadcrumb">
+            <a asp-controller="Home" asp-action="Index">
+                Home
+            </a>
+
+            <span>/</span>
+
+            <span>Free Consultation</span>
+        </div>
+
+        <h1>
+            Let's Build Something
+            <span>Great Together.</span>
+        </h1>
+
+        <p>
+            Have a project idea, business challenge, or technology requirement?
+            Talk to our experts and discover the right digital solution for your
+            business.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONSULTATION CONTENT + FORM
+     ========================================================= -->
+
+<section class="consultation-section">
+
+    <div class="container px-5">
+
+        <div class="row align-items-start g-5">
+
+            <!-- LEFT -->
+
+            <div class="col-lg-6">
+
+                <div class="consultation-content">
+
+                    <div class="consultation-label">
+                        <span></span>
+                        FREE CONSULTATION
+                    </div>
+
+                    <h2>
+                        Turn Your Idea Into
+                        <span>Reality.</span>
+                    </h2>
+
+                    <p>
+                        Every successful project starts with a clear conversation.
+                        Share your requirements with us and our team will help you
+                        understand the right technology, approach, and solution for
+                        your business.
+                    </p>
+
+
+                    <div class="consultation-benefits">
+
+                        <div class="consultation-benefit">
+
+                            <div class="consultation-benefit-icon">
+                                <i class="bi bi-chat-dots"></i>
+                            </div>
+
+                            <div>
+                                <h5>Understand Your Requirements</h5>
+                                <p>
+                                    Discuss your goals, challenges, and project
+                                    requirements with our experts.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="consultation-benefit">
+
+                            <div class="consultation-benefit-icon">
+                                <i class="bi bi-lightbulb"></i>
+                            </div>
+
+                            <div>
+                                <h5>Get the Right Solution</h5>
+                                <p>
+                                    Explore practical technology solutions that
+                                    fit your business needs.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="consultation-benefit">
+
+                            <div class="consultation-benefit-icon">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </div>
+
+                            <div>
+                                <h5>Plan for Growth</h5>
+                                <p>
+                                    Build a scalable digital strategy designed
+                                    for long-term business growth.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT FORM -->
+
+            <div class="col-lg-6">
+
+                <div class="consultation-form-card">
+
+                    <div class="consultation-form-heading">
+
+                        <h3>Request a Free Consultation</h3>
+
+                        <p>
+                            Fill in the details below and our team will get
+                            back to you.
+                        </p>
+
+                    </div>
+
+
+                    <form method="post"
+                          asp-controller="Home"
+                          asp-action="FreeConsultation">
+
+                        @Html.AntiForgeryToken()
+
+                        <div class="row">
+
+                            <!-- NAME -->
+
+                            <div class="col-md-6">
+
+                                <div class="consultation-form-group">
+
+                                    <label class="consultation-form-label">
+                                        Full Name
+                                    </label>
+
+                                    <input type="text"
+                                           name="FullName"
+                                           class="consultation-form-control"
+                                           placeholder="Enter your name" />
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- EMAIL -->
+
+                            <div class="col-md-6">
+
+                                <div class="consultation-form-group">
+
+                                    <label class="consultation-form-label">
+                                        Email Address
+                                    </label>
+
+                                    <input type="email"
+                                           name="Email"
+                                           class="consultation-form-control"
+                                           placeholder="Enter your email" />
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- PHONE -->
+
+                            <div class="col-md-6">
+
+                                <div class="consultation-form-group">
+
+                                    <label class="consultation-form-label">
+                                        Phone Number
+                                    </label>
+
+                                    <input type="tel"
+                                           name="PhoneNumber"
+                                           class="consultation-form-control"
+                                           placeholder="Enter phone number" />
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- SERVICE -->
+
+                            <div class="col-md-6">
+
+                                <div class="consultation-form-group">
+
+                                    <label class="consultation-form-label">
+                                        Interested In
+                                    </label>
+
+                                    <select name="Service"
+                                            class="consultation-form-control">
+
+                                        <option value="">
+                                            Select a service
+                                        </option>
+
+                                        <option value="Web Development">
+                                            Web Development
+                                        </option>
+
+                                        <option value="ERP Development">
+                                            ERP Development
+                                        </option>
+
+                                        <option value="Custom Software">
+                                            Custom Software
+                                        </option>
+
+                                        <option value="Mobile App Development">
+                                            Mobile App Development
+                                        </option>
+
+                                        <option value="UI/UX Design">
+                                            UI/UX Design
+                                        </option>
+
+                                        <option value="Digital Solutions">
+                                            Digital Solutions
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- COMPANY -->
+
+                            <div class="col-12">
+
+                                <div class="consultation-form-group">
+
+                                    <label class="consultation-form-label">
+                                        Company / Organization
+                                    </label>
+
+                                    <input type="text"
+                                           name="CompanyName"
+                                           class="consultation-form-control"
+                                           placeholder="Enter company name" />
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- MESSAGE -->
+
+                            <div class="col-12">
+
+                                <div class="consultation-form-group">
+
+                                    <label class="consultation-form-label">
+                                        Tell Us About Your Project
+                                    </label>
+
+                                    <textarea name="Message"
+                                              class="consultation-form-control"
+                                              placeholder="Briefly describe your project or requirement"></textarea>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- SUBMIT -->
+
+                            <div class="col-12">
+
+                                <button type="submit"
+                                        class="consultation-submit">
+
+                                    Request Consultation
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </button>
+
+                                <p class="consultation-note">
+                                    Your information is kept confidential.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHY ACCESS AUTHORITY
+     ========================================================= -->
+
+<section class="consultation-why">
+
+    <div class="container px-5">
+
+        <div class="consultation-section-heading">
+
+            <div class="label">
+                WHY ACCESS AUTHORITY
+            </div>
+
+            <h2>
+                More Than Just a Technology Partner
+            </h2>
+
+            <p>
+                We combine technology, business understanding, and creative
+                thinking to help businesses build solutions that actually
+                make an impact.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- CARD 1 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="consultation-info-card">
+
+                    <div class="consultation-info-icon">
+                        <i class="bi bi-code-square"></i>
+                    </div>
+
+                    <h4>Technology Expertise</h4>
+
+                    <p>
+                        From web applications and ERP systems to custom software
+                        and modern digital solutions, we build technology around
+                        your business needs.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 2 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="consultation-info-card">
+
+                    <div class="consultation-info-icon">
+                        <i class="bi bi-puzzle"></i>
+                    </div>
+
+                    <h4>Business-Focused Solutions</h4>
+
+                    <p>
+                        We understand your business goals first and then create
+                        solutions that solve real problems and improve efficiency.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 3 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="consultation-info-card">
+
+                    <div class="consultation-info-icon">
+                        <i class="bi bi-rocket-takeoff"></i>
+                    </div>
+
+                    <h4>Built for Growth</h4>
+
+                    <p>
+                        Our solutions are designed with scalability, performance,
+                        and future business growth in mind.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+

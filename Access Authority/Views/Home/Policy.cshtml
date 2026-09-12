@@ -1,0 +1,1091 @@
+﻿
+@{
+    ViewData["title"] = "Term & Policy";
+}
+<style>
+ 
+    .privacy-hero {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        padding: 60px 0 45px;
+        border-bottom: 1px solid #eaeaea;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .privacy-hero::before {
+            content: "🔒";
+            position: absolute;
+            right: -20px;
+            top: -20px;
+            font-size: 280px;
+            opacity: 0.03;
+            transform: rotate(15deg);
+        }
+
+        .privacy-hero .breadcrumb-custom {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            color: #999;
+            margin-bottom: 14px;
+        }
+
+            .privacy-hero .breadcrumb-custom a {
+                color: #777;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+
+                .privacy-hero .breadcrumb-custom a:hover {
+                    color: #ed0026;
+                }
+
+            .privacy-hero .breadcrumb-custom .separator {
+                color: #ccc;
+                margin: 0 8px;
+            }
+
+            .privacy-hero .breadcrumb-custom .active {
+                color: #ed0026;
+            }
+
+        .privacy-hero .hero-icon-wrap {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            background: #fdecee;
+            border-radius: 16px;
+            font-size: 32px;
+            margin-bottom: 14px;
+            transition: all 0.3s ease;
+        }
+
+            .privacy-hero .hero-icon-wrap:hover {
+                transform: scale(1.05) rotate(-5deg);
+                box-shadow: 0 8px 30px rgba(237, 0, 38, 0.12);
+            }
+
+        .privacy-hero h1 {
+            font-size: 40px;
+            font-weight: 800;
+            color: #111;
+            margin: 0 0 6px 0;
+            letter-spacing: -0.5px;
+        }
+
+            .privacy-hero h1 span {
+                color: #ed0026;
+                position: relative;
+            }
+
+                .privacy-hero h1 span::after {
+                    content: "";
+                    position: absolute;
+                    bottom: 4px;
+                    left: 0;
+                    right: 0;
+                    height: 4px;
+                    background: #ed0026;
+                    opacity: 0.2;
+                    border-radius: 2px;
+                }
+
+        .privacy-hero .subtitle {
+            font-size: 15px;
+            color: #555;
+            margin: 0;
+            max-width: 520px;
+            line-height: 1.7;
+        }
+
+        .privacy-hero .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+            .privacy-hero .hero-stats .stat-item {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 12px;
+                color: #666;
+            }
+
+                .privacy-hero .hero-stats .stat-item i {
+                    color: #ed0026;
+                    font-size: 16px;
+                }
+
+                .privacy-hero .hero-stats .stat-item strong {
+                    color: #111;
+                    font-weight: 700;
+                }
+
+    /* Content Section */
+    .privacy-content {
+        background: #ffffff;
+        padding: 50px 0 70px 0;
+    }
+
+        .privacy-content .content-wrapper {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Last Updated */
+        .privacy-content .last-updated {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 28px;
+            padding: 12px 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+            .privacy-content .last-updated i {
+                color: #ed0026;
+                font-size: 16px;
+            }
+
+            .privacy-content .last-updated strong {
+                color: #333;
+            }
+
+            .privacy-content .last-updated .dot {
+                width: 4px;
+                height: 4px;
+                background: #ddd;
+                border-radius: 50%;
+                display: inline-block;
+            }
+
+        /* Section Cards */
+        .privacy-content .section-card {
+            background: #ffffff;
+            border: 1px solid #eee;
+            border-radius: 16px;
+            padding: 32px 34px 34px;
+            margin-bottom: 28px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .privacy-content .section-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, #ed0026, #ff6b81);
+                opacity: 0;
+                transition: opacity 0.4s ease;
+            }
+
+            .privacy-content .section-card:hover::before {
+                opacity: 1;
+            }
+
+            .privacy-content .section-card:hover {
+                border-color: #ed0026;
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
+                transform: translateY(-3px);
+            }
+
+            .privacy-content .section-card .section-header {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                margin-bottom: 16px;
+            }
+
+                .privacy-content .section-card .section-header .icon-box {
+                    width: 48px;
+                    height: 48px;
+                    background: #fdecee;
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #ed0026;
+                    font-size: 22px;
+                    flex-shrink: 0;
+                    transition: all 0.4s ease;
+                }
+
+            .privacy-content .section-card:hover .section-header .icon-box {
+                background: #ed0026;
+                color: #fff;
+                transform: scale(1.08) rotate(-5deg);
+            }
+
+            .privacy-content .section-card .section-header h3 {
+                font-size: 20px;
+                font-weight: 700;
+                color: #111;
+                margin: 0;
+            }
+
+            .privacy-content .section-card .section-header .badge-count {
+                font-size: 10px;
+                font-weight: 700;
+                color: #ed0026;
+                background: #fdecee;
+                padding: 3px 14px;
+                border-radius: 20px;
+                margin-left: auto;
+                transition: all 0.3s ease;
+            }
+
+            .privacy-content .section-card:hover .section-header .badge-count {
+                background: #ed0026;
+                color: #fff;
+            }
+
+            .privacy-content .section-card .section-desc {
+                font-size: 14px;
+                color: #555;
+                line-height: 1.8;
+                margin-bottom: 16px;
+            }
+
+            /* List inside card */
+            .privacy-content .section-card .info-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+
+                .privacy-content .section-card .info-list li {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 12px;
+                    padding: 10px 14px;
+                    border-radius: 8px;
+                    transition: all 0.3s ease;
+                    background: #fafafa;
+                    border: 1px solid transparent;
+                }
+
+                    .privacy-content .section-card .info-list li:hover {
+                        background: #ffffff;
+                        border-color: #f0f0f0;
+                        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+                    }
+
+                    .privacy-content .section-card .info-list li .list-icon {
+                        color: #ed0026;
+                        font-size: 16px;
+                        margin-top: 2px;
+                        flex-shrink: 0;
+                        width: 20px;
+                        text-align: center;
+                    }
+
+                    .privacy-content .section-card .info-list li .list-content {
+                        flex: 1;
+                    }
+
+                        .privacy-content .section-card .info-list li .list-content strong {
+                            display: block;
+                            font-size: 14px;
+                            font-weight: 600;
+                            color: #111;
+                        }
+
+                        .privacy-content .section-card .info-list li .list-content span {
+                            font-size: 13px;
+                            color: #666;
+                        }
+
+                /* When list single column */
+                .privacy-content .section-card .info-list.single-col {
+                    grid-template-columns: 1fr;
+                }
+
+            /* Tags */
+            .privacy-content .section-card .info-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-top: 14px;
+            }
+
+                .privacy-content .section-card .info-tags .tag {
+                    background: #f7f7f7;
+                    padding: 5px 16px;
+                    border-radius: 20px;
+                    font-size: 12px;
+                    color: #555;
+                    border: 1px solid #eee;
+                    transition: all 0.3s ease;
+                    cursor: default;
+                }
+
+                    .privacy-content .section-card .info-tags .tag:hover {
+                        background: #fdecee;
+                        border-color: #ed0026;
+                        color: #ed0026;
+                        transform: translateY(-2px);
+                        box-shadow: 0 4px 12px rgba(237, 0, 38, 0.08);
+                    }
+
+                    .privacy-content .section-card .info-tags .tag i {
+                        margin-right: 4px;
+                    }
+
+        /* Highlight Box */
+        .privacy-content .highlight-box {
+            background: linear-gradient(135deg, #fdecee 0%, #fff5f6 100%);
+            padding: 18px 24px;
+            border-left: 4px solid #ed0026;
+            margin: 18px 0 0 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+            .privacy-content .highlight-box:hover {
+                box-shadow: 0 4px 20px rgba(237, 0, 38, 0.08);
+                transform: translateX(4px);
+            }
+
+            .privacy-content .highlight-box .h-icon {
+                font-size: 20px;
+                color: #ed0026;
+                flex-shrink: 0;
+                margin-top: 2px;
+            }
+
+            .privacy-content .highlight-box p {
+                margin: 0;
+                font-size: 13px;
+                color: #444;
+                line-height: 1.6;
+            }
+
+                .privacy-content .highlight-box p strong {
+                    color: #111;
+                }
+
+        /* Contact Block */
+        .privacy-content .contact-block {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 28px 32px;
+            border-radius: 12px;
+            margin-top: 10px;
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+            .privacy-content .contact-block:hover {
+                border-color: #ed0026;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+            }
+
+            .privacy-content .contact-block h4 {
+                font-size: 16px;
+                font-weight: 700;
+                color: #111;
+                margin: 0 0 14px 0;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+                .privacy-content .contact-block h4 i {
+                    color: #ed0026;
+                    font-size: 20px;
+                }
+
+            .privacy-content .contact-block .contact-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .privacy-content .contact-block .contact-row {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 8px 12px;
+                border-radius: 8px;
+                background: #ffffff;
+                transition: all 0.3s ease;
+            }
+
+                .privacy-content .contact-block .contact-row:hover {
+                    background: #fdecee;
+                }
+
+                .privacy-content .contact-block .contact-row i {
+                    width: 20px;
+                    color: #ed0026;
+                    font-size: 16px;
+                }
+
+                .privacy-content .contact-block .contact-row span {
+                    font-size: 13px;
+                    color: #555;
+                }
+
+                .privacy-content .contact-block .contact-row a {
+                    color: #ed0026;
+                    text-decoration: none;
+                    font-weight: 500;
+                }
+
+                    .privacy-content .contact-block .contact-row a:hover {
+                        text-decoration: underline;
+                    }
+
+            .privacy-content .contact-block .response-time {
+                grid-column: 1 / -1;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 10px 12px;
+                margin-top: 4px;
+                border-top: 1px solid #eee;
+                font-size: 12px;
+                color: #888;
+            }
+
+                .privacy-content .contact-block .response-time i {
+                    color: #ed0026;
+                }
+
+                .privacy-content .contact-block .response-time strong {
+                    color: #333;
+                }
+
+        /* Privacy Agree Box */
+        .privacy-content .privacy-agree {
+            background: linear-gradient(135deg, #ed0026 0%, #b8001f 100%);
+            color: #fff;
+            padding: 20px 28px;
+            border-radius: 12px;
+            margin: 30px 0 0 0;
+            text-align: center;
+            box-shadow: 0 4px 25px rgba(237, 0, 38, 0.25);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+            .privacy-content .privacy-agree:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 35px rgba(237, 0, 38, 0.35);
+            }
+
+            .privacy-content .privacy-agree .agree-icon {
+                font-size: 28px;
+                color: #fff;
+                opacity: 0.8;
+            }
+
+            .privacy-content .privacy-agree p {
+                margin: 0;
+                font-size: 14px;
+                color: #fff;
+            }
+
+                .privacy-content .privacy-agree p strong {
+                    color: #fff;
+                }
+
+            .privacy-content .privacy-agree .agree-badge {
+                background: rgba(255, 255, 255, 0.15);
+                padding: 4px 16px;
+                border-radius: 20px;
+                font-size: 11px;
+                color: #fff;
+                letter-spacing: 0.5px;
+            }
+
+    /* =====================================================
+               RESPONSIVE
+            ===================================================== */
+
+    @@media (max-width: 991px) {
+        .privacy-hero h1
+
+    {
+        font-size: 32px;
+    }
+
+    .privacy-content .section-card {
+        padding: 22px;
+    }
+
+        .privacy-content .section-card .section-header h3 {
+            font-size: 18px;
+        }
+
+        .privacy-content .section-card .info-list {
+            grid-template-columns: 1fr;
+        }
+
+    .privacy-content .contact-block .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .privacy-hero .hero-stats {
+        gap: 16px;
+    }
+
+    }
+
+    @@media (max-width: 575px) {
+        .privacy-hero
+
+    {
+        padding: 35px 0 25px;
+    }
+
+    .privacy-hero h1 {
+        font-size: 26px;
+    }
+
+    .privacy-hero .subtitle {
+        font-size: 13px;
+    }
+
+    .privacy-hero .hero-icon-wrap {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+
+    .privacy-content {
+        padding: 30px 0 40px 0;
+    }
+
+        .privacy-content .section-card {
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+            .privacy-content .section-card .section-header .icon-box {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .privacy-content .section-card .section-header h3 {
+                font-size: 16px;
+            }
+
+            .privacy-content .section-card .section-header .badge-count {
+                font-size: 8px;
+                padding: 2px 10px;
+            }
+
+            .privacy-content .section-card .info-list li {
+                padding: 8px 10px;
+            }
+
+                .privacy-content .section-card .info-list li .list-content strong {
+                    font-size: 13px;
+                }
+
+                .privacy-content .section-card .info-list li .list-content span {
+                    font-size: 12px;
+                }
+
+            .privacy-content .section-card .info-tags .tag {
+                font-size: 11px;
+                padding: 4px 12px;
+            }
+
+        .privacy-content .highlight-box {
+            padding: 14px 16px;
+            flex-direction: column;
+        }
+
+        .privacy-content .contact-block {
+            padding: 16px;
+        }
+
+            .privacy-content .contact-block .contact-row {
+                padding: 6px 8px;
+            }
+
+        .privacy-content .privacy-agree {
+            padding: 16px 18px;
+            flex-direction: column;
+            text-align: center;
+        }
+
+            .privacy-content .privacy-agree p {
+                font-size: 13px;
+            }
+
+        .privacy-content .last-updated {
+            padding: 10px 14px;
+            flex-wrap: wrap;
+        }
+
+    .footer-desc {
+        max-width: 100%;
+    }
+
+    }
+</style>
+
+
+  
+    <section class="privacy-hero ">
+
+        <div class="container px-5">
+
+            <div class="breadcrumb-custom">
+                <a href="#">Home</a>
+                <span class="separator">/</span>
+                <span class="active">Privacy Policy</span>
+            </div>
+
+            <div class="hero-icon-wrap">🔒</div>
+
+            <h1>
+                Privacy <span>Policy</span>
+            </h1>
+
+            <p class="subtitle">
+                Your privacy matters to us. This policy explains how we collect, use, and protect your personal
+                information when you interact with Access Authority.
+            </p>
+
+            <div class="hero-stats">
+                <span class="stat-item">
+                    <i class="bi bi-shield-fill-check"></i>
+                    <strong>100%</strong> GDPR Compliant
+                </span>
+                <span class="stat-item">
+                    <i class="bi bi-lock-fill"></i>
+                    <strong>SSL</strong> Secured
+                </span>
+                <span class="stat-item">
+                    <i class="bi bi-clock-fill"></i>
+                    <strong>2hr</strong> Response Time
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PRIVACY POLICY CONTENT
+    ===================================================== -->
+
+    <section class="privacy-content ">
+
+        <div class="container ">
+
+            <div class="content-wrapper">
+
+                <!-- Last Updated -->
+                <div class="last-updated">
+                    <i class="bi bi-clock-history"></i>
+                    <span><strong>Last Updated:</strong> August 20, 2026</span>
+                    <span class="dot"></span>
+                    <span><i class="bi bi-check-circle-fill" style="color: #28a745;"></i> Reviewed & Compliant</span>
+                </div>
+
+                <!-- =========================================================
+                     SECTION 1: INFORMATION WE COLLECT
+                ========================================================= -->
+
+                <div class="section-card">
+
+                    <div class="section-header">
+                        <div class="icon-box">
+                            <i class="bi bi-database-fill"></i>
+                        </div>
+                        <h3>Information We Collect</h3>
+                        <span class="badge-count">4 Categories</span>
+                    </div>
+
+                    <p class="section-desc">
+                        Access Authority collects information to provide better services to our users. We collect the
+                        following types of information:
+                    </p>
+
+                    <ul class="info-list">
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-person-fill"></i></span>
+                            <div class="list-content">
+                                <strong>Personal Information</strong>
+                                <span>Name, email, phone number, company name</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-bar-chart-fill"></i></span>
+                            <div class="list-content">
+                                <strong>Usage Data</strong>
+                                <span>IP address, browser type, pages visited</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-cookie"></i></span>
+                            <div class="list-content">
+                                <strong>Cookies</strong>
+                                <span>Session data, preferences, analytics</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-folder-fill"></i></span>
+                            <div class="list-content">
+                                <strong>Project Information</strong>
+                                <span>Project requirements, scope, deliverables</span>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <p class="section-desc" style="margin-top: 14px; font-weight: 500; color: #333;">
+                        <i class="bi bi-arrow-right" style="color: #ed0026;"></i>
+                        We collect this information when you:
+                    </p>
+
+                    <div class="info-tags">
+                        <span class="tag"><i class="bi bi-file-earmark-text"></i> Fill out contact forms</span>
+                        <span class="tag"><i class="bi bi-envelope"></i> Sign up for newsletter</span>
+                        <span class="tag"><i class="bi bi-telephone"></i> Communicate with us</span>
+                        <span class="tag"><i class="bi bi-clipboard"></i> Request a quote</span>
+                        <span class="tag"><i class="bi bi-laptop"></i> Use our services</span>
+                        <span class="tag"><i class="bi bi-globe2"></i> Visit our website</span>
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================================
+                     SECTION 2: HOW WE USE YOUR INFORMATION
+                ========================================================= -->
+
+                <div class="section-card">
+
+                    <div class="section-header">
+                        <div class="icon-box">
+                            <i class="bi bi-gear-fill"></i>
+                        </div>
+                        <h3>How We Use Your Information</h3>
+                        <span class="badge-count">6 Purposes</span>
+                    </div>
+
+                    <p class="section-desc">
+                        We use your personal information for the following purposes:
+                    </p>
+
+                    <ul class="info-list">
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-box-seam-fill"></i></span>
+                            <div class="list-content">
+                                <strong>Service Delivery</strong>
+                                <span>To provide and maintain our services</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-file-earmark-text-fill"></i></span>
+                            <div class="list-content">
+                                <strong>Project Management</strong>
+                                <span>To manage your projects and deliverables</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-megaphone-fill"></i></span>
+                            <div class="list-content">
+                                <strong>Marketing</strong>
+                                <span>To send you relevant updates and promotional content</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-chat-dots-fill"></i></span>
+                            <div class="list-content">
+                                <strong>Communication</strong>
+                                <span>To respond to your inquiries and requests</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-graph-up-arrow"></i></span>
+                            <div class="list-content">
+                                <strong>Improvement</strong>
+                                <span>To improve our services and user experience</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-check-circle-fill"></i></span>
+                            <div class="list-content">
+                                <strong>Compliance</strong>
+                                <span>To comply with legal obligations</span>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <div class="highlight-box">
+                        <span class="h-icon">🛡️</span>
+                        <p>
+                            <strong>We do not sell, rent, or share</strong> your personal information with third parties
+                            without your explicit consent, except as required by law.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================================
+                     SECTION 3: DATA SECURITY
+                ========================================================= -->
+
+                <div class="section-card">
+
+                    <div class="section-header">
+                        <div class="icon-box">
+                            <i class="bi bi-shield-fill-check"></i>
+                        </div>
+                        <h3>Data Security</h3>
+                        <span class="badge-count">Protected</span>
+                    </div>
+
+                    <p class="section-desc">
+                        We implement industry-standard security measures to protect your personal information from
+                        unauthorized access, alteration, disclosure, or destruction.
+                    </p>
+
+                    <div class="info-tags">
+                        <span class="tag"><i class="bi bi-lock-fill"></i> SSL/TLS Encryption</span>
+                        <span class="tag"><i class="bi bi-server"></i> Secure Servers</span>
+                        <span class="tag"><i class="bi bi-clipboard-check"></i> Regular Audits</span>
+                        <span class="tag"><i class="bi bi-person-workspace"></i> Employee Training</span>
+                        <span class="tag"><i class="bi bi-arrow-repeat"></i> Data Backup</span>
+                        <span class="tag"><i class="bi bi-firewall"></i> Firewall Protection</span>
+                    </div>
+
+                    <p class="section-desc" style="margin-top: 14px; font-size: 13px; color: #666;">
+                        <i class="bi bi-info-circle" style="color: #ed0026;"></i>
+                        While we strive to protect your information, no method of transmission over the internet is 100%
+                        secure.
+                    </p>
+
+                </div>
+
+
+                <!-- =========================================================
+                     SECTION 4: YOUR RIGHTS
+                ========================================================= -->
+
+                <div class="section-card">
+
+                    <div class="section-header">
+                        <div class="icon-box">
+                            <i class="bi bi-person-check-fill"></i>
+                        </div>
+                        <h3>Your Rights</h3>
+                        <span class="badge-count">6 Rights</span>
+                    </div>
+
+                    <p class="section-desc">
+                        You have the following rights regarding your personal information:
+                    </p>
+
+                    <ul class="info-list">
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-eye-fill"></i></span>
+                            <div class="list-content">
+                                <strong>Access</strong>
+                                <span>Request a copy of your personal data</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-pencil-fill"></i></span>
+                            <div class="list-content">
+                                <strong>Correction</strong>
+                                <span>Update or correct inaccurate information</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-trash-fill"></i></span>
+                            <div class="list-content">
+                                <strong>Deletion</strong>
+                                <span>Request deletion of your personal data</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-sliders"></i></span>
+                            <div class="list-content">
+                                <strong>Restriction</strong>
+                                <span>Limit how we use your data</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-arrow-left-right"></i></span>
+                            <div class="list-content">
+                                <strong>Data Portability</strong>
+                                <span>Request your data in a machine-readable format</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="list-icon"><i class="bi bi-x-circle-fill"></i></span>
+                            <div class="list-content">
+                                <strong>Opt-Out</strong>
+                                <span>Unsubscribe from marketing communications</span>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- =========================================================
+                     SECTION 5: CONTACT US
+                ========================================================= -->
+
+                <div class="section-card">
+
+                    <div class="section-header">
+                        <div class="icon-box">
+                            <i class="bi bi-envelope-fill"></i>
+                        </div>
+                        <h3>Contact Us</h3>
+                        <span class="badge-count">Get in Touch</span>
+                    </div>
+
+                    <p class="section-desc">
+                        If you have any questions, concerns, or requests regarding this Privacy Policy or our data
+                        practices, please contact us:
+                    </p>
+
+                    <div class="contact-block">
+
+                        <h4>
+                            <i class="bi bi-headset"></i>
+                            We're Here to Help
+                        </h4>
+
+                        <div class="contact-grid">
+
+                            <div class="contact-row">
+                                <i class="bi bi-envelope"></i>
+                                <span><strong>Email:</strong> <a href="mailto:info@accessauthority.in">info@accessauthority.in</a></span>
+                            </div>
+
+                            <div class="contact-row">
+                                <i class="bi bi-telephone"></i>
+                                <span><strong>Phone:</strong> <a href="tel:+919129985584">+91 9129985584</a></span>
+                            </div>
+
+                            <div class="contact-row" style="grid-column: 1 / -1;">
+                                <i class="bi bi-geo-alt"></i>
+                                <span><strong>Address:</strong> Infocity Tower, Kanpur, Uttar Pradesh, India</span>
+                            </div>
+
+                            <div class="response-time">
+                                <i class="bi bi-clock"></i>
+                                <span>Response time: <strong>within 2 business hours</strong></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Privacy Agree Box -->
+                <div class="privacy-agree">
+
+                    <span class="agree-icon">🛡️</span>
+
+                    <p>
+                        <strong>We are committed to protecting your privacy.</strong>
+                        <br>
+                        <span style="font-size: 12px; opacity: 0.8;">Last reviewed: August 20, 2026</span>
+                    </p>
+
+                    <span class="agree-badge">✅ Trusted</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TRUSTED BOTTOM BAR
+    ===================================================== -->
+
+    <section class="trusted-bottom">
+
+        <div class="container">
+
+            <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
+
+                <span class="trusted-by-text">TRUSTED BY</span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    100+ Projects
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    98% Satisfaction
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    GDPR Ready
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    SSL Secured
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>

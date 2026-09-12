@@ -1,0 +1,981 @@
+﻿
+@{
+    ViewData["Title"] = "Services";
+}
+<style>
+
+
+    .page-hero-custom {
+        background: #f7f7f7;
+        padding: 55px 0 40px;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+        .page-hero-custom .breadcrumb-custom {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            color: #999;
+            margin-bottom: 14px;
+        }
+
+            .page-hero-custom .breadcrumb-custom a {
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+
+                .page-hero-custom .breadcrumb-custom a:hover {
+                    color: #ed0026;
+                }
+
+            .page-hero-custom .breadcrumb-custom .separator {
+                color: #ccc;
+                margin: 0 8px;
+            }
+
+            .page-hero-custom .breadcrumb-custom .active {
+                color: #ed0026;
+            }
+
+        .page-hero-custom h1 {
+            font-size: 38px;
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 6px 0;
+            letter-spacing: -0.5px;
+        }
+
+            .page-hero-custom h1 span {
+                color: #ed0026;
+            }
+
+        .page-hero-custom .subtitle {
+            font-size: 14px;
+            color: #555;
+            margin: 0;
+            max-width: 520px;
+            line-height: 1.6;
+        }
+
+    /* Mini Stats */
+    .mini-stats-custom {
+        
+        color: #fff;
+        padding: 22px 0;
+        border-bottom: 1px solid #202020;
+    }
+
+        .mini-stats-custom .stat-block {
+            border-right: 1px solid #292929;
+            padding: 5px 15px;
+            text-align: center;
+        }
+
+            .mini-stats-custom .stat-block:last-child {
+                border-right: none;
+            }
+
+        .mini-stats-custom .stat-number {
+            color: #ed0026;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+            .mini-stats-custom .stat-number .suffix {
+                color: #ed0026;
+            }
+
+        .mini-stats-custom .stat-label {
+            color: #686868;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            margin-top: 5px;
+        }
+
+    /* Service card polish */
+    .service-card-enhanced {
+        min-height: 195px;
+        background: #fff;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 24px 22px 22px;
+        position: relative;
+        transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
+    }
+
+        .service-card-enhanced:hover {
+            background: #fff;
+            border-left: 2px solid #ed0026;
+            z-index: 5;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .service-card-enhanced .service-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff0f2;
+            color: #ed0026;
+            margin-bottom: 14px;
+            transition: background .3s ease, color .3s ease, transform .3s ease;
+        }
+
+        .service-card-enhanced:hover .service-icon {
+            background: #ed0026;
+            color: #fff;
+            transform: scale(1.06);
+        }
+
+        .service-card-enhanced .service-icon i {
+            font-size: 17px;
+        }
+
+        .service-card-enhanced .service-badge {
+            font-size: 8px;
+            font-weight: 700;
+            color: #ed0026;
+            background: #fdecee;
+            padding: 2px 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .service-card-enhanced h3 {
+            font-size: 14px;
+            font-weight: 700;
+            margin: 0 0 8px;
+            color: #111;
+        }
+
+        .service-card-enhanced p {
+            font-size: 11px;
+            line-height: 1.7;
+            color: #333;
+            max-width: 290px;
+            margin: 0 0 10px;
+        }
+
+        .service-card-enhanced .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 14px 0;
+        }
+
+            .service-card-enhanced .feature-list li {
+                font-size: 11px;
+                color: #333;
+                padding: 3px 0;
+                display: flex;
+                align-items: center;
+                gap: 7px;
+            }
+
+                .service-card-enhanced .feature-list li i {
+                    color: #ed0026;
+                    font-size: 10px;
+                }
+
+        .service-card-enhanced .service-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-top: 12px;
+            border-top: 1px solid #eee;
+        }
+
+        .service-card-enhanced .btn-get-started {
+            background: #ed0026;
+            color: #fff;
+            padding: 6px 18px;
+            font-size: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            clip-path: polygon(0 0, 94% 0, 100% 25%, 100% 100%, 6% 100%, 0 75%);
+            transition: background 0.2s;
+        }
+
+            .service-card-enhanced .btn-get-started:hover {
+                background: #c9001f;
+                color: #fff;
+            }
+
+        .service-card-enhanced .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: #ed0026;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 700;
+            opacity: 0;
+            transform: translateY(5px);
+            transition: opacity .3s ease, transform .3s ease;
+        }
+
+        .service-card-enhanced:hover .service-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card-enhanced .service-link i {
+            font-size: 11px;
+            transition: transform 0.2s;
+        }
+
+        .service-card-enhanced .service-link:hover i {
+            transform: translateX(4px);
+        }
+
+    /* Why card polish */
+    .why-card-enhanced {
+        position: relative;
+        min-height: 167px;
+        padding: 29px 22px 25px;
+        border-right: 1px solid #222;
+        border-bottom: 1px solid #222;
+        background: transparent;
+        overflow: hidden;
+        transition: background .35s ease, transform .35s ease;
+    }
+
+        .why-card-enhanced::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #ed0026;
+            transform: translateX(-50%);
+            transition: width .45s ease;
+        }
+
+        .why-card-enhanced:hover {
+            background: #21191b;
+            transform: translateY(-2px);
+        }
+
+            .why-card-enhanced:hover::before {
+                width: 100%;
+            }
+
+        .why-card-enhanced .why-number {
+            color: #ed0026;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 13px;
+        }
+
+        .why-card-enhanced h3 {
+            margin: 0 0 11px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .why-card-enhanced p {
+            margin: 0;
+            color: #8f8f8f;
+            font-size: 11px;
+            line-height: 1.7;
+            max-width: 310px;
+        }
+
+    /* Testimonial polish */
+    .testimonial-enhanced {
+        background: #f7f7f7;
+        padding: 38px 42px;
+        border-left: 4px solid #ed0026;
+        border-radius: 2px;
+        transition: box-shadow 0.3s ease;
+    }
+
+        .testimonial-enhanced:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .testimonial-enhanced .quote-icon {
+            font-size: 42px;
+            color: #ed0026;
+            opacity: 0.12;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-enhanced blockquote {
+            font-size: 17px;
+            font-weight: 400;
+            color: #111;
+            line-height: 1.7;
+            margin: 0 0 18px 0;
+        }
+
+        .testimonial-enhanced .client-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ed0026;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .testimonial-enhanced .client-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #111;
+            margin: 0;
+        }
+
+        .testimonial-enhanced .client-title {
+            font-size: 12px;
+            color: #777;
+            margin: 0;
+        }
+
+    /* Responsive */
+    @@media (max-width: 991px) {
+        .page-hero-custom h1
+
+    {
+        font-size: 30px;
+    }
+
+    .mini-stats-custom .stat-block {
+        border-right: none;
+        padding: 5px 8px;
+    }
+
+    .service-card-enhanced {
+        border: 1px solid #ddd !important;
+        margin-bottom: 10px;
+        min-height: auto;
+    }
+
+        .service-card-enhanced .service-link {
+            opacity: 1;
+            transform: none;
+        }
+
+    .why-card-enhanced {
+        min-height: auto;
+        border: 1px solid #222 !important;
+        margin-bottom: 8px;
+    }
+
+    .testimonial-enhanced {
+        padding: 25px 20px;
+    }
+
+    }
+
+    @@media (max-width: 575px) {
+        .page-hero-custom
+
+    {
+        padding: 35px 0 25px;
+    }
+
+    .page-hero-custom h1 {
+        font-size: 24px;
+    }
+
+    .page-hero-custom .subtitle {
+        font-size: 12px;
+    }
+
+    .mini-stats-custom .stat-number {
+        font-size: 22px;
+    }
+
+    .testimonial-enhanced blockquote {
+        font-size: 14px;
+    }
+
+    .service-card-enhanced .service-actions {
+        flex-wrap: wrap;
+    }
+
+    }
+</style>
+
+
+    <section class="page-hero-custom bg-black">
+
+        <div class="container px-5">
+
+            <div class="breadcrumb-custom">
+                <a asp-action="Index">Home</a>
+                <span class="separator">/</span>
+                <span class="active">Services</span>
+            </div>
+
+            <h1>
+                Our <span>Services</span>
+            </h1>
+
+            <p class="subtitle">
+                Custom solutions that drive growth — from web development to enterprise software.
+            </p>
+
+        </div>
+
+
+    <div class="mini-stats-custom container px-5 pt-5">
+
+            <div class="row g-0 align-items-center">
+
+                <div class="col-4 col-lg-3">
+                    <div class="stat-block">
+                        <div class="stat-number">
+                            100<span class="suffix">+</span>
+                        </div>
+                        <div class="stat-label">PROJECTS DELIVERED</div>
+                    </div>
+                </div>
+
+                <div class="col-4 col-lg-3">
+                    <div class="stat-block">
+                        <div class="stat-number">
+                            98<span class="suffix">%</span>
+                        </div>
+                        <div class="stat-label">CLIENT SATISFACTION</div>
+                    </div>
+                </div>
+
+                <div class="col-4 col-lg-3">
+                    <div class="stat-block">
+                        <div class="stat-number">
+                            6
+                        </div>
+                        <div class="stat-label">SERVICE CATEGORIES</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 d-none d-lg-block">
+                    <div class="stat-block" style="border-right: none;">
+                        <div class="stat-number">
+                            12<span class="suffix">+</span>
+                        </div>
+                        <div class="stat-label">COUNTRIES SERVED</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="services-section">
+
+        <div class="container px-5">
+
+            <!-- HEADING -->
+
+            <div class="services-heading text-center">
+
+                <div class="heading-label justify-content-center ">
+                    <span></span>
+                    WHAT WE OFFER
+                </div>
+
+                <h2 class="lh-1">
+                    Comprehensive technology solutions <br><span>for every business need</span>
+                </h2>
+                
+                
+                    From web development to enterprise software, we build technology that solves real business problems.
+                
+
+            </div>
+
+
+            <!-- SERVICES GRID -->
+
+            <div class="row services-grid g-0">
+
+
+                <!-- SERVICE 1: Web Development -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="service-card-enhanced">
+
+                        <div class="service-icon">
+                            <i class="bi bi-globe2"></i>
+                        </div>
+
+                        <span class="service-badge">POPULAR</span>
+
+                        <h3>Web Development</h3>
+
+                        <p>
+                            We build custom websites and web applications that are fast, secure, and conversion-focused.
+                            Using modern frameworks like React, Next.js, and Node.js.
+                        </p>
+
+                        <ul class="feature-list">
+                            <li><i class="bi bi-check-circle-fill"></i> Custom website design &amp; development</li>
+                            <li><i class="bi bi-check-circle-fill"></i> E-commerce platforms</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Content management systems</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Performance optimization</li>
+                        </ul>
+
+                        <div class="service-actions">
+                        <a asp-action="webDevlopment" class="btn-get-started">Get Started</a>
+                        <a asp-action="webDevlopment" class="service-link">
+                                Learn More
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SERVICE 2: ERP Development -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="service-card-enhanced">
+
+                        <div class="service-icon">
+                            <i class="bi bi-diagram-3"></i>
+                        </div>
+
+                        <span class="service-badge">ENTERPRISE</span>
+
+                        <h3>ERP Development</h3>
+
+                        <p>
+                            We design and build enterprise resource planning systems that streamline your operations,
+                            improve efficiency, and provide real-time business intelligence.
+                        </p>
+
+                        <ul class="feature-list">
+                            <li><i class="bi bi-check-circle-fill"></i> Custom ERP solutions</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Module-based architecture</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Legacy system migration</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Integration with existing tools</li>
+                        </ul>
+
+                        <div class="service-actions">
+                        <a asp-action="ERPDevlopment" class="btn-get-started">Get Started</a>
+                        <a asp-action="ERPDevlopment" class="service-link">
+                                Learn More
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SERVICE 3: Custom Software -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="service-card-enhanced">
+
+                        <div class="service-icon">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+
+                        <span class="service-badge">CUSTOM</span>
+
+                        <h3>Custom Software</h3>
+
+                        <p>
+                            We engineer custom software solutions tailored to your specific business needs — from
+                            automation tools to complex backend systems.
+                        </p>
+
+                        <ul class="feature-list">
+                            <li><i class="bi bi-check-circle-fill"></i> Business process automation</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Data analytics platforms</li>
+                            <li><i class="bi bi-check-circle-fill"></i> API development &amp; integration</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Legacy system modernization</li>
+                        </ul>
+
+                        <div class="service-actions">
+                        <a asp-action="CustomSoftware" class="btn-get-started">Get Started</a>
+                        <a asp-action="CustomSoftware" class="service-link">
+                                Learn More
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SERVICE 4: Mobile App Development -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="service-card-enhanced">
+
+                        <div class="service-icon">
+                            <i class="bi bi-phone"></i>
+                        </div>
+
+                        <span class="service-badge">MOBILE</span>
+
+                        <h3>Mobile App Development</h3>
+
+                        <p>
+                            We build cross-platform and native mobile applications that deliver exceptional user
+                            experiences on iOS and Android devices.
+                        </p>
+
+                        <ul class="feature-list">
+                            <li><i class="bi bi-check-circle-fill"></i> React Native &amp; Flutter apps</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Native iOS &amp; Android development</li>
+                            <li><i class="bi bi-check-circle-fill"></i> App store submission &amp; launch</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Push notifications &amp; analytics</li>
+                        </ul>
+
+                        <div class="service-actions">
+                        <a asp-action="MobileApps" class="btn-get-started">Get Started</a>
+                        <a asp-action="MobileApps" class="service-link">
+                                Learn More
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SERVICE 5: UI/UX Design -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="service-card-enhanced">
+
+                        <div class="service-icon">
+                            <i class="bi bi-bezier2"></i>
+                        </div>
+
+                        <span class="service-badge">DESIGN</span>
+
+                        <h3>UI/UX Design</h3>
+
+                        <p>
+                            We create intuitive, research-driven interfaces that make complex products simple and
+                        delightful enterprise resource planning systems that streamline your operations
+                        </p>
+
+                        <ul class="feature-list">
+                            <li><i class="bi bi-check-circle-fill"></i> User research &amp; testing</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Wireframing &amp; prototyping</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Visual design systems</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Conversion optimization</li>
+                        </ul>
+
+                        <div class="service-actions">
+                        <a asp-action="UIUXDisign" class="btn-get-started">Get Started</a>
+                        <a asp-action="UIUXDisign" class="service-link">
+                                Learn More
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SERVICE 6: Video Production -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="service-card-enhanced">
+
+                        <div class="service-icon">
+                            <i class="bi bi-camera-video-fill"></i>
+                        </div>
+
+                        <span class="service-badge">VIDEO</span>
+
+                        <h3>Video Production</h3>
+
+                        <p>
+                            We produce high-quality marketing and training videos that communicate your value proposition
+                            with clarity and impact.
+                        </p>
+
+                        <ul class="feature-list">
+                            <li><i class="bi bi-check-circle-fill"></i> Corporate videos &amp; brand films</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Product demo videos</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Training &amp; educational content</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Animation &amp; motion graphics</li>
+                        </ul>
+
+                        <div class="service-actions">
+                            <a asp-action="VideoProduction" class="btn-get-started">Get Started</a>
+                            <a asp-action="VideoProduction" class="service-link">
+                                Learn More
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         WHY CHOOSE US
+    ===================================================== -->
+
+    <section class="why-section">
+
+        <div class="container px-5">
+
+            <div class="why-heading mx-auto text-center" style="max-width: 600px;">
+
+                <div class="section-label justify-content-center">
+                    <span></span>
+                    WHY CHOOSE US
+                </div>
+
+                <h2>
+                    What Makes Us <strong>Different</strong>
+                </h2>
+
+            </div>
+
+
+            <div class="row why-grid g-0" style="margin-top: 30px;">
+
+                <!-- CARD 1 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="why-card-enhanced">
+
+                        <div class="why-number">01 – SPEED</div>
+
+                        <h3>Rapid Delivery</h3>
+
+                        <p>
+                            Agile methodology ensures your project is delivered on time, every time.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARD 2 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="why-card-enhanced">
+
+                        <div class="why-number">02 – QUALITY</div>
+
+                        <h3>Technical Excellence</h3>
+
+                        <p>
+                            Clean, maintainable code with industry best practices and standards.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARD 3 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="why-card-enhanced">
+
+                        <div class="why-number">03 – SUPPORT</div>
+
+                        <h3>Dedicated Support</h3>
+
+                        <p>
+                            24/7 support and maintenance to ensure your systems run smoothly.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARD 4 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="why-card-enhanced">
+
+                        <div class="why-number">04 – SECURITY</div>
+
+                        <h3>Security First</h3>
+
+                        <p>
+                            Enterprise-grade security baked into every solution we build.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TESTIMONIAL
+    ===================================================== -->
+
+    <section style="background: #ffffff; padding: 55px 0;">
+
+        <div class="container px-5">
+
+            <div class="row justify-content-center">
+
+                <div class="col-lg-9">
+
+                    <div class="testimonial-enhanced">
+
+                        <div class="quote-icon">✦</div>
+
+                        <blockquote>
+                            "Access Authority transformed our entire digital infrastructure. Their team's expertise and
+                            dedication are unmatched. We've seen a 3x increase in operational efficiency."
+                        </blockquote>
+
+                        <div style="display: flex; align-items: center; gap: 16px;">
+
+                            <div class="client-avatar">
+                            <div class="">
+                                <img src="~/img/32.jpg" class="img-fluid rounded-circle " alt="">
+                            </div>
+                            </div>
+
+                            <div>
+                                <p class="client-name">Suresh Kumar</p>
+                                <p class="client-title">CEO, TechVision Inc.</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CTA SECTION
+    ===================================================== -->
+
+    <section class="aa-cta-wrapper">
+
+        <div class="container aa-cta-container">
+
+            <div class="aa-cta-content">
+
+                <div class="aa-cta-label">
+                    <span></span>
+                    LET'S WORK TOGETHER
+                </div>
+
+                <h2>
+                    Ready to <strong>Transform</strong> Your Business?
+                </h2>
+
+                <p>
+                    We don't believe in one-size-fits-all. Every project is unique, and we build solutions that match your
+                    specific needs.
+                </p>
+
+            </div>
+
+            <div class="aa-cta-button-box">
+
+                <a asp-action="Contact" class="aa-cta-button">
+                    <span>▣</span>
+                    Get Free Consultation
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TRUSTED BOTTOM BAR
+    ===================================================== -->
+
+    <section class="trusted-bottom">
+
+        <div class="container">
+
+            <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
+
+                <span class="trusted-by-text">TRUSTED BY</span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    100+ Projects
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    98% Satisfaction
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    2hr Response Time
+                </span>
+
+                <span class="trusted-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    12+ Countries
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>

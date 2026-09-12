@@ -1,0 +1,257 @@
+﻿@model IEnumerable<Access_Authority.Models.ContactViewModel>
+
+@{
+    Layout = "_Layout1";
+}
+
+<style>
+    .contact-table {
+        font-size: 12px !important;
+    }
+
+        .contact-table th,
+        .contact-table td {
+            color: white !important;
+            background-color: #212529 !important;
+            vertical-align: middle;
+        }
+
+        .contact-table th {
+            color: #dc3545 !important;
+        }
+
+    .btn-project-view,
+    .btn-project-delete {
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        transition: .25s;
+        padding: 0;
+        cursor: pointer;
+        box-sizing: border-box;
+    }
+
+    /* VIEW */
+
+    .btn-project-view {
+        color: #E0A458;
+        border: 1px solid rgba(224,164,88,.35);
+        background: rgba(224,164,88,.08);
+        text-decoration: none;
+    }
+
+        .btn-project-view:hover {
+            background: #E0A458;
+            color: #10131A;
+        }
+
+
+    /* DELETE */
+
+    .btn-project-delete {
+        color: #C6614E;
+        border: 1px solid rgba(198,97,78,.35);
+        background: rgba(198,97,78,.08);
+    }
+
+        .btn-project-delete:hover {
+            background: #C6614E;
+            color: #fff;
+        }
+
+</style>
+
+<body class="bg-dark">
+
+    <div class="container px-5 pt-5 bg-dark">
+
+        <!-- ================= CONTACT HEADING ================= -->
+
+        <div class="mb-4">
+
+            <h3 class="text-danger">
+                Contact messages
+            </h3>
+
+            <p class="text-secondary">
+                Website se aayi latest enquiries.
+            </p>
+
+        </div>
+
+
+        <!-- ================= CONTACT TABLE ================= -->
+
+        <div class="row">
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-dark contact-table">
+
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Service</th>
+                            <th>Project Details</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @item.Id
+                                    </td>
+
+                                    <td>
+                                        @item.FullName
+                                    </td>
+
+                                    <td>
+                                        @item.Email
+                                    </td>
+
+                                    <td>
+                                        @item.Phone
+                                    </td>
+
+                                    <td>
+                                        @item.ServiceInterest
+                                    </td>
+
+                                    <td>
+                                        @item.ProjectDetails
+                                    </td>
+
+                                    <td>
+                                        @item.CreatedAt.ToString("dd-MM-yyyy hh:mm tt")
+                                    </td>
+
+                                    <td>
+
+                                        <!-- VIEW BUTTON -->
+
+                                        <a asp-controller="Admin"
+                                           asp-action="ViewContact"
+                                           asp-route-id="@item.Id"
+                                           class="btn-project-view"
+                                           title="View Project">
+
+                                            <i class="bi bi-eye-fill"></i>
+
+                                        </a>
+
+
+                                        <!-- DELETE FORM -->
+
+                                        <form asp-controller="Admin"
+                                              asp-action="DeleteContact"
+                                              asp-route-id="@item.Id"
+                                              method="post"
+                                              style="display:inline;"
+                                              onsubmit="return confirmDelete(this);">
+
+                                            @Html.AntiForgeryToken()
+
+                                            <button type="submit"
+                                                    class="btn-project-delete"
+                                                    title="Delete Project">
+
+                                                <i class="bi bi-trash3-fill"></i>
+
+                                            </button>
+
+                                        </form>
+
+                                    </td>
+
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="8" class="text-center text-secondary">
+                                    No contact messages found.
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SWEET ALERT 2 ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <!-- ================= DELETE CONFIRMATION ================= -->
+
+    <script>
+
+        function confirmDelete(form) {
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "Cancel"
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                    // Form ko manually submit karo
+                    form.submit();
+
+                }
+
+            });
+
+            // Normal form submit ko rokna
+            return false;
+        }
+
+    </script>
+
+
+    <!-- ================= SUCCESS MESSAGE ================= -->
+    @if (TempData["Success"] != null)
+    {
+        <script>
+
+            Swal.fire({
+                title: "Deleted!",
+                text: "@TempData["Success"]",
+                icon: "success",
+                confirmButtonText: "OK"
+            });
+
+        </script>
+    }
+
+</body>

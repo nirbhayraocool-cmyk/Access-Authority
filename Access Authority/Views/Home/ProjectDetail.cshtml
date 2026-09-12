@@ -1,0 +1,632 @@
+﻿@model Access_Authority.Models.Project
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<style>
+
+    .pd-page {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #ffffff;
+        color: #111;
+    }
+
+    /* ============================
+           HERO
+        ============================ */
+
+    .pd-hero {
+        position: relative;
+        min-height: 420px;
+        display: flex;
+        align-items: flex-end;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+    }
+
+        .pd-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(13,13,13,.35) 0%, rgba(13,13,13,.85) 100%);
+        }
+
+    .pd-hero-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 20px 40px;
+        width: 100%;
+    }
+
+    .pd-breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #fff;
+        opacity: .85;
+    }
+
+        .pd-breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .pd-breadcrumb i {
+            font-size: 10px;
+            color: #ed102b;
+        }
+
+    .pd-category-badge {
+        display: inline-block;
+        padding: 6px 14px;
+        margin-bottom: 16px;
+        background: #ed102b;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .8px;
+        text-transform: uppercase;
+    }
+
+    .pd-hero h1 {
+        margin: 0;
+        max-width: 760px;
+        color: #fff;
+        font-size: 42px;
+        font-weight: 800;
+        line-height: 1.15;
+    }
+
+    .pd-hero p {
+        max-width: 620px;
+        margin: 14px 0 0;
+        color: #d8d8d8;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    /* ============================
+           CONTAINER
+        ============================ */
+
+    .pd-container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* ============================
+           PROJECT INFO BAR
+        ============================ */
+
+    .pd-info-bar {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        background: #0d0d0d;
+    }
+
+    .pd-info-item {
+        padding: 26px 24px;
+        border-right: 1px solid #262626;
+    }
+
+        .pd-info-item:last-child {
+            border-right: none;
+        }
+
+    .pd-info-label {
+        display: block;
+        margin-bottom: 6px;
+        color: #ed102b;
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: .8px;
+    }
+
+    .pd-info-value {
+        display: block;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    /* ============================
+           SECTIONS
+        ============================ */
+
+    .pd-section {
+        padding: 55px 0;
+    }
+
+        .pd-section.gray {
+            background: #f7f7f7;
+        }
+
+    .pd-section-label {
+        /* display: flex; */
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 10px;
+        color: #ed102b;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+        .pd-section-label::before {
+            content: "";
+            width: 17px;
+            height: 2px;
+            background: #ed102b;
+        }
+
+    .pd-section h2 {
+        margin: 0 0 18px;
+        font-size: 28px;
+        font-weight: 800;
+        color: #111;
+    }
+
+    .pd-section p,
+    .pd-section li {
+        color: #555;
+        font-size: 14px;
+        line-height: 1.85;
+    }
+
+    /* ==  CHALLENGE / SOLUTION   */
+
+    .pd-cs-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }
+
+    .pd-cs-card {
+        background: #fff;
+        border: 1px solid #e2e2e2;
+        border-top: 3px solid #ed102b;
+        padding: 26px;
+    }
+
+        .pd-cs-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin: 0 0 12px;
+            font-size: 17px;
+            font-weight: 800;
+            color: #111;
+        }
+
+            .pd-cs-card h4 i {
+                color: #ed102b;
+            }
+
+    /* == METRICS = */
+
+    .pd-metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .pd-metric-card {
+        background: #0d0d0d;
+        padding: 30px;
+        text-align: center;
+    }
+
+        .pd-metric-card i {
+            font-size: 26px;
+            color: #ed102b;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+    .pd-metric-value {
+        color: #fff;
+        font-size: 34px;
+        font-weight: 800;
+        line-height: 1.1;
+    }
+
+    .pd-metric-label {
+        margin-top: 6px;
+        color: #999;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+    }
+
+    /* ========== TECH + FEATURES ======== */
+
+    .pd-tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .pd-tag {
+        padding: 8px 16px;
+        background: #fff;
+        border: 1px solid #ddd;
+        color: #111;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .pd-feature-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+        .pd-feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+            .pd-feature-list li:last-child {
+                border-bottom: none;
+            }
+
+        .pd-feature-list i {
+            color: #ed102b;
+            margin-top: 3px;
+        }
+
+    /* ================  RESULT == */
+
+    .pd-result-box {
+        background: #ed102b;
+        padding: 34px;
+        color: #fff;
+    }
+
+        .pd-result-box h2 {
+            color: #fff;
+        }
+
+        .pd-result-box p {
+            color: rgba(255,255,255,.9);
+        }
+
+    /* =========  CTA === */
+
+    .pd-cta {
+        padding: 55px 20px;
+        background: #0d0d0d;
+        text-align: center;
+    }
+
+        .pd-cta h2 {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 800;
+            margin: 0 0 12px;
+        }
+
+            .pd-cta h2 span {
+                color: #ed102b;
+            }
+
+        .pd-cta p {
+            color: #999;
+            font-size: 13px;
+            max-width: 500px;
+            margin: 0 auto 22px;
+        }
+
+    .pd-cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .pd-btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 12px 22px;
+        background: #ed102b;
+        color: #fff;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .pd-btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 11px 20px;
+        border: 1px solid #444;
+        color: #fff;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    /* ======= RESPONSIVE ==== */
+
+    @@media (max-width: 767px) {
+
+        .pd-hero h1 {
+            font-size: 30px;
+        }
+
+        .pd-info-bar,
+        .pd-cs-grid,
+        .pd-metrics-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .pd-info-item {
+            border-right: none;
+            border-bottom: 1px solid #262626;
+        }
+
+        .pd-cta-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+</style>
+
+
+<div class="pd-page">
+
+    <!-- HERO -->
+    <section class="pd-hero" style="background-image:url('@Model.HeroImage')">
+
+        <div class="pd-hero-inner">
+
+            <div class="pd-breadcrumb">
+                <a asp-controller="Home" asp-action="Index">HOME</a>
+                <i class="bi bi-chevron-right"></i>
+                <a asp-controller="Home" asp-action="Portfolio">PROJECTS</a>
+                <i class="bi bi-chevron-right"></i>
+                <span>@Model.Title</span>
+            </div>
+
+            <span class="pd-category-badge">@Model.Category</span>
+
+            <h1>@Model.Title</h1>
+
+            @if (!string.IsNullOrEmpty(Model.ShortDescription))
+            {
+                <p>@Model.ShortDescription</p>
+            }
+
+        </div>
+
+    </section>
+
+
+    <!-- INFO BAR -->
+    <section class="pd-info-bar text-center px-5">
+
+        @if (!string.IsNullOrEmpty(Model.Client))
+        {
+            <div class="pd-info-item">
+                <span class="pd-info-label">Client</span>
+                <span class="pd-info-value">@Model.Client</span>
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Industry))
+        {
+            <div class="pd-info-item">
+                <span class="pd-info-label">Industry</span>
+                <span class="pd-info-value">@Model.Industry</span>
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Duration))
+        {
+            <div class="pd-info-item">
+                <span class="pd-info-label">Duration</span>
+                <span class="pd-info-value">@Model.Duration</span>
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Team))
+        {
+            <div class="pd-info-item">
+                <span class="pd-info-label">Team</span>
+                <span class="pd-info-value">@Model.Team</span>
+            </div>
+        }
+
+    </section>
+
+
+    <!-- OVERVIEW -->
+    @if (!string.IsNullOrEmpty(Model.Overview))
+    {
+        <section class="pd-section text-center">
+            <div class="pd-container">
+
+                <div class="pd-section-label">Project Overview</div>
+                <h2>About This <span style="color:#ed102b;">Project</span></h2>
+                <p>@Model.Overview</p>
+
+            </div>
+        </section>
+    }
+
+
+    <!-- CHALLENGE / SOLUTION -->
+    @if (!string.IsNullOrEmpty(Model.Challenge) || !string.IsNullOrEmpty(Model.Solution))
+    {
+        <section class="pd-section gray">
+            <div class="pd-container">
+
+                <div class="pd-section-label">The Approach</div>
+                <h2>Challenge & Solution</h2>
+
+                <div class="pd-cs-grid">
+
+                    @if (!string.IsNullOrEmpty(Model.Challenge))
+                    {
+                        <div class="pd-cs-card">
+                            <h4><i class="bi bi-exclamation-triangle"></i> The Challenge</h4>
+                            <p>@Model.Challenge</p>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.Solution))
+                    {
+                        <div class="pd-cs-card">
+                            <h4><i class="bi bi-lightbulb"></i> The Solution</h4>
+                            <p>@Model.Solution</p>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+        </section>
+    }
+
+
+    <!-- METRICS -->
+    @if (!string.IsNullOrEmpty(Model.Metric1Value) || !string.IsNullOrEmpty(Model.Metric2Value))
+    {
+        <section class="pd-section">
+            <div class="pd-container">
+
+                <div class="pd-section-label">Impact</div>
+                <h2>Results That Matter</h2>
+
+                <div class="pd-metrics-grid">
+
+                    @if (!string.IsNullOrEmpty(Model.Metric1Value))
+                    {
+                        <div class="pd-metric-card">
+                            <i class="bi @Model.Metric1Icon"></i>
+                            <div class="pd-metric-value">@Model.Metric1Value</div>
+                            <div class="pd-metric-label">@Model.Metric1Label</div>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.Metric2Value))
+                    {
+                        <div class="pd-metric-card">
+                            <i class="bi @Model.Metric2Icon"></i>
+                            <div class="pd-metric-value">@Model.Metric2Value</div>
+                            <div class="pd-metric-label">@Model.Metric2Label</div>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+        </section>
+    }
+
+
+    <!-- TECHNOLOGIES + FEATURES -->
+    @if (!string.IsNullOrEmpty(Model.Technologies) || !string.IsNullOrEmpty(Model.Features))
+    {
+        <section class="pd-section gray">
+            <div class="pd-container">
+
+                <div class="pd-cs-grid">
+
+                    @if (!string.IsNullOrEmpty(Model.Technologies))
+                    {
+                        <div>
+                            <div class="pd-section-label">Tech Stack</div>
+                            <h2 style="font-size:22px;">Technologies Used</h2>
+
+                            <div class="pd-tag-list">
+                                @foreach (var tech in Model.Technologies.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+                                {
+                                    <span class="pd-tag">@tech</span>
+                                }
+                            </div>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.Features))
+                    {
+                        <div>
+                            <div class="pd-section-label">Highlights</div>
+                            <h2 style="font-size:22px;">Key Features</h2>
+
+                            <ul class="pd-feature-list">
+                                @foreach (var feature in Model.Features.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+                                {
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>@feature</span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+        </section>
+    }
+
+
+    <!-- RESULT -->
+    @if (!string.IsNullOrEmpty(Model.Result))
+    {
+        <section class="pd-section">
+            <div class="pd-container">
+
+                <div class="pd-result-box">
+                    <h2 style="font-size:22px;">Final Outcome</h2>
+                    <p>@Model.Result</p>
+                </div>
+
+            </div>
+        </section>
+    }
+
+
+    <!-- CTA -->
+    <section class="pd-cta">
+
+        <h2>Have a Similar <span>Project in Mind?</span></h2>
+
+        <p>Let's discuss your requirements and build something impactful together.</p>
+
+        <div class="pd-cta-buttons">
+
+            <a asp-controller="Home" asp-action="FreeConsultation" class="pd-btn-primary">
+                <i class="bi bi-arrow-right"></i>
+                Start Your Project
+            </a>
+
+            <a asp-controller="Home" asp-action="Portfolio" class="pd-btn-secondary">
+                <i class="bi bi-arrow-left"></i>
+                Back to Projects
+            </a>
+
+        </div>
+
+    </section>
+
+</div>

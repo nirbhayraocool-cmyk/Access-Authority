@@ -1,0 +1,1831 @@
+﻿@{
+    ViewData["Title"] = "Video Production";
+}
+
+<style>
+
+    /* =====================================================
+           BREADCRUMB
+        ===================================================== */
+
+    .breadcrumb-section {
+        background: #0d0d0d;
+        height: 50px;
+        display: flex;
+        align-items: center;
+    }
+
+    .breadcrumb {
+        margin: 0;
+    }
+
+    .breadcrumb-item {
+        font-size: 14px;
+    }
+
+        .breadcrumb-item a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: #ed001c;
+            font-weight: 600;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            color: #fff;
+        }
+
+
+    /* =====================================================
+           HERO
+        ===================================================== */
+
+    .hero {
+        min-height: 455px;
+        background: radial-gradient( circle at 78% 45%, rgba(237, 0, 28, 0.14), transparent 35% ), linear-gradient( 110deg, #080808 0%, #12090b 55%, #0d0d0d 100% );
+        color: #fff;
+        padding: 65px 0 70px;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -100px;
+            bottom: -160px;
+            width: 420px;
+            height: 420px;
+            border: 1px solid rgba(237,0,28,.18);
+            border-radius: 50%;
+        }
+
+    .hero-icon {
+        width: 70px;
+        height: 70px;
+        background: #20090d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        clip-path: polygon( 0 0, 82% 0, 100% 20%, 100% 100%, 20% 100%, 0 80% );
+    }
+
+        .hero-icon i {
+            color: #ed001c;
+            font-size: 31px;
+        }
+
+    .hero h1 {
+        font-size: 55px;
+        font-weight: 700;
+        margin-top: 20px;
+        line-height: 1.1;
+    }
+
+        .hero h1 span {
+            color: #ed001c;
+        }
+
+    .hero-description {
+        color: #9b9b9b;
+        font-size: 18px;
+        line-height: 1.7;
+        max-width: 680px;
+        margin-top: 16px;
+    }
+
+    .hero-buttons {
+        margin-top: 28px;
+    }
+
+    .consultation-btn {
+        background: #ed001c;
+        color: #fff;
+        border: none;
+        padding: 14px 27px;
+        font-weight: 600;
+        clip-path: polygon( 0 0, 94% 0, 100% 20%, 100% 100%, 6% 100%, 0 80% );
+        transition: .3s ease;
+    }
+
+        .consultation-btn:hover {
+            background: #c90018;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+    .work-btn {
+        background: transparent;
+        color: #fff;
+        border: 1px solid #4b4b4b;
+        padding: 13px 25px;
+        transition: .3s ease;
+    }
+
+        .work-btn:hover {
+            border-color: #ed001c;
+            color: #ed001c;
+        }
+
+
+    /* =====================================================
+           COMMON
+        ===================================================== */
+
+    .section {
+        padding: 90px 0;
+    }
+
+    .section-title-small {
+        color: #ed001c;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .section-title {
+        font-size: 38px;
+        font-weight: 700;
+        line-height: 1.15;
+        color: #111;
+    }
+
+    .section-text {
+        color: #666;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+
+    /* =====================================================
+           WHAT WE CREATE
+        ===================================================== */
+
+    .what-we-create {
+        background: #fff;
+    }
+
+    .video-main-image {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+        display: block;
+        border-radius: 4px;
+        filter: brightness(.88);
+    }
+
+    .video-image-wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .video-play {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 72px;
+        height: 72px;
+        background: #ed001c;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 27px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.30);
+        transition: .35s ease;
+    }
+
+    .video-image-wrapper:hover .video-play {
+        transform: translate(-50%, -50%) scale(1.12);
+        box-shadow: 0 15px 40px rgba(237,0,28,.35);
+    }
+
+    .video-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 25px;
+    }
+
+        .video-list li {
+            margin-bottom: 16px;
+            color: #333;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .video-list i {
+            color: #ed001c;
+            margin-right: 9px;
+        }
+
+    .video-stat {
+        margin-top: 30px;
+        border-left: 3px solid #ed001c;
+        padding-left: 18px;
+    }
+
+        .video-stat strong {
+            font-size: 24px;
+            color: #111;
+        }
+
+        .video-stat span {
+            display: block;
+            color: #777;
+            font-size: 13px;
+            margin-top: 3px;
+        }
+
+    .what-we-create .section-title {
+        font-size: 34px;
+        font-weight: 650;
+        line-height: 1.2;
+    }
+
+    .what-we-create .section-text {
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.7;
+    }
+
+    .what-we-create .video-list li {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 13px;
+    }
+
+    .what-we-create .video-stat strong {
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    .what-we-create .video-stat span {
+        font-size: 12px;
+    }
+
+    /* =====================================================
+           DIVIDER
+        ===================================================== */
+
+    .red-divider {
+        text-align: center;
+        color: #ed001c;
+        letter-spacing: 7px;
+        font-size: 12px;
+        margin: 0 auto;
+        padding: 5px 0;
+    }
+
+
+    /* =====================================================
+           VIDEO TYPES
+        ===================================================== */
+
+    .video-types {
+        background: #f7f7f7;
+    }
+
+    .video-card {
+        background: #fff;
+        border: 1px solid #e4e4e4;
+        padding: 30px;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        transition: all .35s ease;
+    }
+
+        .video-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #ed001c;
+            transition: width .35s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px);
+            border-color: #ed001c;
+            box-shadow: 0 15px 35px rgba(0,0,0,.10);
+        }
+
+            .video-card:hover::before {
+                width: 100%;
+            }
+
+    .video-card-icon {
+        width: 55px;
+        height: 55px;
+        background: #fff0f2;
+        color: #ed001c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 23px;
+        border: 1px solid #f4d4d8;
+        transition: all .35s ease;
+    }
+
+    .video-card:hover .video-card-icon {
+        background: #ed001c;
+        color: #fff;
+        transform: rotate(-5deg) scale(1.08);
+        box-shadow: 0 8px 20px rgba(237,0,28,.25);
+    }
+
+    .video-card h4 {
+        margin-top: 24px;
+        font-size: 20px;
+        font-weight: 700;
+        color: #111;
+        transition: .3s ease;
+    }
+
+    .video-card:hover h4 {
+        color: #ed001c;
+    }
+
+    .video-card p {
+        color: #777;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+
+
+    /* =====================================================
+           MARKETING + TRAINING
+        ===================================================== */
+
+    .purpose-section {
+        background: #fff;
+    }
+
+    .purpose-box {
+        height: 100%;
+        padding: 35px;
+        border: 1px solid #dedede;
+        position: relative;
+        overflow: hidden;
+        transition: all .35s ease;
+    }
+
+        .purpose-box::after {
+            content: "";
+            position: absolute;
+            right: -35px;
+            bottom: -35px;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 1px solid #f2d0d4;
+            transition: .4s ease;
+        }
+
+        .purpose-box:hover {
+            border-color: #ed001c;
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(0,0,0,.08);
+        }
+
+            .purpose-box:hover::after {
+                transform: scale(1.7);
+                border-color: #ed001c;
+            }
+
+    .purpose-label {
+        color: #ed001c;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .purpose-box h3 {
+        color: #111;
+        font-size: 27px;
+        font-weight: 700;
+        margin-top: 12px;
+    }
+
+    .purpose-box p {
+        color: #666;
+        font-size: 15px;
+        line-height: 1.8;
+        margin-top: 14px;
+    }
+
+    .purpose-list {
+        padding: 0;
+        margin: 22px 0 0;
+        list-style: none;
+    }
+
+        .purpose-list li {
+            color: #333;
+            font-size: 14px;
+            margin-bottom: 13px;
+        }
+
+        .purpose-list i {
+            color: #ed001c;
+            margin-right: 8px;
+        }
+
+
+    /* =====================================================
+           PRODUCTION PROCESS
+        ===================================================== */
+
+    .process-section {
+        background: #f7f7f7;
+    }
+
+    .process-card {
+        background: #fff;
+        border: 1px solid #e2e2e2;
+        min-height: 245px;
+        padding: 28px 24px;
+        position: relative;
+        overflow: hidden;
+        transition: all .35s ease;
+    }
+
+        .process-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 3px;
+            width: 0;
+            background: #ed001c;
+            transition: .35s ease;
+        }
+
+        .process-card:hover {
+            border-color: #ed001c;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,.10);
+        }
+
+            .process-card:hover::before {
+                width: 100%;
+            }
+
+    .process-number {
+        font-size: 12px;
+        color: #ed001c;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .process-icon {
+        width: 50px;
+        height: 50px;
+        background: #fff0f2;
+        color: #ed001c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        float: right;
+        font-size: 21px;
+        transition: .35s ease;
+    }
+
+    .process-card:hover .process-icon {
+        background: #ed001c;
+        color: #fff;
+        transform: rotate(-5deg) scale(1.08);
+    }
+
+    .process-card h4 {
+        clear: both;
+        margin-top: 48px;
+        color: #111;
+        font-size: 19px;
+        font-weight: 700;
+    }
+
+    .process-card p {
+        color: #777;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-top: 10px;
+    }
+
+
+    /* =====================================================
+           VIDEO TOOLKIT
+        ===================================================== */
+
+    .toolkit-section {
+        background: #fff;
+        padding: 80px 0;
+    }
+
+    .tool-box {
+        height: 115px;
+        background: #fff;
+        border: 1px solid #e2e2e2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        padding: 20px;
+        font-weight: 600;
+        color: #222;
+        position: relative;
+        overflow: hidden;
+        transition: all .35s ease;
+    }
+
+        .tool-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #ed001c;
+            transition: .35s ease;
+        }
+
+        .tool-box:hover {
+            border-color: #ed001c;
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(0,0,0,.08);
+        }
+
+            .tool-box:hover::before {
+                width: 100%;
+            }
+
+    .tool-icon {
+        width: 48px;
+        height: 48px;
+        background: #fff0f2;
+        color: #ed001c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        transition: .35s ease;
+    }
+
+    .tool-box:hover .tool-icon {
+        background: #ed001c;
+        color: #fff;
+        transform: rotate(-5deg) scale(1.1);
+    }
+
+    .tool-box span {
+        transition: .3s ease;
+    }
+
+    .tool-box:hover span {
+        color: #ed001c;
+    }
+
+
+    /* =====================================================
+           WHY CHOOSE US
+        ===================================================== */
+
+    .why-section {
+        background: #fff !important;
+        background-color: #fff !important;
+        color: #111;
+        position: relative;
+        z-index: 1;
+    }
+
+    .why-box {
+        height: 100%;
+        min-height: 225px;
+        padding: 28px 24px;
+        border: 1px solid #dedede;
+        background: #fff;
+        position: relative;
+        overflow: hidden;
+        transition: all .35s ease;
+    }
+
+        .why-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #ed001c;
+            transition: .35s ease;
+        }
+
+        .why-box:hover {
+            transform: translateY(-8px);
+            border-color: #ed001c;
+            box-shadow: 0 15px 35px rgba(0,0,0,.10);
+        }
+
+            .why-box:hover::before {
+                width: 100%;
+            }
+
+    .why-icon {
+        width: 52px;
+        height: 52px;
+        background: #fff0f2;
+        color: #ed001c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #f2d2d6;
+        font-size: 21px;
+        transition: all .35s ease;
+    }
+
+    .why-box:hover .why-icon {
+        background: #ed001c;
+        color: #fff;
+        border-color: #ed001c;
+        transform: translateY(-4px) rotate(-5deg) scale(1.08);
+        box-shadow: 0 8px 18px rgba(237,0,28,.25);
+    }
+
+    .why-box h4 {
+        font-size: 19px;
+        font-weight: 700;
+        color: #111;
+        margin-top: 20px;
+        transition: .3s ease;
+    }
+
+    .why-box:hover h4 {
+        color: #ed001c;
+    }
+
+    .why-box p {
+        color: #777;
+        font-size: 14px;
+        line-height: 1.7;
+        margin: 9px 0 0;
+    }
+
+
+    /* =====================================================
+           TESTIMONIAL
+        ===================================================== */
+
+    .testimonial {
+        background: #dbd4d6;
+        color: #141313;
+        padding: 70px 8%;
+        text-align: center;
+    }
+
+    .testimonial-text {
+        color: #0e0101;
+        font-size: 18px;
+        line-height: 1.8;
+        font-style: italic;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .profile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+        .profile img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+    .profile-name {
+        font-weight: 700;
+        text-align: left;
+    }
+
+    .profile-role {
+        color: #666;
+        font-size: 13px;
+        text-align: left;
+        margin-top: 3px;
+    }
+
+
+    /* =====================================================
+           CTA
+        ===================================================== */
+
+    .cta-section {
+        background: #0d0d0d;
+        padding: 85px 0;
+        color: #fff;
+        text-align: center;
+    }
+
+        .cta-section h2 {
+            font-size: 42px;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            color: #999;
+            font-size: 17px;
+            margin-top: 12px;
+        }
+
+
+    /* =====================================================
+           WHATSAPP
+        ===================================================== */
+
+    .whatsapp {
+        position: fixed;
+        right: 27px;
+        bottom: 25px;
+        width: 49px;
+        height: 49px;
+        background: #20d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 25px;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0,0,0,.3);
+        text-decoration: none;
+    }
+
+
+    /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+    @@media(max-width: 991px) {
+
+        .hero h1 {
+            font-size: 45px;
+        }
+
+        .video-main-image {
+            margin-top: 40px;
+        }
+
+        .section {
+            padding: 70px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+        }
+    }
+
+
+    @@media(max-width: 576px) {
+
+        .hero {
+            padding: 45px 0 55px;
+        }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+        .hero-description {
+            font-size: 16px;
+        }
+
+        .consultation-btn,
+        .work-btn {
+            margin-bottom: 10px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 31px;
+        }
+
+        .video-main-image {
+            height: 300px;
+        }
+
+        .video-play {
+            width: 60px;
+            height: 60px;
+            font-size: 22px;
+        }
+
+        .cta-section h2 {
+            font-size: 31px;
+        }
+
+        .testimonial {
+            padding: 50px 20px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+        }
+    }
+
+</style>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="container px-5">
+
+        <div class="hero-icon">
+            <i class="bi bi-camera-reels-fill"></i>
+        </div>
+
+        <h1>
+            Video <span>Production</span>
+        </h1>
+
+        <p class="hero-description">
+            Marketing and training videos that turn your message
+            into clear, engaging, and memorable visual experiences
+            for customers, employees, and audiences.
+        </p>
+
+        <div class="d-flex flex-wrap gap-2 hero-buttons">
+
+            <a href="#" class="btn consultation-btn">
+                <i class="bi bi-play-circle-fill"></i>
+                &nbsp; Start a Video Project
+            </a>
+
+            <a href="#video-types" class="btn work-btn">
+                <i class="bi bi-arrow-down"></i>
+                Explore Our Videos
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHAT WE DO
+===================================================== -->
+
+<section class="section what-we-create">
+
+    <div class="container px-5">
+
+        <div class="row align-items-center">
+
+           
+
+            <!-- RIGHT CONTENT -->
+
+            <div class="col-lg-6 ps-lg-5">
+
+                <div class="section-title-small">
+                    Visual Storytelling
+                </div>
+
+                <h2 class="section-title mt-3">
+                    Videos That
+                    <span style="color:#ed001c;">
+                        Communicate
+                    </span>
+                </h2>
+
+                <p class="section-text mt-4">
+                    A good video does more than look professional.
+                    It communicates your message quickly, builds
+                    trust, explains complex ideas, and gives your
+                    audience a reason to pay attention.
+                </p>
+
+                <p class="section-text">
+                    We create purpose-driven videos for marketing,
+                    corporate communication, product promotion,
+                    employee training, and digital learning.
+                </p>
+
+
+                <ul class="video-list">
+
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i>
+                        Marketing & promotional videos
+                    </li>
+
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i>
+                        Employee training & onboarding
+                    </li>
+
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i>
+                        Corporate & explainer videos
+                    </li>
+
+                </ul>
+
+
+                <div class="video-stat">
+
+                    <strong>
+                        Story + Strategy + Visuals
+                    </strong>
+
+                    <span>
+                        Everything your video needs to make an impact.
+                    </span>
+
+                </div>
+
+            </div>
+            <!-- LEFT IMAGE -->
+
+            <div class="col-lg-6">
+
+                <div class="video-image-wrapper">
+
+                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=1000&q=85&auto=format&fit=crop"
+                         class="video-main-image"
+                         alt="Professional Video Production">
+
+                    @*   <div class="video-play">
+                        <i class="bi bi-play-fill"></i>
+                    </div> *@
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="red-divider">
+    ✦ ✦ ✦
+</div>
+
+
+<!-- =====================================================
+     VIDEO TYPES
+===================================================== -->
+
+<section class="section video-types" id="video-types">
+
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-title-small">
+                What We Create
+            </div>
+
+            <h2 class="section-title mt-3">
+                Video Content Built for Your Purpose
+            </h2>
+
+            <p class="section-text mt-3">
+                From customer-facing campaigns to internal learning,
+                we create videos around your audience and objectives.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 mt-4">
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="video-card">
+
+                    <div class="video-card-icon">
+                        <i class="bi bi-megaphone-fill"></i>
+                    </div>
+
+                    <h4>
+                        Marketing Videos
+                    </h4>
+
+                    <p>
+                        Grab attention, communicate your value,
+                        and promote your brand through engaging
+                        visual storytelling.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="video-card">
+
+                    <div class="video-card-icon">
+                        <i class="bi bi-building-fill"></i>
+                    </div>
+
+                    <h4>
+                        Corporate Videos
+                    </h4>
+
+                    <p>
+                        Present your company, people, culture,
+                        services, and achievements with a polished
+                        corporate video.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="video-card">
+
+                    <div class="video-card-icon">
+                        <i class="bi bi-box-seam-fill"></i>
+                    </div>
+
+                    <h4>
+                        Product Videos
+                    </h4>
+
+                    <p>
+                        Show how your product works and highlight
+                        its features, benefits, and real-world value.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="video-card">
+
+                    <div class="video-card-icon">
+                        <i class="bi bi-mortarboard-fill"></i>
+                    </div>
+
+                    <h4>
+                        Training Videos
+                    </h4>
+
+                    <p>
+                        Make employee learning easier with structured,
+                        visual, and engaging training content.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="video-card">
+
+                    <div class="video-card-icon">
+                        <i class="bi bi-person-video3"></i>
+                    </div>
+
+                    <h4>
+                        Onboarding Videos
+                    </h4>
+
+                    <p>
+                        Help new employees understand your company,
+                        tools, processes, and culture from day one.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="video-card">
+
+                    <div class="video-card-icon">
+                        <i class="bi bi-lightbulb-fill"></i>
+                    </div>
+
+                    <h4>
+                        Explainer Videos
+                    </h4>
+
+                    <p>
+                        Break down complex products, services,
+                        systems, and ideas into simple visual stories.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="red-divider">
+    ✦ ✦ ✦
+</div>
+
+
+<!-- =====================================================
+     MARKETING & TRAINING
+===================================================== -->
+
+<section class="section purpose-section">
+
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-title-small">
+                Built for Impact
+            </div>
+
+            <h2 class="section-title mt-3">
+                One Production Team,
+                <span style="color:#ed001c;">
+                    Multiple Goals
+                </span>
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4 mt-4">
+
+            <!-- MARKETING -->
+
+            <div class="col-lg-6">
+
+                <div class="purpose-box">
+
+                    <div class="purpose-label">
+                        For Marketing
+                    </div>
+
+                    <h3>
+                        Turn Attention Into Action
+                    </h3>
+
+                    <p>
+                        Marketing videos are designed to capture
+                        attention, explain your value, strengthen
+                        your brand, and encourage your audience
+                        to take the next step.
+                    </p>
+
+                    <ul class="purpose-list">
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Brand & promotional campaigns
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Product & service launches
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Social media video content
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Customer-focused storytelling
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <!-- TRAINING -->
+
+            <div class="col-lg-6">
+
+                <div class="purpose-box">
+
+                    <div class="purpose-label">
+                        For Training
+                    </div>
+
+                    <h3>
+                        Make Learning Easier
+                    </h3>
+
+                    <p>
+                        Training videos transform complicated
+                        information into structured visual lessons
+                        that employees can watch, understand,
+                        and revisit whenever needed.
+                    </p>
+
+                    <ul class="purpose-list">
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Employee onboarding
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Product & process training
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Compliance & policy training
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Internal knowledge sharing
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PRODUCTION PROCESS
+===================================================== -->
+
+<section class="section process-section">
+
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-title-small">
+                Our Production Process
+            </div>
+
+            <h2 class="section-title mt-3">
+                From Concept to Final Cut
+            </h2>
+
+            <p class="section-text mt-3">
+                A structured production workflow keeps your message
+                clear, your visuals professional, and your project
+                moving smoothly.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 mt-4">
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        01
+                    </div>
+
+                    <div class="process-icon">
+                        <i class="bi bi-lightbulb-fill"></i>
+                    </div>
+
+                    <h4>
+                        Concept & Planning
+                    </h4>
+
+                    <p>
+                        We understand your audience, objective,
+                        message, tone, and define the creative
+                        direction for the video.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        02
+                    </div>
+
+                    <div class="process-icon">
+                        <i class="bi bi-file-earmark-text-fill"></i>
+                    </div>
+
+                    <h4>
+                        Script & Storyboard
+                    </h4>
+
+                    <p>
+                        The message is converted into a clear
+                        script and visual storyboard before
+                        production begins.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        03
+                    </div>
+
+                    <div class="process-icon">
+                        <i class="bi bi-camera-fill"></i>
+                    </div>
+
+                    <h4>
+                        Production
+                    </h4>
+
+                    <p>
+                        We capture the required footage, interviews,
+                        demonstrations, voiceovers, and visual assets.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        04
+                    </div>
+
+                    <div class="process-icon">
+                        <i class="bi bi-film"></i>
+                    </div>
+
+                    <h4>
+                        Edit & Deliver
+                    </h4>
+
+                    <p>
+                        Editing, motion graphics, sound, captions,
+                        branding, revisions, and final delivery
+                        complete the production.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="red-divider">
+    ✦ ✦ ✦
+</div>
+
+
+<!-- =====================================================
+     VIDEO TOOLKIT
+===================================================== -->
+
+<section class="toolkit-section">
+
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-title-small">
+                Production Toolkit
+            </div>
+
+            <h2 class="section-title mt-3">
+                Technology Behind the Production
+            </h2>
+
+            <p class="section-text mt-3">
+                Professional creative tools help us deliver
+                polished, consistent, and production-ready videos.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 mt-4">
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="tool-box">
+
+                    <div class="tool-icon">
+                        <i class="bi bi-camera-reels-fill"></i>
+                    </div>
+
+                    <span>
+                        Video Production
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="tool-box">
+
+                    <div class="tool-icon">
+                        <i class="bi bi-scissors"></i>
+                    </div>
+
+                    <span>
+                        Video Editing
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="tool-box">
+
+                    <div class="tool-icon">
+                        <i class="bi bi-bezier2"></i>
+                    </div>
+
+                    <span>
+                        Motion Graphics
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="tool-box">
+
+                    <div class="tool-icon">
+                        <i class="bi bi-mic-fill"></i>
+                    </div>
+
+                    <span>
+                        Voiceover
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="tool-box">
+
+                    <div class="tool-icon">
+                        <i class="bi bi-music-note-beamed"></i>
+                    </div>
+
+                    <span>
+                        Sound Design
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="tool-box">
+
+                    <div class="tool-icon">
+                        <i class="bi bi-badge-cc-fill"></i>
+                    </div>
+
+                    <span>
+                        Captions
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="tool-box">
+
+                    <div class="tool-icon">
+                        <i class="bi bi-palette-fill"></i>
+                    </div>
+
+                    <span>
+                        Brand Graphics
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="tool-box">
+
+                    <div class="tool-icon">
+                        <i class="bi bi-display-fill"></i>
+                    </div>
+
+                    <span>
+                        Final Delivery
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHY CHOOSE US
+===================================================== -->
+
+<section class="section why-section">
+
+    <div class="container px-5">
+
+        <div class="text-center">
+
+            <div class="section-title-small">
+                Why Our Video Production
+            </div>
+
+            <h2 class="section-title mt-3">
+                More Than Just Good-Looking Videos
+            </h2>
+
+            <p class="section-text mt-3">
+                We combine storytelling, strategy, visuals, and
+                audience understanding to create videos that have
+                a clear purpose.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 mt-4">
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="why-box">
+
+                    <div class="why-icon">
+                        <i class="bi bi-bullseye"></i>
+                    </div>
+
+                    <h4>
+                        Purpose Driven
+                    </h4>
+
+                    <p>
+                        Every video starts with a clear objective,
+                        audience, and message.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="why-box">
+
+                    <div class="why-icon">
+                        <i class="bi bi-chat-square-text-fill"></i>
+                    </div>
+
+                    <h4>
+                        Clear Storytelling
+                    </h4>
+
+                    <p>
+                        We turn complex information into stories
+                        that are simple and easy to understand.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="why-box">
+
+                    <div class="why-icon">
+                        <i class="bi bi-stars"></i>
+                    </div>
+
+                    <h4>
+                        Professional Quality
+                    </h4>
+
+                    <p>
+                        From visuals and sound to editing and
+                        graphics, every detail gets attention.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="why-box">
+
+                    <div class="why-icon">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+
+                    <h4>
+                        Audience Focused
+                    </h4>
+
+                    <p>
+                        Marketing and training content is shaped
+                        around how your audience learns and engages.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TESTIMONIAL
+===================================================== -->
+
+<div class="testimonial">
+
+    <p class="testimonial-text">
+
+        "The training videos made our onboarding process much
+        easier. The content was structured clearly, looked
+        professional, and our team could understand the
+        processes much faster."
+
+    </p>
+
+    <div class="profile">
+
+        <img src="https://randomuser.me/api/portraits/men/32.jpg"
+             alt="Rahul Mehta">
+
+        <div>
+
+            <div class="profile-name">
+                Rahul Mehta
+            </div>
+
+            <div class="profile-role">
+                Learning & Development Manager
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta-section">
+
+    <div class="container px-5">
+
+        <h2>
+            Have a Video in Mind?
+        </h2>
+
+        <p>
+            Let's turn your idea, product, or training content
+            into a video your audience will remember.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#" class="btn consultation-btn">
+
+                <i class="bi bi-play-circle-fill"></i>
+                Start Your Video Project
+
+            </a>
+
+            <a href="#video-types" class="btn work-btn">
+
+                <i class="bi bi-grid-fill"></i>
+                Explore Video Services
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHATSAPP
+===================================================== -->
+
+<a href="#" class="whatsapp">
+
+    <i class="bi bi-whatsapp"></i>
+
+</a>

@@ -1,0 +1,892 @@
+﻿@model Access_Authority.Models.CreateBlog
+
+@{
+    ViewData["Title"] = Model.Title;
+
+    var recentPosts = ViewBag.RecentPosts as List<Access_Authority.Models.CreateBlog>;
+
+    // Rough reading time estimate
+    var plainText = System.Text.RegularExpressions.Regex.Replace(Model.Content ?? "", "<.*?>", " ");
+    var wordCount = plainText.Split(new[] { ' ', '\n', '\r', '\t' }, StringSplitOptions.RemoveEmptyEntries).Length;
+    var readingMinutes = Math.Max(1, (int)Math.Ceiling(wordCount / 200.0));
+}
+
+<style>
+
+    /* =====================================================
+               READING PROGRESS BAR
+            ===================================================== */
+
+    .reading-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 0%;
+        background: #ed102b;
+        z-index: 9999;
+        transition: width .1s ease-out;
+    }
+
+
+    /* =====================================================
+               BLOG HERO
+            ===================================================== */
+
+    .blog-hero {
+        position: relative;
+        background: #0d0d0d;
+        color: #fff;
+        padding: 26px 0 64px;
+        border-bottom: 1px solid #222;
+        border-right: 2px solid #ed102b;
+        overflow: hidden;
+    }
+
+        .blog-hero::before {
+            content: "";
+            position: absolute;
+            top: -120px;
+            right: -100px;
+            width: 320px;
+            height: 320px;
+            background: rgba(237, 16, 43, .10);
+            border-radius: 50%;
+            filter: blur(50px);
+        }
+
+    .blog-hero-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .blog-breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 18px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #ed102b;
+    }
+
+        .blog-breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+            opacity: .85;
+        }
+
+            .blog-breadcrumb a:hover {
+                opacity: 1;
+            }
+
+        .blog-breadcrumb i {
+            font-size: 10px;
+            opacity: .6;
+        }
+
+    .blog-hero .category {
+        display: inline-block;
+        padding: 6px 14px;
+        margin-bottom: 18px;
+        background: #ed102b;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .8px;
+        text-transform: uppercase;
+    }
+
+    .blog-hero h2 {
+        max-width: 850px;
+        margin: 0;
+        font-size: 42px;
+        line-height: 1.2;
+        font-weight: 800;
+        letter-spacing: -0.8px;
+        color: #fff;
+    }
+
+    .blog-meta {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-top: 24px;
+        padding-top: 20px;
+        border-top: 1px solid #262626;
+    }
+
+    .blog-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #999;
+        font-size: 12px;
+    }
+
+    .author-avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #ed102b;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 800;
+        flex-shrink: 0;
+    }
+
+    .blog-meta-item i {
+        color: #ed102b;
+    }
+
+
+    /* =====================================================
+               MAIN WRAPPER
+            ===================================================== */
+
+    .blog-wrapper {
+        max-width: 1080px;
+        margin: -40px auto 80px;
+        position: relative;
+    }
+
+    .blog-main-row {
+        align-items: flex-start;
+    }
+
+
+    /* =====================================================
+               BACK BUTTON
+            ===================================================== */
+
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 22px;
+        padding: 9px 16px;
+        background: #fff;
+        border: 1px solid #dedede;
+        border-radius: 6px;
+        color: #333;
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: 700;
+        transition: all .25s ease;
+    }
+
+        .back-btn:hover {
+            background: #ed102b;
+            border-color: #ed102b;
+            color: #fff;
+            transform: translateX(-2px);
+        }
+
+
+    /* =====================================================
+               BLOG CARD
+            ===================================================== */
+
+    .blog-card {
+        background: #fff;
+        border: 1px solid #dedede;
+        border-top: 3px solid #ed102b;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(0,0,0,.08);
+        transition: box-shadow .3s ease;
+    }
+
+        .blog-card:hover {
+            box-shadow: 0 18px 40px rgba(0,0,0,.11);
+        }
+
+    .blog-image-wrap {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .blog-image {
+        width: 100%;
+        height: 440px;
+        object-fit: cover;
+        display: block;
+        transition: transform .5s ease;
+    }
+
+    .blog-card:hover .blog-image {
+        transform: scale(1.03);
+    }
+
+
+    /* =====================================================
+               BLOG CONTENT
+            ===================================================== */
+
+    .blog-content {
+        padding: 40px 42px;
+    }
+
+        .blog-content p {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+        }
+
+            .blog-content p:first-of-type::first-letter {
+                float: left;
+                font-size: 54px;
+                line-height: .85;
+                font-weight: 800;
+                color: #ed102b;
+                padding: 4px 8px 0 0;
+            }
+
+        .blog-content h1,
+        .blog-content h2,
+        .blog-content h3,
+        .blog-content h4,
+        .blog-content h5,
+        .blog-content h6 {
+            color: #111;
+            font-weight: 800;
+            line-height: 1.35;
+            margin-top: 34px;
+            margin-bottom: 16px;
+            position: relative;
+            padding-left: 16px;
+        }
+
+            .blog-content h1::before,
+            .blog-content h2::before,
+            .blog-content h3::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 6px;
+                bottom: 6px;
+                width: 3px;
+                background: #ed102b;
+            }
+
+        .blog-content h1 {
+            font-size: 30px;
+        }
+
+        .blog-content h2 {
+            font-size: 26px;
+        }
+
+        .blog-content h3 {
+            font-size: 22px;
+        }
+
+        .blog-content h4 {
+            font-size: 19px;
+            padding-left: 0;
+        }
+
+            .blog-content h4::before {
+                display: none;
+            }
+
+        .blog-content ul,
+        .blog-content ol {
+            padding-left: 26px;
+            margin: 18px 0;
+        }
+
+        .blog-content li {
+            color: #4a4a4a;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .blog-content blockquote {
+            margin: 28px 0;
+            padding: 20px 24px;
+            background: #fafafa;
+            border-left: 4px solid #ed102b;
+            color: #444;
+            font-style: italic;
+            font-size: 15px;
+        }
+
+        .blog-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,.08);
+        }
+
+        .blog-content a {
+            color: #ed102b;
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .blog-content pre {
+            background: #0d0d0d;
+            color: #eee;
+            padding: 18px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        .blog-content strong {
+            color: #111;
+        }
+
+
+    /* =====================================================
+               TAGS + SHARE
+            ===================================================== */
+
+    .share-box {
+        border-top: 1px solid #eee;
+        margin-top: 36px;
+        padding-top: 24px;
+    }
+
+        .share-box strong {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #111;
+            text-transform: uppercase;
+            letter-spacing: .6px;
+            margin-bottom: 12px;
+        }
+
+    .blog-tag {
+        display: inline-block;
+        padding: 7px 15px;
+        margin: 0 8px 8px 0;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        color: #333;
+        font-size: 11px;
+        font-weight: 700;
+        transition: all .2s ease;
+    }
+
+        .blog-tag:hover {
+            background: #ed102b;
+            border-color: #ed102b;
+            color: #fff;
+        }
+
+
+    .share-buttons {
+        display: flex;
+        gap: 8px;
+    }
+
+        .share-buttons a {
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            background: #f4f4f4;
+            color: #333;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all .25s ease;
+        }
+
+            .share-buttons a:hover {
+                background: #ed102b;
+                color: #fff;
+                transform: translateY(-3px);
+            }
+
+
+    /* =====================================================
+               SIDEBAR
+            ===================================================== */
+
+    .sidebar-sticky {
+        position: sticky;
+        top: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .recent-posts-card {
+        background: #fff;
+        border: 1px solid #dedede;
+        border-radius: 4px;
+        padding: 22px;
+        box-shadow: 0 12px 30px rgba(0,0,0,.06);
+    }
+
+    .recent-posts-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 14px;
+        border-bottom: 2px solid #f1f1f1;
+        margin-bottom: 5px;
+    }
+
+        .recent-posts-heading h3 {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 800;
+            color: #111;
+            text-transform: uppercase;
+            letter-spacing: .4px;
+        }
+
+        .recent-posts-heading span {
+            width: 26px;
+            height: 3px;
+            background: #ed102b;
+            display: block;
+            margin-top: 6px;
+        }
+
+        .recent-posts-heading i {
+            color: #ed102b !important;
+        }
+
+    .recent-post {
+        display: flex;
+        gap: 12px;
+        padding: 14px 0;
+        border-bottom: 1px solid #eee;
+        text-decoration: none;
+    }
+
+        .recent-post:last-child {
+            border-bottom: none;
+        }
+
+    .recent-post-image {
+        width: 74px;
+        height: 64px;
+        object-fit: cover;
+        border-radius: 4px;
+        flex-shrink: 0;
+        transition: transform .25s ease;
+    }
+
+    .recent-post:hover .recent-post-image {
+        transform: scale(1.06);
+    }
+
+    .recent-post-content {
+        min-width: 0;
+    }
+
+    .recent-post-category {
+        display: block;
+        color: #ed102b;
+        font-size: 8px;
+        font-weight: 800;
+        letter-spacing: .7px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+    }
+
+    .recent-post-content h4 {
+        color: #222;
+        font-size: 12px;
+        line-height: 1.45;
+        font-weight: 700;
+        margin: 0 0 6px;
+        transition: color .2s ease;
+    }
+
+    .recent-post:hover .recent-post-content h4 {
+        color: #ed102b;
+    }
+
+    .recent-post-date {
+        color: #999;
+        font-size: 9px;
+    }
+
+    /* Sidebar CTA */
+
+    .sidebar-cta {
+        background: #0d0d0d;
+        border-radius: 4px;
+        padding: 28px 24px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .sidebar-cta::before {
+            content: "";
+            position: absolute;
+            bottom: -60px;
+            right: -40px;
+            width: 160px;
+            height: 160px;
+            background: rgba(237,16,43,.15);
+            border-radius: 50%;
+            filter: blur(30px);
+        }
+
+    .sidebar-cta-icon {
+        position: relative;
+        color: #ed102b;
+        font-size: 26px;
+        margin-bottom: 12px;
+    }
+
+    .sidebar-cta h4 {
+        position: relative;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 800;
+        margin-bottom: 8px;
+    }
+
+    .sidebar-cta p {
+        position: relative;
+        color: #999;
+        font-size: 12px;
+        line-height: 1.6;
+        margin-bottom: 18px;
+    }
+
+    .sidebar-cta-btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 10px 20px;
+        background: #ed102b;
+        color: #fff;
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: 800;
+        transition: all .25s ease;
+    }
+
+        .sidebar-cta-btn:hover {
+            background: #c9001d;
+            transform: translateY(-2px);
+        }
+
+
+    /* =====================================================
+               RESPONSIVE
+            ===================================================== */
+
+    @@media (max-width: 991px) {
+
+        .blog-wrapper {
+            max-width: 94%;
+        }
+
+        .sidebar-sticky {
+            position: static;
+            margin-top: 10px;
+        }
+    }
+
+    @@media (max-width: 768px) {
+
+        .blog-hero {
+            padding: 25px 0 40px;
+        }
+
+            .blog-hero h2 {
+                font-size: 30px;
+            }
+
+        .blog-meta {
+            gap: 12px;
+        }
+
+        .blog-image {
+            height: 260px;
+        }
+
+        .blog-content {
+            padding: 26px 22px;
+        }
+
+            .blog-content p,
+            .blog-content li {
+                font-size: 14px;
+            }
+
+            .blog-content h2 {
+                font-size: 22px;
+            }
+
+            .blog-content h3 {
+                font-size: 20px;
+            }
+
+            .blog-content p:first-of-type::first-letter {
+                font-size: 40px;
+            }
+    }
+
+</style>
+
+
+<!-- READING PROGRESS -->
+<div class="reading-progress" id="readingProgress"></div>
+
+
+<!-- BLOG HERO -->
+
+<section class="blog-hero">
+
+    <div class="blog-hero-inner">
+
+        <div class="blog-breadcrumb">
+            <a asp-controller="Home" asp-action="Index">HOME</a>
+            <i class="bi bi-chevron-right"></i>
+            <a asp-controller="Home" asp-action="Blog">BLOG</a>
+            <i class="bi bi-chevron-right"></i>
+            <span>@Model.Title</span>
+        </div>
+
+        <span class="category">
+            @Model.Category
+        </span>
+
+        <h2>
+            @Model.Title
+        </h2>
+
+        <div class="blog-meta">
+
+            <div class="blog-meta-item">
+                <div class="author-avatar">A</div>
+                Admin
+            </div>
+
+            <div class="blog-meta-item">
+                <i class="bi bi-calendar3"></i>
+                @Model.CreatedDate.ToLocalTime().ToString("MMMM dd, yyyy")
+            </div>
+
+            @* <div class="blog-meta-item">
+                <i class="bi bi-clock"></i>
+                @readingMinutes min read
+            </div> *@
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MAIN BLOG AREA -->
+
+<div class="container px-5">
+
+    <div class="blog-wrapper">
+
+        <a asp-controller="Home"
+           asp-action="Blog"
+           class="back-btn">
+
+            <i class="bi bi-arrow-left"></i>
+            Back to Blog
+
+        </a>
+
+
+        <div class="row g-4 blog-main-row">
+
+            <!-- LEFT : BLOG -->
+
+            <div class="col-lg-8">
+
+                <article class="blog-card">
+
+                    @if (!string.IsNullOrEmpty(Model.FeaturedImage))
+                    {
+                        <div class="blog-image-wrap">
+                            <img src="@Model.FeaturedImage"
+                                 class="blog-image"
+                                 alt="@Model.Title">
+                        </div>
+                    }
+
+                    <div class="blog-content">
+
+                        @Html.Raw(Model.Content)
+
+                        @if (!string.IsNullOrEmpty(Model.Tags))
+                        {
+                            <div class="share-box">
+
+                                <strong>
+                                    <i class="bi bi-tags"></i>
+                                    Tags
+                                </strong>
+
+                                <div>
+                                    @foreach (var tag in Model.Tags.Split(','))
+                                    {
+                                        <span class="blog-tag">
+                                            #@tag.Trim()
+                                        </span>
+                                    }
+                                </div>
+
+                            </div>
+                        }
+
+                        <div class="share-box">
+
+                            <strong>
+                                <i class="bi bi-share"></i>
+                                Share this article
+                            </strong>
+
+                            <div class="share-buttons">
+
+                                <a href="https://www.facebook.com/" target="_blank"><i class="bi bi-facebook"></i></a>
+                                <a href="https://x.com/" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                                <a href="https://www.linkedin.com/" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                <a href="https://wa.me/918874196809" target="_blank"><i class="bi bi-whatsapp"></i></a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- RIGHT : SIDEBAR -->
+
+            <div class="col-lg-4">
+
+                <div class="sidebar-sticky">
+
+                    <aside class="recent-posts-card">
+
+                        <div class="recent-posts-heading">
+
+                            <div>
+                                <h3>Recent Posts</h3>
+                                <span></span>
+                            </div>
+
+                            <i class="bi bi-journal-text"></i>
+
+                        </div>
+
+
+                        @if (recentPosts != null && recentPosts.Any())
+                        {
+                            foreach (var recent in recentPosts)
+                            {
+                                <a asp-controller="Home"
+                                   asp-action="Blogdetail"
+                                   asp-route-id="@recent.Id"
+                                   class="recent-post">
+
+                                    @if (!string.IsNullOrEmpty(recent.FeaturedImage))
+                                    {
+                                        <img src="@recent.FeaturedImage"
+                                             class="recent-post-image"
+                                             alt="@recent.Title">
+                                    }
+                                    else
+                                    {
+                                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=200&h=150&fit=crop"
+                                             class="recent-post-image"
+                                             alt="@recent.Title">
+                                    }
+
+                                    <div class="recent-post-content">
+
+                                        <span class="recent-post-category">
+                                            @recent.Category
+                                        </span>
+
+                                        <h4>
+                                            @recent.Title
+                                        </h4>
+
+                                        <div class="recent-post-date">
+                                            <i class="bi bi-calendar3 me-1"></i>
+                                            @recent.CreatedDate.ToLocalTime().ToString("MMM dd, yyyy")
+                                        </div>
+
+                                    </div>
+
+                                </a>
+                            }
+                        }
+                        else
+                        {
+                            <div class="py-3">
+                                <span class="text-muted small">
+                                    No recent posts available.
+                                </span>
+                            </div>
+                        }
+
+                    </aside>
+
+
+                    @* <div class="sidebar-cta">
+
+                        <div class="sidebar-cta-icon">
+                            <i class="bi bi-chat-dots-fill"></i>
+                        </div>
+
+                        <h4>Have a Project in Mind?</h4>
+
+                        <p>
+                            Let's talk about your idea and turn it into
+                            a working digital product.
+                        </p>
+
+                        <a asp-controller="Home"
+                           asp-action="FreeConsultation"
+                           class="sidebar-cta-btn">
+                            <i class="bi bi-arrow-right"></i>
+                            Get in Touch
+                        </a>
+
+                    </div> *@
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+

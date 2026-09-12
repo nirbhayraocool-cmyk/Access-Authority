@@ -1,0 +1,2045 @@
+﻿
+@model Access_Authority.Models.CareerViewModel
+@{
+    var careerPositions = ViewBag.CareerPositions
+        as List<Access_Authority.Models.CareerPosition>;
+}
+@{
+    ViewData["Title"] = "Career";
+}
+
+<style>
+
+    /* ===== TEAM PAGE HERO ===== */
+
+    .page-hero-custom {
+        background: #f7f7f7;
+        padding: 55px 0 40px;
+        border-bottom: 1px solid #e8e8e8;
+    }
+    /* Breadcrumb */
+
+    .breadcrumb-custom {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        font-size: 16px;
+    }
+
+        .breadcrumb-custom a {
+            color: #d62828;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+            .breadcrumb-custom a:hover {
+                color: #a91f1f;
+            }
+
+        .breadcrumb-custom span {
+            color: #777;
+            font-weight: 500;
+        }
+    /* Heading */
+
+    .page-hero-custom h1 {
+        font-size: 46px;
+        line-height: 1.2;
+        font-weight: 800;
+        color: #171717;
+        margin-bottom: 12px;
+    }
+    /* Description */
+
+    .page-hero-custom p {
+        max-width: 700px;
+        font-size: 16px;
+        line-height: 1.7;
+        color: #666;
+        margin-bottom: 0;
+    }
+    /* Responsive */
+
+    @@media (max-width: 767px) {
+        .page-hero-custom {
+            padding: 45px 0 35px;
+        }
+
+            .page-hero-custom h1 {
+                font-size: 36px;
+            }
+
+            .page-hero-custom p {
+                font-size: 15px;
+            }
+    }
+    /* =====================================================
+           PAGE HERO
+        ===================================================== */
+
+    .page-hero-custom {
+        background: #f7f7f7;
+        padding: 55px 0 40px;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+        /* .page-hero-custom .breadcrumb-custom {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            color: #999;
+            margin-bottom: 14px;
+        }
+
+            .page-hero-custom .breadcrumb-custom a {
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.2s;
+            } */
+
+                .page-hero-custom .breadcrumb-custom a:hover {
+                    color: #ed0026;
+                }
+
+            .page-hero-custom .breadcrumb-custom .separator {
+                color: #ccc;
+                margin: 0 8px;
+            }
+
+            .page-hero-custom .breadcrumb-custom .active {
+                color: #ed0026;
+            }
+
+        .page-hero-custom h1 {
+            font-size: 38px;
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 6px 0;
+            letter-spacing: -0.5px;
+        }
+
+            .page-hero-custom h1 span {
+                color: #ed0026;
+            }
+
+        .page-hero-custom .subtitle {
+            font-size: 14px;
+            color: #555;
+            margin: 0;
+            max-width: 520px;
+            line-height: 1.6;
+        }
+
+
+    /* =====================================================
+           MINI STATS
+        ===================================================== */
+
+    .mini-stats-custom {
+        background: #0b0b0b;
+        color: #fff;
+        padding: 22px 0;
+        border-bottom: 1px solid #202020;
+    }
+
+        .mini-stats-custom .stat-block {
+            border-right: 1px solid #292929;
+            padding: 5px 15px;
+            text-align: center;
+        }
+
+            .mini-stats-custom .stat-block:last-child {
+                border-right: none;
+            }
+
+        .mini-stats-custom .stat-number {
+            color: #ed0026;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+            .mini-stats-custom .stat-number .suffix {
+                color: #ed0026;
+            }
+
+        .mini-stats-custom .stat-label {
+            color: #686868;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            margin-top: 5px;
+        }
+
+
+    /* =====================================================
+           PORTFOLIO CARDS
+        ===================================================== */
+
+    .portfolio-card {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+
+        .portfolio-card:hover {
+            border-color: #ed0026;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .portfolio-card .portfolio-image {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+            .portfolio-card .portfolio-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+            }
+
+        .portfolio-card:hover .portfolio-image img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-card .portfolio-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: #ed0026;
+            color: #fff;
+            padding: 4px 12px;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .portfolio-card .portfolio-body {
+            padding: 20px 22px 22px;
+        }
+
+        .portfolio-card .portfolio-industry {
+            color: #ed0026;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .portfolio-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 6px 0;
+        }
+
+        .portfolio-card .portfolio-desc {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.6;
+            margin: 0 0 14px 0;
+        }
+
+        .portfolio-card .portfolio-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            padding: 12px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 14px;
+        }
+
+            .portfolio-card .portfolio-stats div {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .portfolio-card .portfolio-stats strong {
+                color: #ed0026;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 1.2;
+            }
+
+            .portfolio-card .portfolio-stats span {
+                color: #777;
+                font-size: 8px;
+                font-weight: 600;
+                letter-spacing: 0.3px;
+                text-transform: uppercase;
+            }
+
+        .portfolio-card .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #111;
+            font-size: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+            .portfolio-card .portfolio-link i {
+                color: #ed0026;
+                font-size: 12px;
+                transition: transform 0.2s;
+            }
+
+            .portfolio-card .portfolio-link:hover {
+                color: #ed0026;
+            }
+
+                .portfolio-card .portfolio-link:hover i {
+                    transform: translateX(4px);
+                }
+
+
+    /* =====================================================
+           TESTIMONIAL
+        ===================================================== */
+
+    .testimonial-enhanced {
+        background: #f7f7f7;
+        padding: 38px 42px;
+        border-left: 4px solid #ed0026;
+        border-radius: 2px;
+        transition: box-shadow 0.3s ease;
+    }
+
+        .testimonial-enhanced:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .testimonial-enhanced .quote-icon {
+            font-size: 42px;
+            color: #ed0026;
+            opacity: 0.12;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-enhanced blockquote {
+            font-size: 17px;
+            font-weight: 400;
+            color: #111;
+            line-height: 1.7;
+            margin: 0 0 18px 0;
+        }
+
+        .testimonial-enhanced .client-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ed0026;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .testimonial-enhanced .client-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #111;
+            margin: 0;
+        }
+
+        .testimonial-enhanced .client-title {
+            font-size: 12px;
+            color: #777;
+            margin: 0;
+        }
+
+
+    /* =====================================================
+           BADGE STYLES
+        ===================================================== */
+
+    .badge-soft {
+        padding: 5px 14px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.7rem;
+        display: inline-block;
+    }
+
+    .badge-soft-success {
+        background: #d1fae5;
+        color: #065f46;
+    }
+
+    .badge-soft-warning {
+        background: #fef3c7;
+        color: #92400e;
+    }
+
+    .badge-soft-danger {
+        background: #fee2e2;
+        color: #991b1b;
+    }
+
+    .badge-soft-blue {
+        background: #dbeafe;
+        color: #1e40af;
+    }
+
+    .badge-soft-purple {
+        background: #ede9fe;
+        color: #5b21b6;
+    }
+
+    .badge-soft-info {
+        background: #cffafe;
+        color: #0e7490;
+    }
+
+
+    /* =====================================================
+       CAREER OPEN POSITIONS - PREMIUM JOB CARDS
+    ===================================================== */
+
+    .card-premium {
+        position: relative;
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 0;
+        overflow: hidden;
+        height: 100%;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.035);
+    }
+
+        .card-premium::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #ed0026;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .card-premium:hover {
+            border-color: #ed0026;
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+            .card-premium:hover::before {
+                transform: scaleX(1);
+            }
+
+
+    /* CARD INNER CONTENT */
+
+    .job-card-inner {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+
+    /* TOP ROW */
+
+    .job-card-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+
+    .job-location-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #fff1f2;
+        color: #ed0026;
+        border: 1px solid #ffd6db;
+        border-radius: 50px;
+        padding: 6px 12px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: .3px;
+    }
+
+        .job-location-badge i {
+            font-size: 11px;
+        }
+
+    .job-posted-date {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        color: #8a8a8a;
+        font-size: 10px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+        .job-posted-date i {
+            color: #ed0026;
+        }
+
+
+    /* TITLE */
+
+    .job-card-title {
+        font-size: 20px;
+        font-weight: 750;
+        color: #111;
+        line-height: 1.35;
+        margin: 0 0 10px;
+    }
+
+        .job-card-title:hover {
+            color: #ed0026;
+        }
+
+
+    /* DESCRIPTION */
+
+    .job-card-description {
+        color: #666;
+        font-size: 12px;
+        line-height: 1.7;
+        margin: 0 0 18px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+        .job-card-description i {
+            color: #ed0026;
+            margin-right: 5px;
+        }
+
+
+    /* JOB META */
+
+    .job-meta-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-bottom: 20px;
+    }
+
+    .job-meta-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px 10px;
+        border-radius: 5px;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: .2px;
+    }
+
+        .job-meta-badge.type {
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        .job-meta-badge.status {
+            background: #ecfdf5;
+            color: #047857;
+        }
+
+        .job-meta-badge i {
+            font-size: 10px;
+        }
+
+
+    /* BOTTOM */
+
+    .job-card-bottom {
+        margin-top: auto;
+        padding-top: 16px;
+        border-top: 1px solid #eeeeee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .job-open-info {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+    }
+
+    .job-open-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        background: #fff1f2;
+        color: #ed0026;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+    }
+
+    .job-open-info strong {
+        display: block;
+        color: #222;
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    .job-open-info span {
+        display: block;
+        color: #999;
+        font-size: 9px;
+        margin-top: 3px;
+    }
+
+
+    /* APPLY BUTTON */
+
+    .career-apply-btn {
+        border: none !important;
+        background: #ed0026 !important;
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        padding: 9px 17px !important;
+        box-shadow: none !important;
+        transition: all .25s ease !important;
+    }
+
+        .career-apply-btn:hover {
+            background: #c90020 !important;
+            transform: translateX(2px);
+            box-shadow: 0 6px 15px rgba(237, 0, 38, .18) !important;
+        }
+
+        .career-apply-btn i {
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+
+    /* RESPONSIVE */
+
+    @@media (max-width: 991px) {
+
+        .job-card-inner {
+            padding: 21px;
+        }
+
+        .job-card-title {
+            font-size: 18px;
+        }
+    }
+
+    @@media (max-width: 575px) {
+
+        .job-card-inner {
+            padding: 18px;
+        }
+
+        .job-card-top {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .job-posted-date {
+            font-size: 9px;
+        }
+
+        .job-card-title {
+            font-size: 17px;
+        }
+
+        .job-card-bottom {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .career-apply-btn {
+            width: 100%;
+        }
+
+        .job-open-info {
+            width: 100%;
+        }
+    }
+    /* =====================================================
+           CAREER MODAL - UNIQUE / ISOLATED
+           Layout ke modal CSS se conflict nahi karega
+        ===================================================== */
+
+    .career-apply-modal .career-modal-content {
+        border-radius: 14px !important;
+        border: none !important;
+        overflow: hidden;
+    }
+
+    .career-apply-modal .career-modal-header {
+        padding: 28px 32px 0 32px !important;
+        border-bottom: none !important;
+    }
+
+    .career-apply-modal .career-modal-body {
+        padding: 20px 32px 32px 32px !important;
+    }
+
+    .career-apply-modal .career-modal-footer {
+        padding: 0 32px 28px 32px !important;
+        border-top: none !important;
+    }
+
+    .career-apply-modal .career-selected-job {
+        background: #f8f9fa;
+        border-left: 4px solid #ed0026;
+        padding: 12px 15px;
+    }
+
+        .career-apply-modal .career-selected-job .form-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #777;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .career-apply-modal .career-selected-job input {
+            border: none;
+            background: transparent;
+            padding: 0;
+            font-weight: 700;
+            color: #111;
+            box-shadow: none !important;
+        }
+
+    .career-apply-modal .form-control {
+        border-radius: 6px;
+    }
+
+        .career-apply-modal .form-control:focus {
+            border-color: #ed0026;
+            box-shadow: 0 0 0 0.15rem rgba(237, 0, 38, 0.15);
+        }
+
+
+    /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+    @@media (max-width: 991px) {
+
+        .page-hero-custom h1 {
+            font-size: 30px;
+        }
+
+        .mini-stats-custom .stat-block {
+            border-right: none;
+            padding: 5px 8px;
+        }
+
+        .portfolio-card .portfolio-image {
+            height: 200px;
+        }
+
+        .testimonial-enhanced {
+            padding: 25px 20px;
+        }
+    }
+
+
+    @@media (max-width: 575px) {
+
+        .page-hero-custom {
+            padding: 35px 0 25px;
+        }
+
+            .page-hero-custom h1 {
+                font-size: 24px;
+            }
+
+            .page-hero-custom .subtitle {
+                font-size: 12px;
+            }
+
+        .mini-stats-custom .stat-number {
+            font-size: 22px;
+        }
+
+        .testimonial-enhanced blockquote {
+            font-size: 14px;
+        }
+
+        .portfolio-card .portfolio-image {
+            height: 180px;
+        }
+
+        .portfolio-card .portfolio-stats {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+
+    @@media (max-width: 576px) {
+
+        .career-apply-modal .career-modal-header {
+            padding: 20px 18px 0 18px !important;
+        }
+
+        .career-apply-modal .career-modal-body {
+            padding: 18px !important;
+        }
+
+        .career-apply-modal .career-modal-footer {
+            padding: 0 18px 20px 18px !important;
+        }
+    }
+
+</style>
+@* <!-- =========================
+     CAREER PAGE TOP / HERO
+     ========================= -->
+
+<section class="career-hero bg-dark">
+    <div class="container px-5 ">
+        <div class="row align-items-center">
+
+            <!-- LEFT CONTENT -->
+            <div class="col-lg-7 col-md-7">
+                <div class="career-hero-content">
+
+                    <div class="career-section-label">
+                        <span></span>
+                        CAREERS AT ACCESS AUTHORITY
+                    </div>
+
+                    <h1>
+                        Build Your Career.
+                        <br />
+                        <span>Build What's Next.</span>
+                    </h1>
+
+                    <p>
+                        Join Access Authority and work with a team that turns
+                        ideas into powerful digital solutions. Explore exciting
+                        opportunities, grow your skills, and build technology
+                        that creates real impact.
+                    </p>
+
+                    <div class="career-hero-buttons">
+                        <a href="careerApplyModal" class="btn career-primary-btn">
+                            View Open Positions
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                        <a href="#whyJoinUs" class="career-outline-btn">
+                            Why Join Us
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- RIGHT VISUAL -->
+            <div class="col-lg-5 col-md-5">
+                <div class="career-hero-visual">
+
+                    <div class="career-visual-main">
+                        <div class="career-icon-box">
+                            <i class="bi bi-people"></i>
+                        </div>
+
+                        <h3>Grow With Us</h3>
+
+                        <p>
+                            Learn, collaborate and create meaningful
+                            technology solutions.
+                        </p>
+                    </div>
+
+                    <div class="career-floating-card career-card-one">
+                        <i class="bi bi-code-slash"></i>
+                        <div>
+                            <strong>Innovation</strong>
+                            <small>Build better solutions</small>
+                        </div>
+                    </div>
+
+                    <div class="career-floating-card career-card-two">
+                        <i class="bi bi-graph-up-arrow"></i>
+                        <div>
+                            <strong>Growth</strong>
+                            <small>Grow your potential</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section> *@
+<section class="page-hero-custom bg-black">
+    <div class="container px-5">
+        
+            <div class="">
+                <div class="breadcrumb-custom">
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                    <span>/</span>
+                    <span>Career</span>
+                </div>
+
+                <h1 class="text-danger">Build Your Career With Us</h1>
+
+                <p>
+                    Join Access Authority and become part of a team
+                    that builds innovative digital solutions.Access Authority
+                    and become part of a team
+                </p>
+            </div>
+
+    </div>
+</section>
+<section class="services-section">
+
+    <div class="container px-5 pt-5">
+
+        <div class="row g-4">
+
+            @if (careerPositions != null && careerPositions.Any())
+            {
+                foreach (var job in careerPositions)
+                {
+                    <div class="col-xl-4 col-lg-6">
+
+                        <div class="card-premium">
+
+                            <div class="job-card-inner">
+
+                                <!-- TOP -->
+                                <div class="job-card-top">
+
+                                    <span class="job-location-badge">
+
+                                        @if (!string.IsNullOrEmpty(job.Location))
+                                        {
+                                            if (job.Location.ToLower().Contains("remote"))
+                                            {
+                                                <i class="bi bi-wifi"></i>
+                                                @:Remote
+                                            }
+                                            else
+                                            {
+                                                <i class="bi bi-geo-alt-fill"></i>
+                                                @job.Location
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <i class="bi bi-geo-alt-fill"></i>
+                                            @:Location
+                                        }
+
+                                    </span>
+
+                                    <span class="job-posted-date">
+
+                                        <i class="bi bi-calendar3"></i>
+
+                                        @job.PostedDate.ToString("MMM dd, yyyy")
+
+                                    </span>
+
+                                </div>
+
+
+                                <!-- JOB TITLE -->
+
+                                <h5 class="job-card-title">
+
+                                    @job.JobTitle
+
+                                </h5>
+
+
+                                <!-- DESCRIPTION -->
+
+                                <p class="job-card-description">
+
+                                    <i class="bi bi-briefcase-fill"></i>
+
+                                    @job.Description
+
+                                </p>
+
+
+                                <!-- JOB META -->
+
+                                <div class="job-meta-wrapper">
+
+                                    @if (!string.IsNullOrEmpty(job.Type))
+                                    {
+                                        <span class="job-meta-badge type">
+
+                                            <i class="bi bi-clock-history"></i>
+
+                                            @job.Type
+
+                                        </span>
+                                    }
+
+                                    @if (!string.IsNullOrEmpty(job.Status))
+                                    {
+                                        <span class="job-meta-badge status">
+
+                                            <i class="bi bi-check-circle-fill"></i>
+
+                                            @job.Status
+
+                                        </span>
+                                    }
+
+                                </div>
+
+
+                                <!-- BOTTOM -->
+
+                                <div class="job-card-bottom">
+
+                                    <div class="job-open-info">
+
+                                        <div class="job-open-icon">
+
+                                            <i class="bi bi-person-workspace"></i>
+
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Open Position
+                                            </strong>
+
+                                            <span>
+                                                Join our team
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- APPLY -->
+
+                                    <button type="button"
+                                            class="btn btn-danger btn-sm rounded-pill career-apply-btn"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#careerApplyModal"
+                                            data-job-id="@job.Id"
+                                            data-job-title="@job.JobTitle">
+
+                                        Apply
+
+                                        <i class="bi bi-arrow-right-short"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12">
+
+                    <div class="text-center py-5">
+
+                        <i class="bi bi-briefcase fs-1 text-secondary"></i>
+
+                        <h5 class="mt-3">
+                            No Open Positions
+                        </h5>
+
+                        <p class="text-secondary">
+                            There are currently no open positions available.
+                        </p>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+
+    <!-- CAREER APPLY MODAL -->
+   
+    <div class="modal fade career-apply-modal"
+         id="careerApplyModal"
+         tabindex="-1"
+         aria-labelledby="careerApplyModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+
+            <div class="modal-content career-modal-content">
+
+                <div class="modal-header career-modal-header">
+
+                    <h5 class="modal-title"
+                        id="careerApplyModalLabel">
+
+                        <i class="bi bi-person-plus text-danger me-2"></i>
+                        Career Application
+
+                    </h5>
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close">
+                    </button>
+
+                </div>
+
+
+                <form asp-controller="Home"
+                      asp-action="Career"
+                      method="post"
+                      enctype="multipart/form-data">
+
+                    @Html.AntiForgeryToken()
+
+
+                    <div class="modal-body career-modal-body">
+
+                        <!-- SELECTED JOB -->
+
+                        <div class="career-selected-job mb-4">
+
+                            <label class="form-label">
+                                Applying For
+                            </label>
+
+                            <input type="text"
+                                   id="careerSelectedJob"
+                                   class="form-control"
+                                   value=""
+                                   readonly />
+
+                        </div>
+
+
+                        <div class="row g-3">
+
+                            <input type="hidden"
+                                   asp-for="CareerPositionId"
+                                   id="careerPositionId" />
+
+                            <!-- Full Name -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="FullName"
+                                       class="form-label">
+
+                                    Full Name *
+
+                                </label>
+
+                                <input asp-for="FullName"
+                                       class="form-control"
+                                       placeholder="Enter full name" />
+
+                                <span asp-validation-for="FullName"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <!-- Email -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="EmailAddress"
+                                       class="form-label">
+
+                                    Email Address *
+
+                                </label>
+
+                                <input asp-for="EmailAddress"
+                                       type="email"
+                                       class="form-control"
+                                       placeholder="example@gmail.com" />
+
+                                <span asp-validation-for="EmailAddress"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <!-- Phone -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="PhoneNumber"
+                                       class="form-label">
+
+                                    Phone Number *
+
+                                </label>
+
+                                <input asp-for="PhoneNumber"
+                                       type="tel"
+                                       class="form-control"
+                                       placeholder="Enter phone number" />
+
+                                <span asp-validation-for="PhoneNumber"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <!-- LinkedIn -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="LinkedInProfile"
+                                       class="form-label">
+
+                                    LinkedIn Profile
+
+                                </label>
+
+                                <input asp-for="LinkedInProfile"
+                                       type="url"
+                                       class="form-control"
+                                       placeholder="https://linkedin.com/in/username" />
+
+                                <span asp-validation-for="LinkedInProfile"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <!-- Resume -->
+
+                            <div class="col-md-12">
+
+                                <label asp-for="Resume"
+                                       class="form-label">
+
+                                    Resume *
+
+                                </label>
+
+                                <input asp-for="Resume"
+                                       type="file"
+                                       class="form-control"
+                                       accept=".pdf,.doc,.docx" />
+
+                                <small class="text-secondary">
+                                    Allowed files: PDF, DOC, DOCX
+                                </small>
+
+                                <span asp-validation-for="Resume"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MODAL FOOTER -->
+
+                    <div class="modal-footer career-modal-footer">
+
+                        <button type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal">
+
+                            Cancel
+
+                        </button>
+
+                        <button type="submit"
+                                class="btn btn-danger">
+
+                            <i class="bi bi-check-lg"></i>
+                            Save Application
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!--  PORTFOLIO SECTION -->
+
+<section class="services-section">
+
+    <div class="container px-5">
+
+        <div class="row g-4">
+
+
+            <!-- PROJECT 1 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="portfolio-card">
+
+                    <div class="portfolio-image">
+
+                        <img src="https://plus.unsplash.com/premium_photo-1682126150250-65a653ee9eec?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="HealthSync ERP">
+
+                        <span class="portfolio-badge">
+                            Healthcare
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-body">
+
+                        <div class="portfolio-industry">
+                            Healthcare Industry
+                        </div>
+
+                        <h3>
+                            HealthSync ERP
+                        </h3>
+
+                        <p class="portfolio-desc">
+                            Hospital management platform for a 500-bed hospital chain.
+                        </p>
+
+                        <div class="portfolio-stats">
+
+                            <div>
+                                <strong>60%</strong>
+                                <span>Faster Billing</span>
+                            </div>
+
+                            <div>
+                                <strong>50K+</strong>
+                                <span>Daily Transactions</span>
+                            </div>
+
+                        </div>
+
+                        <a href="#" class="portfolio-link">
+
+                            View Case Study
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 2 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="portfolio-card">
+
+                    <div class="portfolio-image">
+
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop"
+                             alt="FinVault Banking Portal">
+
+                        <span class="portfolio-badge">
+                            Fintech
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-body">
+
+                        <div class="portfolio-industry">
+                            Fintech Industry
+                        </div>
+
+                        <h3>
+                            FinVault Banking Portal
+                        </h3>
+
+                        <p class="portfolio-desc">
+                            Secure digital banking portal with real-time fraud detection.
+                        </p>
+
+                        <div class="portfolio-stats">
+
+                            <div>
+                                <strong>200K+</strong>
+                                <span>Active Users</span>
+                            </div>
+
+                            <div>
+                                <strong>99.9%</strong>
+                                <span>Uptime</span>
+                            </div>
+
+                        </div>
+
+                        <a href="#" class="portfolio-link">
+
+                            View Case Study
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 3 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="portfolio-card">
+
+                    <div class="portfolio-image">
+
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
+                             alt="RetailPro Analytics">
+
+                        <span class="portfolio-badge">
+                            Retail
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-body">
+
+                        <div class="portfolio-industry">
+                            Retail Industry
+                        </div>
+
+                        <h3>
+                            RetailPro Analytics
+                        </h3>
+
+                        <p class="portfolio-desc">
+                            Predictive analytics platform for a 200+ store retail chain.
+                        </p>
+
+                        <div class="portfolio-stats">
+
+                            <div>
+                                <strong>45%</strong>
+                                <span>Inventory Efficiency</span>
+                            </div>
+
+                            <div>
+                                <strong>85%</strong>
+                                <span>Forecast Accuracy</span>
+                            </div>
+
+                        </div>
+
+                        <a href="#" class="portfolio-link">
+
+                            View Case Study
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 4 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="portfolio-card">
+
+                    <div class="portfolio-image">
+
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop"
+                             alt="EduLeap LMS">
+
+                        <span class="portfolio-badge">
+                            Education
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-body">
+
+                        <div class="portfolio-industry">
+                            Education Industry
+                        </div>
+
+                        <h3>
+                            EduLeap LMS
+                        </h3>
+
+                        <p class="portfolio-desc">
+                            Learning management platform for 50+ educational institutions.
+                        </p>
+
+                        <div class="portfolio-stats">
+
+                            <div>
+                                <strong>50K+</strong>
+                                <span>Active Students</span>
+                            </div>
+
+                            <div>
+                                <strong>4.8/5</strong>
+                                <span>Rating</span>
+                            </div>
+
+                        </div>
+
+                        <a href="#" class="portfolio-link">
+
+                            View Case Study
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 5 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="portfolio-card">
+
+                    <div class="portfolio-image">
+
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop"
+                             alt="Manufacturing Analytics">
+
+                        <span class="portfolio-badge">
+                            Manufacturing
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-body">
+
+                        <div class="portfolio-industry">
+                            Manufacturing Industry
+                        </div>
+
+                        <h3>
+                            Manufacturing Analytics
+                        </h3>
+
+                        <p class="portfolio-desc">
+                            IoT-enabled production monitoring and quality control system.
+                        </p>
+
+                        <div class="portfolio-stats">
+
+                            <div>
+                                <strong>35%</strong>
+                                <span>Efficiency Gain</span>
+                            </div>
+
+                            <div>
+                                <strong>22%</strong>
+                                <span>Less Waste</span>
+                            </div>
+
+                        </div>
+
+                        <a href="#" class="portfolio-link">
+
+                            View Case Study
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 6 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="portfolio-card">
+
+                    <div class="portfolio-image">
+
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop"
+                             alt="Property Management Platform">
+
+                        <span class="portfolio-badge">
+                            Real Estate
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-body">
+
+                        <div class="portfolio-industry">
+                            Real Estate Industry
+                        </div>
+
+                        <h3>
+                            Property Management Platform
+                        </h3>
+
+                        <p class="portfolio-desc">
+                            Full-stack property management solution for 1,000+ properties.
+                        </p>
+
+                        <div class="portfolio-stats">
+
+                            <div>
+                                <strong>1,000+</strong>
+                                <span>Properties</span>
+                            </div>
+
+                            <div>
+                                <strong>40%</strong>
+                                <span>Faster Operations</span>
+                            </div>
+
+                        </div>
+
+                        <a href="#" class="portfolio-link">
+
+                            View Case Study
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TESTIMONIALS
+===================================================== -->
+
+<section style="background: #ffffff; padding: 55px 0;">
+
+    <div class="container px-5">
+
+        <div class="text-center mb-5">
+
+            <div class="heading-label justify-content-center">
+
+                <span></span>
+
+                WHAT OUR CLIENTS SAY
+
+            </div>
+
+            <h2 style="font-size: 30px; font-weight: 700; color: #111; margin: 0;">
+
+                Trusted by
+                <span style="color: #ed0026;">
+                    Industry Leaders
+                </span>
+
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4 justify-content-center">
+
+
+            <!-- TESTIMONIAL 1 -->
+
+            <div class="col-lg-6">
+
+                <div class="testimonial-enhanced">
+
+                    <div class="quote-icon">
+                        ✦
+                    </div>
+
+                    <blockquote>
+
+                        "Access Authority delivered a game-changing solution for our hospital. The platform is robust,
+                        intuitive, and has transformed how we operate."
+
+                    </blockquote>
+
+                    <div style="display: flex; align-items: center; gap: 16px;">
+
+                        <div class="client-avatar">
+
+                            <img src="~/img/67.jpg"
+                                 class="img-fluid rounded-circle"
+                                 alt="">
+
+                        </div>
+
+                        <div>
+
+                            <p class="client-name">
+                                Dr. Rajesh Kumar
+                            </p>
+
+                            <p class="client-title">
+                                CEO, HealthSync Hospital Chain
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TESTIMONIAL 2 -->
+
+            <div class="col-lg-6">
+
+                <div class="testimonial-enhanced">
+
+                    <div class="quote-icon">
+                        ✦
+                    </div>
+
+                    <blockquote>
+
+                        "The FinVault platform has been a cornerstone of our digital transformation. Reliable, secure,
+                        and feature-rich — exactly what we needed."
+
+                    </blockquote>
+
+                    <div style="display: flex; align-items: center; gap: 16px;">
+
+                        <div class="client-avatar">
+
+                            <img src="~/img/28.jpg"
+                                 class="img-fluid rounded-circle"
+                                 alt="">
+
+                        </div>
+
+                        <div>
+
+                            <p class="client-name">
+                                Priya Sharma
+                            </p>
+
+                            <p class="client-title">
+                                CTO, FinVault Solutions
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CTA SECTION
+===================================================== -->
+
+<section class="aa-cta-wrapper">
+
+    <div class="container aa-cta-container">
+
+        <div class="aa-cta-content">
+
+            <div class="aa-cta-label">
+
+                <span></span>
+
+                LET'S BUILD TOGETHER
+
+            </div>
+
+            <h2>
+                Ready to Build Your <strong>Next Project?</strong>
+            </h2>
+
+            <p>
+                We'd love to help you build something great. Let's talk about your vision and turn it into reality.
+            </p>
+
+        </div>
+
+        <div class="aa-cta-button-box">
+
+            <a href="#" class="aa-cta-button">
+
+                <span>▣</span>
+
+                Start Your Project
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TRUSTED BOTTOM BAR
+===================================================== -->
+
+<section class="trusted-bottom">
+
+    <div class="container">
+
+        <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
+
+            <span class="trusted-by-text">
+                TRUSTED BY
+            </span>
+
+            <span class="trusted-item">
+
+                <i class="bi bi-patch-check-fill"></i>
+
+                100+ Projects
+
+            </span>
+
+            <span class="trusted-item">
+
+                <i class="bi bi-patch-check-fill"></i>
+
+                98% Satisfaction
+
+            </span>
+
+            <span class="trusted-item">
+
+                <i class="bi bi-patch-check-fill"></i>
+
+                12+ Industries
+
+            </span>
+
+            <span class="trusted-item">
+
+                <i class="bi bi-patch-check-fill"></i>
+
+                6 Featured Projects
+
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SWEET ALERT
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+@if (TempData["Success"] != null)
+{
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            if (typeof Swal !== "undefined") {
+
+                Swal.fire({
+                    icon: "success",
+                    title: "Application Submitted!",
+                    text: "@TempData["Success"]",
+                    confirmButtonColor: "#ed0026"
+                });
+
+            }
+
+        });
+
+    </script>
+}
+
+
+<!-- =====================================================
+     CAREER PAGE JS
+     COMPLETELY ISOLATED FROM LAYOUT JS
+===================================================== -->
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        "use strict";
+
+        (function () {
+
+            /*
+             * ================================================
+             * CAREER APPLY BUTTONS
+             * ================================================
+             */
+
+            const careerApplyButtons =
+                document.querySelectorAll(".career-apply-btn");
+
+            const careerJobInput =
+                document.getElementById("careerSelectedJob");
+
+
+            const careerPositionIdInput =
+               document.getElementById("careerPositionId");
+
+            const careerModal =
+                document.getElementById("careerApplyModal");
+
+
+            /*
+             * ================================================
+             * SET SELECTED JOB
+             * ================================================
+             */
+
+                careerApplyButtons.forEach(function (careerButton) {
+                  careerButton.addEventListener("click", function () {
+
+             const careerJobTitle =
+                this.getAttribute("data-job-title");
+
+            const careerJobId =
+                this.getAttribute("data-job-id");
+
+            if (careerJobInput) {
+                careerJobInput.value =
+                    careerJobTitle || "";
+            }
+
+            if (careerPositionIdInput) {
+                careerPositionIdInput.value =
+                    careerJobId || "";
+            }
+              });
+                });
+
+            /*
+             * ================================================
+             * RESET MODAL AFTER CLOSE
+             * ================================================
+             */
+
+            if (careerModal) {
+
+                careerModal.addEventListener(
+                    "hidden.bs.modal",
+                    function () {
+
+                        if (careerJobInput) {
+
+                            careerJobInput.value = "";
+
+                        }
+
+                    }
+                );
+
+            }
+
+        })();
+
+    });
+
+</script>
+
