@@ -42,7 +42,7 @@
 ========================================================= */
 
 .hero {
-    min-height: 435px;
+    
     background:
         radial-gradient(
             circle at 75% 45%,
@@ -195,6 +195,7 @@
 
     .what-we-do {
         background: #fff;
+       
     }
 
         .what-we-do .section-title-small {
@@ -341,6 +342,7 @@
     background: #fff;
     border: 1px solid #e5e5e5;
     padding: 28px;
+    border-radius: 10px;
     height: 100%;
     transition: all 0.3s ease;
 }
@@ -420,17 +422,18 @@
 }
 
 .technology-box img {
-    max-width: 75%;
-    max-height: 75%;
-    object-fit: contain;
+   
+    object-fit: cover;
     transition: all 0.35s ease;
 }
 
 .technology-box:hover {
     transform: translateY(-6px);
     border-color: #c7d2fe;
-    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.10);
+     box-shadow: 0 12px 30px #ed001c;
 }
+
+   
 
 .technology-box:hover::before {
     width: 100%;
@@ -473,7 +476,7 @@
 
 .testimonial {
     width: 100%;
-    background: #dbd4d6;
+    background: white;
     color: #141313;
     text-align: center;
     margin: 0;
@@ -550,35 +553,6 @@
     justify-content: center;
     margin-top: 28px;
 }
-
-
-/* =========================================================
-   WHATSAPP
-========================================================= */
-
-.whatsapp {
-    position: fixed;
-    right: 27px;
-    bottom: 25px;
-    width: 49px;
-    height: 49px;
-    background: #20d366;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 25px;
-    z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    transition: all 0.25s ease;
-}
-
-.whatsapp:hover {
-    color: #fff;
-    transform: scale(1.08);
-}
-
 
 /* =========================================================
    RESPONSIVE - TABLET
@@ -806,11 +780,11 @@
             
 
 
-            <div class="hero-icon">
+          @*   <div class="hero-icon">
 
                 <i class="bi bi-globe2"></i>
 
-            </div>
+            </div> *@
 
 
             <h1>
@@ -860,12 +834,12 @@
                         What We Do
                     </div>
 
-                    <h2 class="section-title mt-3">
+                    <h2 class="section-title mt-2">
                         Custom Web Solutions
                     <span class="text-danger">That Drive Results</span>
                     </h2>
 
-                    <p class="section-text mt-4">
+                    <p class="section-text mt-3">
 
                         Using modern frameworks like React, Next.js,
                         and Node.js, we create digital experiences that
@@ -875,7 +849,7 @@
 
                     </p>
 
-                    <div class="d-flex flex-column flex-md-row gap-3">
+                    <div class="d-flex flex-column flex-md-row gap-2">
                         <ul class="feature-list list-content">
 
                             <li>
@@ -964,10 +938,10 @@
                          class="work-image"
                          alt="Web Development">
 
-                    <a href="#" class="work-link">
+                    @* <a href="#" class="work-link">
                         See Our Work
                         <i class="bi bi-arrow-right"></i>
-                    </a>
+                    </a> *@
 
                 </div>
 

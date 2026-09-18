@@ -1,3 +1,4 @@
+wwwroot\25164-348110782_medium.mp4
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\img\28.jpg
@@ -20,6 +21,7 @@ wwwroot\img\section-05.avif
 wwwroot\img\section-06.avif
 wwwroot\img\section-07.avif
 wwwroot\img\style.css
+wwwroot\istockphoto-1288890894-640_adpp_is.mp4
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -96,7 +98,6 @@ wwwroot\uploads\blog\c59586ec-3614-49cd-a14e-7a15603d2e8b.jpg
 wwwroot\uploads\blog\c654aeeb-8da9-4bb6-a079-b124e6aea5f9.jpg
 wwwroot\uploads\blog\c724c55d-7980-4223-9161-29c9c867c305.jpg
 wwwroot\uploads\projects\1d480c72-baf3-44a2-a006-cf02e1fe7f0e.jpeg
-wwwroot\uploads\projects\846d4404-1710-43ae-9715-22637a04593b.jpg
 wwwroot\uploads\projects\9d003a6c-af2c-4918-9825-5fd4fba59ce9.jpg
 wwwroot\uploads\projects\b983fda6-3a4d-4df9-9eeb-45f918d9d322.jpg
 wwwroot\uploads\projects\cb277969-37a6-42a7-88c5-caed4bef8106.jpg

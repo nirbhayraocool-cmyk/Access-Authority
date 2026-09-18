@@ -1,1 +1,13 @@
-.vs/bin/obj/*.user
+.vs/
+**/.vs/
+
+bin/
+**/bin/
+
+obj/
+**/obj/
+
+*.user
+*.suo
+**/.config/
+**/Properties/PublishProfiles/

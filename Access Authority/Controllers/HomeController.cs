@@ -251,7 +251,7 @@ namespace Access_Authority.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> Project()
+        public async Task<IActionResult> Projects()
         {
             var projects = await _Context.Projects
                 .OrderByDescending(x => x.CreatedDate)

@@ -8,7 +8,6 @@
 
         <div id="heroContent">
 
-
             <div class="row align-items-center">
 
 
@@ -70,8 +69,7 @@
 
                     <div class="d-flex flex-wrap gap-2 hero-buttons">
 
-                        <a 
-                            asp-action="FreeConsultation"
+                        <a asp-action="FreeConsultation"
                            class="btn consultation-btn">
 
                             <i class="bi bi-arrow-right me-2">
@@ -1402,19 +1400,19 @@
 
                 <div class="work-filters d-flex justify-content-md-end justify-content-start gap-1">
 
-                    <button class="work-filter active" onclick="location.href='@Url.Action("Projects", "Home")'">
+                    <button class="work-filter active" data-filter="all" type="button">
                         ALL
                     </button>
 
-                    <button class="work-filter" onclick="location.href='@Url.Action("webDevlopment", "Home")'">
+                    <button class="work-filter" data-filter="web" type="button">
                         WEB
                     </button>
 
-                    <button class="work-filter" onclick="location.href='@Url.Action("MobileApps", "Home")'">
+                    <button class="work-filter" data-filter="mobile" type="button">
                         MOBILE
                     </button>
 
-                    <button class="work-filter" onclick="location.href='@Url.Action("ERPDevlopment", "Home")'">
+                    <button class="work-filter" data-filter="erp" type="button">
                         ERP
                     </button>
 
@@ -1429,8 +1427,8 @@
         <div class="row g-1">
 
 
-            <!-- LEFT LARGE IMAGE -->
-            <div class="col-lg-7 col-md-7">
+            <!-- LEFT LARGE IMAGE (WEB) -->
+            <div class="col-lg-7 col-md-7" data-category="web">
 
                 <div class="work-image work-image-large">
 
@@ -1452,20 +1450,43 @@
             </div>
 
 
-            <!-- RIGHT IMAGE -->
-            <div class="col-lg-5 col-md-5">
+            <!-- RIGHT COLUMN — 2 STACKED IMAGES (WEB) -->
+            <div class="col-lg-5 col-md-5" data-category="web">
 
-                <div class="work-image work-image-right">
+                <div class="work-right-stack">
 
-                    <img src="https://t4.ftcdn.net/jpg/05/54/46/89/240_F_554468927_iwU3VYIjsaeopAb0WPYxVf21TloEhTEj.jpg"
-                         class="img-fluid w-100 h-100"
-                         alt="Project">
+                    <!-- TOP IMAGE -->
+                    <div class="work-image work-image-right">
 
-                    <div class="work-hover">
+                        <img src="https://t4.ftcdn.net/jpg/05/54/46/89/240_F_554468927_iwU3VYIjsaeopAb0WPYxVf21TloEhTEj.jpg"
+                             class="img-fluid w-100 h-100"
+                             alt="Project">
 
-                        <div>
-                            <small>WEB APPLICATION</small>
-                            <h4>Analytics Dashboard</h4>
+                        <div class="work-hover">
+
+                            <div>
+                                <small>WEB APPLICATION</small>
+                                <h4>Analytics Dashboard</h4>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- BOTTOM IMAGE (NEW) -->
+                    <div class="work-image work-image-right-2">
+
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+                             class="img-fluid w-100 h-100"
+                             alt="Project">
+
+                        <div class="work-hover">
+
+                            <div>
+                                <small>DASHBOARD UI</small>
+                                <h4>Admin Panel Design</h4>
+                            </div>
+
                         </div>
 
                     </div>
@@ -1475,8 +1496,8 @@
             </div>
 
 
-            <!-- BOTTOM LEFT -->
-            <div class="col-lg-4 col-md-4">
+            <!-- MOBILE 1 -->
+            <div class="col-lg-3 col-md-6" data-category="mobile">
 
                 <div class="work-image work-image-bottom">
 
@@ -1498,8 +1519,31 @@
             </div>
 
 
-            <!-- BOTTOM RIGHT -->
-            <div class="col-lg-3 col-md-3">
+            <!-- MOBILE 2 -->
+            <div class="col-lg-3 col-md-6" data-category="mobile">
+
+                <div class="work-image work-image-bottom">
+
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80"
+                         class="img-fluid w-100 h-100"
+                         alt="Project">
+
+                    <div class="work-hover">
+
+                        <div>
+                            <small>MOBILE APP</small>
+                            <h4>E-Commerce App</h4>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ERP 1 -->
+            <div class="col-lg-3 col-md-6" data-category="erp">
 
                 <div class="work-image work-image-bottom">
 
@@ -1519,15 +1563,39 @@
                 </div>
 
             </div>
-            <div class="text-center pt-3 ">
+
+
+            <!-- ERP 2 -->
+            <div class="col-lg-3 col-md-6" data-category="erp">
+
+                <div class="work-image work-image-bottom">
+
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                         class="img-fluid w-100 h-100"
+                         alt="Project">
+
+                    <div class="work-hover">
+
+                        <div>
+                            <small>ERP SYSTEM</small>
+                            <h4>Inventory ERP</h4>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- VIEW ALL BUTTON -->
+            <div class="text-center pt-3">
                 <a asp-action="Projects" class="case-btn">
-
                     View all Projects
-
                     <i class="bi bi-arrow-right"></i>
-
                 </a>
             </div>
+
         </div>
 
     </div>
@@ -2331,7 +2399,7 @@
             <div class="aa-faq-item">
 
                 <button class="aa-faq-question" type="button">
-                    <span>What if I’m not satisfied with the work?</span>
+                    <span>What if I'm not satisfied with the work?</span>
                     <span class="aa-faq-plus">+</span>
                 </button>
 
@@ -2614,24 +2682,144 @@
 
         </div>
 
-     
+
 
     </div>
 </section>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+<style>
+    /* =================================================
+           FEATURED PROJECTS — FILTER ANIMATION
+        ================================================= */
+
+    .work-showcase [data-category] {
+        transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+        .work-showcase [data-category].filter-show {
+            animation: filterFadeIn 0.4s ease forwards;
+        }
+
+    @@keyframes filterFadeIn {
+        from
+
+    {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+
+    .work-filter {
+        cursor: pointer;
+    }
+
+    /* =================================================
+           FEATURED PROJECTS — COMPACT + NO GAP
+        ================================================= */
+
+    .work-showcase .work-image {
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+    }
+
+        .work-showcase .work-image.work-image-large {
+            height: 360px;
+        }
+
+        .work-showcase .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+    /* =================================================
+           RIGHT COLUMN — 2 STACKED IMAGES
+        ================================================= */
+
+    .work-showcase .work-right-stack {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        gap: 4px;
+        height: 360px;
+    }
+
+        .work-showcase .work-right-stack .work-image {
+            height: 100% !important;
+            min-height: 0 !important;
+            margin: 0 !important;
+        }
+
+            .work-showcase .work-right-stack .work-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+    /* =================================================
+           FILTER — NO GAP (both cards same height)
+        ================================================= */
+
+    .work-showcase [data-category="web"].filter-show .work-image-large {
+        height: 360px !important;
+    }
+
+    .work-showcase [data-category="web"].filter-show .work-right-stack {
+        height: 360px !important;
+    }
+
+    .work-showcase [data-category="mobile"].filter-show .work-image,
+    .work-showcase [data-category="erp"].filter-show .work-image {
+        height: 280px !important;
+    }
+
+    /* =================================================
+           MOBILE
+        ================================================= */
+
+    @@media (max-width: 767px) {
+        .work-showcase .work-image, .work-showcase [data-category].filter-show .work-image
+
+    {
+        height: 180px !important;
+    }
+
+    .work-showcase .work-image.work-image-large,
+    .work-showcase [data-category="web"].filter-show .work-image-large {
+        height: 220px !important;
+    }
+
+    .work-showcase .work-right-stack,
+    .work-showcase [data-category="web"].filter-show .work-right-stack {
+        height: auto !important;
+        grid-template-rows: none;
+        gap: 4px;
+    }
+
+        .work-showcase .work-right-stack .work-image {
+            height: 150px !important;
+        }
+
+    }
+</style>
+
 <script>
     (function() {
       "use strict";
 
-      // ----- get all counter elements -----
       const counters = document.querySelectorAll('.counter');
-
-      // store initial values & animation state
-      let animationStarted = false;     // prevent multiple triggers
+      let animationStarted = false;
       let observer = null;
 
-      // ----- function to run the counting animation -----
       function startCounters() {
         if (animationStarted) return;
         animationStarted = true;
@@ -2640,14 +2828,11 @@
           const target = parseInt(counter.getAttribute('data-target'), 10);
           if (isNaN(target) || target < 0) return;
 
-          // reset to 0 (but only if not already animated)
           counter.innerText = '0';
 
-          // determine duration & step
-          const duration = 1800; // ms
+          const duration = 1800;
           const startTime = performance.now();
 
-          // easing function (ease-out cubic)
           function easeOutCubic(t) {
             return 1 - Math.pow(1 - t, 3);
           }
@@ -2658,98 +2843,68 @@
             const easedProgress = easeOutCubic(progress);
             const currentValue = Math.round(easedProgress * target);
 
-            // update text
             counter.innerText = currentValue;
 
             if (progress < 1) {
               requestAnimationFrame(updateCounter);
             } else {
-              // final value (ensure exact target)
               counter.innerText = target;
             }
           }
 
-          // start animation for this counter
           requestAnimationFrame(updateCounter);
         });
       }
 
-      // ----- Intersection Observer: trigger when section becomes visible -----
       const section = document.querySelector('.counter-section');
       if (!section) return;
 
-      // if the section is already visible, start immediately
       if (section.getBoundingClientRect().top < window.innerHeight) {
         startCounters();
       } else {
-        // otherwise set up observer
         observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting && !animationStarted) {
               startCounters();
-              // once started, disconnect observer to save resources
               observer.disconnect();
             }
           });
         }, {
-          threshold: 0.2,    // 20% of section visible
+          threshold: 0.2,
           rootMargin: '0px'
         });
 
         observer.observe(section);
       }
 
-      
       setTimeout(() => {
         if (!animationStarted) {
-          // check again if section is visible (or just start anyway)
           startCounters();
           if (observer) observer.disconnect();
         }
-      }, 4000);
+      }, 3000);
 
-      
     })();
 
 
         document.addEventListener("DOMContentLoaded", function () {
 
             const reviewTrack = document.getElementById("clientReviewTrack");
-
-            const reviewCards = document.querySelectorAll(
-                ".client-review-card"
-            );
-
-            const reviewDots = document.querySelectorAll(
-                ".client-review-dot"
-            );
-
+            const reviewCards = document.querySelectorAll(".client-review-card");
+            const reviewDots = document.querySelectorAll(".client-review-dot");
 
             let currentReviewSlide = 0;
 
-
             function getReviewsPerSlide() {
-
-                if (window.innerWidth <= 575) {
-                    return 1;
-                }
-
-                if (window.innerWidth <= 991) {
-                    return 2;
-                }
-
+                if (window.innerWidth <= 575) return 1;
+                if (window.innerWidth <= 991) return 2;
                 return 3;
             }
-
 
             function showReviewSlide(slideNumber) {
 
                 const reviewsPerSlide = getReviewsPerSlide();
-
-                const totalSlides = Math.ceil(
-                    reviewCards.length / reviewsPerSlide
-                );
-
+                const totalSlides = Math.ceil(reviewCards.length / reviewsPerSlide);
 
                 if (slideNumber >= totalSlides) {
                     currentReviewSlide = 0;
@@ -2759,525 +2914,295 @@
                     currentReviewSlide = totalSlides - 1;
                 }
 
+                const moveValue = currentReviewSlide * 100;
 
-                const cardWidth = 100 / reviewsPerSlide;
-
-                const moveValue =
-                    currentReviewSlide * 100;
-
-
-                reviewTrack.style.transform =
-                    `translateX(-${moveValue}%)`;
-
-
-                /* ACTIVE CARD */
+                reviewTrack.style.transform = `translateX(-${moveValue}%)`;
 
                 reviewCards.forEach(function (card) {
                     card.classList.remove("active");
                 });
 
-
-                const activeCardIndex =
-                    currentReviewSlide * reviewsPerSlide;
+                const activeCardIndex = currentReviewSlide * reviewsPerSlide;
 
                 if (reviewCards[activeCardIndex]) {
-                    reviewCards[activeCardIndex]
-                        .classList.add("active");
+                    reviewCards[activeCardIndex].classList.add("active");
                 }
-
-
-                /* DOT */
 
                 reviewDots.forEach(function (dot) {
-                    dot.classList.remove(
-                        "active-review-dot"
-                    );
+                    dot.classList.remove("active-review-dot");
                 });
-
 
                 if (reviewDots[currentReviewSlide]) {
-
-                    reviewDots[currentReviewSlide]
-                        .classList.add(
-                            "active-review-dot"
-                        );
-
+                    reviewDots[currentReviewSlide].classList.add("active-review-dot");
                 }
-
             }
 
-
-            /* DOT CLICK */
-
             reviewDots.forEach(function (dot, index) {
-
                 dot.addEventListener("click", function () {
-
                     currentReviewSlide = index;
+                    showReviewSlide(currentReviewSlide);
+                });
+            });
 
-                    showReviewSlide(
-                        currentReviewSlide
-                    );
+            setInterval(function () {
+                currentReviewSlide++;
+                showReviewSlide(currentReviewSlide);
+            }, 3000);
+
+            window.addEventListener("resize", function () {
+                currentReviewSlide = 0;
+                showReviewSlide(currentReviewSlide);
+            });
+
+            showReviewSlide(0);
+        });
+
+
+        /* =================================================
+           FEATURED PROJECTS — FILTER (SMART WIDTH)
+        ================================================= */
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const filterButtons = document.querySelectorAll(".work-filter");
+            const projectColumns = document.querySelectorAll(".work-showcase [data-category]");
+
+            projectColumns.forEach(function (col) {
+                col.dataset.originalClass = col.className;
+            });
+
+            filterButtons.forEach(function (button) {
+
+                button.addEventListener("click", function () {
+
+                    filterButtons.forEach(function (btn) {
+                        btn.classList.remove("active");
+                    });
+                    this.classList.add("active");
+
+                    const filter = this.getAttribute("data-filter");
+                    const isNarrow = (filter === "mobile" || filter === "erp");
+
+                    projectColumns.forEach(function (col) {
+
+                        const match =
+                            filter === "all" ||
+                            col.getAttribute("data-category") === filter;
+
+                        if (!match) {
+                            col.style.display = "none";
+                            col.classList.remove("filter-show");
+                            return;
+                        }
+
+                        col.style.display = "";
+                        col.classList.add("filter-show");
+
+                        if (isNarrow) {
+                            col.className = "col-lg-6 col-md-6 filter-show";
+                        } else {
+                            col.className = col.dataset.originalClass + " filter-show";
+                        }
+
+                    });
 
                 });
 
             });
 
-
-            /* AUTO SLIDER */
-
-            setInterval(function () {
-
-                currentReviewSlide++;
-
-                showReviewSlide(
-                    currentReviewSlide
-                );
-
-            }, 3000);
-
-
-            /* RESPONSIVE */
-
-            window.addEventListener("resize", function () {
-
-                currentReviewSlide = 0;
-
-                showReviewSlide(
-                    currentReviewSlide
-                );
-
-            });
-
-
-            /* INITIAL */
-
-            showReviewSlide(0);
-
         });
+
+
         /* =================================================
                    SLIDE DATA
                 ================================================= */
 
                 const heroSlides = [
 
-
-                    /* ================= SLIDE 1 ================= */
-
                     {
-
-                        title:
-                        `Build Your Digital <span>Authority</span>`,
-
-                        description:
-                        `Access Authority delivers custom websites,
+                        title: `Build Your Digital <span>Authority</span>`,
+                        description: `Access Authority delivers custom websites,
                         enterprise software, and intelligent products
                         that scale with your business — from MVP to
                         enterprise.`,
-
-                        image:
-                        "https://static.vecteezy.com/system/resources/thumbnails/023/056/329/small_2x/programmer-people-working-laptops-or-smartphones-with-ai-artificial-intelligence-software-engineer-coding-on-laptop-computers-with-technology-icons-and-binary-code-big-data-ai-bot-digital-machine-photo.jpg",
-
+                        image: "https://static.vecteezy.com/system/resources/thumbnails/023/056/329/small_2x/programmer-people-working-laptops-or-smartphones-with-ai-artificial-intelligence-software-engineer-coding-on-laptop-computers-with-technology-icons-and-binary-code-big-data-ai-bot-digital-machine-photo.jpg",
                         businesses: 100,
-
                         projects: 100,
-
                         clients: 50,
-
                         satisfaction: 98,
-
-                        projectName:
-                        "ERP Platform Live"
-
+                        projectName: "ERP Platform Live"
                     },
 
-
-                    /* ================= SLIDE 2 ================= */
-
                     {
-
-                        title:
-                        `Grow Your Business <span>Faster</span>`,
-
-                        description:
-                        `Build powerful digital solutions that help
+                        title: `Grow Your Business <span>Faster</span>`,
+                        description: `Build powerful digital solutions that help
                         your business reach more customers and grow
                         faster with modern technology.`,
-
-                        image:
-                        "https://media.licdn.com/dms/image/v2/D4D12AQEHp0DQ5snWuQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1699437533934?e=2147483647&v=beta&t=Icl8EhBAdnoPQiJEuzLjuG6PbsrRioM1ATQAGyS4eLI",
-
+                        image: "https://media.licdn.com/dms/image/v2/D4D12AQEHp0DQ5snWuQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1699437533934?e=2147483647&v=beta&t=Icl8EhBAdnoPQiJEuzLjuG6PbsrRioM1ATQAGyS4eLI",
                         businesses: 150,
-
                         projects: 150,
-
                         clients: 65,
-
                         satisfaction: 99,
-
-                        projectName:
-                        "Business Growth Platform"
-
+                        projectName: "Business Growth Platform"
                     },
 
-
-                    /* ================= SLIDE 3 ================= */
-
                     {
-
-                        title:
-                        `Smart Digital <span>Solutions</span>`,
-
-                        description:
-                        `From websites to enterprise software,
+                        title: `Smart Digital <span>Solutions</span>`,
+                        description: `From websites to enterprise software,
                         we build reliable digital products designed
                         to solve real business problems.`,
-
-                        image:
-                        "https://t4.ftcdn.net/jpg/05/54/46/89/240_F_554468927_iwU3VYIjsaeopAb0WPYxVf21TloEhTEj.jpg",
-
+                        image: "https://t4.ftcdn.net/jpg/05/54/46/89/240_F_554468927_iwU3VYIjsaeopAb0WPYxVf21TloEhTEj.jpg",
                         businesses: 200,
-
                         projects: 200,
-
                         clients: 80,
-
                         satisfaction: 99,
-
-                        projectName:
-                        "Smart ERP Platform"
-
+                        projectName: "Smart ERP Platform"
                     }
 
                 ];
 
-
-
-                /* =================================================
-                   CURRENT SLIDE
-                ================================================= */
-
                 let currentSlide = 0;
 
+                const heroContent = document.getElementById("heroContent");
+                const heroTitle = document.getElementById("heroTitle");
+                const heroDescription = document.getElementById("heroDescription");
+                const heroImage = document.getElementById("heroImage");
+                const businessCounter = document.getElementById("businessCounter");
+                const projectCounter = document.getElementById("projectCounter");
+                const clientCounter = document.getElementById("clientCounter");
+                const satisfactionCounter = document.getElementById("satisfactionCounter");
+                const projectName = document.getElementById("projectName");
 
-
-                /* =================================================
-                   ELEMENTS
-                ================================================= */
-
-                const heroContent =
-                    document.getElementById(
-                        "heroContent"
-                    );
-
-
-                const heroTitle =
-                    document.getElementById(
-                        "heroTitle"
-                    );
-
-
-                const heroDescription =
-                    document.getElementById(
-                        "heroDescription"
-                    );
-
-
-                const heroImage =
-                    document.getElementById(
-                        "heroImage"
-                    );
-
-
-                const businessCounter =
-                    document.getElementById(
-                        "businessCounter"
-                    );
-
-
-                const projectCounter =
-                    document.getElementById(
-                        "projectCounter"
-                    );
-
-
-                const clientCounter =
-                    document.getElementById(
-                        "clientCounter"
-                    );
-
-
-                const satisfactionCounter =
-                    document.getElementById(
-                        "satisfactionCounter"
-                    );
-
-
-                const projectName =
-                    document.getElementById(
-                        "projectName"
-                    );
-
-
-
-                /* =================================================
-                   COUNTER FUNCTION
-                ================================================= */
-
-                function runCounter(
-                    element,
-                    target
-                ) {
-
+                function runCounter(element, target) {
 
                     let current = 0;
-
-
                     const duration = 1500;
-
-
                     const stepTime = 20;
-
-
-                    const increment =
-                        target /
-                        (duration / stepTime);
-
+                    const increment = target / (duration / stepTime);
 
                     element.textContent = "0";
 
+                    const timer = setInterval(() => {
 
-                    const timer =
-                        setInterval(() => {
+                        current += increment;
 
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
 
-                            current += increment;
+                        element.textContent = Math.floor(current);
 
-
-                            if (current >= target) {
-
-                                current = target;
-
-                                clearInterval(timer);
-
-                            }
-
-
-                            element.textContent =
-                                Math.floor(current);
-
-
-                        }, stepTime);
-
+                    }, stepTime);
                 }
 
+                function startAllCounters(slide) {
 
-
-                /* =================================================
-                   RUN ALL COUNTERS
-                ================================================= */
-
-                function startAllCounters(
-                    slide
-                ) {
-
-
-                    runCounter(
-                        businessCounter,
-                        slide.businesses
-                    );
-
-
-                    runCounter(
-                        projectCounter,
-                        slide.projects
-                    );
-
-
-                    runCounter(
-                        clientCounter,
-                        slide.clients
-                    );
-
-
-                    runCounter(
-                        satisfactionCounter,
-                        slide.satisfaction
-                    );
-
+                    runCounter(businessCounter, slide.businesses);
+                    runCounter(projectCounter, slide.projects);
+                    runCounter(clientCounter, slide.clients);
+                    runCounter(satisfactionCounter, slide.satisfaction);
                 }
-
-
-
-                /* =================================================
-                   CHANGE CONTENT
-                ================================================= */
 
                 function changeHeroContent() {
 
-
-                    /*
-                        FADE OUT
-                    */
-
-                    heroContent.classList.remove(
-                        "fade-in"
-                    );
-
-
-                    heroContent.classList.add(
-                        "fade-out"
-                    );
-
-
-
-                    /*
-                        Wait for fade-out
-                    */
+                    heroContent.classList.remove("fade-in");
+                    heroContent.classList.add("fade-out");
 
                     setTimeout(() => {
 
-
-                        /*
-                            NEXT SLIDE
-                        */
-
                         currentSlide++;
 
-
-                        if (
-                            currentSlide >=
-                            heroSlides.length
-                        ) {
-
+                        if (currentSlide >= heroSlides.length) {
                             currentSlide = 0;
-
                         }
 
+                        const slide = heroSlides[currentSlide];
 
+                        heroTitle.innerHTML = slide.title;
+                        heroDescription.innerHTML = slide.description;
+                        heroImage.src = slide.image;
+                        projectName.textContent = slide.projectName;
 
-                        const slide =
-                            heroSlides[
-                                currentSlide
-                            ];
+                        businessCounter.textContent = "0";
+                        projectCounter.textContent = "0";
+                        clientCounter.textContent = "0";
+                        satisfactionCounter.textContent = "0";
 
+                        heroContent.classList.remove("fade-out");
+                        heroContent.classList.add("fade-in");
 
-
-                        /*
-                            CHANGE TITLE
-                        */
-
-                        heroTitle.innerHTML =
-                            slide.title;
-
-
-
-                        /*
-                            CHANGE DESCRIPTION
-                        */
-
-                        heroDescription.innerHTML =
-                            slide.description;
-
-
-
-                        /*
-                            CHANGE IMAGE
-                        */
-
-                        heroImage.src =
-                            slide.image;
-
-
-
-                        /*
-                            CHANGE PROJECT
-                        */
-
-                        projectName.textContent =
-                            slide.projectName;
-
-
-
-                        /*
-                            RESET COUNTERS
-                        */
-
-                        businessCounter.textContent =
-                            "0";
-
-                        projectCounter.textContent =
-                            "0";
-
-                        clientCounter.textContent =
-                            "0";
-
-                        satisfactionCounter.textContent =
-                            "0";
-
-
-
-                        /*
-                            FADE IN
-                        */
-
-                        heroContent.classList.remove(
-                            "fade-out"
-                        );
-
-
-                        heroContent.classList.add(
-                            "fade-in"
-                        );
-                        /*
-                            START COUNTERS
-                        */
-
-                        startAllCounters(
-                            slide
-                        );
-
+                        startAllCounters(slide);
 
                     }, 700);
-
                 }
-                /*  FIRST SLIDE COUNTERS*/
 
-                startAllCounters(
-                    heroSlides[0]
-                );
-                /* AUTO CHANGE
-                   EVERY 5 SECONDS */
+                startAllCounters(heroSlides[0]);
 
-                setInterval(
-                    changeHeroContent,
-                    5000
-                );
+                setInterval(changeHeroContent, 5000);
+                    /* =================================================
+       FAQ ACCORDION
+    ================================================= */
 
-        document.querySelectorAll('.aa-mega > a, .aa-company > a, .aa-product > a')
-        .forEach(function(link){
+    document.addEventListener("DOMContentLoaded", function () {
 
-            link.addEventListener('click', function(e){
+        const faqItems = document.querySelectorAll(".aa-faq-item");
 
-                if(window.innerWidth < 992){
+        faqItems.forEach(function (item) {
 
-                    e.preventDefault();
+            const question = item.querySelector(".aa-faq-question");
+            const answer = item.querySelector(".aa-faq-answer");
 
-                    const parent = this.parentElement;
+            if (!question || !answer) return;
 
-                    // dusre dropdown band
-                    document.querySelectorAll('.aa-mega,.aa-company,.aa-product')
-                    .forEach(function(item){
-                        if(item !== parent){
-                            item.classList.remove('show');
+            /* Initially closed */
+            answer.style.maxHeight = "0";
+            answer.style.overflow = "hidden";
+            answer.style.transition = "max-height 0.35s ease, padding 0.35s ease, opacity 0.3s ease";
+            answer.style.opacity = "0";
+            answer.style.padding = "0 0";
+
+            question.addEventListener("click", function () {
+
+                const isOpen = item.classList.contains("open");
+
+                /* Close ALL other open items (accordion behavior) */
+                faqItems.forEach(function (other) {
+                    if (other !== item) {
+                        other.classList.remove("open");
+                        const oQ = other.querySelector(".aa-faq-question");
+                        const oA = other.querySelector(".aa-faq-answer");
+                        if (oA) {
+                            oA.style.maxHeight = "0";
+                            oA.style.opacity = "0";
+                            oA.style.padding = "0 0";
                         }
-                    });
+                        if (oQ) oQ.classList.remove("active");
+                    }
+                });
 
-                    parent.classList.toggle('show');
+                /* Toggle current */
+                if (isOpen) {
+
+                    item.classList.remove("open");
+                    question.classList.remove("active");
+                    answer.style.maxHeight = "0";
+                    answer.style.opacity = "0";
+                    answer.style.padding = "0 0";
+
+                } else {
+
+                    item.classList.add("open");
+                    question.classList.add("active");
+                    answer.style.maxHeight = answer.scrollHeight + 40 + "px";
+                    answer.style.opacity = "1";
+                    answer.style.padding = "12px 0 4px 0";
                 }
 
             });
 
         });
+
+    });
 
 </script>

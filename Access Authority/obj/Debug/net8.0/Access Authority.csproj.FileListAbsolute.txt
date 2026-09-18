@@ -142,10 +142,11 @@ F:\asp.net mvc\Access Authority\Access Authority\obj\Debug\net8.0\staticwebasset
 F:\asp.net mvc\Access Authority\Access Authority\obj\Debug\net8.0\staticwebassets.build.json.cache
 F:\asp.net mvc\Access Authority\Access Authority\obj\Debug\net8.0\staticwebassets.development.json
 F:\asp.net mvc\Access Authority\Access Authority\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-F:\asp.net mvc\Access Authority\Access Authority\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 F:\asp.net mvc\Access Authority\Access Authority\obj\Debug\net8.0\Access A.4C4C00AB.Up2Date
 F:\asp.net mvc\Access Authority\Access Authority\obj\Debug\net8.0\Access Authority.dll
 F:\asp.net mvc\Access Authority\Access Authority\obj\Debug\net8.0\refint\Access Authority.dll
 F:\asp.net mvc\Access Authority\Access Authority\obj\Debug\net8.0\Access Authority.pdb
 F:\asp.net mvc\Access Authority\Access Authority\obj\Debug\net8.0\Access Authority.genruntimeconfig.cache
 F:\asp.net mvc\Access Authority\Access Authority\obj\Debug\net8.0\ref\Access Authority.dll
+F:\asp.net mvc\Access Authority\Access Authority\obj\Debug\net8.0\Access Authority.sourcelink.json
+F:\asp.net mvc\Access Authority\Access Authority\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

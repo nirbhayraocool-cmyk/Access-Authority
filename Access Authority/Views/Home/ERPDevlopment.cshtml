@@ -45,7 +45,7 @@
         ========================================================= */
 
     .hero {
-        min-height: 435px;
+   
         background: radial-gradient( circle at 75% 45%, rgba(55, 0, 5, 0.30), transparent 38% ), linear-gradient( 110deg, #0b090a 0%, #11090b 55%, #12090b 100% );
         color: #fff;
         padding: 60px 0 65px;
@@ -319,6 +319,7 @@
     .process-card {
         background: #fff;
         border: 1px solid #e5e5e5;
+        border-radius: 10px;
         padding: 28px;
         height: 100%;
         transition: all 0.3s ease;
@@ -404,7 +405,7 @@
         .technology-box:hover {
             transform: translateY(-6px);
             border-color: #c7d2fe;
-            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.10);
+            box-shadow: 0 12px 30px #ed001c;
         }
 
             .technology-box:hover::before {
@@ -448,7 +449,7 @@
 
     .testimonial {
         width: 100%;
-        background: #dbd4d6;
+        background:white;
         color: #141313;
         text-align: center;
         margin: 0;
@@ -527,34 +528,7 @@
         }
 
 
-    /* =========================================================
-           WHATSAPP
-        ========================================================= */
-
-    .whatsapp {
-        position: fixed;
-        right: 27px;
-        bottom: 25px;
-        width: 49px;
-        height: 49px;
-        background: #20d366;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-size: 25px;
-        z-index: 1000;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        transition: all 0.25s ease;
-    }
-
-        .whatsapp:hover {
-            color: #fff;
-            transform: scale(1.08);
-        }
-
-
+   
     /* =========================================================
            TABLET
         ========================================================= */
@@ -756,15 +730,7 @@
             .cta-section .hero-buttons {
                 justify-content: center;
             }
-        /* WhatsApp */
-
-        .whatsapp {
-            right: 18px;
-            bottom: 18px;
-            width: 45px;
-            height: 45px;
-            font-size: 22px;
-        }
+        
     }
 
 </style>
@@ -778,9 +744,9 @@
 
     <div class="container px-5">
 
-        <div class="hero-icon">
+        @* <div class="hero-icon">
             <i class="bi bi-diagram-3-fill"></i>
-        </div>
+        </div> *@
 
         <h1>
             ERP <span>Development</span>
@@ -829,19 +795,19 @@
 
             <!-- RIGHT IMAGE -->
 
-            <div class="col-lg-6">
+            <div class="col-lg-6 mt-2">
 
                 <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80&auto=format&fit=crop"
                      class="work-image"
                      alt="ERP Development">
 
-                <a href="#process" class="work-link">
+                @* <a href="#process" class="work-link">
 
                     Explore Our ERP Process
 
                     <i class="bi bi-arrow-right"></i>
 
-                </a>
+                </a> *@
 
             </div>
 

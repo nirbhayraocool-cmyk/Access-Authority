@@ -190,13 +190,26 @@ body {
 .hero-section {
     height: 515px;
     width: 100%;
-    margin-top: 53px;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(90deg, rgba(5,5,5,.97), rgba(5,5,5,.90), rgba(5,5,5,.95));
     color: white;
+    background-image: url('https://cdn.dribbble.com/userupload/20990109/file/original-6b41a992c8c5ca0a647cae06b5ad0ee3.gif');
+    background-size: cover;
+    background-position: center;
 }
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(5,5,5,.90), rgba(5,5,5,.70), rgba(5,5,5,.85));
+        z-index: 1;
+        pointer-events: none;
+    }
 
+    .hero-section > * {
+        position: relative;
+        z-index: 1;
+    }
 .hero-container {
     height: 515px;
     width: 100%;
@@ -1477,8 +1490,8 @@ body {
         bottom: 7px;
         left: 0;
         right: 0;
-        font-size: 6px;
-        color: #999;
+        font-size: 9px;
+        color: #222;
     }
 
 .step-item h6 {
@@ -2055,147 +2068,6 @@ body {
         border-color: #ed0028;
     }
 
-/*.aa-blog-area {
-    background: #fff;
-    padding: 55px 0 70px;
-}
-
-.aa-blog-container {
-    max-width: 980px;
-    margin: auto;
-}
-
-.aa-blog-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    margin-bottom: 25px;
-}
-
-.aa-blog-label {
-    color: #ed0028;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-}
-
-    .aa-blog-label span {
-        display: inline-block;
-        width: 16px;
-        height: 2px;
-        background: #ed0028;
-        vertical-align: middle;
-        margin-right: 5px;
-    }
-
-.aa-blog-title {
-    margin: 0;
-    font-size: 32px;
-    line-height: 1.1;
-    font-weight: 700;
-    color: #202020;
-}
-
-    .aa-blog-title strong {
-        color: #ed0028;
-    }
-
-.aa-blog-all-btn {
-    background: transparent;
-    color: #555;
-    border: 1px solid #555;
-    text-decoration: none;
-    padding: 9px 22px;
-    font-size: 10px;
-    font-weight: 700;
-    border-radius: 0;
-    clip-path: polygon(0 0, 94% 0, 100% 25%, 100% 100%, 6% 100%, 0 75%);
-}
-
-    .aa-blog-all-btn i {
-        margin-left: 5px;
-    }
-
-    .aa-blog-all-btn:hover {
-        color: #ed0028;
-        border-color: #ed0028;
-    }
-
-.aa-blog-card {
-    border: 1px solid #dedede;
-    background: #fff;
-    height: 100%;
-    overflow: hidden;
-    transition: all .3s ease;
-}
-
-    .aa-blog-card:hover {
-        border: 1px solid #ed0028;
-    }
-
-.aa-blog-image-box {
-    position: relative;
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
-}
-
-.aa-blog-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform .4s ease;
-}
-
-.aa-blog-card:hover .aa-blog-image {
-    transform: scale(1.04);
-}
-
-.aa-blog-category {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: #ed0028;
-    color: #fff;
-    padding: 5px 10px;
-    font-size: 9px;
-    font-weight: 700;
-}
-
-.aa-blog-content {
-    padding: 16px 17px 18px;
-}
-
-.aa-blog-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #999;
-    font-size: 10px;
-    margin-bottom: 11px;
-}
-
-    .aa-blog-meta i {
-        margin-right: 3px;
-        font-size: 10px;
-    }
-
-.aa-blog-card-title {
-    font-size: 14px;
-    line-height: 1.25;
-    font-weight: 700;
-    color: #252525;
-    margin-bottom: 10px;
-}
-
-.aa-blog-description {
-    color: #555;
-    font-size: 11px;
-    line-height: 1.6;
-    margin: 0;
-}*/
 /* Blog Cards */
 .blog-card {
     background: #ffffff;
@@ -2375,6 +2247,7 @@ body {
     font-size: 18px;
     flex-shrink: 0;
 }
+
 /* =====================================================
    FOOTER
 ===================================================== */
@@ -2575,582 +2448,8 @@ body {
     }
 
 /* =====================================================
-   RESPONSIVE - TABLET (max-width: 991px)
+   PRODUCT PAGE NAVBAR FIX
 ===================================================== */
-@media (max-width: 991px) {
-    .hero-section {
-        min-height: auto;
-    }
-
-    .hero-container {
-        min-height: auto;
-        padding-top: 60px;
-        padding-bottom: 60px;
-    }
-
-    .hero-left {
-        padding-left: 15px;
-    }
-
-    .hero-heading {
-        font-size: 48px;
-    }
-
-    .hero-right {
-        margin-top: 45px;
-        justify-content: center;
-    }
-
-    .scroll-container {
-        display: none;
-    }
-
-    .navbar-links {
-        display: none;
-    }
-
-    .services-grid > div:nth-child(3n+1) .service-card {
-        border-left: none;
-    }
-
-    .services-grid > div:nth-child(odd) .service-card {
-        border-left: 1px solid #ddd;
-    }
-
-    .services-grid > div:nth-child(-n+2) .service-card {
-        border-top: 1px solid #ddd;
-    }
-
-    .counter-box {
-        min-height: 175px;
-        border-bottom: 1px solid #222;
-    }
-
-    .case-image {
-        height: 200px;
-    }
-
-    .why-section {
-        padding: 45px 0;
-    }
-
-    .why-heading h2 {
-        font-size: 27px;
-    }
-
-    .why-card {
-        min-height: 180px;
-    }
-
-    .work-heading {
-        font-size: 28px;
-    }
-
-    .work-image-large {
-        height: 320px;
-    }
-
-    .work-image-right {
-        height: 215px;
-    }
-
-    .work-image-bottom {
-        height: 220px;
-    }
-
-    .delivery-heading h2 {
-        font-size: 28px;
-    }
-
-    .delivery-steps {
-        row-gap: 30px;
-    }
-
-    .client-review-card {
-        flex: 0 0 calc((100% - 25px) / 2);
-    }
-
-    .client-review-heading h2 {
-        font-size: 36px;
-    }
-
-    .aa-faq-container,
-    .aa-cta-container {
-        max-width: 90%;
-    }
-
-    .aa-cta-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .aa-cta-button-box {
-        width: 100%;
-    }
-
-    .aa-blog-container {
-        max-width: 90%;
-    }
-
-    .aa-blog-image-box {
-        height: 190px;
-    }
-
-    .footer-desc {
-        max-width: 100%;
-    }
-}
-
-/* =====================================================
-   RESPONSIVE - MOBILE (max-width: 767px)
-===================================================== */
-@media (max-width: 767px) {
-    .why-card {
-        min-height: auto;
-        padding: 25px 20px;
-    }
-
-    .why-heading h2 {
-        font-size: 25px;
-    }
-
-    .work-heading {
-        font-size: 27px;
-        margin-bottom: 20px;
-    }
-
-    .work-filters {
-        justify-content: flex-start !important;
-        margin-bottom: 20px;
-    }
-
-    .work-image-large,
-    .work-image-right,
-    .work-image-bottom {
-        height: 260px;
-    }
-
-    .aa-faq-wrapper {
-        padding: 35px 0;
-    }
-
-    .aa-faq-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .aa-faq-heading h2 {
-        font-size: 27px;
-    }
-
-    .aa-cta-wrapper {
-        padding: 35px 0;
-    }
-
-    .aa-cta-content h2 {
-        font-size: 27px;
-    }
-
-    .aa-cta-button {
-        width: 100%;
-    }
-
-    .aa-cta-button-box {
-        width: 100%;
-    }
-
-    .aa-blog-top {
-        align-items: flex-start;
-        gap: 20px;
-    }
-
-    .aa-blog-title {
-        font-size: 27px;
-    }
-
-    .aa-blog-all-btn {
-        white-space: nowrap;
-    }
-
-    .aa-blog-image-box {
-        height: 220px;
-    }
-}
-
-/* =====================================================
-   RESPONSIVE - SMALL MOBILE (max-width: 575px)
-===================================================== */
-@media (max-width: 575px) {
-    .main-navbar {
-        height: 50px;
-    }
-
-    .navbar-inner {
-        height: 50px;
-    }
-
-    .hero-section {
-        margin-top: 50px;
-    }
-
-    .hero-container {
-        padding: 40px 20px 50px;
-    }
-
-    .hero-heading {
-        font-size: 39px;
-        letter-spacing: -1px;
-    }
-
-        .hero-heading span::after {
-            width: 180px;
-        }
-
-    .hero-description {
-        font-size: 12px;
-        line-height: 1.6;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-    }
-
-    .consultation-btn,
-    .work-btn {
-        width: 100%;
-        max-width: 230px;
-    }
-
-    .hero-image {
-        height: 250px;
-    }
-
-    .stats-box {
-        max-width: 100%;
-    }
-
-    .stat-item {
-        padding-right: 8px;
-    }
-
-        .stat-item:not(:first-child) {
-            padding-left: 8px;
-        }
-
-    .stat-number {
-        font-size: 18px;
-    }
-
-    .stat-title {
-        font-size: 6px;
-        white-space: normal;
-    }
-
-    .project-card {
-        left: 10px;
-        bottom: 10px;
-    }
-
-    .partner-badge {
-        font-size: 8px;
-        padding: 6px 8px;
-    }
-
-    .trusted-bottom {
-        padding: 10px 0;
-    }
-
-    .trusted-item {
-        font-size: 7px;
-    }
-
-    .whatsapp-button {
-        right: 15px;
-        bottom: 20px;
-    }
-
-    .technology-marquee {
-        height: 34px;
-    }
-
-    .marquee-item {
-        padding: 0 20px;
-        gap: 6px;
-    }
-
-        .marquee-item i {
-            font-size: 10px;
-        }
-
-        .marquee-item span {
-            font-size: 8px;
-        }
-
-    .marquee-track {
-        animation-duration: 18s;
-    }
-
-    .services-section {
-        padding: 30px 15px 50px;
-    }
-
-    .services-heading h2 {
-        font-size: 25px;
-    }
-
-    .services-heading p {
-        font-size: 11px;
-    }
-
-    .service-card {
-        min-height: auto;
-        padding: 20px;
-        border: 1px solid #ddd !important;
-        margin-bottom: 10px;
-    }
-
-    .service-link {
-        opacity: 1;
-        transform: none;
-    }
-
-    .counter-box {
-        min-height: 160px;
-        padding: 20px 10px;
-    }
-
-    .counter-icon {
-        width: 38px;
-        height: 38px;
-    }
-
-    .counter-number .counter {
-        font-size: 35px;
-    }
-
-    .counter-number small {
-        font-size: 14px;
-    }
-
-    .counter-box h6 {
-        font-size: 8px;
-    }
-
-    .counter-box p {
-        font-size: 7px;
-    }
-
-    .case-study-section {
-        padding: 30px 12px;
-    }
-
-    .case-image {
-        height: 190px;
-    }
-
-    .case-body h3 {
-        font-size: 15px;
-    }
-
-    .why-section {
-        padding: 40px 15px;
-    }
-
-    .why-heading {
-        margin-bottom: 30px !important;
-    }
-
-        .why-heading h2 {
-            font-size: 23px;
-        }
-
-    .work-showcase {
-        padding-top: 40px !important;
-    }
-
-    .work-heading {
-        font-size: 25px;
-    }
-
-    .work-filter {
-        min-width: auto;
-        padding: 0 10px;
-        font-size: 8px;
-    }
-
-    .work-image-large,
-    .work-image-right,
-    .work-image-bottom {
-        height: 230px;
-    }
-
-    .delivery-process {
-        padding-top: 35px;
-    }
-
-    .delivery-heading h2 {
-        font-size: 24px;
-    }
-
-    .delivery-heading p {
-        font-size: 11px;
-        padding: 0 15px;
-    }
-
-    .step-box {
-        width: 58px;
-        height: 58px;
-    }
-
-    .step-item h6 {
-        font-size: 10px;
-    }
-
-    .step-item p {
-        font-size: 8px;
-    }
-
-    .satisfaction-content {
-        padding: 0 15px;
-        text-align: left;
-    }
-
-        .satisfaction-content h5 {
-            font-size: 13px;
-        }
-
-        .satisfaction-content p {
-            font-size: 9px;
-        }
-
-    .img-fluid.w-100 {
-        height: 220px;
-    }
-
-    .position-absolute.float-card {
-        min-width: 80px !important;
-        padding: 0.5rem !important;
-    }
-
-        .position-absolute.float-card .fw-bold {
-            font-size: 12px !important;
-        }
-
-        .position-absolute.float-card .text-secondary {
-            font-size: 7px !important;
-        }
-
-        .position-absolute.float-card .bg-danger-subtle {
-            width: 24px !important;
-            height: 24px !important;
-        }
-
-            .position-absolute.float-card .bg-danger-subtle i {
-                font-size: 12px !important;
-            }
-
-    .section-heading {
-        font-size: 22px;
-    }
-
-    .industry-card {
-        padding: 1rem 0.25rem;
-    }
-
-        .industry-card i {
-            font-size: 1.6rem;
-        }
-
-    .client-review-area {
-        padding: 60px 0;
-    }
-
-    .client-review-heading {
-        margin-bottom: 35px;
-    }
-
-        .client-review-heading h2 {
-            font-size: 30px;
-        }
-
-    .client-review-card {
-        flex: 0 0 100%;
-        padding: 25px;
-        min-height: 320px;
-    }
-
-    .client-review-track {
-        gap: 0;
-    }
-
-    .aa-faq-container,
-    .aa-cta-container {
-        max-width: 92%;
-    }
-
-    .aa-faq-heading h2 {
-        font-size: 24px;
-    }
-
-    .aa-faq-question {
-        font-size: 11px;
-        padding: 0 13px;
-    }
-
-    .aa-cta-content h2 {
-        font-size: 24px;
-    }
-
-    .aa-blog-area {
-        padding: 40px 0;
-    }
-
-    .aa-blog-top {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .aa-blog-title {
-        font-size: 26px;
-    }
-
-    .aa-blog-all-btn {
-        margin-top: 5px;
-    }
-
-    .aa-blog-image-box {
-        height: 210px;
-    }
-}
-/*blog scloler*/
-
-/*blog scloler Ended*/
-/* =====================================================
-   RESPONSIVE - EXTRA SMALL (max-width: 480px)
-===================================================== */
-@media (max-width: 480px) {
-    .aa-faq-container,
-    .aa-cta-container {
-        max-width: 92%;
-    }
-
-    .aa-faq-heading h2 {
-        font-size: 24px;
-    }
-
-    .aa-faq-question {
-        font-size: 11px;
-        padding: 0 13px;
-    }
-
-    .aa-cta-content h2 {
-        font-size: 24px;
-    }
-}
-/* farji css */
-/*=========================================
-  PRODUCT PAGE NAVBAR FIX + RESPONSIVE
-=========================================*/
-
 .aa-navbar {
     position: fixed;
     top: 0;
@@ -3190,92 +2489,7 @@ body {
     align-items: center;
 }
 
-/* ================= MOBILE ================= */
-
-@media (max-width:991.98px) {
-
-    .aa-navbar .container {
-        padding-left: 16px !important;
-        padding-right: 16px !important;
-    }
-
-    .logo-text {
-        font-size: 14px;
-        font-weight: 700;
-    }
-
-    .navbar-collapse {
-        background: #fff;
-        margin-top: 8px;
-        padding: 14px 16px;
-        border-top: 1px solid #ececec;
-        box-shadow: 0 8px 20px rgba(0,0,0,.08);
-    }
-
-    .navbar-nav {
-        align-items: flex-start !important;
-        gap: 0;
-    }
-
-    .nav-link-custom {
-        width: 100%;
-        padding: 12px 0 !important;
-        border-bottom: 1px solid #f1f1f1;
-        font-size: 10px;
-        font-weight: 500; /* same weight */
-    }
-
-    .consult-btn {
-        width: 100%;
-        display: block;
-        text-align: center;
-        margin-top: 12px;
-        clip-path: none;
-        border-radius: 4px;
-    }
-
-    /* Mega dropdown mobile */
-    .aa-dropdown,
-    .aa-company-dropdown,
-    .aa-product-dropdown {
-        position: static;
-        transform: none;
-        width: 100%;
-        opacity: 1;
-        visibility: visible;
-        display: none;
-        box-shadow: none;
-        border: 1px solid #eee;
-        padding: 10px;
-        margin-top: 6px;
-    }
-
-    .aa-mega.show .aa-dropdown,
-    .aa-company.show .aa-company-dropdown,
-    .aa-product.show .aa-product-dropdown {
-        display: block;
-    }
-}
-
-@media (max-width:575.98px) {
-
-    body {
-        padding-top: 53px;
-    }
-
-    .logo-box {
-        width: 26px;
-        height: 26px;
-        font-size: 15px;
-    }
-
-    .logo-text {
-        font-size: 13px;
-    }
-}
-/* footer extra  */
 /* ===== FOOTER FONT TUNE ===== */
-
 .footer-brand {
     font-size: 18px;
     font-weight: 600;
@@ -3320,9 +2534,817 @@ body {
         font-weight: 400;
     }
 
-/* Mobile */
-@media (max-width:576px) {
+/*blog scloler*/
 
+/*blog scloler Ended*/
+
+/* =====================================================
+   RESPONSIVE - LARGE DESKTOP (max-width: 1199.98px)
+===================================================== */
+@media (max-width: 1199.98px) {
+    .hero-heading {
+        font-size: 46px;
+    }
+
+        .hero-heading span::after {
+            width: 210px;
+        }
+
+    .hero-image {
+        height: 300px;
+    }
+
+    .services-heading h2 {
+        font-size: 26px;
+    }
+
+    .why-heading h2 {
+        font-size: 28px;
+    }
+
+    .work-heading {
+        font-size: 30px;
+    }
+
+    .delivery-heading h2 {
+        font-size: 30px;
+    }
+
+    .aa-faq-container,
+    .aa-cta-container,
+    .aa-blog-container {
+        max-width: 95%;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE - TABLET LANDSCAPE (max-width: 991.98px)
+===================================================== */
+@media (max-width: 991.98px) {
+
+    /* ---------- NAVBAR ---------- */
+    .main-navbar {
+        height: 53px;
+    }
+
+    .navbar-links {
+        display: none;
+    }
+
+    .aa-navbar .container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .navbar-toggler {
+        border: 0 !important;
+        padding: 4px 8px;
+        box-shadow: none !important;
+    }
+
+        .navbar-toggler i {
+            font-size: 28px;
+            color: #111;
+        }
+
+    .navbar-collapse {
+        background: #fff;
+        margin-top: 8px;
+        padding: 14px 16px;
+        border-top: 1px solid #ececec;
+        box-shadow: 0 8px 20px rgba(0,0,0,.08);
+    }
+
+    .aa-navbar .navbar-nav {
+        align-items: flex-start !important;
+        gap: 0;
+    }
+
+    .nav-link-custom {
+        width: 100%;
+        padding: 12px 0 !important;
+        border-bottom: 1px solid #f1f1f1;
+        font-size: 11px;
+        font-weight: 500;
+    }
+
+    .consult-btn {
+        width: 100%;
+        display: block;
+        text-align: center;
+        margin-top: 12px;
+        clip-path: none;
+        border-radius: 4px;
+    }
+
+    .aa-dropdown,
+    .aa-company-dropdown,
+    .aa-product-dropdown {
+        position: static;
+        transform: none;
+        width: 100%;
+        opacity: 1;
+        visibility: visible;
+        display: none;
+        box-shadow: none;
+        border: 1px solid #eee;
+        padding: 10px;
+        margin-top: 6px;
+    }
+
+    .aa-mega.show .aa-dropdown,
+    .aa-company.show .aa-company-dropdown,
+    .aa-product.show .aa-product-dropdown {
+        display: block;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero-section {
+        height: auto;
+        min-height: auto;
+    }
+
+    .hero-container {
+        height: auto;
+        min-height: auto;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .hero-left {
+        padding-left: 15px;
+    }
+
+    .hero-heading {
+        font-size: 44px;
+    }
+
+        .hero-heading span::after {
+            width: 200px;
+        }
+
+    .hero-right {
+        margin-top: 45px;
+        justify-content: center;
+    }
+
+    .hero-image-box {
+        max-width: 100%;
+    }
+
+    .scroll-container {
+        display: none;
+    }
+
+    /* ---------- SERVICES ---------- */
+    .services-grid > div:nth-child(3n+1) .service-card {
+        border-left: none;
+    }
+
+    .services-grid > div:nth-child(odd) .service-card {
+        border-left: 1px solid #ddd;
+    }
+
+    .services-grid > div:nth-child(-n+2) .service-card {
+        border-top: 1px solid #ddd;
+    }
+
+    /* ---------- COUNTER ---------- */
+    .counter-box {
+        min-height: 175px;
+        border-bottom: 1px solid #222;
+    }
+
+    /* ---------- CASE STUDY ---------- */
+    .case-image {
+        height: 200px;
+    }
+
+    /* ---------- WHY ---------- */
+    .why-section {
+        padding: 45px 0;
+    }
+
+    .why-heading h2 {
+        font-size: 27px;
+    }
+
+    .why-card {
+        min-height: 180px;
+    }
+
+    /* ---------- WORK SHOWCASE ---------- */
+    .work-heading {
+        font-size: 28px;
+    }
+
+    .work-image-large {
+        height: 320px;
+    }
+
+    .work-image-right {
+        height: 215px;
+    }
+
+    .work-image-bottom {
+        height: 220px;
+    }
+
+    /* ---------- DELIVERY ---------- */
+    .delivery-heading h2 {
+        font-size: 28px;
+    }
+
+    .delivery-steps {
+        row-gap: 30px;
+    }
+
+    /* ---------- CLIENT REVIEW ---------- */
+    .client-review-card {
+        flex: 0 0 calc((100% - 25px) / 2);
+    }
+
+    .client-review-heading h2 {
+        font-size: 32px;
+    }
+
+    /* ---------- FAQ / CTA / BLOG ---------- */
+    .aa-faq-container,
+    .aa-cta-container {
+        max-width: 90%;
+    }
+
+    .aa-cta-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .aa-cta-button-box {
+        width: 100%;
+    }
+
+    .aa-blog-container {
+        max-width: 90%;
+    }
+
+    .aa-blog-image-box {
+        height: 190px;
+    }
+
+    .blog-card .blog-image {
+        height: 190px;
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer-desc {
+        max-width: 100%;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE - TABLET PORTRAIT (max-width: 767.98px)
+===================================================== */
+@media (max-width: 767.98px) {
+
+    /* ---------- HERO ---------- */
+    .hero-heading {
+        font-size: 40px;
+    }
+
+        .hero-heading span::after {
+            width: 180px;
+        }
+
+    .hero-description {
+        font-size: 12px;
+    }
+
+    /* ---------- WHY ---------- */
+    .why-card {
+        min-height: auto;
+        padding: 25px 20px;
+    }
+
+    .why-heading h2 {
+        font-size: 25px;
+    }
+
+    /* ---------- WORK ---------- */
+    .work-heading {
+        font-size: 27px;
+        margin-bottom: 20px;
+    }
+
+    .work-filters {
+        justify-content: flex-start !important;
+        margin-bottom: 20px;
+    }
+
+    .work-image-large,
+    .work-image-right,
+    .work-image-bottom {
+        height: 260px;
+    }
+
+    /* ---------- DELIVERY ---------- */
+    .delivery-heading h2 {
+        font-size: 26px;
+    }
+
+    .delivery-heading p {
+        padding: 0 15px;
+    }
+
+    /* ---------- CLIENT REVIEW ---------- */
+    .client-review-card {
+        flex: 0 0 100%;
+        padding: 25px;
+        min-height: 280px;
+    }
+
+    .client-review-heading h2 {
+        font-size: 30px;
+    }
+
+    .client-review-track {
+        gap: 15px;
+    }
+
+    /* ---------- FAQ ---------- */
+    .aa-faq-wrapper {
+        padding: 35px 0;
+    }
+
+    .aa-faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .aa-faq-heading h2 {
+        font-size: 27px;
+    }
+
+    /* ---------- CTA ---------- */
+    .aa-cta-wrapper {
+        padding: 35px 0;
+    }
+
+    .aa-cta-content h2 {
+        font-size: 27px;
+    }
+
+    .aa-cta-button {
+        width: 100%;
+    }
+
+    .aa-cta-button-box {
+        width: 100%;
+    }
+
+    /* ---------- BLOG ---------- */
+    .aa-blog-top {
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .aa-blog-title {
+        font-size: 27px;
+    }
+
+    .aa-blog-all-btn {
+        white-space: nowrap;
+    }
+
+    .aa-blog-image-box {
+        height: 220px;
+    }
+
+    /* ---------- MISC ---------- */
+    .section-heading {
+        font-size: 24px;
+    }
+
+    .services-heading h2 {
+        font-size: 26px;
+    }
+
+    .aa-faq-container,
+    .aa-cta-container,
+    .aa-blog-container {
+        max-width: 92%;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE - MOBILE (max-width: 575.98px)
+===================================================== */
+@media (max-width: 575.98px) {
+
+    /* ---------- NAVBAR ---------- */
+    .main-navbar {
+        height: 50px;
+    }
+
+    .navbar-inner {
+        height: 50px;
+    }
+
+    .logo-box {
+        width: 26px;
+        height: 26px;
+        font-size: 15px;
+    }
+
+    .logo-text {
+        font-size: 13px;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero-section {
+        margin-top: 50px;
+    }
+
+    .hero-container {
+        padding: 40px 20px 50px;
+    }
+
+    .hero-heading {
+        font-size: 36px;
+        letter-spacing: -1px;
+    }
+
+        .hero-heading span::after {
+            width: 160px;
+        }
+
+    .hero-description {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .consultation-btn,
+    .work-btn {
+        width: 100%;
+        max-width: 230px;
+    }
+
+    .hero-image {
+        height: 240px;
+    }
+
+    .hero-right {
+        margin-top: 30px;
+    }
+
+    .stats-box {
+        max-width: 100%;
+    }
+
+    .stat-item {
+        padding-right: 8px;
+    }
+
+        .stat-item:not(:first-child) {
+            padding-left: 8px;
+        }
+
+    .stat-number {
+        font-size: 18px;
+    }
+
+    .stat-title {
+        font-size: 6px;
+        white-space: normal;
+    }
+
+    .project-card {
+        left: 10px;
+        bottom: 10px;
+        min-width: 140px;
+        padding: 9px 12px;
+    }
+
+    .partner-badge {
+        font-size: 8px;
+        padding: 6px 8px;
+    }
+
+    /* ---------- TRUSTED BAR ---------- */
+    .trusted-bottom {
+        padding: 10px 0;
+    }
+
+    .trusted-item {
+        font-size: 7px;
+    }
+
+    /* ---------- WHATSAPP ---------- */
+    .whatsapp-button {
+        right: 15px;
+        bottom: 20px;
+        width: 38px;
+        height: 38px;
+        font-size: 19px;
+    }
+
+    .project-whatsapp {
+        right: 15px;
+        bottom: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+    }
+
+    /* ---------- MARQUEE ---------- */
+    .technology-marquee {
+        height: 34px;
+    }
+
+    .marquee-item {
+        padding: 0 20px;
+        gap: 6px;
+    }
+
+        .marquee-item i {
+            font-size: 10px;
+        }
+
+        .marquee-item span {
+            font-size: 8px;
+        }
+
+    .marquee-track {
+        animation-duration: 18s;
+    }
+
+    /* ---------- SERVICES ---------- */
+    .services-section {
+        padding: 30px 15px 50px;
+    }
+
+    .services-heading h2 {
+        font-size: 24px;
+    }
+
+    .services-heading p {
+        font-size: 11px;
+    }
+
+    .service-card {
+        min-height: auto;
+        padding: 20px;
+        border: 1px solid #ddd !important;
+        margin-bottom: 10px;
+    }
+
+    .service-link {
+        opacity: 1;
+        transform: none;
+    }
+
+    /* ---------- COUNTER ---------- */
+    .counter-box {
+        min-height: 160px;
+        padding: 20px 10px;
+    }
+
+    .counter-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .counter-number .counter {
+        font-size: 35px;
+    }
+
+    .counter-number small {
+        font-size: 14px;
+    }
+
+    .counter-box h6 {
+        font-size: 8px;
+    }
+
+    .counter-box p {
+        font-size: 7px;
+    }
+
+    /* ---------- CASE STUDY ---------- */
+    .case-study-section {
+        padding: 30px 12px;
+    }
+
+    .case-image {
+        height: 190px;
+    }
+
+    .case-body h3 {
+        font-size: 15px;
+    }
+
+    /* ---------- WHY ---------- */
+    .why-section {
+        padding: 40px 15px;
+    }
+
+    .why-heading {
+        margin-bottom: 30px !important;
+    }
+
+        .why-heading h2 {
+            font-size: 23px;
+        }
+
+    .why-card {
+        padding: 25px 20px;
+    }
+
+    /* ---------- WORK ---------- */
+    .work-showcase {
+        padding-top: 40px !important;
+    }
+
+    .work-heading {
+        font-size: 25px;
+    }
+
+    .work-filter {
+        min-width: auto;
+        padding: 0 10px;
+        font-size: 8px;
+    }
+
+    .work-image-large,
+    .work-image-right,
+    .work-image-bottom {
+        height: 230px;
+    }
+
+    /* ---------- DELIVERY ---------- */
+    .delivery-process {
+        padding-top: 35px;
+    }
+
+    .delivery-heading h2 {
+        font-size: 24px;
+    }
+
+    .delivery-heading p {
+        font-size: 11px;
+        padding: 0 15px;
+    }
+
+    .step-box {
+        width: 58px;
+        height: 58px;
+    }
+
+    .step-item h6 {
+        font-size: 10px;
+    }
+
+    .step-item p {
+        font-size: 8px;
+    }
+
+    .satisfaction-content {
+        padding: 0 15px;
+        text-align: left;
+    }
+
+        .satisfaction-content h5 {
+            font-size: 13px;
+        }
+
+        .satisfaction-content p {
+            font-size: 9px;
+        }
+
+    /* ---------- FLOAT CARDS ---------- */
+    .img-fluid.w-100 {
+        height: 220px;
+    }
+
+    .position-absolute.float-card {
+        min-width: 80px !important;
+        padding: 0.5rem !important;
+    }
+
+        .position-absolute.float-card .fw-bold {
+            font-size: 12px !important;
+        }
+
+        .position-absolute.float-card .text-secondary {
+            font-size: 7px !important;
+        }
+
+        .position-absolute.float-card .bg-danger-subtle {
+            width: 24px !important;
+            height: 24px !important;
+        }
+
+            .position-absolute.float-card .bg-danger-subtle i {
+                font-size: 12px !important;
+            }
+
+    /* ---------- INDUSTRY ---------- */
+    .section-heading {
+        font-size: 22px;
+    }
+
+    .industry-card {
+        padding: 1rem 0.25rem;
+    }
+
+        .industry-card i {
+            font-size: 1.6rem;
+        }
+
+    /* ---------- CLIENT REVIEW ---------- */
+    .client-review-area {
+        padding: 60px 0;
+    }
+
+    .client-review-heading {
+        margin-bottom: 35px;
+    }
+
+        .client-review-heading h2 {
+            font-size: 28px;
+        }
+
+    .client-review-card {
+        flex: 0 0 100%;
+        padding: 25px;
+        min-height: 320px;
+    }
+
+    .client-review-track {
+        gap: 0;
+    }
+
+    /* ---------- FAQ ---------- */
+    .aa-faq-container,
+    .aa-cta-container {
+        max-width: 92%;
+    }
+
+    .aa-faq-heading h2 {
+        font-size: 24px;
+    }
+
+    .aa-faq-question {
+        font-size: 11px;
+        padding: 0 13px;
+    }
+
+    /* ---------- CTA ---------- */
+    .aa-cta-content h2 {
+        font-size: 24px;
+    }
+
+    .aa-cta-button {
+        width: 100%;
+    }
+
+    /* ---------- BLOG ---------- */
+    .aa-blog-area {
+        padding: 40px 0;
+    }
+
+    .aa-blog-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .aa-blog-title {
+        font-size: 26px;
+    }
+
+    .aa-blog-all-btn {
+        margin-top: 5px;
+    }
+
+    .aa-blog-image-box {
+        height: 210px;
+    }
+
+    .blog-card .blog-image {
+        height: 180px;
+    }
+
+    .blog-card .blog-body {
+        padding: 18px;
+    }
+
+    .blog-card h3 {
+        font-size: 15px;
+    }
+
+    /* ---------- FOOTER ---------- */
     .footer-brand {
         font-size: 17px;
     }
@@ -3341,4 +3363,531 @@ body {
         font-size: 10px;
         text-align: center;
     }
+
+    /* ---------- ADMIN LOGIN ---------- */
+    .admin-login-link {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE - SMALL MOBILE (max-width: 479.98px)
+===================================================== */
+@media (max-width: 479.98px) {
+
+    .hero-heading {
+        font-size: 32px;
+    }
+
+        .hero-heading span::after {
+            width: 140px;
+        }
+
+    .hero-image {
+        height: 210px;
+    }
+
+    .stat-number {
+        font-size: 16px;
+    }
+
+    .stat-title {
+        font-size: 6px;
+    }
+
+    .project-card {
+        min-width: 120px;
+        padding: 8px 10px;
+    }
+
+    .project-name {
+        font-size: 10px;
+    }
+
+    .services-heading h2 {
+        font-size: 22px;
+    }
+
+    .why-heading h2 {
+        font-size: 21px;
+    }
+
+    .work-heading {
+        font-size: 22px;
+    }
+
+    .delivery-heading h2 {
+        font-size: 22px;
+    }
+
+    .aa-faq-heading h2,
+    .aa-cta-content h2 {
+        font-size: 21px;
+    }
+
+    .aa-blog-title {
+        font-size: 22px;
+    }
+
+    .client-review-heading h2 {
+        font-size: 24px;
+    }
+
+    .client-review-card {
+        padding: 20px;
+        min-height: 340px;
+    }
+
+    .section-heading {
+        font-size: 20px;
+    }
+
+    .counter-number .counter {
+        font-size: 30px;
+    }
+
+    .counter-number small {
+        font-size: 12px;
+    }
+
+    .footer-brand {
+        font-size: 16px;
+    }
+
+    .footer-desc,
+    .footer-list li a,
+    .contact-item {
+        font-size: 10px;
+    }
+
+    .footer-heading {
+        font-size: 10px;
+    }
+}
+/* =====================================================
+   HORIZONTAL SCROLL FIX (SAFE - Layout safe)
+===================================================== */
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+img,
+video,
+iframe,
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Bootstrap container ko touch nahi kar rahe — bas overflow rok rahe */
+.container,
+.container-fluid {
+    overflow-x: clip;
+}
+
+/* Marquee safe */
+.marquee-wrapper,
+.technology-marquee {
+    overflow: hidden;
+    max-width: 100%;
+}
+/* =====================================================
+   FOOTER - MOBILE STRICT 2 COLUMN LAYOUT
+===================================================== */
+@media (max-width: 575.98px) {
+
+    /* Footer ka poora row strict 2 column grid */
+    footer .row {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        --bs-gutter-x: 0.8rem;
+        --bs-gutter-y: 1.2rem;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+        /* HAR column 50% - koi exception nahi */
+        footer .row > [class*="col-"],
+        footer .row > .col,
+        footer .row > div {
+            flex: 0 0 50% !important;
+            max-width: 50% !important;
+            width: 50% !important;
+            padding-left: 8px !important;
+            padding-right: 8px !important;
+        }
+
+    /* Brand block bhi 2 column me hi rahega (full width nahi lega) */
+    .footer-brand {
+        font-size: 15px;
+        line-height: 1.2;
+    }
+
+    /* Description text wrap ho jaye column ke andar */
+    .footer-desc {
+        max-width: 100% !important;
+        width: 100% !important;
+        font-size: 10px;
+        line-height: 1.5;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    /* Headings compact */
+    .footer-heading {
+        font-size: 10px;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+
+    /* Lists compact */
+    .footer-list li {
+        margin-bottom: 4px;
+    }
+
+        .footer-list li a,
+        .footer-link {
+            font-size: 10px;
+            line-height: 1.4;
+            word-break: break-word;
+        }
+
+    /* Contact items column ke andar fit ho */
+    .contact-item {
+        font-size: 10px;
+        line-height: 1.5;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: flex-start;
+        gap: 4px;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+
+        .contact-item i {
+            width: 14px;
+            font-size: 10px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+    /* Map placeholder chhota */
+    .map-placeholder {
+        padding: 0.6rem;
+        font-size: 9px;
+        width: 100%;
+    }
+
+        .map-placeholder i {
+            font-size: 20px;
+        }
+
+        .map-placeholder .map-text {
+            font-size: 8px;
+            line-height: 1.3;
+        }
+
+    /* Cert badges wrap ho */
+    .cert-badge {
+        font-size: 7px;
+        padding: 0.2rem 0.4rem;
+        margin: 2px 2px 0 0;
+        display: inline-block;
+    }
+
+    /* Activate windows text column me fit */
+    .activate-windows {
+        font-size: 8px;
+        padding: 0.3rem 0.5rem;
+        display: inline-block;
+        line-height: 1.3;
+        word-break: break-word;
+    }
+
+    /* Admin login full width nahi, column me */
+    .admin-login-link {
+        font-size: 10px;
+        padding: 6px 8px;
+        display: inline-flex;
+    }
+
+    /* Koi bhi image ya iframe footer me overflow na kare */
+    footer img,
+    footer iframe,
+    footer svg,
+    footer video {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Footer me koi bhi text bahar na jaye */
+    footer * {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        max-width: 100%;
+    }
+
+    /* ===== BOTTOM BAR - CENTER ===== */
+    .footer-bottom {
+        text-align: center !important;
+        font-size: 10px;
+        line-height: 1.5;
+        padding-top: 12px;
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+        .footer-bottom > * {
+            text-align: center !important;
+            width: 100%;
+        }
+
+        .footer-bottom .row {
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            margin: 0;
+            display: block !important;
+        }
+
+            .footer-bottom .row > [class*="col-"],
+            .footer-bottom .row > div {
+                flex: 0 0 100% !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                text-align: center !important;
+                padding: 0 !important;
+            }
+
+        .footer-bottom a {
+            display: inline-block;
+            margin: 2px 6px;
+        }
+}
+/* =====================================================
+   FOOTER BOTTOM - MOBILE: COPYRIGHT HIDE + CENTER LAST
+===================================================== */
+@media (max-width: 575.98px) {
+
+    /* Copyright wala item hide kar do mobile me */
+    .footer-bottom .copyright,
+    .footer-bottom .copy-right,
+    .footer-bottom .copyright-text,
+    .footer-bottom > *:nth-child(1) {
+        display: none !important;
+    }
+
+    /* Footer bottom ko center flex karo */
+    .footer-bottom {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        gap: 6px !important;
+        width: 100% !important;
+        padding-top: 12px !important;
+        margin-top: 15px !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+        font-size: 10px !important;
+        line-height: 1.5 !important;
+    }
+
+        /* Row/col wrapper ho to flatten */
+        .footer-bottom .row {
+            display: contents !important;
+        }
+
+        .footer-bottom [class*="col-"] {
+            display: contents !important;
+        }
+
+        /* Jo bhi bache (last item) wo center me */
+        .footer-bottom > * {
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            text-align: center !important;
+            margin: 0 auto !important;
+            padding: 0 !important;
+        }
+
+        .footer-bottom a {
+            display: inline-block !important;
+            margin: 0 6px !important;
+        }
+
+        .footer-bottom p,
+        .footer-bottom span {
+            margin: 0 !important;
+            text-align: center !important;
+        }
+}
+/* =====================================================
+   SERVICE CARDS - MOBILE TEXT OVERFLOW FIX
+===================================================== */
+@media (max-width: 575.98px) {
+
+    .services-section {
+        overflow-x: hidden;
+    }
+
+        .services-section .row {
+            --bs-gutter-x: 0.75rem;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+            .services-section .row > [class*="col-"] {
+                padding-left: 6px;
+                padding-right: 6px;
+                margin-bottom: 10px;
+            }
+
+    .service-card {
+        min-height: auto !important;
+        height: auto !important;
+        padding: 16px !important;
+        overflow: hidden !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        border: 1px solid #ddd !important;
+    }
+
+        .service-card h3 {
+            font-size: 13px !important;
+            line-height: 1.3 !important;
+            margin: 0 0 8px !important;
+            word-break: break-word !important;
+            overflow-wrap: anywhere !important;
+            white-space: normal !important;
+            max-width: 100% !important;
+        }
+
+        .service-card p {
+            font-size: 11px !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+            max-width: 100% !important;
+            word-break: break-word !important;
+            overflow-wrap: anywhere !important;
+            white-space: normal !important;
+            color: #333 !important;
+        }
+
+        .service-card .service-icon {
+            width: 34px;
+            height: 34px;
+            margin-bottom: 12px;
+        }
+
+            .service-card .service-icon i {
+                font-size: 14px;
+            }
+
+    .service-link {
+        opacity: 1 !important;
+        transform: none !important;
+        font-size: 10px !important;
+        margin-top: 10px !important;
+        display: inline-flex !important;
+        flex-wrap: wrap !important;
+    }
+}
+/* =====================================================
+   SERVICE CARDS - TABLET TEXT OVERFLOW FIX
+===================================================== */
+@media (min-width: 576px) and (max-width: 991.98px) {
+
+    .services-section {
+        overflow-x: hidden;
+    }
+
+        .services-section .row {
+            --bs-gutter-x: 1rem;
+        }
+
+            .services-section .row > [class*="col-"] {
+                padding-left: 8px;
+                padding-right: 8px;
+                margin-bottom: 12px;
+            }
+
+    .service-card {
+        min-height: auto !important;
+        height: 100% !important;
+        padding: 18px !important;
+        overflow: hidden !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        border: 1px solid #ddd !important;
+    }
+
+        .service-card h3 {
+            font-size: 13px !important;
+            line-height: 1.3 !important;
+            margin: 0 0 8px !important;
+            word-break: break-word !important;
+            overflow-wrap: anywhere !important;
+            white-space: normal !important;
+            max-width: 100% !important;
+        }
+
+        .service-card p {
+            font-size: 11px !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+            max-width: 100% !important;
+            word-break: break-word !important;
+            overflow-wrap: anywhere !important;
+            white-space: normal !important;
+            color: #333 !important;
+        }
+
+        .service-card .service-icon {
+            width: 36px;
+            height: 36px;
+            margin-bottom: 14px;
+        }
+
+            .service-card .service-icon i {
+                font-size: 15px;
+            }
+
+    .service-link {
+        opacity: 1 !important;
+        transform: none !important;
+        font-size: 10px !important;
+        margin-top: 10px !important;
+        display: inline-flex !important;
+        flex-wrap: wrap !important;
+    }
+}
+
+/* =====================================================
+   SERVICE CARDS - EXTRA SMALL (max-width: 400px)
+===================================================== */
+@media (max-width: 400px) {
+
+    .service-card {
+        padding: 14px !important;
+    }
+
+        .service-card h3 {
+            font-size: 12px !important;
+        }
+
+        .service-card p {
+            font-size: 10.5px !important;
+            line-height: 1.55 !important;
+        }
 }

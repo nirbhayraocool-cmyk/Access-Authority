@@ -43,7 +43,7 @@
         ===================================================== */
 
     .hero {
-        min-height: 435px;
+      
         background: radial-gradient( circle at 75% 45%, rgba(55, 0, 5, 0.30), transparent 38% ), linear-gradient( 110deg, #0b090a 0%, #11090b 55%, #12090b 100% );
         color: white;
         padding: 55px 0 60px;
@@ -296,6 +296,7 @@
         padding: 30px;
         height: 100%;
         position: relative;
+        border-radius: 12px;
         transition: .3s ease;
         overflow: hidden;
     }
@@ -435,9 +436,7 @@
     }
 
 
-    /* =====================================================
-   WHY US - ATTRACTIVE BOX
-===================================================== */
+    /* =====   WHY US - ATTRACTIVE BOX    */
 
 .why-box {
     padding: 28px 24px;
@@ -446,6 +445,7 @@
     height: 100%;
     min-height: 245px;
     position: relative;
+        border-radius: 12px;
     overflow: hidden;
     transition: all .35s ease;
 }
@@ -544,7 +544,7 @@
         ===================================================== */
 
     .testimonial {
-        background: #dbd4d6;
+        background: white;
         color: #141313;
         padding: 70px 8%;
         margin: 0;
@@ -627,29 +627,6 @@
             color: #fff;
             border-color: #ed001c;
         }
-
-
-    /* =====================================================
-           WHATSAPP
-        ===================================================== */
-
-    .whatsapp {
-        position: fixed;
-        right: 27px;
-        bottom: 25px;
-        width: 49px;
-        height: 49px;
-        background: #20d366;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-size: 25px;
-        z-index: 1000;
-        box-shadow: 0 4px 20px rgba(0,0,0,.3);
-    }
-
 
     /* =====================================================
            RESPONSIVE
@@ -735,9 +712,9 @@
 
     <div class="container px-5">
 
-        <div class="hero-icon">
+        @* <div class="hero-icon">
             <i class="bi bi-palette-fill"></i>
-        </div>
+        </div> *@
 
         <h1>
             UI/UX <span>Design</span>
@@ -804,15 +781,6 @@
                     purposeful, and natural to use.
 
                 </p>
-
-                <p class="section-text">
-
-                    From the first user journey to the final polished
-                    interface, every design decision is connected to
-                    a real user need and a clear business objective.
-
-                </p>
-
 
                 <div class="d-flex flex-column flex-md-row gap-4">
 
@@ -913,12 +881,12 @@
                      class="work-image"
                      alt="UI UX Design Workspace">
 
-                <a href="#" class="work-link">
+                @* <a href="#" class="work-link">
 
                     Explore Our Designs
                     <i class="bi bi-arrow-right"></i>
 
-                </a>
+                </a> *@
 
             </div>
 

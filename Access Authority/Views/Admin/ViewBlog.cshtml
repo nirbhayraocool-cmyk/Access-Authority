@@ -1,628 +1,647 @@
 ﻿@model Access_Authority.Models.CreateBlog
 
 @{
-    Layout = "_Layout1";
+    Layout = null;
 }
 
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@Model.Title</title>
 
-    /* =========================
-           PAGE
-        ========================= */
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    .blog-view-page {
-        background: radial-gradient(circle at 15% 0%, rgba(13,110,253,.06), transparent 40%), radial-gradient(circle at 85% 100%, rgba(13,110,253,.04), transparent 40%), #0f0f0f;
-        min-height: calc(100vh - 70px);
-        padding: 30px;
-    }
-
-    /* =========================
-           MAIN CARD
-        ========================= */
-
-    .blog-preview-card {
-        background: #1c1c1c;
-        border: 1px solid #2a2a2a;
-        border-radius: 18px;
-        overflow: hidden;
-        box-shadow: 0 25px 60px rgba(0,0,0,.5), 0 4px 12px rgba(0,0,0,.35);
-        animation: cardIn .45s ease both;
-        position: relative;
-    }
-
-        .blog-preview-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #0d6efd, #4d9cff, #0d6efd);
-            background-size: 200% 100%;
-            animation: shimmer 4s linear infinite;
-            z-index: 2;
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
         }
 
-    @@keyframes cardIn {
-        from {
-            opacity: 0;
-            transform: translateY(14px);
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0f0f0f;
         }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @@keyframes shimmer {
-        0% {
-            background-position: 0% 0;
-        }
-
-        100% {
-            background-position: -200% 0;
-        }
-    }
-
-    /* =========================
-           TOP BAR
-        ========================= */
-
-    .blog-topbar {
-        padding: 19px 26px;
-        border-bottom: 1px solid #262626;
-        background: linear-gradient(180deg, #1b1b1b, #171717);
-    }
-
-    .blog-topbar-icon {
-        width: 34px;
-        height: 34px;
-        border-radius: 9px;
-        background: rgba(13,110,253,.12);
-        border: 1px solid rgba(13,110,253,.25);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        color: #4d9cff;
-        margin-right: 12px;
-        font-size: 15px;
-    }
-
-    .blog-topbar-title {
-        color: #fff;
-        font-size: 15px;
-        font-weight: 600;
-        margin: 0;
-        letter-spacing: .2px;
-    }
-
-    .blog-topbar-subtitle {
-        color: #767676;
-        font-size: 12.5px;
-        margin-top: 2px;
-    }
-
-    .status-pill {
-        padding: 7px 15px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        letter-spacing: .3px;
-        border: 1px solid transparent;
-    }
-
-        .status-pill .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: currentColor;
-            box-shadow: 0 0 0 3px currentColor22, 0 0 8px currentColor;
-        }
-
-        .status-pill.published {
-            background: rgba(25, 135, 84, .13);
-            color: #4ade80;
-            border-color: rgba(25, 135, 84, .3);
-        }
-
-        .status-pill.draft {
-            background: rgba(255, 193, 7, .13);
-            color: #ffca2c;
-            border-color: rgba(255, 193, 7, .3);
-        }
-
-        .status-pill.other {
-            background: rgba(173, 181, 189, .1);
-            color: #adb5bd;
-            border-color: rgba(173, 181, 189, .28);
-        }
-
-    /* =========================
-           HERO IMAGE
-        ========================= */
-
-    .blog-featured-wrap {
-        overflow: hidden;
-        position: relative;
-    }
-
-        .blog-featured-wrap::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 60%, rgba(28,28,28,.85) 100%);
-            pointer-events: none;
-        }
-
-    .blog-featured-image {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
-        display: block;
-        background: #111;
-        transition: transform .6s cubic-bezier(.2,.8,.2,1);
-    }
-
-    .blog-featured-wrap:hover .blog-featured-image {
-        transform: scale(1.035);
-    }
-
-    .blog-image-placeholder {
-        height: 300px;
-        background: linear-gradient(135deg, #161616, #262626);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #4a4a4a;
-        font-size: 55px;
-    }
-
-    /* =========================
-           CONTENT AREA
-        ========================= */
-
-    .blog-main-content {
-        padding: 42px 46px 32px;
-    }
-
-    .blog-meta {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 22px;
-    }
-
-    .blog-category {
-        background: rgba(13,110,253,.13);
-        color: #4d9cff;
-        border: 1px solid rgba(13,110,253,.3);
-        padding: 6px 14px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: .3px;
-        display: inline-flex;
-        align-items: center;
-    }
-
-    .blog-title {
-        color: #fff;
-        font-size: clamp(28px, 4.2vw, 44px);
-        font-weight: 750;
-        line-height: 1.2;
-        margin-bottom: 18px;
-        letter-spacing: -.6px;
-    }
-
-    .blog-date {
-        color: #838383;
-        font-size: 13px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 30px;
-    }
-
-        .blog-date i {
-            color: #565656;
-        }
-
-    /* =========================
-           DIVIDER
-        ========================= */
-
-    .blog-divider {
-        height: 1px;
-        background: linear-gradient(90deg, #333, transparent 70%);
-        margin-bottom: 32px;
-    }
-
-    /* =========================
-           BLOG CONTENT
-        ========================= */
-
-    .blog-content {
-        color: #d8d8d8;
-        font-size: 16.5px;
-        line-height: 1.95;
-        word-break: break-word;
-        letter-spacing: .1px;
-    }
-
-        .blog-content p {
-            margin-bottom: 19px;
-        }
-
-        .blog-content h1,
-        .blog-content h2,
-        .blog-content h3,
-        .blog-content h4,
-        .blog-content h5,
-        .blog-content h6 {
-            color: #fff;
-            font-weight: 650;
-            margin-top: 34px;
-            margin-bottom: 16px;
-            letter-spacing: -.2px;
-        }
-
-        .blog-content h2 {
-            font-size: 27px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #262626;
-        }
-
-        .blog-content h3 {
-            font-size: 22px;
-        }
-
-        .blog-content img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            margin: 20px 0;
-            border: 1px solid #2a2a2a;
-            box-shadow: 0 10px 25px rgba(0,0,0,.3);
-        }
-
-        .blog-content a {
-            color: #4d9cff;
-            text-decoration: none;
-            border-bottom: 1px solid rgba(77,156,255,.35);
-            transition: all .2s ease;
-        }
-
-            .blog-content a:hover {
-                border-color: #4d9cff;
-                color: #7db6ff;
-            }
-
-        .blog-content blockquote {
-            margin: 26px 0;
-            padding: 17px 24px;
-            border-left: 3px solid #0d6efd;
-            background: linear-gradient(90deg, #171717, #151515);
-            color: #b0b0b0;
-            border-radius: 0 10px 10px 0;
-            font-style: italic;
-        }
-
-        .blog-content pre {
-            background: #111;
-            color: #ddd;
-            padding: 20px;
-            border-radius: 12px;
-            overflow-x: auto;
-            border: 1px solid #2a2a2a;
-        }
-
-        .blog-content code {
-            background: #262626;
-            color: #ff8f8f;
-            padding: 2px 6px;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        .blog-content ul,
-        .blog-content ol {
-            padding-left: 26px;
-        }
-
-        .blog-content li {
-            margin-bottom: 9px;
-        }
-
-    /* =========================
-           TAGS
-        ========================= */
-
-    .blog-tags-section {
-        margin-top: 38px;
-        padding-top: 26px;
-        border-top: 1px solid #262626;
-    }
-
-    .tags-title {
-        color: #888;
-        font-size: 12px;
-        font-weight: 650;
-        letter-spacing: .5px;
-        text-transform: uppercase;
-        margin-bottom: 13px;
-    }
-
-    .blog-tag {
-        display: inline-block;
-        background: #232323;
-        color: #adadad;
-        border: 1px solid #333;
-        border-radius: 20px;
-        padding: 6px 13px;
-        margin: 3px 5px 3px 0;
-        font-size: 12px;
-        transition: all .2s ease;
-        cursor: default;
-    }
-
-        .blog-tag:hover {
-            background: rgba(13,110,253,.12);
-            color: #4d9cff;
-            border-color: rgba(13,110,253,.35);
-            transform: translateY(-1px);
-        }
-
-    /* =========================
-           FOOTER
-        ========================= */
-
-    .blog-footer {
-        padding: 19px 26px;
-        border-top: 1px solid #262626;
-        background: linear-gradient(180deg, #171717, #1a1a1a);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
-    .blog-id {
-        color: #666;
-        font-size: 12px;
-        letter-spacing: .3px;
-        font-family: monospace;
-    }
-
-    .blog-footer .btn {
-        transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
-        border-radius: 8px;
-    }
-
-        .blog-footer .btn:hover {
-            transform: translateY(-2px);
-        }
-
-    .blog-footer .btn-outline-secondary:hover {
-        box-shadow: 0 6px 16px rgba(255,255,255,.06);
-    }
-
-    .blog-footer .btn-outline-danger:hover {
-        box-shadow: 0 6px 18px rgba(220,53,69,.3);
-    }
-
-    /* =========================
-           PAGE HEADER
-        ========================= */
-
-    .page-header-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
-        background: rgba(13,110,253,.12);
-        border: 1px solid rgba(13,110,253,.25);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        color: #4d9cff;
-        font-size: 17px;
-        margin-right: 12px;
-    }
-
-    /* =========================
-           MOBILE
-        ========================= */
-
-    @@media (max-width: 768px) {
 
         .blog-view-page {
-            padding: 15px;
+            background: radial-gradient(circle at 15% 0%, rgba(13,110,253,.06), transparent 40%), radial-gradient(circle at 85% 100%, rgba(13,110,253,.04), transparent 40%), #0f0f0f;
+            min-height: 100vh;
+            padding: 30px;
         }
 
-        .blog-main-content {
-            padding: 28px 22px 24px;
+        /* =========================
+                       MAIN CARD
+                    ========================= */
+
+        .blog-preview-card {
+            background: #1c1c1c;
+            border: 1px solid #2a2a2a;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,.5), 0 4px 12px rgba(0,0,0,.35);
+            animation: cardIn .45s ease both;
+            position: relative;
         }
+
+            .blog-preview-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, #0d6efd, #4d9cff, #0d6efd);
+                background-size: 200% 100%;
+                animation: shimmer 4s linear infinite;
+                z-index: 2;
+            }
+
+        @@keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @@keyframes shimmer {
+            0% {
+                background-position: 0% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* =========================
+                       TOP BAR
+                    ========================= */
+
+        .blog-topbar {
+            padding: 19px 26px;
+            border-bottom: 1px solid #262626;
+            background: linear-gradient(180deg, #1b1b1b, #171717);
+        }
+
+        .blog-topbar-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            background: rgba(13,110,253,.12);
+            border: 1px solid rgba(13,110,253,.25);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #4d9cff;
+            margin-right: 12px;
+            font-size: 15px;
+        }
+
+        .blog-topbar-title {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: .2px;
+        }
+
+        .blog-topbar-subtitle {
+            color: #767676;
+            font-size: 12.5px;
+            margin-top: 2px;
+        }
+
+        .status-pill {
+            padding: 7px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: .3px;
+            border: 1px solid transparent;
+        }
+
+            .status-pill .dot {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: currentColor;
+                box-shadow: 0 0 0 3px currentColor22, 0 0 8px currentColor;
+            }
+
+            .status-pill.published {
+                background: rgba(25, 135, 84, .13);
+                color: #4ade80;
+                border-color: rgba(25, 135, 84, .3);
+            }
+
+            .status-pill.draft {
+                background: rgba(255, 193, 7, .13);
+                color: #ffca2c;
+                border-color: rgba(255, 193, 7, .3);
+            }
+
+            .status-pill.other {
+                background: rgba(173, 181, 189, .1);
+                color: #adb5bd;
+                border-color: rgba(173, 181, 189, .28);
+            }
+
+        /* =========================
+                       HERO IMAGE
+                    ========================= */
+
+        .blog-featured-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+
+            .blog-featured-wrap::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(180deg, transparent 60%, rgba(28,28,28,.85) 100%);
+                pointer-events: none;
+            }
 
         .blog-featured-image {
-            height: 220px;
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            background: #111;
+            transition: transform .6s cubic-bezier(.2,.8,.2,1);
+        }
+
+        .blog-featured-wrap:hover .blog-featured-image {
+            transform: scale(1.035);
         }
 
         .blog-image-placeholder {
-            height: 200px;
+            height: 300px;
+            background: linear-gradient(135deg, #161616, #262626);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a4a4a;
+            font-size: 55px;
+        }
+
+        /* =========================
+                       CONTENT AREA
+                    ========================= */
+
+        .blog-main-content {
+            padding: 42px 46px 32px;
+        }
+
+        .blog-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .blog-category {
+            background: rgba(13,110,253,.13);
+            color: #4d9cff;
+            border: 1px solid rgba(13,110,253,.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .3px;
+            display: inline-flex;
+            align-items: center;
         }
 
         .blog-title {
-            font-size: 27px;
+            color: #fff;
+            font-size: clamp(28px, 4.2vw, 44px);
+            font-weight: 750;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            letter-spacing: -.6px;
         }
+
+        .blog-date {
+            color: #838383;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+            .blog-date i {
+                color: #565656;
+            }
+
+        /* =========================
+                       DIVIDER
+                    ========================= */
+
+        .blog-divider {
+            height: 1px;
+            background: linear-gradient(90deg, #333, transparent 70%);
+            margin-bottom: 32px;
+        }
+
+        /* =========================
+                       BLOG CONTENT
+                    ========================= */
+
+        .blog-content {
+            color: #d8d8d8;
+            font-size: 16.5px;
+            line-height: 1.95;
+            word-break: break-word;
+            letter-spacing: .1px;
+        }
+
+            .blog-content p {
+                margin-bottom: 19px;
+            }
+
+            .blog-content h1,
+            .blog-content h2,
+            .blog-content h3,
+            .blog-content h4,
+            .blog-content h5,
+            .blog-content h6 {
+                color: #fff;
+                font-weight: 650;
+                margin-top: 34px;
+                margin-bottom: 16px;
+                letter-spacing: -.2px;
+            }
+
+            .blog-content h2 {
+                font-size: 27px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #262626;
+            }
+
+            .blog-content h3 {
+                font-size: 22px;
+            }
+
+            .blog-content img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 12px;
+                margin: 20px 0;
+                border: 1px solid #2a2a2a;
+                box-shadow: 0 10px 25px rgba(0,0,0,.3);
+            }
+
+            .blog-content a {
+                color: #4d9cff;
+                text-decoration: none;
+                border-bottom: 1px solid rgba(77,156,255,.35);
+                transition: all .2s ease;
+            }
+
+                .blog-content a:hover {
+                    border-color: #4d9cff;
+                    color: #7db6ff;
+                }
+
+            .blog-content blockquote {
+                margin: 26px 0;
+                padding: 17px 24px;
+                border-left: 3px solid #0d6efd;
+                background: linear-gradient(90deg, #171717, #151515);
+                color: #b0b0b0;
+                border-radius: 0 10px 10px 0;
+                font-style: italic;
+            }
+
+            .blog-content pre {
+                background: #111;
+                color: #ddd;
+                padding: 20px;
+                border-radius: 12px;
+                overflow-x: auto;
+                border: 1px solid #2a2a2a;
+            }
+
+            .blog-content code {
+                background: #262626;
+                color: #ff8f8f;
+                padding: 2px 6px;
+                border-radius: 5px;
+                font-size: 14px;
+            }
+
+            .blog-content ul,
+            .blog-content ol {
+                padding-left: 26px;
+            }
+
+            .blog-content li {
+                margin-bottom: 9px;
+            }
+
+        /* =========================
+                       TAGS
+                    ========================= */
+
+        .blog-tags-section {
+            margin-top: 38px;
+            padding-top: 26px;
+            border-top: 1px solid #262626;
+        }
+
+        .tags-title {
+            color: #888;
+            font-size: 12px;
+            font-weight: 650;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            margin-bottom: 13px;
+        }
+
+        .blog-tag {
+            display: inline-block;
+            background: #232323;
+            color: #adadad;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 6px 13px;
+            margin: 3px 5px 3px 0;
+            font-size: 12px;
+            transition: all .2s ease;
+            cursor: default;
+        }
+
+            .blog-tag:hover {
+                background: rgba(13,110,253,.12);
+                color: #4d9cff;
+                border-color: rgba(13,110,253,.35);
+                transform: translateY(-1px);
+            }
+
+        /* =========================
+                       FOOTER
+                    ========================= */
 
         .blog-footer {
-            justify-content: stretch;
+            padding: 19px 26px;
+            border-top: 1px solid #262626;
+            background: linear-gradient(180deg, #171717, #1a1a1a);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
-            .blog-footer .d-flex {
-                width: 100%;
+        .blog-id {
+            color: #666;
+            font-size: 12px;
+            letter-spacing: .3px;
+            font-family: monospace;
+        }
+
+        .blog-footer .btn {
+            transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+            border-radius: 8px;
+        }
+
+            .blog-footer .btn:hover {
+                transform: translateY(-2px);
             }
 
-                .blog-footer .d-flex .btn {
-                    flex: 1;
+        .blog-footer .btn-outline-secondary:hover {
+            box-shadow: 0 6px 16px rgba(255,255,255,.06);
+        }
+
+        .blog-footer .btn-outline-danger:hover {
+            box-shadow: 0 6px 18px rgba(220,53,69,.3);
+        }
+
+        /* =========================
+                       PAGE HEADER
+                    ========================= */
+
+        .page-header-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(13,110,253,.12);
+            border: 1px solid rgba(13,110,253,.25);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #4d9cff;
+            font-size: 17px;
+            margin-right: 12px;
+        }
+
+        /* =========================
+                       MOBILE
+                    ========================= */
+
+        @@media (max-width: 768px) {
+
+            .blog-view-page {
+                padding: 15px;
+            }
+
+            .blog-main-content {
+                padding: 28px 22px 24px;
+            }
+
+            .blog-featured-image {
+                height: 220px;
+            }
+
+            .blog-image-placeholder {
+                height: 200px;
+            }
+
+            .blog-title {
+                font-size: 27px;
+            }
+
+            .blog-footer {
+                justify-content: stretch;
+            }
+
+                .blog-footer .d-flex {
+                    width: 100%;
                 }
-    }
 
-</style>
+                    .blog-footer .d-flex .btn {
+                        flex: 1;
+                    }
+        }
+    </style>
+</head>
+<body>
 
-<div class="blog-view-page">
+    <div class="blog-view-page">
 
-    <div class="container-fluid px-0">
+        <div class="container-fluid px-0">
 
-        <!-- HEADER -->
-        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-
-            <div class="d-flex align-items-center">
-                <span class="page-header-icon">
-                    <i class="bi bi-eye"></i>
-                </span>
-                <div>
-                    <h4 class="text-white fw-semibold mb-1">View Blog</h4>
-                    <div class="text-secondary small">Blog / Preview Post</div>
-                </div>
-            </div>
-
-            <a asp-action="Blog" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left me-1"></i>
-                Back to Posts
-            </a>
-
-        </div>
-
-
-        <!-- BLOG CARD -->
-        <div class="blog-preview-card">
-
-            <!-- TOP BAR -->
-            <div class="blog-topbar d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <!-- HEADER -->
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
 
                 <div class="d-flex align-items-center">
-                    <span class="blog-topbar-icon">
-                        <i class="bi bi-file-earmark-text"></i>
+                    <span class="page-header-icon">
+                        <i class="bi bi-eye"></i>
                     </span>
                     <div>
-                        <div class="blog-topbar-title">Blog Post Preview</div>
-                        <div class="blog-topbar-subtitle">Admin view</div>
+                        <h4 class="text-white fw-semibold mb-1">View Blog</h4>
+                        <div class="text-secondary small">Blog / Preview Post</div>
                     </div>
                 </div>
 
-                <div>
-                    @if (Model.Status?.ToLower() == "published")
-                    {
-                        <span class="status-pill published">
-                            <span class="dot"></span> Published
-                        </span>
-                    }
-                    else if (Model.Status?.ToLower() == "draft")
-                    {
-                        <span class="status-pill draft">
-                            <span class="dot"></span> Draft
-                        </span>
-                    }
-                    else
-                    {
-                        <span class="status-pill other">
-                            <span class="dot"></span> @Model.Status
-                        </span>
-                    }
-                </div>
+                <a asp-action="Blog" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left me-1"></i>
+                    Back to Posts
+                </a>
 
             </div>
 
 
-            <!-- FEATURED IMAGE -->
-            @if (!string.IsNullOrWhiteSpace(Model.FeaturedImage))
-            {
-                <div class="blog-featured-wrap">
-                    <img src="@Model.FeaturedImage" alt="@Model.Title" class="blog-featured-image" />
-                </div>
-            }
-            else
-            {
-                <div class="blog-image-placeholder">
-                    <i class="bi bi-image"></i>
-                </div>
-            }
+            <!-- BLOG CARD -->
+            <div class="blog-preview-card">
 
+                <!-- TOP BAR -->
+                <div class="blog-topbar d-flex justify-content-between align-items-center flex-wrap gap-2">
 
-            <!-- BLOG CONTENT -->
-            <div class="blog-main-content">
-
-                <div class="blog-meta">
-                    <span class="blog-category">
-                        <i class="bi bi-folder2-open me-1"></i>
-                        @Model.Category
-                    </span>
-                </div>
-
-                <h1 class="blog-title">
-                    @Model.Title
-                </h1>
-
-                <div class="blog-date">
-                    <i class="bi bi-calendar3"></i>
-                    <span>Published on @Model.CreatedDate.ToLocalTime().ToString("dd MMMM yyyy")</span>
-                </div>
-
-                <div class="blog-divider"></div>
-
-                <div class="blog-content">
-                    @Html.Raw(Model.Content)
-                </div>
-
-                @if (!string.IsNullOrWhiteSpace(Model.Tags))
-                {
-                    <div class="blog-tags-section">
-                        <div class="tags-title">
-                            <i class="bi bi-tags me-1"></i>
-                            Tags
-                        </div>
+                    <div class="d-flex align-items-center">
+                        <span class="blog-topbar-icon">
+                            <i class="bi bi-file-earmark-text"></i>
+                        </span>
                         <div>
-                            @foreach (var tag in Model.Tags.Split(','))
-                            {
-                                if (!string.IsNullOrWhiteSpace(tag))
-                                {
-                                    <span class="blog-tag">#@tag.Trim()</span>
-                                }
-                            }
+                            <div class="blog-topbar-title">Blog Post Preview</div>
+                            <div class="blog-topbar-subtitle">Admin view</div>
                         </div>
+                    </div>
+
+                    <div>
+                        @if (Model.Status?.ToLower() == "published")
+                        {
+                            <span class="status-pill published">
+                                <span class="dot"></span> Published
+                            </span>
+                        }
+                        else if (Model.Status?.ToLower() == "draft")
+                        {
+                            <span class="status-pill draft">
+                                <span class="dot"></span> Draft
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="status-pill other">
+                                <span class="dot"></span> @Model.Status
+                            </span>
+                        }
+                    </div>
+
+                </div>
+
+
+                <!-- FEATURED IMAGE -->
+                @if (!string.IsNullOrWhiteSpace(Model.FeaturedImage))
+                {
+                    <div class="blog-featured-wrap">
+                        <img src="@Model.FeaturedImage" alt="@Model.Title" class="blog-featured-image" />
+                    </div>
+                }
+                else
+                {
+                    <div class="blog-image-placeholder">
+                        <i class="bi bi-image"></i>
                     </div>
                 }
 
-            </div>
 
+                <!-- BLOG CONTENT -->
+                <div class="blog-main-content">
 
-            <!-- FOOTER -->
-            <div class="blog-footer">
+                    <div class="blog-meta">
+                        <span class="blog-category">
+                            <i class="bi bi-folder2-open me-1"></i>
+                            @Model.Category
+                        </span>
+                    </div>
 
-                <div class="blog-id">
-                    Blog ID: #@Model.Id
+                    <h1 class="blog-title">
+                        @Model.Title
+                    </h1>
+
+                    <div class="blog-date">
+                        <i class="bi bi-calendar3"></i>
+                        <span>Published on @Model.CreatedDate.ToLocalTime().ToString("dd MMMM yyyy")</span>
+                    </div>
+
+                    <div class="blog-divider"></div>
+
+                    <div class="blog-content">
+                        @Html.Raw(Model.Content)
+                    </div>
+
+                    @if (!string.IsNullOrWhiteSpace(Model.Tags))
+                    {
+                        <div class="blog-tags-section">
+                            <div class="tags-title">
+                                <i class="bi bi-tags me-1"></i>
+                                Tags
+                            </div>
+                            <div>
+                                @foreach (var tag in Model.Tags.Split(','))
+                                {
+                                    if (!string.IsNullOrWhiteSpace(tag))
+                                    {
+                                        <span class="blog-tag">#@tag.Trim()</span>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    }
+
                 </div>
 
-                <div class="d-flex gap-2">
 
-                    <a asp-action="Blog" class="btn btn-sm btn-outline-secondary">
-                        <i class="bi bi-arrow-left me-1"></i>
-                        Back
-                    </a>
+                <!-- FOOTER -->
+                <div class="blog-footer">
 
-                    <form asp-action="DeleteBlog" asp-route-id="@Model.Id" method="post" class="delete-blog-form">
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-sm btn-outline-danger">
-                            <i class="bi bi-trash3 me-1"></i>
-                            Delete
-                        </button>
-                    </form>
+                    <div class="blog-id">
+                        Blog ID: #@Model.Id
+                    </div>
+
+                    <div class="d-flex gap-2">
+
+                        <a asp-action="Blog" class="btn btn-sm btn-outline-secondary">
+                            <i class="bi bi-arrow-left me-1"></i>
+                            Back
+                        </a>
+
+                        <form asp-action="DeleteBlog" asp-route-id="@Model.Id" method="post" class="delete-blog-form">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash3 me-1"></i>
+                                Delete
+                            </button>
+                        </form>
+
+                    </div>
 
                 </div>
 
@@ -632,43 +651,44 @@
 
     </div>
 
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
 
-<script>
+        document.addEventListener("DOMContentLoaded", function () {
 
-    document.addEventListener("DOMContentLoaded", function () {
+            const deleteForms = document.querySelectorAll(".delete-blog-form");
 
-        const deleteForms = document.querySelectorAll(".delete-blog-form");
+            deleteForms.forEach(function (form) {
 
-        deleteForms.forEach(function (form) {
+                form.addEventListener("submit", function (e) {
 
-            form.addEventListener("submit", function (e) {
+                    e.preventDefault();
 
-                e.preventDefault();
+                    Swal.fire({
+                        title: "Delete this blog?",
+                        text: "This action cannot be undone.",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonText: "Yes, delete it",
+                        cancelButtonText: "Cancel",
+                        confirmButtonColor: "#dc3545",
+                        cancelButtonColor: "#6c757d",
+                        background: "#1c1c1c",
+                        color: "#fff"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
 
-                Swal.fire({
-                    title: "Delete this blog?",
-                    text: "This action cannot be undone.",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonText: "Yes, delete it",
-                    cancelButtonText: "Cancel",
-                    confirmButtonColor: "#dc3545",
-                    cancelButtonColor: "#6c757d",
-                    background: "#1c1c1c",
-                    color: "#fff"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        form.submit();
-                    }
                 });
 
             });
 
         });
 
-    });
+    </script>
 
-</script>
+</body>
+</html>

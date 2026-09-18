@@ -1,7 +1,6 @@
 ﻿@{
     var applications = ViewBag.CareerApplications
         as List<Access_Authority.Models.CareerViewModel>;
-
 }
 @model List<Access_Authority.Models.CareerPosition>
 @{
@@ -11,111 +10,589 @@
     var closedPositions = Model?.Count(x => x.Status == "Closed") ?? 0;
 }
 
-    <style>
-  
-        .card-dark {
-            background-color: #1c1c1c;
-            border: 1px solid #2a2a2a;
-            color: #e0e0e0;
+<style>
+    .card-dark {
+        background-color: #1c1c1c;
+        border: 1px solid #2a2a2a;
+        color: #e0e0e0;
+    }
+
+        .card-dark .card-header {
+            border-bottom: 1px solid #2a2a2a;
+            background-color: transparent;
         }
 
-            .card-dark .card-header {
-                border-bottom: 1px solid #2a2a2a;
-                background-color: transparent;
-            }
+    /* Page Heading - Gold Theme */
+    .career-heading {
+        color: #E0A458 !important;
+    }
 
-        /* Dark Table */
-        .table-dark-custom {
-            color: #e0e0e0;
+        .career-heading span {
+            color: #8a8a8a !important;
+        }
+
+    /* Dark Table */
+    .table-dark-custom {
+        color: #e0e0e0;
+        border-color: #2a2a2a;
+    }
+
+        .table-dark-custom td,
+        .table-dark-custom th {
             border-color: #2a2a2a;
+            padding: 12px 16px;
+            vertical-align: middle;
         }
 
-            .table-dark-custom td,
-            .table-dark-custom th {
-                border-color: #2a2a2a;
-                padding: 12px 16px;
-                vertical-align: middle;
-            }
+        .table-dark-custom tbody tr:hover {
+            background-color: #282828;
+        }
 
-            .table-dark-custom tbody tr:hover {
-                background-color: #282828;
-            }
+        .table-dark-custom thead th {
+            background-color: #0a0a0a;
+            color: #E0A458; /* Table header gold */
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: .5px;
+        }
 
-            .table-dark-custom thead th {
-                background-color: #0a0a0a;
-                color: #a0a0a0;
-                font-weight: 600;
-            }
+    /* Dark Form Controls */
+    .form-control-dark,
+    .form-select-dark {
+        background-color: #121212;
+        border: 1px solid #2a2a2a;
+        color: #ffffff;
+    }
 
-        /* Dark Form Controls */
-        .form-control-dark,
-        .form-select-dark {
+        .form-control-dark:focus,
+        .form-select-dark:focus {
             background-color: #121212;
-            border: 1px solid #2a2a2a;
+            border-color: #0d6efd;
             color: #ffffff;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
         }
 
-            .form-control-dark:focus,
-            .form-select-dark:focus {
-                background-color: #121212;
-                border-color: #0d6efd;
-                color: #ffffff;
-                box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        .form-control-dark::placeholder {
+            color: #6c757d;
+        }
+
+    .form-label {
+        color: #b0b0b0;
+        font-weight: 500;
+    }
+
+    /* Dark Modal */
+    .modal-content {
+        background-color: #1c1c1c;
+        border: 1px solid #2a2a2a;
+        color: #e0e0e0;
+    }
+
+    .modal-header, .modal-footer {
+        border-color: #2a2a2a;
+    }
+
+    .btn-close {
+        filter: invert(1);
+    }
+
+    .status-badge {
+        font-size: 0.7rem;
+        padding: 5px 12px;
+    }
+
+    /* ============================================
+           ACTION BUTTONS — Project page style
+        ============================================ */
+    .btn-action-view,
+    .btn-action-delete {
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        transition: .25s;
+        padding: 0;
+        cursor: pointer;
+        box-sizing: border-box;
+        font-size: 14px;
+        vertical-align: middle;
+        line-height: 1;
+        flex-shrink: 0;
+    }
+
+    /* VIEW / EDIT — Gold */
+    .btn-action-view {
+        color: #E0A458;
+        border: 1px solid rgba(224,164,88,.35);
+        background: rgba(224,164,88,.08);
+        text-decoration: none;
+    }
+
+        .btn-action-view:hover {
+            background: #E0A458;
+            color: #10131A;
+        }
+
+    /* DELETE — Muted Red */
+    .btn-action-delete {
+        color: #C6614E;
+        border: 1px solid rgba(198,97,78,.35);
+        background: rgba(198,97,78,.08);
+    }
+
+        .btn-action-delete:hover {
+            background: #C6614E;
+            color: #fff;
+        }
+
+    /* ============================================
+           Action cell alignment FIXED
+        ============================================ */
+    .table-responsive td:last-child {
+        white-space: nowrap;
+        text-align: center;
+        vertical-align: middle !important;
+    }
+
+        /* Action wrapper — ek line me perfectly aligned */
+        .table-responsive td:last-child .action-wrap {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            vertical-align: middle;
+        }
+
+        .table-responsive td:last-child form {
+            display: inline-flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            vertical-align: middle;
+        }
+
+        .table-responsive td:last-child .btn-action-view,
+        .table-responsive td:last-child .btn-action-delete {
+            margin: 0;
+        }
+
+    /* ============================================
+           TABLET (<= 991px)
+        ============================================ */
+    @@media (max-width: 991px) {
+        .container.px-5 {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+        }
+    }
+
+    /* ============================================
+           MOBILE (<= 767px)
+        ============================================ */
+    @@media (max-width: 767px) {
+
+        .container.px-5 {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+        }
+
+        main.p-4 {
+            padding: 10px !important;
+        }
+        /* Page Header */
+        .career-heading {
+            font-size: 18px !important;
+        }
+
+        .d-flex.flex-wrap.justify-content-between.align-items-center.mb-4 {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 12px !important;
+        }
+
+            .d-flex.flex-wrap.justify-content-between.align-items-center.mb-4 .btn-danger {
+                width: 100% !important;
+                padding: 10px !important;
+                font-size: 13px !important;
+            }
+        /* Stats 2x2 grid */
+        .row.g-3.mb-4 {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+            margin: 0 0 16px 0 !important;
+        }
+
+            .row.g-3.mb-4 > [class*="col-"] {
+                width: 100% !important;
+                max-width: 100% !important;
+                flex: none !important;
+                padding: 0 !important;
             }
 
-            .form-control-dark::placeholder {
-                color: #6c757d;
+        .card.card-dark.p-3 {
+            padding: 12px !important;
+            margin: 0 !important;
+        }
+
+            .card.card-dark.p-3 > span {
+                font-size: 11px !important;
             }
 
-        .form-label {
-            color: #b0b0b0;
-            font-weight: 500;
+            .card.card-dark.p-3 > h2 {
+                font-size: 22px !important;
+                margin: 4px 0 0 0 !important;
+            }
+        /* Card header stack */
+        .card-header.d-flex {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 10px !important;
+        }
+        /* ============================================
+               TABLE -> CARDS
+            ============================================ */
+        .table-responsive {
+            overflow-x: visible !important;
         }
 
-        /* Dark Modal */
-        .modal-content {
-            background-color: #1c1c1c;
-            border: 1px solid #2a2a2a;
-            color: #e0e0e0;
+            .table-responsive > table {
+                display: block !important;
+                width: 100% !important;
+                border-collapse: separate !important;
+                border-spacing: 0 !important;
+                margin: 0 !important;
+                background: transparent !important;
+            }
+
+                .table-responsive > table > thead {
+                    display: none !important;
+                }
+
+                .table-responsive > table > tbody {
+                    display: block !important;
+                    width: 100% !important;
+                }
+                    /* Each row = a card */
+                    .table-responsive > table > tbody > tr {
+                        display: block !important;
+                        width: 100% !important;
+                        background: #1f1f1f !important;
+                        border: 1px solid #2a2a2a !important;
+                        border-radius: 12px !important;
+                        margin: 0 0 12px 0 !important;
+                        padding: 0 !important;
+                        overflow: hidden !important;
+                        box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+                    }
+
+                        .table-responsive > table > tbody > tr:last-child {
+                            margin-bottom: 0 !important;
+                        }
+                        /* Each td = a row inside card */
+                        .table-responsive > table > tbody > tr > td {
+                            display: flex !important;
+                            justify-content: space-between !important;
+                            align-items: center !important;
+                            width: 100% !important;
+                            padding: 10px 16px !important;
+                            margin: 0 !important;
+                            border: none !important;
+                            border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+                            text-align: right !important;
+                            font-size: 13px !important;
+                            line-height: 1.45 !important;
+                            vertical-align: middle !important;
+                            word-break: break-word !important;
+                            overflow-wrap: anywhere !important;
+                            min-height: 44px !important;
+                            background: transparent !important;
+                            color: #c8c8c8 !important;
+                        }
+
+                            .table-responsive > table > tbody > tr > td:last-child {
+                                border-bottom: none !important;
+                            }
+                            /* data-label */
+                            .table-responsive > table > tbody > tr > td[data-label]::before {
+                                content: attr(data-label) !important;
+                                font-size: 10.5px !important;
+                                font-weight: 700 !important;
+                                color: #E0A458 !important;
+                                text-transform: uppercase !important;
+                                letter-spacing: 0.7px !important;
+                                text-align: left !important;
+                                flex-shrink: 0 !important;
+                                margin-right: 12px !important;
+                            }
+                            /* Hide serial number */
+                            .table-responsive > table > tbody > tr > td:first-child {
+                                display: none !important;
+                            }
+                            /* Title = top of card */
+                            .table-responsive > table > tbody > tr > td:nth-child(2) {
+                                display: block !important;
+                                padding: 14px 16px 12px 16px !important;
+                                background: rgba(224,164,88,0.08) !important;
+                                font-size: 15px !important;
+                                font-weight: 600 !important;
+                                color: #fff !important;
+                                text-align: left !important;
+                                border-bottom: 1px solid #2a2a2a !important;
+                                min-height: auto !important;
+                                line-height: 1.4 !important;
+                            }
+
+                                .table-responsive > table > tbody > tr > td:nth-child(2)::before {
+                                    display: block !important;
+                                    margin-bottom: 4px !important;
+                                    font-size: 10px !important;
+                                    color: #E0A458 !important;
+                                    letter-spacing: 0.8px !important;
+                                    font-weight: 700 !important;
+                                    text-transform: uppercase !important;
+                                }
+                            /* =   Action cell (mobile) — ek line me aligned    */
+                            .table-responsive > table > tbody > tr > td:last-child {
+                                display: flex !important;
+                                flex-direction: row !important;
+                                flex-wrap: nowrap !important;
+                                align-items: center !important;
+                                justify-content: flex-start !important;
+                                gap: 10px !important;
+                                padding: 12px 16px !important;
+                                background: rgba(0,0,0,0.2) !important;
+                                border-top: 1px solid #2a2a2a !important;
+                                min-height: auto !important;
+                                white-space: nowrap !important;
+                            }
+
+                                .table-responsive > table > tbody > tr > td:last-child::before {
+                                    display: none !important;
+                                }
+                                /* Reset action-wrap in mobile */
+                                .table-responsive > table > tbody > tr > td:last-child .action-wrap {
+                                    display: flex !important;
+                                    gap: 10px !important;
+                                    align-items: center !important;
+                                    width: 100% !important;
+                                }
+
+                                .table-responsive > table > tbody > tr > td:last-child > a,
+                                .table-responsive > table > tbody > tr > td:last-child > form {
+                                    flex: 0 0 auto !important;
+                                    width: auto !important;
+                                    margin: 0 !important;
+                                    padding: 0 !important;
+                                    display: inline-flex !important;
+                                    align-items: center !important;
+                                }
+
+                                .table-responsive > table > tbody > tr > td:last-child .btn-action-view,
+                                .table-responsive > table > tbody > tr > td:last-child .btn-action-delete {
+                                    width: auto !important;
+                                    min-width: 82px !important;
+                                    height: 38px !important;
+                                    padding: 0 12px !important;
+                                    gap: 5px !important;
+                                    font-size: 13px !important;
+                                    font-weight: 600 !important;
+                                    border-radius: 8px !important;
+                                    margin: 0 !important;
+                                }
+        /* Main table: "Edit" + "Delete" */
+        .card-body .table-responsive > table > tbody > tr > td:last-child .btn-action-view::after {
+            content: 'Edit';
+            margin-left: 4px;
         }
 
-        .modal-header,
+        .card-body .table-responsive > table > tbody > tr > td:last-child .btn-action-delete::after {
+            content: 'Delete';
+            margin-left: 4px;
+        }
+        /* Modal: "View" + "Delete" */
+        .modal-body .table-responsive > table > tbody > tr > td:last-child .btn-action-view::after {
+            content: 'View';
+            margin-left: 4px;
+        }
+
+        .modal-body .table-responsive > table > tbody > tr > td:last-child .btn-action-delete::after {
+            content: 'Delete';
+            margin-left: 4px;
+        }
+        /* Card footer / pagination */
+        .card-footer.d-flex {
+            flex-direction: column !important;
+            gap: 10px !important;
+            align-items: stretch !important;
+            padding: 14px !important;
+        }
+
+        .card-footer .text-secondary {
+            text-align: center !important;
+        }
+
+        .card-footer nav {
+            width: 100% !important;
+        }
+
+        .pagination {
+            justify-content: center !important;
+            flex-wrap: wrap !important;
+        }
+
+            .pagination .page-link {
+                font-size: 12px !important;
+                padding: 6px 10px !important;
+            }
+        /* ============================================
+               APPLICANTS MODAL
+            ============================================ */
+        .modal-dialog.modal-xl {
+            margin: 8px !important;
+            max-width: calc(100% - 16px) !important;
+        }
+
+        .modal-header {
+            flex-wrap: wrap !important;
+            position: relative !important;
+            padding-right: 48px !important;
+            padding-bottom: 14px !important;
+        }
+
+            .modal-header > div:first-child {
+                width: 100% !important;
+            }
+
+            .modal-header .modal-title {
+                font-size: 16px !important;
+            }
+
+            .modal-header small {
+                font-size: 11px !important;
+            }
+
+            .modal-header > .d-flex.align-items-center.gap-2 {
+                width: 100% !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 8px !important;
+                margin-top: 12px !important;
+                position: static !important;
+            }
+
+            .modal-header .d-flex form {
+                width: 100% !important;
+                display: block !important;
+            }
+
+            .modal-header .d-flex select {
+                width: 100% !important;
+            }
+
+            .modal-header .btn-close {
+                position: absolute !important;
+                top: 14px !important;
+                right: 14px !important;
+                margin: 0 !important;
+            }
+
+        .modal-body {
+            padding: 12px !important;
+        }
+
         .modal-footer {
-            border-color: #2a2a2a;
+            flex-direction: column !important;
+            gap: 10px !important;
+            align-items: stretch !important;
         }
 
-        .btn-close {
-            filter: invert(1);
+            .modal-footer .btn {
+                width: 100% !important;
+            }
+
+            .modal-footer .text-secondary {
+                text-align: center !important;
+            }
+
+        .modal-body .d-flex.justify-content-between.align-items-center.mt-3 {
+            flex-direction: column !important;
+            gap: 12px !important;
+        }
+        /* Form fields in Add modal */
+        .modal-lg .row > .col-md-6 {
+            margin-bottom: 12px !important;
+        }
+    }
+
+    /* ============================================
+           EXTRA SMALL (<= 400px)
+        ============================================ */
+    @@media (max-width: 400px) {
+        .container.px-5 {
+            padding-left: 8px !important;
+            padding-right: 8px !important;
         }
 
-        .status-badge {
-            font-size: 0.7rem;
-            padding: 5px 12px;
+        main.p-4 {
+            padding: 8px !important;
         }
 
-        @@media (max-width: 768px) {
-            .sidebar
-
-        {
-            min-height: auto;
-            margin-bottom: 20px;
+        .career-heading {
+            font-size: 16px !important;
         }
 
+        .card.card-dark.p-3 > h2 {
+            font-size: 20px !important;
         }
-    </style>
 
+        .card.card-dark.p-3 > span {
+            font-size: 10px !important;
+        }
+
+        .table-responsive > table > tbody > tr > td {
+            padding: 9px 12px !important;
+            font-size: 12px !important;
+        }
+
+            .table-responsive > table > tbody > tr > td:nth-child(2) {
+                padding: 12px 12px 10px 12px !important;
+                font-size: 14px !important;
+            }
+            /* Action cell compact */
+            .table-responsive > table > tbody > tr > td:last-child {
+                gap: 8px !important;
+                padding: 10px 12px !important;
+            }
+
+                .table-responsive > table > tbody > tr > td:last-child .btn-action-view,
+                .table-responsive > table > tbody > tr > td:last-child .btn-action-delete {
+                    min-width: 74px !important;
+                    height: 36px !important;
+                    font-size: 12px !important;
+                    padding: 0 10px !important;
+                }
+
+        .pagination .page-link {
+            padding: 5px 8px !important;
+            font-size: 11px !important;
+        }
+    }
+</style>
 
 <body class="bg-dark">
     <div class="container px-5">
         <div class="row g-0">
 
-           
             <main class="col p-4">
 
                 <!-- Page Header -->
                 <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
-                    <h4 class="text-white fw-light">Career <span class="text-secondary">/ Positions</span></h4>
-                    
+                    <h4 class="career-heading fw-light">Career <span>/ Positions</span></h4>
+
                     <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#addCareerModal">
                         <i class="bi bi-plus-lg"></i> Add New Position
                     </button>
@@ -126,25 +603,19 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="card card-dark p-3">
                             <span class="text-secondary">Total Positions</span>
-                            <h2 class="text-white fw-bold">
-                                @ViewBag.TotalPositions
-                            </h2>
+                            <h2 class="text-white fw-bold">@ViewBag.TotalPositions</h2>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="card card-dark p-3">
                             <span class="text-secondary">Open</span>
-                            <h2 class="text-success fw-bold">
-                                @openPositions
-                            </h2>
+                            <h2 class="text-success fw-bold">@openPositions</h2>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="card card-dark p-3">
                             <span class="text-secondary">Closed</span>
-                            <h2 class="text-danger fw-bold">
-                                @closedPositions
-                            </h2>
+                            <h2 class="text-danger fw-bold">@closedPositions</h2>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
@@ -153,57 +624,36 @@
                              data-bs-toggle="modal"
                              data-bs-target="#applicantsModal"
                              style="cursor: pointer;">
-
-                            <span class="text-secondary">
-                                Applicants
-                            </span>
-
-                            <h2 class="text-primary fw-bold">
-                                @ViewBag.TotalApplicants
-                            </h2>
-
+                            <span class="text-secondary">Applicants</span>
+                            <h2 class="text-primary fw-bold">@ViewBag.TotalApplicants</h2>
                         </div>
                     </div>
                 </div>
+
                 <!-- Applicants Modal -->
                 <div class="modal fade" id="applicantsModal" tabindex="-1" aria-hidden="true">
-
                     <div class="modal-dialog modal-xl modal-dialog-scrollable">
-
                         <div class="modal-content">
 
                             <div class="modal-header">
-
-                                <!-- LEFT -->
                                 <div>
                                     <h5 class="modal-title text-white">
                                         <i class="bi bi-people text-primary me-2"></i>
                                         Career Applications
                                     </h5>
-
                                     <small class="text-secondary">
                                         All applicants who submitted the career application
                                     </small>
                                 </div>
 
-                                <!-- RIGHT -->
                                 <div class="d-flex align-items-center gap-2">
-
-                                    <!-- POSITION DROPDOWN -->
                                     <form asp-controller="Admin"
                                           asp-action="Career"
                                           method="get"
                                           class="m-0">
 
-                                        <!-- Position pagination ko preserve kare -->
-                                        <input type="hidden"
-                                               name="page"
-                                               value="@ViewBag.CurrentPage" />
-
-                                        <!-- Filter change hone par applicant page 1 se start -->
-                                        <input type="hidden"
-                                               name="applicantPage"
-                                               value="1" />
+                                        <input type="hidden" name="page" value="@ViewBag.CurrentPage" />
+                                        <input type="hidden" name="applicantPage" value="1" />
 
                                         <select name="positionId"
                                                 class="form-select form-select-dark"
@@ -216,41 +666,26 @@
                                             {
                                                 if (ViewBag.SelectedPositionId == position.Id)
                                                 {
-                                                    <option value="@position.Id" selected>
-                                                        @position.JobTitle
-                                                    </option>
+                                                    <option value="@position.Id" selected>@position.JobTitle</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@position.Id">
-                                                        @position.JobTitle
-                                                    </option>
+                                                    <option value="@position.Id">@position.JobTitle</option>
                                                 }
                                             }
-
                                         </select>
-
                                     </form>
 
-                                    <!-- CLOSE -->
-                                    <button type="button"
-                                            class="btn-close"
-                                            data-bs-dismiss="modal">
-                                    </button>
-
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
-
                             </div>
-
 
                             <div class="modal-body">
 
                                 @if (applications != null && applications.Any())
                                 {
                                     <div class="table-responsive">
-
                                         <table class="table table-dark table-hover align-middle">
-
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
@@ -266,31 +701,24 @@
                                             </thead>
 
                                             <tbody>
-
                                                 @{
-                                                    int applicantCount = 1;
+                                                    int applicantPageSize = 5;
+                                                    int applicantCount = (((ViewBag.ApplicantCurrentPage ?? 1) - 1) * applicantPageSize) + 1;
                                                 }
 
                                                 @foreach (var applicant in applications)
                                                 {
                                                     <tr>
+                                                        <td>@applicantCount</td>
 
-                                                        <td>
-                                                            @applicantCount
+                                                        <td data-label="Applicant">
+                                                            <strong class="text-white">@applicant.FullName</strong>
                                                         </td>
 
-                                                        <td>
-                                                            <strong class="text-white">
-                                                                @applicant.FullName
-                                                            </strong>
-                                                        </td>
-
-                                                        <td>
+                                                        <td data-label="Position">
                                                             @if (applicant.CareerPosition != null)
                                                             {
-                                                                <span class="badge bg-primary">
-                                                                    @applicant.CareerPosition.JobTitle
-                                                                </span>
+                                                                <span class="badge bg-primary">@applicant.CareerPosition.JobTitle</span>
                                                             }
                                                             else
                                                             {
@@ -298,105 +726,92 @@
                                                             }
                                                         </td>
 
-                                                        <td>
-                                                            @applicant.EmailAddress
-                                                        </td>
+                                                        <td data-label="Email">@applicant.EmailAddress</td>
+                                                        <td data-label="Phone">@applicant.PhoneNumber</td>
 
-                                                        <td>
-                                                            @applicant.PhoneNumber
-                                                        </td>
-
-                                                        <td>
+                                                        <td data-label="LinkedIn">
                                                             @if (!string.IsNullOrEmpty(applicant.LinkedInProfile))
                                                             {
                                                                 <a href="@applicant.LinkedInProfile"
                                                                    target="_blank"
-                                                                   class="btn btn-outline-primary btn-sm">
+                                                                   class="btn-action-view"
+                                                                   title="LinkedIn">
                                                                     <i class="bi bi-linkedin"></i>
-                                                                    View
                                                                 </a>
                                                             }
                                                             else
                                                             {
-                                                                <span class="text-secondary">
-                                                                    N/A
-                                                                </span>
+                                                                <span class="text-secondary">N/A</span>
                                                             }
                                                         </td>
 
-                                                        <td>
+                                                        <td data-label="Resume">
                                                             @if (!string.IsNullOrEmpty(applicant.ResumeFilePath))
                                                             {
                                                                 <a href="@applicant.ResumeFilePath"
                                                                    target="_blank"
-                                                                   class="btn btn-danger btn-sm">
-                                                                    <i class="bi bi-file-earmark-text"></i>
-                                                                    Resume
+                                                                   class="btn-action-view"
+                                                                   title="Resume">
+                                                                    <i class="bi bi-file-earmark-text-fill"></i>
                                                                 </a>
                                                             }
                                                             else
                                                             {
-                                                                <span class="text-secondary">
-                                                                    N/A
-                                                                </span>
+                                                                <span class="text-secondary">N/A</span>
                                                             }
                                                         </td>
 
-                                                        <td>
+                                                        <td data-label="Applied At">
                                                             <span class="text-secondary">
                                                                 @applicant.AppliedAt.ToString("dd MMM yyyy")
                                                             </span>
-
                                                             <br />
-
                                                             <small class="text-secondary">
                                                                 @applicant.AppliedAt.ToString("hh:mm tt")
                                                             </small>
                                                         </td>
-                                                        <td class="text-center">
 
-                                                            <!-- VIEW -->
-                                                            <button type="button"
-                                                                    class="btn btn-outline-primary btn-sm view-application"
-                                                                    data-id="@applicant.Id">
-                                                                <i class="bi bi-eye"></i>
-                                                                View
-                                                            </button>
+                                                        <td>
+                                                            <div class="action-wrap">
 
-                                                            <!-- DELETE -->
-                                                            <form asp-controller="Admin"
-                                                                  asp-action="DeleteApplication"
-                                                                  asp-route-id="@applicant.Id"
-                                                                  method="post"
-                                                                  class="d-inline delete-application-form">
-
-                                                                @Html.AntiForgeryToken()
-
-                                                                <button type="submit"
-                                                                        class="btn btn-outline-danger btn-sm">
-                                                                    <i class="bi bi-trash3"></i>
-                                                                    Delete
+                                                                <!-- VIEW -->
+                                                                <button type="button"
+                                                                        class="btn-action-view view-application"
+                                                                        data-id="@applicant.Id"
+                                                                        title="View">
+                                                                    <i class="bi bi-eye-fill"></i>
                                                                 </button>
 
-                                                            </form>
+                                                                <!-- DELETE -->
+                                                                <form asp-controller="Admin"
+                                                                      asp-action="DeleteApplication"
+                                                                      asp-route-id="@applicant.Id"
+                                                                      method="post"
+                                                                      class="d-inline delete-application-form">
+                                                                    @Html.AntiForgeryToken()
+                                                                    <button type="submit"
+                                                                            class="btn-action-delete"
+                                                                            title="Delete">
+                                                                        <i class="bi bi-trash3-fill"></i>
+                                                                    </button>
+                                                                </form>
 
+                                                            </div>
                                                         </td>
                                                     </tr>
 
                                                     applicantCount++;
                                                 }
-
                                             </tbody>
-
                                         </table>
-                                     
+
                                         @{
                                             int applicantCurrentPage = ViewBag.ApplicantCurrentPage ?? 1;
                                             int applicantTotalPages = ViewBag.ApplicantTotalPages ?? 1;
+                                            int? selectedPositionId = ViewBag.SelectedPositionId as int?;
                                         }
 
                                         <div class="d-flex justify-content-between align-items-center mt-3">
-
                                             <span class="text-secondary">
                                                 Page @applicantCurrentPage of @applicantTotalPages
                                             </span>
@@ -404,9 +819,7 @@
                                             <nav>
                                                 <ul class="pagination pagination-sm m-0">
 
-                                                    <!-- PREVIOUS -->
                                                     <li class="page-item @(applicantCurrentPage <= 1 ? "disabled" : "")">
-
                                                         @if (applicantCurrentPage > 1)
                                                         {
                                                             <a class="page-link"
@@ -414,48 +827,38 @@
                                                                asp-action="Career"
                                                                asp-route-page="@ViewBag.CurrentPage"
                                                                asp-route-applicantPage="@(applicantCurrentPage - 1)"
-                                                               style="background:#1c1c1c;
-                                      border-color:#2a2a2a;
-                                      color:#e0e0e0;">
+                                                               asp-route-positionId="@selectedPositionId"
+                                                               style="background:#1c1c1c;border-color:#2a2a2a;color:#e0e0e0;">
                                                                 Prev
                                                             </a>
                                                         }
                                                         else
                                                         {
                                                             <span class="page-link"
-                                                                  style="background:#1c1c1c;
-                                         border-color:#2a2a2a;
-                                         color:#666;">
+                                                                  style="background:#1c1c1c;border-color:#2a2a2a;color:#666;">
                                                                 Prev
                                                             </span>
                                                         }
-
                                                     </li>
 
-
-                                                    <!-- PAGE NUMBERS -->
                                                     @for (int i = 1; i <= applicantTotalPages; i++)
                                                     {
                                                         <li class="page-item @(i == applicantCurrentPage ? "active" : "")">
-
                                                             <a class="page-link"
                                                                asp-controller="Admin"
                                                                asp-action="Career"
                                                                asp-route-page="@ViewBag.CurrentPage"
                                                                asp-route-applicantPage="@i"
-                                                               style="background:@(i == applicantCurrentPage ? "#0d6efd" : "#1c1c1c");
-                                      border-color:@(i == applicantCurrentPage ? "#0d6efd" : "#2a2a2a");
-                                      color:#fff;">
+                                                               asp-route-positionId="@selectedPositionId"
+                                                               style="background:@(i == applicantCurrentPage ? "#E0A458" : "#1c1c1c");
+                                                                                      border-color:@(i == applicantCurrentPage ? "#E0A458" : "#2a2a2a");
+                                                                                      color:@(i == applicantCurrentPage ? "#10131A" : "#fff");">
                                                                 @i
                                                             </a>
-
                                                         </li>
                                                     }
 
-
-                                                    <!-- NEXT -->
                                                     <li class="page-item @(applicantCurrentPage >= applicantTotalPages ? "disabled" : "")">
-
                                                         @if (applicantCurrentPage < applicantTotalPages)
                                                         {
                                                             <a class="page-link"
@@ -463,79 +866,58 @@
                                                                asp-action="Career"
                                                                asp-route-page="@ViewBag.CurrentPage"
                                                                asp-route-applicantPage="@(applicantCurrentPage + 1)"
-                                                               style="background:#1c1c1c;
-                                      border-color:#2a2a2a;
-                                      color:#e0e0e0;">
+                                                               asp-route-positionId="@selectedPositionId"
+                                                               style="background:#1c1c1c;border-color:#2a2a2a;color:#e0e0e0;">
                                                                 Next
                                                             </a>
                                                         }
                                                         else
                                                         {
                                                             <span class="page-link"
-                                                                  style="background:#1c1c1c;
-                                         border-color:#2a2a2a;
-                                         color:#666;">
+                                                                  style="background:#1c1c1c;border-color:#2a2a2a;color:#666;">
                                                                 Next
                                                             </span>
                                                         }
-
                                                     </li>
 
                                                 </ul>
                                             </nav>
-
                                         </div>
-                                     
                                     </div>
-                                
                                 }
                                 else
                                 {
                                     <div class="text-center py-5">
-
                                         <i class="bi bi-person-x fs-1 text-secondary"></i>
-
-                                        <h5 class="text-white mt-3">
-                                            No Applications
-                                        </h5>
-
+                                        <h5 class="text-white mt-3">No Applications</h5>
                                         <p class="text-secondary mb-0">
                                             No career applications have been submitted yet.
                                         </p>
-
                                     </div>
                                 }
-
                             </div>
 
-
                             <div class="modal-footer">
-
                                 <span class="text-secondary me-auto">
                                     Total Applicants:
-                                    <strong class="text-white">
-                                        @ViewBag.TotalApplicants
-                                    </strong>
+                                    <strong class="text-white">@ViewBag.TotalApplicants</strong>
                                 </span>
 
-                                <button type="button"
-                                        class="btn btn-secondary"
-                                        data-bs-dismiss="modal">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                     Close
                                 </button>
-
                             </div>
 
                         </div>
-
                     </div>
-
                 </div>
+
                 <!-- Career Table -->
                 <div class="card card-dark">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <span class="fw-semibold">All Positions</span>
                     </div>
+
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-dark table-hover mb-0">
@@ -543,7 +925,6 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Position Title</th>
-                                        @* <th>Department</th> *@
                                         <th>Location</th>
                                         <th>Type</th>
                                         <th>Status</th>
@@ -554,71 +935,64 @@
                                 <tbody>
                                     @if (Model != null && Model.Any())
                                     {
-                                        int count = 1;
+                                        int posCurrentPage = ViewBag.CurrentPage ?? 1;
+                                        int posPageSize = ViewBag.PageSize ?? 10;
+                                        int count = (posCurrentPage - 1) * posPageSize + 1;
 
                                         foreach (var position in Model)
                                         {
                                             <tr>
                                                 <td>@count</td>
 
-                                                <td class="text-white fw-medium">
+                                                <td class="text-white fw-medium" data-label="Position">
                                                     @position.JobTitle
                                                 </td>
 
-                                                @* <td>
-                                                    -
-                                                </td> *@
+                                                <td data-label="Location">@position.Location</td>
+                                                <td data-label="Type">@position.Type</td>
 
-                                                <td>
-                                                    @position.Location
-                                                </td>
-
-                                                <td>
-                                                    @position.Type
-                                                </td>
-
-                                                <td>
+                                                <td data-label="Status">
                                                     @if (position.Status == "Open")
                                                     {
-                                                        <span class="badge bg-success status-badge">
-                                                            Open
-                                                        </span>
+                                                        <span class="badge bg-success status-badge">Open</span>
                                                     }
                                                     else
                                                     {
-                                                        <span class="badge bg-secondary status-badge">
-                                                            Closed
-                                                        </span>
+                                                        <span class="badge bg-secondary status-badge">Closed</span>
                                                     }
                                                 </td>
 
-                                                <td>
+                                                <td data-label="Posted">
                                                     @position.PostedDate.ToString("MMM dd, yyyy")
                                                 </td>
 
-                                                <td class="text-center">
-                                                    <a asp-controller="Admin"
-                                                       asp-action="EditPosition"
-                                                       asp-route-id="@position.Id"
-                                                       class="btn btn-outline-primary btn-sm">
-                                                        <i class="bi bi-pencil"></i>
-                                                    </a>
+                                                <td>
+                                                    <div class="action-wrap">
 
-                                                    <!-- DELETE -->
-                                                    <form asp-controller="Admin"
-                                                          asp-action="DeletePosition"
-                                                          asp-route-id="@position.Id"
-                                                          method="post"
-                                                          class="d-inline delete-position-form">
+                                                        <!-- EDIT -->
+                                                        <a asp-controller="Admin"
+                                                           asp-action="EditPosition"
+                                                           asp-route-id="@position.Id"
+                                                           class="btn-action-view"
+                                                           title="Edit">
+                                                            <i class="bi bi-pencil-fill"></i>
+                                                        </a>
 
-                                                        @Html.AntiForgeryToken()
+                                                        <!-- DELETE -->
+                                                        <form asp-controller="Admin"
+                                                              asp-action="DeletePosition"
+                                                              asp-route-id="@position.Id"
+                                                              method="post"
+                                                              class="d-inline delete-position-form">
+                                                            @Html.AntiForgeryToken()
+                                                            <button type="submit"
+                                                                    class="btn-action-delete"
+                                                                    title="Delete">
+                                                                <i class="bi bi-trash3-fill"></i>
+                                                            </button>
+                                                        </form>
 
-                                                        <button type="submit"
-                                                                class="btn btn-outline-danger btn-sm">
-                                                            <i class="bi bi-trash3"></i>
-                                                        </button>
-
-                                                    </form>
+                                                    </div>
                                                 </td>
                                             </tr>
 
@@ -628,7 +1002,7 @@
                                     else
                                     {
                                         <tr>
-                                            <td colspan="8" class="text-center text-secondary py-4">
+                                            <td colspan="7" class="text-center text-secondary py-4">
                                                 No positions available.
                                             </td>
                                         </tr>
@@ -637,9 +1011,8 @@
                             </table>
                         </div>
                     </div>
-                   
-                    <div class="card-footer d-flex justify-content-between align-items-center">
 
+                    <div class="card-footer d-flex justify-content-between align-items-center">
                         @{
                             int currentPage = ViewBag.CurrentPage ?? 1;
                             int totalPages = ViewBag.TotalPages ?? 1;
@@ -652,110 +1025,86 @@
                         <nav>
                             <ul class="pagination pagination-sm m-0">
 
-                                <!-- PREVIOUS -->
                                 <li class="page-item @(currentPage <= 1 ? "disabled" : "")">
-
                                     @if (currentPage > 1)
                                     {
                                         <a class="page-link"
                                            asp-controller="Admin"
                                            asp-action="Career"
                                            asp-route-page="@(currentPage - 1)"
-                                           style="background:#1c1c1c;
-                                  border-color:#2a2a2a;
-                                  color:#e0e0e0;">
+                                           style="background:#1c1c1c;border-color:#2a2a2a;color:#e0e0e0;">
                                             Prev
                                         </a>
                                     }
                                     else
                                     {
                                         <span class="page-link"
-                                              style="background:#1c1c1c;
-                                     border-color:#2a2a2a;
-                                     color:#666;">
+                                              style="background:#1c1c1c;border-color:#2a2a2a;color:#666;">
                                             Prev
                                         </span>
                                     }
-
                                 </li>
 
-                                <!-- PAGE NUMBERS -->
                                 @for (int i = 1; i <= totalPages; i++)
                                 {
                                     <li class="page-item @(i == currentPage ? "active" : "")">
-
                                         <a class="page-link"
                                            asp-controller="Admin"
                                            asp-action="Career"
                                            asp-route-page="@i"
-                                           style="background:@(i == currentPage ? "#0d6efd" : "#1c1c1c");
-                                  border-color:@(i == currentPage ? "#0d6efd" : "#2a2a2a");
-                                  color:#fff;">
+                                           style="background:@(i == currentPage ? "#E0A458" : "#1c1c1c");
+                                                          border-color:@(i == currentPage ? "#E0A458" : "#2a2a2a");
+                                                          color:@(i == currentPage ? "#10131A" : "#fff");">
                                             @i
                                         </a>
-
                                     </li>
                                 }
 
-                                <!-- NEXT -->
                                 <li class="page-item @(currentPage >= totalPages ? "disabled" : "")">
-
                                     @if (currentPage < totalPages)
                                     {
                                         <a class="page-link"
                                            asp-controller="Admin"
                                            asp-action="Career"
                                            asp-route-page="@(currentPage + 1)"
-                                           style="background:#1c1c1c;
-                                  border-color:#2a2a2a;
-                                  color:#e0e0e0;">
+                                           style="background:#1c1c1c;border-color:#2a2a2a;color:#e0e0e0;">
                                             Next
                                         </a>
                                     }
                                     else
                                     {
                                         <span class="page-link"
-                                              style="background:#1c1c1c;
-                                     border-color:#2a2a2a;
-                                     color:#666;">
+                                              style="background:#1c1c1c;border-color:#2a2a2a;color:#666;">
                                             Next
                                         </span>
                                     }
-
                                 </li>
 
                             </ul>
                         </nav>
-
                     </div>
-                
-
                 </div>
 
             </main>
         </div>
     </div>
-   
-<div class="modal fade" id="addCareerModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
 
-            <div class="modal-header">
-                <h5 class="modal-title text-white">
-                    <i class="bi bi-person-plus text-primary me-2"></i>
-                    Career Application
-                </h5>
+    <!-- ADD POSITION MODAL -->
+    <div class="modal fade" id="addCareerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
 
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal">
-                </button>
-            </div>
+                <div class="modal-header">
+                    <h5 class="modal-title text-white">
+                        <i class="bi bi-person-plus text-primary me-2"></i>
+                        Career Application
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
 
-                <form asp-controller="Admin"
-                      asp-action="AddPosition"
-                      method="post">
+                <form asp-controller="Admin" asp-action="AddPosition" method="post">
                     @Html.AntiForgeryToken()
+
                     <div class="mb-3">
                         <label for="posTitle" class="form-label">Job Title <span class="text-danger">*</span></label>
                         <input type="text"
@@ -765,6 +1114,7 @@
                                placeholder="e.g. Senior Frontend Developer"
                                required />
                     </div>
+
                     <div class="mb-3">
                         <label for="posDesc" class="form-label">Description <span class="text-danger">*</span></label>
                         <textarea class="form-control form-control-dark"
@@ -774,6 +1124,7 @@
                                   placeholder="Brief description of the role..."
                                   required></textarea>
                     </div>
+
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="posLocation" class="form-label">Location</label>
@@ -785,96 +1136,76 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="posType" class="form-label">Type</label>
-                            <select class="form-select form-select-dark"
-                                    id="posType"
-                                    name="Type">
-
+                            <select class="form-select form-select-dark" id="posType" name="Type">
                                 <option value="Full-time">Full-time</option>
                                 <option value="Part-time">Part-time</option>
                                 <option value="Contract">Contract</option>
                                 <option value="Internship">Internship</option>
-
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-danger w-100  mb-2" >
+
+                    <button type="submit" class="btn btn-danger w-100 mb-2">
                         <i class="bi bi-send"></i> Publish Position
                     </button>
                 </form>
 
+            </div>
         </div>
     </div>
-</div>
+
+    <!-- VIEW APPLICATION MODAL -->
     <div class="modal fade" id="viewApplicationModal" tabindex="-1">
-
         <div class="modal-dialog modal-lg modal-dialog-centered">
-
             <div class="modal-content">
 
                 <div class="modal-header">
-
                     <h5 class="modal-title text-white">
                         <i class="bi bi-person-vcard text-primary me-2"></i>
                         Application Details
                     </h5>
-
-                    <button type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal">
-                    </button>
-
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
                 <div class="modal-body">
-
                     <div class="row g-3">
-
                         <div class="col-md-6">
                             <label class="form-label">Full Name</label>
                             <div id="viewFullName" class="text-white"></div>
                         </div>
-
                         <div class="col-md-6">
                             <label class="form-label">Email</label>
                             <div id="viewEmail" class="text-white"></div>
                         </div>
-
                         <div class="col-md-6">
                             <label class="form-label">Phone</label>
                             <div id="viewPhone" class="text-white"></div>
                         </div>
-
                         <div class="col-md-6">
                             <label class="form-label">Position</label>
                             <div id="viewPosition" class="text-white"></div>
                         </div>
-
                         <div class="col-md-6">
                             <label class="form-label">LinkedIn</label>
                             <div id="viewLinkedIn"></div>
                         </div>
-
                         <div class="col-md-6">
                             <label class="form-label">Resume</label>
                             <div id="viewResume"></div>
                         </div>
-
                         <div class="col-md-6">
                             <label class="form-label">Applied At</label>
                             <div id="viewAppliedAt" class="text-white"></div>
                         </div>
-
                     </div>
-
                 </div>
 
             </div>
-
         </div>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     @if (TempData["Success"] != null)
     {
         <script>
@@ -883,25 +1214,22 @@
                     icon: "success",
                     title: "Success!",
                     text: "@TempData["Success"]",
-                    confirmButtonText: "OK"
+                    confirmButtonText: "OK",
+                    confirmButtonColor: "#E0A458"
                 });
             });
         </script>
     }
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
 
             document.querySelectorAll(".view-application").forEach(function (button) {
-
                 button.addEventListener("click", async function () {
-
                     const id = this.getAttribute("data-id");
 
                     try {
-
-                        const response = await fetch(
-                            `/Admin/ViewApplication?id=${id}`
-                        );
+                        const response = await fetch(`/Admin/ViewApplication?id=${id}`);
 
                         if (!response.ok) {
                             throw new Error("Application not found");
@@ -909,125 +1237,76 @@
 
                         const data = await response.json();
 
-                        document.getElementById("viewFullName").textContent =
-                            data.fullName || "N/A";
-
-                        document.getElementById("viewEmail").textContent =
-                            data.emailAddress || "N/A";
-
-                        document.getElementById("viewPhone").textContent =
-                            data.phoneNumber || "N/A";
-
+                        document.getElementById("viewFullName").textContent = data.fullName || "N/A";
+                        document.getElementById("viewEmail").textContent = data.emailAddress || "N/A";
+                        document.getElementById("viewPhone").textContent = data.phoneNumber || "N/A";
                         document.getElementById("viewAppliedAt").textContent =
-                            data.appliedAt
-                                ? new Date(data.appliedAt).toLocaleString()
-                                : "N/A";
+                            data.appliedAt ? new Date(data.appliedAt).toLocaleString() : "N/A";
 
-
-                        // LinkedIn
                         if (data.linkedInProfile) {
-
                             document.getElementById("viewLinkedIn").innerHTML =
-                                `<a href="${data.linkedInProfile}"
-                                    target="_blank"
-                                    class="btn btn-outline-primary btn-sm">
-                                    <i class="bi bi-linkedin"></i>
-                                    Open LinkedIn
+                                `<a href="${data.linkedInProfile}" target="_blank" class="btn-action-view" style="width:auto;padding:6px 14px;gap:5px;">
+                                    <i class="bi bi-linkedin"></i> Open LinkedIn
                                 </a>`;
-
                         } else {
-
                             document.getElementById("viewLinkedIn").innerHTML =
                                 `<span class="text-secondary">N/A</span>`;
-
                         }
 
-
-                        // Resume
                         if (data.resumeFilePath) {
-
                             document.getElementById("viewResume").innerHTML =
-                                `<a href="${data.resumeFilePath}"
-                                    target="_blank"
-                                    class="btn btn-danger btn-sm">
-                                    <i class="bi bi-file-earmark-text"></i>
-                                    View Resume
+                                `<a href="${data.resumeFilePath}" target="_blank" class="btn-action-view" style="width:auto;padding:6px 14px;gap:5px;">
+                                    <i class="bi bi-file-earmark-text-fill"></i> View Resume
                                 </a>`;
-
                         } else {
-
                             document.getElementById("viewResume").innerHTML =
                                 `<span class="text-secondary">N/A</span>`;
-
                         }
 
+                        document.getElementById("viewPosition").textContent = data.position || "N/A";
 
-                        // Position
-                           document.getElementById("viewPosition").textContent =
-        data.position || "N/A";
-
-
-                        const modal =
-                            new bootstrap.Modal(
-                                document.getElementById("viewApplicationModal")
-                            );
-
+                        const modal = new bootstrap.Modal(document.getElementById("viewApplicationModal"));
                         modal.show();
-
                     }
                     catch (error) {
-
                         Swal.fire({
                             icon: "error",
                             title: "Error",
-                            text: "Unable to load application details."
+                            text: "Unable to load application details.",
+                            confirmButtonColor: "#E0A458"
                         });
-
                     }
-
                 });
-
             });
 
+            document.querySelectorAll(".delete-application-form").forEach(function (form) {
+                form.addEventListener("submit", function (e) {
+                    e.preventDefault();
 
-            // DELETE CONFIRMATION
-            document.querySelectorAll(".delete-application-form")
-                .forEach(function (form) {
-
-                    form.addEventListener("submit", function (e) {
-
-                        e.preventDefault();
-
-                        Swal.fire({
-                            title: "Are you sure?",
-                            text: "This application will be permanently deleted!",
-                            icon: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#dc3545",
-                            cancelButtonColor: "#6c757d",
-                            confirmButtonText: "Yes, delete it!",
-                            cancelButtonText: "Cancel"
-                        }).then((result) => {
-
-                            if (result.isConfirmed) {
-                                form.submit();
-                            }
-
-                        });
-
+                    Swal.fire({
+                        title: "Are you sure?",
+                        text: "This application will be permanently deleted!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#E0A458",
+                        cancelButtonColor: "#6c757d",
+                        confirmButtonText: "Yes, delete it!",
+                        cancelButtonText: "Cancel"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
                     });
-
                 });
-
+            });
         });
     </script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
 
             document.querySelectorAll(".delete-position-form").forEach(function (form) {
-
                 form.addEventListener("submit", function (e) {
-
                     e.preventDefault();
 
                     Swal.fire({
@@ -1035,51 +1314,36 @@
                         text: "This position will be permanently deleted!",
                         icon: "warning",
                         showCancelButton: true,
-                        confirmButtonColor: "#dc3545",
+                        confirmButtonColor: "#E0A458",
                         cancelButtonColor: "#6c757d",
                         confirmButtonText: "Yes, delete it!",
                         cancelButtonText: "Cancel"
                     }).then((result) => {
-
                         if (result.isConfirmed) {
                             form.submit();
                         }
-
                     });
-
                 });
-
             });
-
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <!-- tumhara existing JS -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-
             const params = new URLSearchParams(window.location.search);
             const applicantPage = params.get("applicantPage");
 
             if (applicantPage) {
-
-                const applicantsModal =
-                    document.getElementById("applicantsModal");
+                const applicantsModal = document.getElementById("applicantsModal");
 
                 if (applicantsModal) {
-
-                    const modal =
-                        new bootstrap.Modal(applicantsModal);
-
+                    const modal = new bootstrap.Modal(applicantsModal);
                     modal.show();
                 }
             }
-
         });
     </script>
-   
+
 </body>

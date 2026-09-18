@@ -43,7 +43,7 @@
         ===================================================== */
 
     .hero {
-        min-height: 500px;
+      
         background: radial-gradient(circle at 80% 45%, rgba(237, 0, 28, 0.18), transparent 32%), linear-gradient(110deg, #0b090a 0%, #11090b 55%, #12090b 100%);
         color: white;
         padding: 65px 0 70px;
@@ -51,7 +51,7 @@
     }
 
     .hero-content {
-        padding-top: 25px;
+        padding-top: 20px;
     }
 
     .back-link {
@@ -137,74 +137,7 @@
         }
 
 
-    /* =====================================================
-           HERO MOBILE APP FRAME
-        ===================================================== */
-
-    .hero-visual {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        padding: 15px 0;
-    }
-
-    .mobile-frame {
-        position: relative;
-        width: 215px;
-        height: 350px;
-        background: #050505;
-        border: 8px solid #242424;
-        border-radius: 35px;
-        padding: 8px;
-        box-shadow: 0 0 0 1px #555, 0 25px 60px rgba(0, 0, 0, .55), 0 0 55px rgba(237, 0, 28, .14);
-        transform: rotate(4deg);
-        transition: .4s ease;
-    }
-
-        .mobile-frame:hover {
-            transform: rotate(0deg) translateY(-8px);
-            box-shadow: 0 0 0 1px #777, 0 30px 70px rgba(0, 0, 0, .65), 0 0 65px rgba(237, 0, 28, .20);
-        }
-
-        .mobile-frame::before {
-            content: "";
-            position: absolute;
-            top: -2px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 75px;
-            height: 18px;
-            background: #050505;
-            border-radius: 0 0 12px 12px;
-            z-index: 3;
-        }
-
-        .mobile-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 25px;
-            display: block;
-        }
-
-    .mobile-frame-badge {
-        position: absolute;
-        right: -70px;
-        bottom: 50px;
-        background: #ed001c;
-        color: #fff;
-        padding: 10px 14px;
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        box-shadow: 0 8px 25px rgba(237, 0, 28, .25);
-    }
-
-        .mobile-frame-badge i {
-            margin-right: 5px;
-        }
-
+  
 
     /* =====================================================
            COMMON
@@ -232,7 +165,7 @@
     .section-text {
         color: #666;
         font-size: 16px;
-        line-height: 1.8;
+        line-height: 1.2;
     }
 
 
@@ -263,11 +196,11 @@
         }
 
     .stats {
-        margin-top: 35px;
+        margin-top: 15px;
     }
 
     .stat-number {
-        font-size: 18px;
+        font-size: 14px;
         font-weight: 700;
         color: #111;
     }
@@ -349,6 +282,7 @@
         background: #fff;
         border: 1px solid #e5e5e5;
         padding: 30px;
+        border-radius: 12px;
         height: 100%;
         transition: .3s ease;
     }
@@ -484,16 +418,16 @@
     }
 
     .testimonial {
-        background: #dbd4d6;
+      
         color: #141313;
         padding: 55px 80px;
         margin: 0;
         position: relative;
-        border-left: 4px solid #ed001c;
+       
     }
 
         .testimonial::before {
-            content: "“";
+            content: "";
             position: absolute;
             top: 20px;
             left: 35px;
@@ -579,27 +513,7 @@
         }
 
 
-    /* =====================================================
-           WHATSAPP
-        ===================================================== */
-
-    .whatsapp {
-        position: fixed;
-        right: 27px;
-        bottom: 25px;
-        width: 49px;
-        height: 49px;
-        background: #20d366;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 25px;
-        z-index: 1000;
-        box-shadow: 0 4px 20px rgba(0,0,0,.3);
-    }
-
+   
 
     /* =====================================================
            RESPONSIVE
@@ -722,7 +636,7 @@
 
     <div class="container px-5">
 
-        <div class="row align-items-center">
+        <di class="row align-items-center">
 
             <!-- LEFT CONTENT -->
 
@@ -730,9 +644,9 @@
 
                 <div class="hero-content">
 
-                    <div class="hero-icon">
+                  @*   <div class="hero-icon">
                         <i class="bi bi-phone"></i>
-                    </div>
+                    </div> *@
 
                     <h1>
                         Mobile <span>Apps</span>
@@ -765,7 +679,7 @@
 
             <!-- RIGHT MOBILE APP FRAME -->
 
-            <div class="col-lg-5">
+          @*   <div class="col-lg-5">
 
                 <div class="hero-visual">
 
@@ -783,9 +697,9 @@
 
                 </div>
 
-            </div>
+            </div> *@
 
-        </div>
+        </di        v>
 
     </div>
    
@@ -924,10 +838,10 @@
 
                 </div>
 
-                <a href="#" class="work-link">
+                @* <a href="#" class="work-link">
                     Explore Our Apps
                     <i class="bi bi-arrow-right ms-1"></i>
-                </a>
+                </a> *@
 
             </div>
 
@@ -1432,15 +1346,4 @@
     
 </section>
 
-<!-- =====================================================
-     WHATSAPP
-===================================================== -->
 
-<a href="#"
-   class="whatsapp"
-   title="Chat on WhatsApp">
-
-    <i class="bi bi-whatsapp"></i>
-   
-
-</a>

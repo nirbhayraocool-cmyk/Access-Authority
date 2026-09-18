@@ -116,7 +116,6 @@ namespace Access_Authority.Controllers
 
             return View(model);
         }
-
         [HttpGet]
         public async Task<IActionResult> Career(int page = 1, int applicantPage = 1, int? positionId = null)
         {
@@ -171,33 +170,25 @@ namespace Access_Authority.Controllers
             // =========================
 
             ViewBag.CareerApplications = applications;
-
             ViewBag.AllCareerPositions = allPositions;
-
             ViewBag.SelectedPositionId = positionId;
 
+            // Positions pagination
             ViewBag.CurrentPage = page;
-
-            ViewBag.TotalPages = (int)Math.Ceiling(
-                totalPositions / (double)pageSize
-            );
-
+            ViewBag.PageSize = pageSize;              // 👈 ADDED
+            ViewBag.TotalPages = (int)Math.Ceiling(totalPositions / (double)pageSize);
             ViewBag.TotalPositions = totalPositions;
 
+            // Applicants pagination
             ViewBag.ApplicantCurrentPage = applicantPage;
-
+            ViewBag.ApplicantPageSize = applicantPageSize;   // 👈 ADDED
             ViewBag.ApplicantTotalPages = Math.Max(
                 1,
-                (int)Math.Ceiling(
-                    totalApplicants / (double)applicantPageSize
-                )
+                (int)Math.Ceiling(totalApplicants / (double)applicantPageSize)
             );
-
-            ViewBag.TotalApplicants = totalApplicants;
 
             return View(positions);
         }
-
         // VIEW APPLICATION
         [HttpGet]
         public async Task<IActionResult> ViewApplication(int id)
@@ -346,6 +337,7 @@ namespace Access_Authority.Controllers
 
             ViewBag.TotalPosts = totalPosts;
             ViewBag.CurrentPage = page;
+            ViewBag.PageSize = pageSize;                    // 👈 ADDED
             ViewBag.TotalPages = (int)Math.Ceiling((double)totalPosts / pageSize);
 
             return View(blogs);
@@ -439,11 +431,23 @@ namespace Access_Authority.Controllers
 
             return RedirectToAction(nameof(Blog));
         }
-        public async Task<IActionResult> Contact()
+        [HttpGet]
+        public async Task<IActionResult> Contact(int page = 1)
         {
+            int pageSize = 5;
+
+            var totalContacts = await _Context.ContactViewModels.CountAsync();
+
             var contacts = await _Context.ContactViewModels
                 .OrderBy(x => x.CreatedAt)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.PageSize = pageSize;                 // 👈 zaroori
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalContacts / pageSize);
+            ViewBag.TotalContacts = totalContacts;
 
             return View(contacts);
         }
@@ -610,6 +614,9 @@ namespace Access_Authority.Controllers
             ViewBag.TotalPages = totalPages;
             ViewBag.TotalProjects = totalProjects;
 
+            ViewBag.PageSize = pageSize;              // 👈 ye add karo
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalProjects / pageSize);
+           
             return View(projects);
         }
         [HttpPost]

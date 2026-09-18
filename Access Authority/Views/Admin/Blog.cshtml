@@ -9,11 +9,16 @@
     var pendingPosts = Model?.Count(x => x.Status.ToLower() == "pending") ?? 0;
 
     int currentPage = ViewBag.CurrentPage ?? 1;
+    int pageSize = ViewBag.PageSize ?? 5;
     int totalPages = ViewBag.TotalPages ?? 1;
-    int totalBlogs = ViewBag.TotalBlogs ?? 0;
+    int totalBlogs = ViewBag.TotalPosts ?? 0;
 }
+
 <style>
-   
+    /* ============================================
+           THEME COLORS (Dashboard Gold Theme)
+        ============================================ */
+
     /* Dark Cards */
     .card-dark {
         background-color: #1c1c1c;
@@ -29,6 +34,15 @@
         .card-dark .card-footer {
             border-top: 1px solid #2a2a2a;
             background-color: transparent;
+        }
+
+    /* Page Heading - Gold */
+    .blog-heading {
+        color: #E0A458 !important;
+    }
+
+        .blog-heading span {
+            color: #8a8a8a !important;
         }
 
     /* Dark Table */
@@ -50,29 +64,89 @@
 
         .table-dark-custom thead th {
             background-color: #0a0a0a;
-            color: #a0a0a0;
-            font-weight: 600;
-            border-bottom: 2px solid #2a2a2a;
+            color: #E0A458; /* Table header gold */
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: .5px;
         }
 
-    /* Dark form controls */
-    .form-control-dark {
-        background-color: #1c1c1c;
-        border: 1px solid #2a2a2a;
-        color: #ffffff;
-    }
-
-        .form-control-dark:focus {
-            background-color: #1c1c1c;
-            border-color: #0d6efd;
-            color: #ffffff;
-            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
-        }
-
+    /* Status Badges */
     .status-badge {
         font-size: 0.7rem;
-       
+        padding: 5px 12px;
     }
+
+    /* ============================================
+           ACTION BUTTONS
+        ============================================ */
+    .btn-action {
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        transition: .25s;
+        padding: 0;
+        cursor: pointer;
+        box-sizing: border-box;
+        font-size: 14px;
+        vertical-align: middle;
+        line-height: 1;
+    }
+
+    .btn-view {
+        color: #E0A458;
+        border: 1px solid rgba(224,164,88,.35);
+        background: rgba(224,164,88,.08);
+        text-decoration: none;
+    }
+
+        .btn-view:hover {
+            background: #E0A458;
+            color: #10131A;
+        }
+
+    .btn-del {
+        color: #C6614E;
+        border: 1px solid rgba(198,97,78,.35);
+        background: rgba(198,97,78,.08);
+    }
+
+        .btn-del:hover {
+            background: #C6614E;
+            color: #fff;
+        }
+
+    /* Action cell alignment FIXED */
+    .blog-table td:last-child {
+        white-space: nowrap;
+        text-align: center;
+        vertical-align: middle !important;
+    }
+
+        /* Action wrapper - ek line me align */
+        .blog-table td:last-child .action-wrap {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            vertical-align: middle;
+        }
+
+        .blog-table td:last-child form {
+            display: inline-flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            vertical-align: middle;
+        }
+
+        .blog-table td:last-child .btn-action {
+            margin: 0;
+            flex-shrink: 0;
+        }
 
     /* Dark pagination */
     .page-link-dark {
@@ -88,28 +162,342 @@
         }
 
     .page-item.active .page-link-dark {
-        background-color: #0d6efd;
-        border-color: #0d6efd;
-        color: #ffffff;
+        background-color: #E0A458;
+        border-color: #E0A458;
+        color: #10131A;
+        font-weight: 700;
     }
 
-  
+    /* ============================================
+           TABLET (<= 991px)
+        ============================================ */
+    @@media (max-width: 991px) {
+        .container.bg-dark.px-5 {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+        }
+    }
+
+    /* ============================================
+           MOBILE (<= 767px)
+        ============================================ */
+    @@media (max-width: 767px) {
+
+        .container.bg-dark.px-5 {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+        }
+
+        main.p-4 {
+            padding: 10px !important;
+        }
+        /* Heading */
+        .blog-heading {
+            font-size: 18px !important;
+        }
+        /* Stats 2x2 grid */
+        .row.g-3.mb-4 {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+            margin: 0 0 16px 0 !important;
+        }
+
+            .row.g-3.mb-4 > [class*="col-"] {
+                width: 100% !important;
+                max-width: 100% !important;
+                flex: none !important;
+                padding: 0 !important;
+            }
+
+        .card.card-dark.p-3 {
+            padding: 12px !important;
+            margin: 0 !important;
+        }
+
+            .card.card-dark.p-3 > span {
+                font-size: 11px !important;
+            }
+
+            .card.card-dark.p-3 > h2 {
+                font-size: 22px !important;
+                margin: 4px 0 0 0 !important;
+            }
+        /* Card header stack */
+        .card-header.d-flex {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 10px !important;
+        }
+
+        .card-header .btn-danger {
+            width: 100% !important;
+            padding: 9px !important;
+            font-size: 13px !important;
+        }
+        /* ============================================
+               TABLE -> CARDS
+            ============================================ */
+        .table-responsive {
+            overflow-x: visible !important;
+        }
+
+            .table-responsive > table {
+                display: block !important;
+                width: 100% !important;
+                border-collapse: separate !important;
+                border-spacing: 0 !important;
+                margin: 0 !important;
+                background: transparent !important;
+            }
+
+                .table-responsive > table > thead {
+                    display: none !important;
+                }
+
+                .table-responsive > table > tbody {
+                    display: block !important;
+                    width: 100% !important;
+                }
+                    /* Each row = a card */
+                    .table-responsive > table > tbody > tr {
+                        display: block !important;
+                        width: 100% !important;
+                        background: #1f1f1f !important;
+                        border: 1px solid #2a2a2a !important;
+                        border-radius: 12px !important;
+                        margin: 0 0 14px 0 !important;
+                        padding: 0 !important;
+                        overflow: hidden !important;
+                        box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+                    }
+
+                        .table-responsive > table > tbody > tr:last-child {
+                            margin-bottom: 0 !important;
+                        }
+                        /* Each td = a row inside card */
+                        .table-responsive > table > tbody > tr > td {
+                            display: flex !important;
+                            justify-content: space-between !important;
+                            align-items: center !important;
+                            width: 100% !important;
+                            padding: 10px 16px !important;
+                            margin: 0 !important;
+                            border: none !important;
+                            border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+                            text-align: right !important;
+                            font-size: 13px !important;
+                            line-height: 1.45 !important;
+                            vertical-align: middle !important;
+                            word-break: break-word !important;
+                            overflow-wrap: anywhere !important;
+                            min-height: 44px !important;
+                            background-color: #1f1f1f !important;
+                            color: #c8c8c8 !important;
+                        }
+
+                            .table-responsive > table > tbody > tr > td:last-child {
+                                border-bottom: none !important;
+                            }
+                            /* data-label */
+                            .table-responsive > table > tbody > tr > td[data-label]::before {
+                                content: attr(data-label) !important;
+                                font-size: 10.5px !important;
+                                font-weight: 700 !important;
+                                color: #E0A458 !important;
+                                text-transform: uppercase !important;
+                                letter-spacing: 0.7px !important;
+                                text-align: left !important;
+                                flex-shrink: 0 !important;
+                                margin-right: 12px !important;
+                            }
+                            /* Hide serial number */
+                            .table-responsive > table > tbody > tr > td:first-child {
+                                display: none !important;
+                            }
+                            /* Title = top of card */
+                            .table-responsive > table > tbody > tr > td:nth-child(2) {
+                                display: block !important;
+                                padding: 14px 16px 12px 16px !important;
+                                background: rgba(224,164,88,0.08) !important;
+                                font-size: 15px !important;
+                                font-weight: 600 !important;
+                                color: #fff !important;
+                                text-align: left !important;
+                                border-bottom: 1px solid #2a2a2a !important;
+                                min-height: auto !important;
+                                line-height: 1.4 !important;
+                            }
+
+                                .table-responsive > table > tbody > tr > td:nth-child(2)::before {
+                                    content: 'TITLE' !important;
+                                    display: block !important;
+                                    margin-bottom: 4px !important;
+                                    font-size: 10px !important;
+                                    color: #E0A458 !important;
+                                    letter-spacing: 0.8px !important;
+                                    font-weight: 700 !important;
+                                    text-transform: uppercase !important;
+                                }
+                            /* ============================================
+               Action cell — buttons ek line me, aligned
+            ============================================ */
+                            .table-responsive > table > tbody > tr > td:last-child {
+                                display: flex !important;
+                                flex-direction: row !important;
+                                flex-wrap: nowrap !important;
+                                align-items: center !important;
+                                justify-content: flex-start !important;
+                                gap: 10px !important;
+                                padding: 12px 16px !important;
+                                background: rgba(0,0,0,0.25) !important;
+                                border-top: 1px solid #2a2a2a !important;
+                                min-height: auto !important;
+                                white-space: nowrap !important;
+                            }
+
+                                .table-responsive > table > tbody > tr > td:last-child::before {
+                                    display: none !important;
+                                }
+                                /* Reset action-wrap */
+                                .table-responsive > table > tbody > tr > td:last-child .action-wrap {
+                                    display: flex !important;
+                                    gap: 10px !important;
+                                    align-items: center !important;
+                                    width: 100% !important;
+                                }
+
+                                .table-responsive > table > tbody > tr > td:last-child > a,
+                                .table-responsive > table > tbody > tr > td:last-child > form {
+                                    flex: 0 0 auto !important;
+                                    width: auto !important;
+                                    margin: 0 !important;
+                                    padding: 0 !important;
+                                    display: inline-flex !important;
+                                    align-items: center !important;
+                                }
+                                /* Buttons ek line me, same size */
+                                .table-responsive > table > tbody > tr > td:last-child .btn-action {
+                                    width: auto !important;
+                                    min-width: 92px !important;
+                                    height: 38px !important;
+                                    display: inline-flex !important;
+                                    align-items: center !important;
+                                    justify-content: center !important;
+                                    font-size: 13px !important;
+                                    font-weight: 600 !important;
+                                    border-radius: 8px !important;
+                                    padding: 0 14px !important;
+                                    gap: 5px !important;
+                                    margin: 0 !important;
+                                }
+                                /* Text labels */
+                                .table-responsive > table > tbody > tr > td:last-child .btn-view::after {
+                                    content: 'View';
+                                    margin-left: 4px;
+                                }
+
+                                .table-responsive > table > tbody > tr > td:last-child .btn-del::after {
+                                    content: 'Delete';
+                                    margin-left: 4px;
+                                }
+        /* Footer + Pagination */
+        .card-footer.d-flex {
+            flex-direction: column !important;
+            gap: 10px !important;
+            align-items: stretch !important;
+            padding: 14px !important;
+        }
+
+        .card-footer .text-secondary {
+            text-align: center !important;
+        }
+
+        .card-footer nav {
+            width: 100% !important;
+        }
+
+        .pagination {
+            justify-content: center !important;
+            flex-wrap: wrap !important;
+        }
+
+            .pagination .page-link {
+                font-size: 12px !important;
+                padding: 6px 10px !important;
+            }
+    }
+
+    /* ============================================
+           EXTRA SMALL (<= 400px)
+        ============================================ */
+    @@media (max-width: 400px) {
+        .container.bg-dark.px-5 {
+            padding-left: 8px !important;
+            padding-right: 8px !important;
+        }
+
+        main.p-4 {
+            padding: 8px !important;
+        }
+
+        .blog-heading {
+            font-size: 16px !important;
+        }
+
+        .card.card-dark.p-3 > h2 {
+            font-size: 20px !important;
+        }
+
+        .card.card-dark.p-3 > span {
+            font-size: 10px !important;
+        }
+
+        .table-responsive > table > tbody > tr > td {
+            padding: 9px 12px !important;
+            font-size: 12px !important;
+        }
+
+            .table-responsive > table > tbody > tr > td:nth-child(2) {
+                padding: 12px 12px 10px 12px !important;
+                font-size: 14px !important;
+            }
+
+            .table-responsive > table > tbody > tr > td[data-label]::before {
+                font-size: 10px !important;
+            }
+            /* Action cell compact */
+            .table-responsive > table > tbody > tr > td:last-child {
+                gap: 8px !important;
+                padding: 10px 12px !important;
+            }
+
+                .table-responsive > table > tbody > tr > td:last-child .btn-action {
+                    min-width: 78px !important;
+                    height: 36px !important;
+                    font-size: 12px !important;
+                    padding: 0 10px !important;
+                }
+
+        .pagination .page-link {
+            padding: 5px 8px !important;
+            font-size: 11px !important;
+        }
+    }
 </style>
 
+<body class="bg-dark">
     <div class="container bg-dark px-5">
-        <div class="row ">
-
-         
+        <div class="row">
 
             <!-- ========== MAIN CONTENT (Blog Page) ========== -->
-        <main class=" p-4">
+            <main class="p-4">
 
                 <!-- Top Bar -->
                 <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
-                    <h4 class="text-white fw-light">
-                        Blog <span class="text-secondary">/ All Posts</span>
+                    <h4 class="blog-heading fw-light">
+                        Blog <span>/ All Posts</span>
                     </h4>
-                   
                 </div>
 
                 <!-- Stats Cards -->
@@ -117,25 +505,25 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="card card-dark p-3">
                             <span class="text-secondary">Total Posts</span>
-                        <h2 class="text-white fw-bold">@totalPosts</h2>
+                            <h2 class="text-white fw-bold">@totalPosts</h2>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="card card-dark p-3">
                             <span class="text-secondary">Published</span>
-                        <h2 class="text-success fw-bold">@publishedPosts</h2>
+                            <h2 class="text-success fw-bold">@publishedPosts</h2>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="card card-dark p-3">
                             <span class="text-secondary">Drafts</span>
-                        <h2 class="text-warning fw-bold">@draftPosts</h2>
+                            <h2 class="text-warning fw-bold">@draftPosts</h2>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="card card-dark p-3">
                             <span class="text-secondary">Pending</span>
-                        <h2 class="text-white fw-bold">@pendingPosts</h2>
+                            <h2 class="text-white fw-bold">@pendingPosts</h2>
                         </div>
                     </div>
                 </div>
@@ -144,15 +532,15 @@
                 <div class="card card-dark">
                     <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
                         <span class="fw-semibold">Recent Blog Posts</span>
-                        @* <button class="btn btn-primary btn-sm">
+
+                        <a asp-action="CreateBlog" class="btn btn-danger btn-sm">
                             <i class="bi bi-plus-lg"></i> Create New
-                        </button> *@
-                    <a asp-action="CreateBlog" class="btn btn-danger btn-sm"> <i class="bi bi-plus-lg"></i> Create New </a>
+                        </a>
                     </div>
 
                     <div class="card-body p-0">
                         <div class="table-responsive">
-                            <table class="table  table-hover table-dark">
+                            <table class="table table-hover table-dark blog-table">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -163,143 +551,135 @@
                                         <th class="text-center">Actions</th>
                                     </tr>
                                 </thead>
-                            <tbody>
+                                <tbody>
 
-                                @if (Model != null && Model.Any())
-                                {
-                                    int count = 1;
+                                    @if (Model != null && Model.Any())
+                                    {
+                                        int count = (currentPage - 1) * pageSize + 1;
 
-                                    foreach (var blog in Model)
+                                        foreach (var blog in Model)
+                                        {
+                                            <tr>
+                                                <td>@count</td>
+
+                                                <td class="text-white fw-medium" data-label="Title">
+                                                    @blog.Title
+                                                </td>
+
+                                                <td data-label="Category">
+                                                    @(string.IsNullOrWhiteSpace(blog.Category) ? "-" : blog.Category)
+                                                </td>
+
+                                                <td data-label="Status">
+                                                    @if (blog.Status.ToLower() == "published")
+                                                    {
+                                                        <span class="badge bg-success status-badge">
+                                                            Published
+                                                        </span>
+                                                    }
+                                                    else if (blog.Status.ToLower() == "draft")
+                                                    {
+                                                        <span class="badge bg-warning text-dark status-badge">
+                                                            Draft
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="badge bg-secondary status-badge">
+                                                            @blog.Status
+                                                        </span>
+                                                    }
+                                                </td>
+
+                                                <td data-label="Date">
+                                                    @blog.CreatedDate.ToLocalTime().ToString("dd MMM, yyyy")
+                                                </td>
+
+                                                <td>
+                                                    <div class="action-wrap">
+
+                                                        <!-- VIEW -->
+                                                        <a asp-action="ViewBlog"
+                                                           asp-route-id="@blog.Id"
+                                                           class="btn-action btn-view"
+                                                           title="View">
+                                                            <i class="bi bi-eye"></i>
+                                                        </a>
+
+                                                        <!-- DELETE -->
+                                                        <form asp-action="DeleteBlog"
+                                                              asp-route-id="@blog.Id"
+                                                              method="post"
+                                                              class="d-inline delete-blog-form">
+
+                                                            @Html.AntiForgeryToken()
+
+                                                            <button type="submit"
+                                                                    class="btn-action btn-del"
+                                                                    title="Delete">
+                                                                <i class="bi bi-trash3"></i>
+                                                            </button>
+
+                                                        </form>
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            count++;
+                                        }
+                                    }
+                                    else
                                     {
                                         <tr>
-                                            <td>@count</td>
-
-                                            <td class="text-white fw-medium">
-                                                @blog.Title
-                                            </td>
-
-                                            <td>
-                                                @blog.Category
-                                            </td>
-
-                                            <td>
-                                                @if (blog.Status.ToLower() == "published")
-                                                {
-                                                    <span class="badge bg-success status-badge">
-                                                        Published
-                                                    </span>
-                                                }
-                                                else if (blog.Status.ToLower() == "draft")
-                                                {
-                                                    <span class="badge bg-warning text-dark status-badge">
-                                                        Draft
-                                                    </span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="badge bg-secondary status-badge">
-                                                        @blog.Status
-                                                    </span>
-                                                }
-                                            </td>
-
-                                            <td>
-                                                @blog.CreatedDate.ToLocalTime().ToString("dd MMM, yyyy")
-                                            </td>
-
-                                            <td class="text-center">
-
-                                                <!-- VIEW -->
-                                                <a asp-action="ViewBlog"
-                                                   asp-route-id="@blog.Id"
-                                                   class="btn btn-outline-secondary btn-sm"
-                                                   title="View">
-                                                    <i class="bi bi-eye"></i>
-                                                </a>
-
-                                                <!-- DELETE -->
-                                                <form asp-action="DeleteBlog"
-                                                      asp-route-id="@blog.Id"
-                                                      method="post"
-                                                      class="d-inline delete-blog-form">
-
-                                                    @Html.AntiForgeryToken()
-
-                                                    <button type="submit"
-                                                            class="btn btn-outline-danger btn-sm"
-                                                            title="Delete">
-                                                        <i class="bi bi-trash3"></i>
-                                                    </button>
-
-                                                </form>
-
+                                            <td colspan="6" class="text-center text-secondary py-4">
+                                                No blog posts found.
                                             </td>
                                         </tr>
-
-                                        count++;
                                     }
-                                }
-                                else
-                                {
-                                    <tr>
-                                        <td colspan="6"
-                                            class="text-center text-secondary py-4">
-                                            No blog posts found.
-                                        </td>
-                                    </tr>
-                                }
 
-                            </tbody>
+                                </tbody>
                             </table>
                         </div>
                     </div>
 
                     <!-- Table Footer with Pagination -->
                     <div class="card-footer d-flex flex-wrap justify-content-between align-items-center">
-                    @* <span class="text-secondary">
-                        Showing @((currentPage - 1) * 5 + 1)
-                        -
-                        @(Math.Min(currentPage * 5, totalBlogs))
-                        of @totalBlogs posts
-                    </span> *@
-                    <div class="text-secondary small mt-2">
-                        Page @currentPage of @totalPages
-                    </div>
+                        <div class="text-secondary small mt-2">
+                            Page @currentPage of @totalPages
+                        </div>
+
                         <nav>
-                        <ul class="pagination pagination-sm m-0">
+                            <ul class="pagination pagination-sm m-0">
 
-                            <!-- Previous -->
-                            <li class="page-item @(currentPage == 1 ? "disabled" : "")">
-                                <a class="page-link page-link-dark"
-                                   asp-action="Blog"
-                                   asp-route-page="@(currentPage - 1)">
-                                    Previous
-                                </a>
-                            </li>
-
-                            <!-- Page Numbers -->
-                            @for (int i = 1; i <= totalPages; i++)
-                            {
-                                <li class="page-item @(i == currentPage ? "active" : "")">
+                                <li class="page-item @(currentPage == 1 ? "disabled" : "")">
                                     <a class="page-link page-link-dark"
                                        asp-action="Blog"
-                                       asp-route-page="@i">
-                                        @i
+                                       asp-route-page="@(currentPage - 1)">
+                                        Previous
                                     </a>
                                 </li>
-                            }
 
-                            <!-- Next -->
-                            <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
-                                <a class="page-link page-link-dark"
-                                   asp-action="Blog"
-                                   asp-route-page="@(currentPage + 1)">
-                                    Next
-                                </a>
-                            </li>
-                           
-                        </ul>
-                       
+                                @for (int i = 1; i <= totalPages; i++)
+                                {
+                                    <li class="page-item @(i == currentPage ? "active" : "")">
+                                        <a class="page-link page-link-dark"
+                                           asp-action="Blog"
+                                           asp-route-page="@i">
+                                            @i
+                                        </a>
+                                    </li>
+                                }
+
+                                <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                                    <a class="page-link page-link-dark"
+                                       asp-action="Blog"
+                                       asp-route-page="@(currentPage + 1)">
+                                        Next
+                                    </a>
+                                </li>
+
+                            </ul>
                         </nav>
                     </div>
                 </div>
@@ -307,6 +687,8 @@
             </main>
         </div>
     </div>
+</body>
+
 @if (TempData["Success"] != null)
 {
     <script>
@@ -317,10 +699,11 @@
                 text: '@TempData["Success"]',
                 showConfirmButton: false,
                 timer: 2000,
-                timerProgressBar: true
+                timerProgressBar: true,
+                background: '#1c1c1c',
+                color: '#fff',
+                confirmButtonColor: '#E0A458'
             });
         });
     </script>
 }
-}
-   
