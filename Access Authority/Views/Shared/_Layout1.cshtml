@@ -515,7 +515,10 @@
     </style>
 </head>
 <body>
-
+    @{
+        var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+        var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+    }
     <!-- Overlay -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
@@ -526,13 +529,43 @@
             <h3>Admin<span>Hub</span></h3>
         </div>
         <nav class="sidebar-nav">
-            <a asp-controller="Admin" asp-action="Index" class="nav-link active">
-                <i class="bi bi-house-fill"></i> Dashboard
+
+            <a asp-controller="Admin"
+               asp-action="Index"
+               class="nav-link @(currentController == "Admin" && currentAction == "Index" ? "active" : "")">
+                <i class="bi bi-house-fill"></i>
+                Dashboard
             </a>
-            <a asp-action="Career" class="nav-link"><i class="bi bi-person-badge"></i> Career <span class="badge-nav">3</span></a>
-            <a asp-action="Blog" class="nav-link"><i class="bi bi-journal-text"></i> Blog</a>
-            <a asp-action="Projects" class="nav-link"><i class="bi bi-folder"></i> Project</a>
-            <a asp-action="Contact" class="nav-link"><i class="bi bi-envelope"></i> Contact</a>
+
+            <a asp-controller="Admin"
+               asp-action="Career"
+               class="nav-link @(currentController == "Admin" && currentAction == "Career" ? "active" : "")">
+                <i class="bi bi-person-badge"></i>
+                Career
+                @* <span class="badge-nav">3</span> *@
+            </a>
+
+            <a asp-controller="Admin"
+               asp-action="Blog"
+               class="nav-link @(currentController == "Admin" && currentAction == "Blog" ? "active" : "")">
+                <i class="bi bi-journal-text"></i>
+                Blog
+            </a>
+
+            <a asp-controller="Admin"
+               asp-action="Projects"
+               class="nav-link @(currentController == "Admin" && currentAction == "Projects" ? "active" : "")">
+                <i class="bi bi-folder"></i>
+                Project
+            </a>
+
+            <a asp-controller="Admin"
+               asp-action="Contact"
+               class="nav-link @(currentController == "Admin" && currentAction == "Contact" ? "active" : "")">
+                <i class="bi bi-envelope"></i>
+                Contact
+            </a>
+
         </nav>
         <div class="sidebar-footer">
             <form asp-controller="Home" asp-action="Logout" method="post" class="d-inline">

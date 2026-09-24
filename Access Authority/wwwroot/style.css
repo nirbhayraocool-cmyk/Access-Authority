@@ -197,6 +197,7 @@ body {
     background-size: cover;
     background-position: center;
 }
+
     .hero-section::before {
         content: '';
         position: absolute;
@@ -210,6 +211,7 @@ body {
         position: relative;
         z-index: 1;
     }
+
 .hero-container {
     height: 515px;
     width: 100%;
@@ -3890,4 +3892,738 @@ svg {
             font-size: 10.5px !important;
             line-height: 1.55 !important;
         }
+}
+
+/* =====================================================
+   MOBILE FULL RESPONSIVE FIX - PAGE PADDING = NAV PADDING
+   Wajah: HTML me har section ke .container par Bootstrap ki
+   "px-5" utility class lagi hai, jo non-responsive hai — ye
+   har screen size par (mobile par bhi) fix 48px left-right
+   padding deti hai, aur usi wajah se page nav jaisa
+   responsive nahi lag raha tha. Bootstrap utility classes
+   !important ke sath aati hain, isliye unhe override karne
+   ke liye yahan bhi !important zaroori hai.
+   Ye sirf addition hai — upar ka kuchh bhi change nahi kiya.
+===================================================== */
+@media (max-width: 991.98px) {
+    .px-5 {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .container,
+    .container-fluid {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .px-5 {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .container,
+    .container-fluid {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .px-5 {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .container,
+    .container-fluid {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .hero-container {
+        padding-top: 40px !important;
+        padding-bottom: 50px !important;
+    }
+}
+
+@media (max-width: 479.98px) {
+    .px-5 {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .container,
+    .container-fluid {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+}
+
+/* =====================================================================
+   PREMIUM MOBILE EXPERIENCE — TYPOGRAPHY, SPACING & PADDING UPGRADE
+   Sirf mobile/tablet breakpoints (<=991.98px) ke liye. Desktop CSS
+   ko haath nahi lagaya. Maqsad: hero jaisi hi clean rhythm poore
+   page par, bade touch-friendly buttons, readable font-sizes aur
+   consistent vertical breathing room — ek premium agency site jaisa.
+===================================================================== */
+
+/* ---------- FIX: DOUBLE PADDING (section + inner .container.px-5) ---------- */
+@media (max-width: 991.98px) {
+    .services-section,
+    .why-section {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .satisfaction-content,
+    .delivery-heading p {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/* =====================================================================
+   TABLET / LARGE MOBILE (<= 767.98px)
+===================================================================== */
+@media (max-width: 767.98px) {
+
+    /* ---------- HERO ---------- */
+    .hero-container {
+        padding-top: 56px;
+        padding-bottom: 48px;
+    }
+
+    .hero-heading {
+        font-size: 38px;
+        line-height: 1.08;
+        letter-spacing: -1px;
+        margin-bottom: 20px;
+    }
+
+        .hero-heading span::after {
+            width: 190px;
+        }
+
+    .hero-description {
+        font-size: 14px;
+        line-height: 1.75;
+        margin-top: 22px;
+        margin-bottom: 24px;
+        max-width: 100%;
+    }
+
+    .trusted-badge {
+        padding: 8px 14px;
+        font-size: 10px;
+        letter-spacing: .8px;
+    }
+
+    .consultation-btn,
+    .work-btn {
+        padding: 13px 26px;
+        font-size: 11px;
+        letter-spacing: .6px;
+    }
+
+    .stats-box {
+        margin-top: 22px;
+        padding-top: 22px;
+    }
+
+    .stat-number {
+        font-size: 20px;
+    }
+
+    .stat-title {
+        font-size: 7.5px;
+        letter-spacing: .4px;
+        margin-top: 7px;
+    }
+
+    .hero-image {
+        height: 280px;
+    }
+
+    .partner-badge {
+        font-size: 9px;
+        padding: 7px 11px;
+    }
+
+    .project-card {
+        padding: 11px 14px;
+        min-width: 155px;
+    }
+
+    .project-name {
+        font-size: 12px;
+    }
+
+    .project-small {
+        font-size: 7.5px;
+    }
+
+    /* ---------- TRUSTED BOTTOM ---------- */
+    .trusted-bottom {
+        padding: 14px 0;
+    }
+
+    .trusted-by-text,
+    .trusted-item {
+        font-size: 9.5px;
+    }
+
+    /* ---------- MARQUEE ---------- */
+    .marquee-item {
+        padding: 0 22px;
+    }
+
+        .marquee-item span {
+            font-size: 9px;
+            letter-spacing: .6px;
+        }
+
+    /* ---------- SERVICES / CASE STUDIES ---------- */
+    .services-section {
+        padding-top: 56px;
+        padding-bottom: 56px;
+    }
+
+    .services-heading {
+        margin-bottom: 32px;
+    }
+
+        .services-heading h2 {
+            font-size: 27px;
+            line-height: 1.15;
+        }
+
+        .services-heading p {
+            font-size: 13px;
+            line-height: 1.75;
+        }
+
+    .service-card {
+        padding: 24px;
+        margin-bottom: 14px;
+    }
+
+    .service-icon {
+        width: 42px;
+        height: 42px;
+        margin-bottom: 16px;
+    }
+
+        .service-icon i {
+            font-size: 17px;
+        }
+
+    .service-card h3 {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+
+    .service-card p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .service-link {
+        font-size: 11px;
+        margin-top: 12px;
+    }
+
+    /* ---------- COUNTER ---------- */
+    .counter-box {
+        padding: 32px 16px;
+        min-height: 190px;
+    }
+
+    .counter-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 16px;
+    }
+
+        .counter-icon i {
+            font-size: 18px;
+        }
+
+    .counter-number .counter {
+        font-size: 40px;
+    }
+
+    .counter-number small {
+        font-size: 16px;
+    }
+
+    .counter-box h6 {
+        font-size: 11px;
+        margin-top: 10px;
+        letter-spacing: .4px;
+    }
+
+    .counter-box p {
+        font-size: 9.5px;
+        margin-top: 6px;
+    }
+
+    /* ---------- CASE STUDY CARDS ---------- */
+    .case-image {
+        height: 210px;
+    }
+
+    .case-body {
+        padding: 20px;
+    }
+
+    .case-industry {
+        font-size: 9px;
+        margin-bottom: 8px;
+    }
+
+    .case-body h3 {
+        font-size: 17px;
+        margin-bottom: 12px;
+    }
+
+    .case-body > p {
+        font-size: 13px;
+        line-height: 1.7;
+        min-height: auto;
+        margin-bottom: 14px;
+    }
+
+    .case-stats {
+        padding: 14px 0;
+        gap: 8px;
+    }
+
+        .case-stats strong {
+            font-size: 18px;
+        }
+
+        .case-stats span {
+            font-size: 8px;
+        }
+
+    .case-review {
+        padding: 10px;
+        gap: 10px;
+        min-height: auto;
+    }
+
+        .case-review p {
+            font-size: 10.5px;
+        }
+
+    .case-btn {
+        padding: 9px 16px;
+        font-size: 10px;
+        margin-top: 12px;
+    }
+
+    /* ---------- WHY SECTION ---------- */
+    .why-section {
+        padding-top: 56px;
+        padding-bottom: 56px;
+    }
+
+    .why-heading h2 {
+        font-size: 27px;
+    }
+
+    .section-label {
+        font-size: 9.5px;
+    }
+
+    .why-card {
+        padding: 28px 22px;
+        min-height: auto;
+    }
+
+    .why-number {
+        font-size: 9px;
+        margin-bottom: 14px;
+    }
+
+    .why-card h3 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .why-card p {
+        font-size: 13px;
+        line-height: 1.75;
+        max-width: 100%;
+    }
+
+    /* ---------- WORK SHOWCASE ---------- */
+    .work-heading {
+        font-size: 28px;
+    }
+
+    .work-tag {
+        font-size: 10px;
+    }
+
+    .work-filter {
+        height: 32px;
+        font-size: 10px;
+        padding: 0 16px;
+    }
+
+    .work-hover h4 {
+        font-size: 16px;
+    }
+
+    .work-hover small {
+        font-size: 9px;
+    }
+
+    /* ---------- DELIVERY PROCESS ---------- */
+    .delivery-heading h2 {
+        font-size: 27px;
+    }
+
+    .delivery-heading p {
+        font-size: 12.5px;
+        line-height: 1.7;
+    }
+
+    .delivery-label {
+        font-size: 10px;
+    }
+
+    .step-box {
+        width: 64px;
+        height: 64px;
+    }
+
+        .step-box i {
+            font-size: 20px;
+        }
+
+    .step-item h6 {
+        font-size: 11px;
+        margin-bottom: 6px;
+    }
+
+    .step-item p {
+        font-size: 9.5px;
+        line-height: 1.5;
+    }
+
+    .satisfaction-content {
+        gap: 14px;
+    }
+
+        .satisfaction-content h5 {
+            font-size: 14px;
+        }
+
+        .satisfaction-content p {
+            font-size: 10.5px;
+        }
+
+    /* ---------- ABOUT US (inline-styled section) ---------- */
+    .fw-bold.lh-sm {
+        font-size: 27px !important;
+    }
+
+    .text-dark.mb-3,
+    .text-dark.mb-4 {
+        font-size: 13px !important;
+        line-height: 1.75 !important;
+    }
+
+    /* ---------- INDUSTRIES ---------- */
+    .lh-sm.text-white {
+        font-size: 27px !important;
+    }
+
+    .industry-card {
+        padding: 1.1rem .4rem;
+    }
+
+        .industry-card i {
+            font-size: 1.8rem;
+        }
+
+        .industry-card p {
+            font-size: 13px;
+        }
+
+    /* ---------- CLIENT REVIEW ---------- */
+    .client-review-area {
+        padding: 56px 0;
+    }
+
+    .client-review-heading {
+        margin-bottom: 32px;
+    }
+
+        .client-review-heading h2 {
+            font-size: 27px;
+        }
+
+    .client-review-card {
+        padding: 26px;
+        min-height: 260px;
+    }
+
+    .client-review-quote {
+        font-size: 36px;
+    }
+
+    .client-review-card p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .client-review-user h6 {
+        font-size: 12.5px;
+    }
+
+    .client-review-user small {
+        font-size: 10px;
+    }
+
+    /* ---------- FAQ ---------- */
+    .aa-faq-wrapper {
+        padding: 48px 0;
+    }
+
+    .aa-faq-heading h2 {
+        font-size: 27px;
+    }
+
+    .aa-faq-question {
+        min-height: 52px;
+        font-size: 13px;
+        padding: 0 18px;
+    }
+
+    .aa-faq-answer p {
+        font-size: 12.5px;
+        padding: 0 18px;
+        line-height: 1.75;
+    }
+
+    .aa-faq-plus {
+        font-size: 20px;
+    }
+
+    /* ---------- CTA ---------- */
+    .aa-cta-wrapper {
+        padding: 44px 0;
+    }
+
+    .aa-cta-content h2 {
+        font-size: 27px;
+    }
+
+    .aa-cta-content p {
+        font-size: 13px;
+        line-height: 1.75;
+    }
+
+    .aa-cta-button {
+        padding: 16px 26px;
+        font-size: 12px;
+    }
+
+    /* ---------- BLOG ---------- */
+    .aa-blog-area {
+        padding: 48px 0;
+    }
+
+    .aa-blog-title {
+        font-size: 27px;
+    }
+
+    .aa-blog-label {
+        font-size: 11px;
+    }
+
+    .blog-card .blog-body {
+        padding: 20px;
+    }
+
+    .blog-card h3 {
+        font-size: 16px;
+    }
+
+    .blog-card .blog-desc {
+        font-size: 13px;
+        line-height: 1.75;
+    }
+
+    .blog-card .blog-meta {
+        font-size: 10.5px;
+    }
+
+    .blog-card .blog-author .avatar {
+        width: 34px;
+        height: 34px;
+        font-size: 12px;
+    }
+
+    .blog-card .blog-author .author-name {
+        font-size: 12.5px;
+    }
+
+    /* ---------- WHATSAPP TOUCH TARGET ---------- */
+    .whatsapp-button,
+    .project-whatsapp {
+        width: 44px;
+        height: 44px;
+        font-size: 21px;
+    }
+}
+
+/* =====================================================================
+   PHONE (<= 575.98px) — fine refinement over the tablet rules above
+===================================================================== */
+@media (max-width: 575.98px) {
+
+    .hero-container {
+        padding-top: 48px !important;
+        padding-bottom: 44px !important;
+    }
+
+    .hero-heading {
+        font-size: 34px !important;
+        letter-spacing: -.5px;
+    }
+
+        .hero-heading span::after {
+            width: 170px !important;
+        }
+
+    .hero-description {
+        font-size: 13.5px !important;
+    }
+
+    .hero-image {
+        height: 250px !important;
+    }
+
+    .services-heading h2,
+    .why-heading h2,
+    .delivery-heading h2,
+    .client-review-heading h2,
+    .aa-faq-heading h2,
+    .aa-cta-content h2,
+    .aa-blog-title,
+    .fw-bold.lh-sm,
+    .lh-sm.text-white {
+        font-size: 24px !important;
+    }
+
+    .work-heading {
+        font-size: 25px !important;
+    }
+
+    /* premium spacing over the old cramped mobile card values */
+    .service-card {
+        padding: 22px !important;
+    }
+
+        .service-card h3 {
+            font-size: 14px !important;
+        }
+
+        .service-card p {
+            font-size: 12.5px !important;
+            line-height: 1.7 !important;
+        }
+
+    .why-card {
+        padding: 24px 20px;
+    }
+
+    .case-body {
+        padding: 18px;
+    }
+
+        .case-body h3 {
+            font-size: 16px;
+        }
+
+    .client-review-card {
+        padding: 22px;
+        min-height: 300px;
+    }
+
+    .aa-faq-question {
+        font-size: 12px;
+        padding: 0 15px;
+    }
+
+    .aa-cta-content h2 {
+        font-size: 23px !important;
+    }
+
+    .blog-card .blog-body {
+        padding: 18px;
+    }
+
+    /* premium footer legibility */
+    .footer-desc,
+    .footer-list li a,
+    .footer-link,
+    .contact-item {
+        font-size: 11.5px !important;
+        line-height: 1.65 !important;
+    }
+
+    .footer-heading {
+        font-size: 11px !important;
+    }
+
+    .footer-bottom {
+        font-size: 10.5px !important;
+    }
+}
+
+/* =====================================================================
+   SMALL PHONE (<= 479.98px) — extra tight-screen tuning
+===================================================================== */
+@media (max-width: 479.98px) {
+
+    .hero-heading {
+        font-size: 30px !important;
+    }
+
+    .hero-image {
+        height: 220px !important;
+    }
+
+    .services-heading h2,
+    .why-heading h2,
+    .delivery-heading h2,
+    .client-review-heading h2,
+    .aa-faq-heading h2,
+    .aa-cta-content h2,
+    .aa-blog-title,
+    .fw-bold.lh-sm,
+    .lh-sm.text-white {
+        font-size: 22px !important;
+    }
+
+    .service-card {
+        padding: 18px !important;
+    }
+
+    .counter-number .counter {
+        font-size: 32px;
+    }
+
+    .client-review-card {
+        padding: 20px;
+        min-height: 320px;
+    }
 }

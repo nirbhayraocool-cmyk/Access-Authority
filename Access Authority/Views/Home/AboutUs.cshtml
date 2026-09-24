@@ -1,6 +1,4 @@
-﻿
-
-@{
+﻿@{
     ViewData["Title"] = "About Us";
 }
 
@@ -50,8 +48,8 @@
 
 
     /* =====================================================
-           HERO
-        ===================================================== */
+               HERO
+            ===================================================== */
 
     .page-hero-custom {
         background: #0b0b0b;
@@ -128,8 +126,8 @@
 
 
     /* =====================================================
-           MINI STATS
-        ===================================================== */
+               MINI STATS
+            ===================================================== */
 
     .mini-stats-custom {
         color: #fff;
@@ -165,8 +163,8 @@
 
 
     /* =====================================================
-           MISSION
-        ===================================================== */
+               MISSION
+            ===================================================== */
 
     .mission-section {
         background: #fff;
@@ -227,8 +225,8 @@
 
 
     /* =====================================================
-           WHO WE ARE
-        ===================================================== */
+               WHO WE ARE
+            ===================================================== */
 
     .aa-who-section {
         background: #f7f7f7;
@@ -322,8 +320,8 @@
 
 
     /* =====================================================
-           WHAT WE DO
-        ===================================================== */
+               WHAT WE DO
+            ===================================================== */
 
     .aa-services-section {
         background: #fff;
@@ -385,8 +383,8 @@
 
 
     /* =====================================================
-           OUR APPROACH
-        ===================================================== */
+               OUR APPROACH
+            ===================================================== */
 
     .aa-approach-section {
         background: #f7f7f7;
@@ -397,7 +395,7 @@
         background: #fff;
         min-height: 235px;
         padding: 28px 22px;
-        border-radius:5px;
+        border-radius: 5px;
         border: 1px solid #e5e7eb;
         position: relative;
         transition: .3s ease;
@@ -439,8 +437,8 @@
 
 
     /* =====================================================
-           TECHNOLOGY FOUNDATION
-        ===================================================== */
+               TECHNOLOGY FOUNDATION
+            ===================================================== */
 
     .aa-tech-section {
         background: #0b0b0b;
@@ -496,7 +494,7 @@
         min-height: 92px;
         display: flex;
         align-items: center;
-        border-radius:5px;
+        border-radius: 5px;
         gap: 14px;
         transition: .3s ease;
     }
@@ -525,8 +523,8 @@
 
 
     /* =====================================================
-           WHY ACCESS AUTHORITY
-        ===================================================== */
+               WHY ACCESS AUTHORITY
+            ===================================================== */
 
     .aa-why-section {
         background: #fff;
@@ -538,7 +536,7 @@
         border: 1px solid #e5e7eb;
         padding: 25px 22px;
         height: 100%;
-        border-radius:5px;
+        border-radius: 5px;
         border-radius: 5px;
         transition: .3s ease;
     }
@@ -571,9 +569,9 @@
 
 
     /* =====================================================
-           JOURNEY
-           2 CARDS PER ROW
-        ===================================================== */
+               JOURNEY
+               2 CARDS PER ROW
+            ===================================================== */
 
     .journey-section {
         background: #f7f7f7;
@@ -695,8 +693,8 @@
 
 
     /* =====================================================
-           TEAM
-        ===================================================== */
+               TEAM
+            ===================================================== */
 
     .team-section {
         background: #fff;
@@ -803,8 +801,8 @@
 
 
     /* =====================================================
-           TESTIMONIALS
-        ===================================================== */
+               TESTIMONIALS
+            ===================================================== */
 
     .testimonials-section {
         background: #f7f7f7;
@@ -814,7 +812,6 @@
     .testimonial-card {
         background: #fff;
         padding: 32px 36px;
-       
         border-radius: 5px;
         transition: .3s ease;
         height: 100%;
@@ -875,8 +872,8 @@
 
 
     /* =====================================================
-           CTA
-        ===================================================== */
+               CTA
+            ===================================================== */
 
     .cta-section {
         background: #0b0b0b;
@@ -952,8 +949,8 @@
 
 
     /* =====================================================
-           TRUSTED BOTTOM
-        ===================================================== */
+               TRUSTED BOTTOM
+            ===================================================== */
 
     .trusted-bottom {
         background: #0b0b0b;
@@ -982,8 +979,8 @@
 
 
     /* =====================================================
-           RESPONSIVE
-        ===================================================== */
+               RESPONSIVE
+            ===================================================== */
 
     @@media (max-width: 991px) {
 
@@ -1167,6 +1164,695 @@
         }
     }
 
+
+    /* =====================================================================
+           MOBILE RESPONSIVE UPGRADE
+           Matching main site mobile CSS — same padding/typography/spacing pattern
+           (Desktop CSS ko touch nahi kiya)
+        ===================================================================== */
+
+    /* ---------- Container / px-5 override (main site jaisa) ---------- */
+    @@media (max-width: 991.98px) {
+        .px-5 {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+        }
+
+        .container,
+        .container-fluid {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+        }
+
+        .aa-about-page section .container.px-5 {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+        }
+    }
+
+    /* =====================================================================
+           TABLET / LARGE MOBILE (max-width: 767.98px)
+        ===================================================================== */
+    @@media (max-width: 767.98px) {
+        /* ---------- HERO ---------- */
+        .page-hero-custom {
+            padding: 48px 0 0;
+        }
+
+            .page-hero-custom h1 {
+                font-size: 32px;
+                letter-spacing: -0.3px;
+                margin-bottom: 12px;
+            }
+
+            .page-hero-custom .subtitle {
+                font-size: 13px;
+                line-height: 1.75;
+                max-width: 100%;
+            }
+
+        .hero-buttons {
+            margin-top: 22px;
+            gap: 10px;
+        }
+
+        .btn-primary-custom,
+        .btn-outline-custom {
+            padding: 13px 26px;
+            font-size: 11px;
+            letter-spacing: .4px;
+        }
+        /* ---------- MINI STATS ---------- */
+        .mini-stats-custom {
+            padding: 24px 0 18px;
+            margin-top: 30px;
+        }
+
+        .stat-block {
+            padding: 6px 8px;
+        }
+
+        .stat-number {
+            font-size: 22px;
+        }
+
+        .stat-label {
+            font-size: 7.5px;
+            letter-spacing: .6px;
+            margin-top: 7px;
+        }
+        /* ---------- SECTION SPACING (main site jaisa) ---------- */
+        .mission-section,
+        .aa-who-section,
+        .aa-services-section,
+        .aa-approach-section,
+        .aa-tech-section,
+        .aa-why-section,
+        .journey-section,
+        .team-section,
+        .testimonials-section {
+            padding-top: 56px;
+            padding-bottom: 56px;
+        }
+
+        .cta-section {
+            padding: 48px 0;
+        }
+            /* ---------- HEADINGS ---------- */
+            .mission-section h2,
+            .aa-main-heading,
+            .aa-who-section h2,
+            .aa-tech-section h2,
+            .journey-section h2,
+            .cta-section h2 {
+                font-size: 26px;
+                line-height: 1.25;
+            }
+
+        .aa-section-label {
+            font-size: 10px;
+            letter-spacing: .8px;
+            margin-bottom: 12px;
+        }
+
+        .aa-section-sub,
+        .mission-desc,
+        .aa-who-text,
+        .journey-sub {
+            font-size: 13px;
+            line-height: 1.75;
+            max-width: 100%;
+        }
+        /* ---------- MISSION ---------- */
+        .mission-icon {
+            font-size: 32px;
+            margin-bottom: 6px;
+        }
+
+        .mission-stats {
+            gap: 22px;
+            margin-top: 24px;
+        }
+
+            .mission-stats strong {
+                font-size: 22px;
+            }
+
+            .mission-stats span {
+                font-size: 8.5px;
+            }
+        /* ---------- WHO WE ARE ---------- */
+        .aa-who-points {
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+            .aa-who-points div {
+                font-size: 12px;
+                line-height: 1.6;
+            }
+
+        .aa-who-visual img {
+            height: 320px;
+        }
+
+        .aa-visual-card {
+            bottom: 14px;
+            left: 14px;
+            right: 14px;
+            padding: 12px 14px;
+            gap: 10px;
+        }
+
+        .aa-visual-icon {
+            width: 36px;
+            height: 36px;
+            font-size: 16px;
+        }
+
+        .aa-visual-card strong {
+            font-size: 12px;
+        }
+
+        .aa-visual-card small {
+            font-size: 9px;
+        }
+        /* ---------- SERVICE CARDS ---------- */
+        .aa-service-card {
+            padding: 24px;
+            min-height: auto;
+            margin-bottom: 4px;
+        }
+
+        .aa-service-icon {
+            width: 44px;
+            height: 44px;
+            font-size: 19px;
+            margin-bottom: 16px;
+        }
+
+        .aa-service-card h4 {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .aa-service-card p {
+            font-size: 12.5px;
+            line-height: 1.75;
+        }
+
+        .aa-service-card > span {
+            font-size: 24px;
+            right: 16px;
+            bottom: 10px;
+        }
+        /* ---------- PROCESS CARDS ---------- */
+        .aa-process-card {
+            padding: 24px;
+            min-height: auto;
+        }
+
+        .aa-process-number {
+            font-size: 26px;
+            top: 14px;
+            right: 18px;
+        }
+
+        .aa-process-icon {
+            font-size: 26px;
+            margin-bottom: 14px;
+        }
+
+        .aa-process-card h4 {
+            font-size: 15px;
+        }
+
+        .aa-process-card p {
+            font-size: 12.5px;
+            line-height: 1.75;
+        }
+        /* ---------- TECH SECTION ---------- */
+        .aa-tech-section p {
+            font-size: 13px;
+            line-height: 1.75;
+            max-width: 100%;
+        }
+
+        .aa-tech-button {
+            padding: 13px 24px;
+            font-size: 11px;
+            letter-spacing: .4px;
+        }
+
+        .aa-tech-card {
+            padding: 16px;
+            min-height: 88px;
+            gap: 12px;
+        }
+
+            .aa-tech-card > i {
+                font-size: 22px;
+            }
+
+            .aa-tech-card strong {
+                font-size: 11px;
+            }
+
+            .aa-tech-card small {
+                font-size: 8px;
+            }
+        /* ---------- WHY CARDS ---------- */
+        .aa-why-card {
+            padding: 24px;
+        }
+
+        .aa-why-icon {
+            font-size: 24px;
+            margin-bottom: 14px;
+        }
+
+        .aa-why-card h4 {
+            font-size: 15px;
+        }
+
+        .aa-why-card p {
+            font-size: 12.5px;
+            line-height: 1.75;
+        }
+        /* ---------- TIMELINE / JOURNEY ---------- */
+        .journey-sub {
+            margin-bottom: 28px;
+        }
+
+        .timeline-vertical {
+            padding: 0 4px;
+        }
+
+        .timeline-grid {
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+        }
+
+        .timeline-year {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            font-size: 15px;
+        }
+
+        .timeline-desc {
+            font-size: 12.5px;
+            line-height: 1.75;
+        }
+
+        .timeline-tag {
+            font-size: 8px;
+            padding: 4px 11px;
+            margin-top: 12px;
+        }
+
+        .timeline-image {
+            height: 200px;
+        }
+
+        .journey-highlight {
+            font-size: 12px;
+            margin-top: 22px;
+            line-height: 1.7;
+        }
+        /* ---------- TESTIMONIALS ---------- */
+        .testimonial-card {
+            padding: 28px;
+        }
+
+        .quote-icon {
+            font-size: 34px;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 14px;
+            line-height: 1.75;
+            margin-bottom: 18px;
+        }
+
+        .client-review-avatar {
+            width: 46px;
+            height: 46px;
+        }
+
+        .client-name {
+            font-size: 14px;
+        }
+
+        .client-title {
+            font-size: 12px;
+        }
+        /* ---------- CTA ---------- */
+        .cta-section p {
+            font-size: 13px;
+            line-height: 1.75;
+            max-width: 100%;
+        }
+
+        .cta-buttons {
+            gap: 12px;
+            margin-top: 6px;
+        }
+
+        .btn-cta-primary,
+        .btn-cta-outline {
+            padding: 13px 26px;
+            font-size: 11px;
+            letter-spacing: .4px;
+        }
+        /* ---------- TRUSTED BOTTOM ---------- */
+        .trusted-bottom {
+            padding: 16px 0;
+        }
+
+        .trusted-by-text,
+        .trusted-item {
+            font-size: 9.5px;
+        }
+
+            .trusted-item i {
+                font-size: 10px;
+                margin-right: 4px;
+            }
+    }
+
+    /* =====================================================================
+           PHONE (max-width: 575.98px)
+        ===================================================================== */
+    @@media (max-width: 575.98px) {
+        /* ---------- HERO ---------- */
+        .page-hero-custom {
+            padding: 40px 0 0;
+        }
+
+            .page-hero-custom h1 {
+                font-size: 28px;
+                line-height: 1.15;
+            }
+
+            .page-hero-custom .subtitle {
+                font-size: 13px;
+            }
+
+        .hero-buttons {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-primary-custom,
+        .btn-outline-custom {
+            width: 100%;
+            text-align: center;
+            padding: 14px 20px;
+            font-size: 11px;
+        }
+        /* ---------- MINI STATS ---------- */
+        .mini-stats-custom {
+            padding: 20px 0 14px;
+            margin-top: 26px;
+        }
+
+        .stat-block {
+            padding: 4px 6px;
+        }
+
+        .stat-number {
+            font-size: 20px;
+        }
+
+        .stat-label {
+            font-size: 7px;
+            letter-spacing: .4px;
+        }
+        /* ---------- SECTION SPACING ---------- */
+        .mission-section,
+        .aa-who-section,
+        .aa-services-section,
+        .aa-approach-section,
+        .aa-tech-section,
+        .aa-why-section,
+        .journey-section,
+        .team-section,
+        .testimonials-section {
+            padding-top: 44px;
+            padding-bottom: 44px;
+        }
+
+        .cta-section {
+            padding: 40px 0;
+        }
+            /* ---------- HEADINGS ---------- */
+            .mission-section h2,
+            .aa-main-heading,
+            .aa-who-section h2,
+            .aa-tech-section h2,
+            .journey-section h2,
+            .cta-section h2 {
+                font-size: 23px;
+                line-height: 1.25;
+            }
+
+        .aa-section-sub,
+        .mission-desc,
+        .aa-who-text {
+            font-size: 12.5px;
+            line-height: 1.7;
+        }
+        /* ---------- MISSION ---------- */
+        .mission-stats {
+            gap: 18px;
+        }
+
+            .mission-stats strong {
+                font-size: 20px;
+            }
+
+            .mission-stats span {
+                font-size: 8px;
+            }
+        /* ---------- WHO ---------- */
+        .aa-who-visual img {
+            height: 260px;
+        }
+
+        .aa-visual-card {
+            bottom: 12px;
+            left: 12px;
+            right: 12px;
+            padding: 11px 13px;
+        }
+
+        .aa-visual-icon {
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+        }
+
+        .aa-visual-card strong {
+            font-size: 11px;
+        }
+
+        .aa-visual-card small {
+            font-size: 8.5px;
+        }
+        /* ---------- CARDS ---------- */
+        .aa-service-card,
+        .aa-process-card,
+        .aa-why-card {
+            padding: 20px;
+        }
+
+        .aa-service-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            margin-bottom: 14px;
+        }
+
+        .aa-service-card h4,
+        .aa-process-card h4,
+        .aa-why-card h4 {
+            font-size: 14px;
+        }
+
+        .aa-service-card p,
+        .aa-process-card p,
+        .aa-why-card p {
+            font-size: 12.5px;
+            line-height: 1.7;
+        }
+        /* ---------- TECH CARDS ---------- */
+        .aa-tech-card {
+            padding: 12px;
+            min-height: 78px;
+            gap: 9px;
+        }
+
+            .aa-tech-card > i {
+                font-size: 18px;
+            }
+
+            .aa-tech-card strong {
+                font-size: 10px;
+            }
+
+            .aa-tech-card small {
+                font-size: 7.5px;
+            }
+        /* ---------- TIMELINE ---------- */
+        .timeline-content {
+            padding: 18px;
+        }
+
+        .timeline-year {
+            font-size: 18px;
+        }
+
+        .timeline-title {
+            font-size: 14px;
+        }
+
+        .timeline-desc {
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .timeline-image {
+            height: 170px;
+        }
+        /* ---------- TESTIMONIALS ---------- */
+        .testimonial-card {
+            padding: 22px;
+        }
+
+            .testimonial-card blockquote {
+                font-size: 13px;
+                line-height: 1.75;
+            }
+
+        .client-review-avatar {
+            width: 42px;
+            height: 42px;
+        }
+
+        .client-name {
+            font-size: 13px;
+        }
+
+        .client-title {
+            font-size: 11px;
+        }
+
+        .quote-icon {
+            font-size: 30px;
+        }
+        /* ---------- CTA ---------- */
+        .cta-section h2 {
+            font-size: 22px;
+        }
+
+        .cta-section p {
+            font-size: 12.5px;
+        }
+
+        .cta-buttons {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .btn-cta-primary,
+        .btn-cta-outline {
+            width: 100%;
+            text-align: center;
+            padding: 14px 20px;
+            font-size: 11px;
+        }
+        /* ---------- TRUSTED ---------- */
+        .trusted-bottom {
+            padding: 14px 0;
+        }
+
+        .trusted-by-text,
+        .trusted-item {
+            font-size: 9px;
+        }
+    }
+
+    /* =====================================================================
+           SMALL PHONE (max-width: 479.98px)
+        ===================================================================== */
+    @@media (max-width: 479.98px) {
+
+        .page-hero-custom h1 {
+            font-size: 25px;
+        }
+
+        .mission-section h2,
+        .aa-main-heading,
+        .aa-who-section h2,
+        .aa-tech-section h2,
+        .journey-section h2,
+        .cta-section h2 {
+            font-size: 21px;
+        }
+
+        .stat-number {
+            font-size: 18px;
+        }
+
+        .stat-label {
+            font-size: 6.5px;
+        }
+
+        .aa-service-card,
+        .aa-process-card,
+        .aa-why-card {
+            padding: 18px;
+        }
+
+            .aa-service-card p,
+            .aa-process-card p,
+            .aa-why-card p {
+                font-size: 12px;
+            }
+
+        .timeline-year {
+            font-size: 17px;
+        }
+
+        .timeline-image {
+            height: 155px;
+        }
+
+        .testimonial-card {
+            padding: 20px;
+        }
+
+            .testimonial-card blockquote {
+                font-size: 12.5px;
+            }
+
+        .mission-stats strong {
+            font-size: 18px;
+        }
+
+        .mission-stats span {
+            font-size: 7.5px;
+        }
+    }
+
 </style>
 
 
@@ -1286,185 +1972,6 @@
         </div>
 
     </section>
-
-
-
-    <!-- =====================================================
-         MISSION
-    ===================================================== -->
-
-    <section class="mission-section">
-
-        <div class="container text-center">
-
-            <div class="mission-icon">
-                ✦
-            </div>
-
-            <div class="aa-section-label justify-content-center">
-
-                <span></span>
-                OUR MISSION
-
-            </div>
-
-            <h2>
-                Empowering Businesses
-                <span>Through Technology</span>
-            </h2>
-
-            <p class="mission-desc">
-                We believe that technology should be accessible, practical
-                and meaningful for every business. Our mission is to bridge
-                the gap between business vision and technical execution.
-            </p>
-
-            <p class="mission-desc mt-2">
-                <strong>
-                    We don't just build software.
-                </strong>
-                We build solutions that solve real problems,
-                improve operations and create opportunities for growth.
-            </p>
-
-
-            <div class="mission-stats">
-
-                <div>
-                    <strong>7+</strong>
-                    <span>Years of Excellence</span>
-                </div>
-
-                <div>
-                    <strong>100+</strong>
-                    <span>Projects Delivered</span>
-                </div>
-
-                <div>
-                    <strong>98%</strong>
-                    <span>Client Satisfaction</span>
-                </div>
-
-                <div>
-                    <strong>✦</strong>
-                    <span>Technology Partner</span>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         WHO WE ARE
-    ===================================================== -->
-
-    <section class="aa-who-section">
-
-        <div class="container px-5">
-
-            <div class="row align-items-center g-5">
-
-                <div class="col-lg-6">
-
-                    <div class="aa-section-label">
-
-                        <span></span>
-                        WHO WE ARE
-
-                    </div>
-
-                    <h2>
-                        Technology That Turns
-                        <span>Ideas Into Impact</span>
-                    </h2>
-
-                    <p class="aa-who-text">
-                        Access Authority is a technology-focused company
-                        helping businesses build, improve and manage their
-                        digital solutions.
-                    </p>
-
-                    <p class="aa-who-text">
-                        We combine technology, creativity and business
-                        understanding to create solutions that are practical,
-                        scalable and designed around real-world requirements.
-                    </p>
-
-                    <p class="aa-who-text">
-                        From websites and custom applications to enterprise
-                        platforms, APIs and digital products, our focus is
-                        on making technology work better for your business.
-                    </p>
-
-
-                    <div class="aa-who-points">
-
-                        <div>
-                            <i class="bi bi-check-circle-fill"></i>
-                            Business-focused solutions
-                        </div>
-
-                        <div>
-                            <i class="bi bi-check-circle-fill"></i>
-                            Responsive applications
-                        </div>
-
-                        <div>
-                            <i class="bi bi-check-circle-fill"></i>
-                            Modern development practices
-                        </div>
-
-                        <div>
-                            <i class="bi bi-check-circle-fill"></i>
-                            Long-term technology partnership
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="col-lg-6">
-
-                    <div class="aa-who-visual">
-
-                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1000&h=700&fit=crop"
-                             alt="Access Authority Technology Team">
-
-                        <div class="aa-visual-card">
-
-                            <span class="aa-visual-icon">
-                                <i class="bi bi-lightning-charge-fill"></i>
-                            </span>
-
-                            <div>
-
-                                <strong>
-                                    Built For Business
-                                </strong>
-
-                                <small>
-                                    Technology with purpose
-                                </small>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
 
 
     <!-- =====================================================
@@ -1593,6 +2100,182 @@
 
                     </div>
 
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         WHO WE ARE
+    ===================================================== -->
+
+    <section class="aa-who-section">
+
+        <div class="container px-5">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+
+                    <div class="aa-section-label">
+
+                        <span></span>
+                        WHO WE ARE
+
+                    </div>
+
+                    <h2>
+                        Technology That Turns
+                        <span>Ideas Into Impact</span>
+                    </h2>
+
+                    <p class="aa-who-text">
+                        Access Authority is a technology-focused company
+                        helping businesses build, improve and manage their
+                        digital solutions.
+                    </p>
+
+                    <p class="aa-who-text">
+                        We combine technology, creativity and business
+                        understanding to create solutions that are practical,
+                        scalable and designed around real-world requirements.
+                    </p>
+
+                    <p class="aa-who-text">
+                        From websites and custom applications to enterprise
+                        platforms, APIs and digital products, our focus is
+                        on making technology work better for your business.
+                    </p>
+
+
+                    <div class="aa-who-points">
+
+                        <div>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Business-focused solutions
+                        </div>
+
+                        <div>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Responsive applications
+                        </div>
+
+                        <div>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Modern development practices
+                        </div>
+
+                        <div>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Long-term technology partnership
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-6">
+
+                    <div class="aa-who-visual">
+
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1000&h=700&fit=crop"
+                             alt="Access Authority Technology Team">
+
+                        <div class="aa-visual-card">
+
+                            <span class="aa-visual-icon">
+                                <i class="bi bi-lightning-charge-fill"></i>
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Built For Business
+                                </strong>
+
+                                <small>
+                                    Technology with purpose
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MISSION
+    ===================================================== -->
+
+    <section class="mission-section">
+
+        <div class="container text-center">
+
+            <div class="mission-icon">
+                ✦
+            </div>
+
+            <div class="aa-section-label justify-content-center">
+
+                <span></span>
+                OUR MISSION
+
+            </div>
+
+            <h2>
+                Empowering Businesses
+                <span>Through Technology</span>
+            </h2>
+
+            <p class="mission-desc">
+                We believe that technology should be accessible, practical
+                and meaningful for every business. Our mission is to bridge
+                the gap between business vision and technical execution.
+            </p>
+
+            <p class="mission-desc mt-2">
+                <strong>
+                    We don't just build software.
+                </strong>
+                We build solutions that solve real problems,
+                improve operations and create opportunities for growth.
+            </p>
+
+
+            <div class="mission-stats">
+
+                <div>
+                    <strong>7+</strong>
+                    <span>Years of Excellence</span>
+                </div>
+
+                <div>
+                    <strong>100+</strong>
+                    <span>Projects Delivered</span>
+                </div>
+
+                <div>
+                    <strong>98%</strong>
+                    <span>Client Satisfaction</span>
+                </div>
+
+                <div>
+                    <strong>✦</strong>
+                    <span>Technology Partner</span>
                 </div>
 
             </div>
@@ -2852,4 +3535,3 @@
 
 
 </div>
-
