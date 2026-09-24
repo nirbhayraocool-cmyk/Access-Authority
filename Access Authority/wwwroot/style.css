@@ -3944,7 +3944,7 @@ svg {
     }
 
     .hero-container {
-        padding-top: 40px !important;
+      
         padding-bottom: 50px !important;
     }
 }
@@ -3992,7 +3992,7 @@ svg {
 
     /* ---------- HERO ---------- */
     .hero-container {
-        padding-top: 56px;
+        padding-top: 5px;
         padding-bottom: 48px;
     }
 
@@ -4490,7 +4490,7 @@ svg {
 @media (max-width: 575.98px) {
 
     .hero-container {
-        padding-top: 48px !important;
+       
         padding-bottom: 44px !important;
     }
 
