@@ -81,6 +81,7 @@ wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
 wwwroot\slide.js
+wwwroot\style.css
 wwwroot\uploads\blog\00556565-1d80-4bab-bd43-531b394f1391.jpg
 wwwroot\uploads\blog\0087d542-f05a-4e96-a095-3ce9f4878367.jpg
 wwwroot\uploads\blog\0582900d-be53-4d1b-9242-b857380e5273.jpg
@@ -112,4 +113,3 @@ wwwroot\uploads\resumes\b8df1abd-dd38-4b77-9d90-4a310f22709a.pdf
 wwwroot\uploads\resumes\c13e1a0e-4a14-4863-a0d1-0a8b9eb2e24b.pdf
 wwwroot\uploads\resumes\ddb6e603-4f50-41ad-bd91-370738993c26.pdf
 wwwroot\uploads\resumes\f44f4a2b-9216-4846-bd69-0d3862a9aa41.pdf
-wwwroot\style.css
