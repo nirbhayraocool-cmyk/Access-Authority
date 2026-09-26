@@ -160,7 +160,7 @@
                                         0
 
                                     </span>%
-                                     
+
                                 </div>
 
 
@@ -2098,7 +2098,8 @@
                     <p>
                         "From discovery to launch in 11 weeks. Their team
                         was responsive, technically sharp, and delivered a
-                        platform that our customers absolutely love."
+                        platform that our customers absolutely love.without a
+                        Exceptional work
                     </p>
 
                     <hr>
@@ -2165,7 +2166,8 @@
                     <p>
                         "The entire development process was smooth and
                         professional. The final product exceeded our
-                        expectations."
+                        expectations."50,000+ transactions daily without a
+                        hiccup.
                     </p>
 
                     <hr>
@@ -2198,7 +2200,7 @@
                     <p>
                         "Excellent communication and fantastic technical
                         execution. Highly recommended for large scale
-                        projects."
+                        projects."50,000+ transactions daily Exceptional work
                     </p>
 
                     <hr>
@@ -2231,6 +2233,8 @@
                     <p>
                         "A highly reliable team with excellent attention
                         to detail. We are very happy with the result."
+                        50,000+ transactions daily without a
+                        hiccup. Exceptional work
                     </p>
 
                     <hr>
@@ -2273,7 +2277,7 @@
 
 <section class="aa-faq-wrapper">
 
-    <div class="container aa-faq-container">
+    <div class="container aa-faq-container px-5">
 
         <!-- FAQ HEADING -->
         <div class="aa-faq-heading">
@@ -2419,7 +2423,7 @@
 
 <section class="aa-cta-wrapper">
 
-    <div class="container aa-cta-container">
+    <div class="container aa-cta-container px-5">
 
         <div class="aa-cta-content">
 
@@ -2444,7 +2448,7 @@
 
         <div class="aa-cta-button-box">
 
-            <a href="tel:+918874196809"  class="aa-cta-button">
+            <a href="tel:+918874196809" class="aa-cta-button">
                 <span>▣</span>
                 Book Free Strategy Call
             </a>
@@ -2458,7 +2462,7 @@
 <!-- blog section -->
 
 <section class="aa-blog-area">
-    <div class="container aa-blog-container">
+    <div class="container aa-blog-container px-5">
 
         <!-- HEADING -->
         <div class="aa-blog-top">
@@ -2479,119 +2483,71 @@
 
 
 
-        <div class="container">
+        <div class="aa-blog-container">
 
-            <div id="blogCarousel"
-                 class="carousel slide"
-                 data-bs-ride="carousel">
+            <div id="blogCarousel" class="carousel slide" data-bs-ride="carousel">
 
                 <div class="carousel-inner">
 
                     @{
                         var blogs = Model?.ToList() ?? new List<Access_Authority.Models.CreateBlog>();
-                        var groups = blogs
-                        .Select((blog, index) => new { blog, index })
-                        .GroupBy(x => x.index / 3)
-                        .ToList();
+                        int total = blogs.Count;
                     }
 
-                    @for (int g = 0; g < groups.Count; g++)
+                    @for (int start = 0; start < total; start++)
                     {
-                        <div class="carousel-item @(g == 0 ? "active" : "")">
+                        <div class="carousel-item @(start == 0 ? "active" : "")">
 
                             <div class="row g-4">
 
-                                @foreach (var item in groups[g])
+                                @for (int j = 0; j < 3; j++)
                                 {
-                                    var blog = item.blog;
+                                    var blog = blogs[(start + j) % total];
 
                                     <div class="col-lg-4 col-md-6">
 
                                         <div class="blog-card">
 
                                             <div class="blog-image">
-
                                                 @if (!string.IsNullOrEmpty(blog.FeaturedImage))
                                                 {
-                                                    <img src="@blog.FeaturedImage"
-                                                         alt="@blog.Title">
+                                                    <img src="@blog.FeaturedImage" alt="@blog.Title">
                                                 }
                                                 else
                                                 {
-                                                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop"
-                                                         alt="@blog.Title">
+                                                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop" alt="@blog.Title">
                                                 }
-
-                                                <span class="blog-badge">
-                                                    @blog.Category
-                                                </span>
-
+                                                <span class="blog-badge">@blog.Category</span>
                                             </div>
 
                                             <div class="blog-body">
-
                                                 <div class="blog-meta">
-                                                    <span>
-                                                        <i class="bi bi-calendar3"></i>
-                                                        @blog.CreatedDate.ToLocalTime().ToString("MMM dd, yyyy")
-                                                    </span>
+                                                    <span><i class="bi bi-calendar3"></i> @blog.CreatedDate.ToLocalTime().ToString("MMM dd, yyyy")</span>
                                                 </div>
 
                                                 <h3>
-                                                    <a asp-controller="Home"
-                                                       asp-action="Blogdetail"
-                                                       asp-route-id="@blog.Id">
-                                                        @blog.Title
-                                                    </a>
+                                                    <a asp-controller="Home" asp-action="Blogdetail" asp-route-id="@blog.Id">@blog.Title</a>
                                                 </h3>
 
                                                 <p class="blog-desc">
-
                                                     @{
-                                                        var plainText =
-                                                        System.Text.RegularExpressions.Regex
-                                                        .Replace(blog.Content ?? "", "<.*?>", "");
-
-                                                        var description =
-                                                        plainText.Length > 120
-                                                        ? plainText.Substring(0, 120) + "..."
-                                                        : plainText;
+                                                        var plainText = System.Text.RegularExpressions.Regex.Replace(blog.Content ?? "", "<.*?>", "");
+                                                        var description = plainText.Length > 120 ? plainText.Substring(0, 120) + "..." : plainText;
                                                     }
-
                                                     @description
-
                                                 </p>
 
                                                 <div class="blog-author">
-
                                                     <div class="client-avatar">
-                                                        <div>
-                                                            <img src="~/img/32.jpg"
-                                                                 class="img-fluid rounded-circle"
-                                                                 alt="Admin">
-                                                        </div>
+                                                        <div><img src="~/img/32.jpg" class="img-fluid rounded-circle" alt="Admin"></div>
                                                     </div>
-
-                                                    <span class="author-name">
-                                                        Admin
-                                                    </span>
-
-                                                    <a asp-controller="Home"
-                                                       asp-action="Blogdetail"
-                                                       asp-route-id="@blog.Id"
-                                                       class="blog-read-link">
-
-                                                        Read
-                                                        <i class="bi bi-arrow-right"></i>
-
+                                                    <span class="author-name">Admin</span>
+                                                    <a asp-controller="Home" asp-action="Blogdetail" asp-route-id="@blog.Id" class="blog-read-link">
+                                                        Read <i class="bi bi-arrow-right"></i>
                                                     </a>
-
                                                 </div>
-
                                             </div>
-
                                         </div>
-
                                     </div>
                                 }
 
@@ -2602,43 +2558,19 @@
 
                 </div>
 
-
-                <!-- PREVIOUS -->
-
-                <button class="carousel-control-prev"
-                        type="button"
-                        data-bs-target="#blogCarousel"
-                        data-bs-slide="prev">
-
+                <button class="carousel-control-prev" type="button" data-bs-target="#blogCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
-
-                    <span class="visually-hidden">
-                        Previous
-                    </span>
-
+                    <span class="visually-hidden">Previous</span>
                 </button>
 
-
-                <!-- NEXT -->
-
-                <button class="carousel-control-next"
-                        type="button"
-                        data-bs-target="#blogCarousel"
-                        data-bs-slide="next">
-
+                <button class="carousel-control-next" type="button" data-bs-target="#blogCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
-
-                    <span class="visually-hidden">
-                        Next
-                    </span>
-
+                    <span class="visually-hidden">Next</span>
                 </button>
 
             </div>
 
         </div>
-
-
 
     </div>
 </section>
@@ -2646,8 +2578,8 @@
 
 <style>
     /* =================================================
-           FEATURED PROJECTS — FILTER ANIMATION
-        ================================================= */
+               FEATURED PROJECTS — FILTER ANIMATION
+            ================================================= */
 
     .work-showcase [data-category] {
         transition: opacity 0.35s ease, transform 0.35s ease;
@@ -2658,18 +2590,15 @@
         }
 
     @@keyframes filterFadeIn {
-        from
+        from {
+            opacity: 0;
+            transform: translateY(12px);
+        }
 
-    {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .work-filter {
@@ -2677,8 +2606,8 @@
     }
 
     /* =================================================
-           FEATURED PROJECTS — COMPACT + NO GAP
-        ================================================= */
+               FEATURED PROJECTS — COMPACT + NO GAP
+            ================================================= */
 
     .work-showcase .work-image {
         height: 200px;
@@ -2698,8 +2627,8 @@
         }
 
     /* =================================================
-           RIGHT COLUMN — 2 STACKED IMAGES
-        ================================================= */
+               RIGHT COLUMN — 2 STACKED IMAGES
+            ================================================= */
 
     .work-showcase .work-right-stack {
         display: grid;
@@ -2722,8 +2651,8 @@
             }
 
     /* =================================================
-           FILTER — NO GAP (both cards same height)
-        ================================================= */
+               FILTER — NO GAP (both cards same height)
+            ================================================= */
 
     .work-showcase [data-category="web"].filter-show .work-image-large {
         height: 360px !important;
@@ -2739,32 +2668,29 @@
     }
 
     /* =================================================
-           MOBILE
-        ================================================= */
+               MOBILE
+            ================================================= */
 
     @@media (max-width: 767px) {
-        .work-showcase .work-image, .work-showcase [data-category].filter-show .work-image
-
-    {
-        height: 180px !important;
-    }
-
-    .work-showcase .work-image.work-image-large,
-    .work-showcase [data-category="web"].filter-show .work-image-large {
-        height: 220px !important;
-    }
-
-    .work-showcase .work-right-stack,
-    .work-showcase [data-category="web"].filter-show .work-right-stack {
-        height: auto !important;
-        grid-template-rows: none;
-        gap: 4px;
-    }
-
-        .work-showcase .work-right-stack .work-image {
-            height: 150px !important;
+        .work-showcase .work-image, .work-showcase [data-category].filter-show .work-image {
+            height: 180px !important;
         }
 
+            .work-showcase .work-image.work-image-large,
+            .work-showcase [data-category="web"].filter-show .work-image-large {
+                height: 220px !important;
+            }
+
+        .work-showcase .work-right-stack,
+        .work-showcase [data-category="web"].filter-show .work-right-stack {
+            height: auto !important;
+            grid-template-rows: none;
+            gap: 4px;
+        }
+
+            .work-showcase .work-right-stack .work-image {
+                height: 150px !important;
+            }
     }
 </style>
 

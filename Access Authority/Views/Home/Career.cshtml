@@ -13,9 +13,15 @@
     /* ===== TEAM PAGE HERO ===== */
 
     .page-hero-custom {
-        background: #f7f7f7;
-        padding: 55px 0 40px;
-        border-bottom: 1px solid #e8e8e8;
+        background-image: linear-gradient(rgba(0,0,0,0.68), rgba(0,0,0,0.68)), url("https://images.unsplash.com/photo-1752650732799-6e81d5f4c398?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+     
+        min-height: 420px; 
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #eaeaea;
     }
     /* Breadcrumb */
 
@@ -75,30 +81,7 @@
                 font-size: 15px;
             }
     }
-    /* =====================================================
-           PAGE HERO
-        ===================================================== */
-
-    .page-hero-custom {
-        background: #f7f7f7;
-        padding: 55px 0 40px;
-        border-bottom: 1px solid #eaeaea;
-    }
-
-        /* .page-hero-custom .breadcrumb-custom {
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.8px;
-            color: #999;
-            margin-bottom: 14px;
-        }
-
-            .page-hero-custom .breadcrumb-custom a {
-                color: #fff;
-                text-decoration: none;
-                transition: color 0.2s;
-            } */
-
+   
                 .page-hero-custom .breadcrumb-custom a:hover {
                     color: #ed0026;
                 }
@@ -1832,7 +1815,7 @@
 
 <section class="aa-cta-wrapper">
 
-    <div class="container aa-cta-container">
+    <div class="container aa-cta-container px-5">
 
         <div class="aa-cta-content">
 
@@ -1856,7 +1839,7 @@
 
         <div class="aa-cta-button-box">
 
-            <a href="#" class="aa-cta-button">
+            <a asp-action="Portfolio" class="aa-cta-button">
 
                 <span>▣</span>
 
@@ -1877,7 +1860,7 @@
 
 <section class="trusted-bottom">
 
-    <div class="container">
+    <div class="container ">
 
         <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
 
