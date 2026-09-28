@@ -4,24 +4,33 @@
 
 <style>
 
-   
+    /* =====================================================
+           POLICY PAGE
+        ===================================================== */
+
     .aa-policy-page {
         overflow: hidden;
         background: #fff;
         font-family: inherit;
         -webkit-font-smoothing: antialiased;
+        width: 100%;
     }
 
-    
+
+    /* =====================================================
+           HERO
+        ===================================================== */
+
     .aa-policy-hero {
         position: relative;
+        width: 100%;
+        min-height: 220px;
+        display: flex;
+        align-items: center;
         background-image: linear-gradient(rgba(8,8,8,.62), rgba(8,8,8,.62)), url("https://plus.unsplash.com/premium_photo-1661598710014-1a9451589d9b?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
-        min-height: 420px;
-        display: flex;
-        align-items: center;
         border-bottom: 1px solid #eaeaea;
     }
 
@@ -32,7 +41,7 @@
             right: 0;
             bottom: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(237,0,38,.55), transparent);
+            background: linear-gradient( 90deg, transparent, rgba(237,0,38,.55), transparent );
         }
 
         .aa-policy-hero h1 {
@@ -57,10 +66,21 @@
             font-weight: 400;
         }
 
+
+    /* =====================================================
+           MAIN SECTION
+        ===================================================== */
+
     .aa-policy-section {
+        width: 100%;
         background: #fff;
         padding: 70px 0 60px;
     }
+
+
+    /* =====================================================
+           HEADING
+        ===================================================== */
 
     .aa-policy-heading {
         font-size: 34px;
@@ -92,6 +112,7 @@
             height: 1.5px;
             background: #ed0026;
             margin-right: 10px;
+            flex-shrink: 0;
         }
 
     .aa-policy-intro {
@@ -102,21 +123,25 @@
         margin: 0 0 42px;
     }
 
+
     /* =====================================================
-               QUICK NAV PILLS
-            ===================================================== */
+           QUICK NAV
+        ===================================================== */
 
     .aa-policy-nav {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
+        width: 100%;
         margin-bottom: 55px;
         padding-bottom: 40px;
         border-bottom: 1px solid #f1f1f1;
     }
 
         .aa-policy-nav a {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 8px 16px;
             font-size: 11.5px;
             font-weight: 600;
@@ -127,6 +152,8 @@
             border-radius: 30px;
             text-decoration: none !important;
             transition: all .3s cubic-bezier(.2,.7,.3,1);
+            white-space: normal;
+            text-align: center;
         }
 
             .aa-policy-nav a:hover {
@@ -137,10 +164,16 @@
                 box-shadow: 0 8px 20px rgba(0,0,0,.12);
             }
 
-    
+
+    /* =====================================================
+           POLICY BLOCK
+        ===================================================== */
+
     .aa-policy-block {
         display: flex;
+        align-items: flex-start;
         gap: 26px;
+        width: 100%;
         padding: 36px 0;
         border-bottom: 1px solid #f2f2f2;
         transition: opacity .3s ease;
@@ -157,8 +190,13 @@
             transform: scale(1.04);
         }
 
+
+    /* =====================================================
+           NUMBER
+        ===================================================== */
+
     .aa-num {
-        flex-shrink: 0;
+        flex: 0 0 46px;
         width: 46px;
         height: 46px;
         border-radius: 50%;
@@ -174,8 +212,13 @@
         transition: all .35s cubic-bezier(.2,.7,.3,1);
     }
 
+
+    /* =====================================================
+           POLICY BODY
+        ===================================================== */
+
     .aa-policy-body {
-        flex: 1;
+        flex: 1 1 auto;
         min-width: 0;
         padding-top: 8px;
     }
@@ -194,6 +237,8 @@
             color: #6a6a6a;
             line-height: 1.85;
             margin: 0 0 12px;
+            overflow-wrap: anywhere;
+            word-break: normal;
         }
 
             .aa-policy-body p:last-child {
@@ -213,6 +258,7 @@
             line-height: 1.85;
             margin-bottom: 8px;
             padding-left: 22px;
+            overflow-wrap: anywhere;
         }
 
             .aa-policy-body li::before {
@@ -231,9 +277,15 @@
             font-weight: 700;
         }
 
+
+    /* =====================================================
+           INFO BOX
+        ===================================================== */
+
     .aa-policy-box {
         position: relative;
-        background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+        width: 100%;
+        background: linear-gradient( 135deg, #fafafa 0%, #f5f5f5 100% );
         padding: 26px 30px;
         margin: 6px 0 0;
         border-radius: 10px;
@@ -257,15 +309,18 @@
             font-size: 13.5px;
             line-height: 1.8;
             position: relative;
+            overflow-wrap: anywhere;
         }
 
         .aa-policy-box a {
             font-weight: 700;
+            overflow-wrap: anywhere;
         }
 
+
     /* =====================================================
-               LINKS
-            ===================================================== */
+           LINKS
+        ===================================================== */
 
     .aa-policy-page a {
         color: #ed0026;
@@ -278,11 +333,13 @@
             text-decoration: none;
         }
 
-    
+
+    /* =====================================================
+           FOOTNOTE
+        ===================================================== */
+
     .aa-policy-footnote {
-        margin-top: 60px;
         padding-top: 24px;
-        border-top: 1px solid #f1f1f1;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -314,89 +371,410 @@
                 background: #ed0026;
                 border-radius: 50%;
                 box-shadow: 0 0 0 3px rgba(237,0,38,.12);
+                flex-shrink: 0;
             }
 
-   
+
+    /* =====================================================
+           TABLET
+           ===================================================== */
+
     @@media (max-width: 991.98px) {
 
-        .px-5 {
-            padding-left: 16px !important;
-            padding-right: 16px !important;
+        .aa-policy-page {
+            width: 100%;
         }
 
-        .container,
-        .container-fluid {
-            padding-left: 16px !important;
-            padding-right: 16px !important;
-        }
+            .aa-policy-page .container,
+            .aa-policy-page .container-fluid {
+                width: 100%;
+                max-width: 100%;
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
 
-        .aa-policy-page section .container.px-5 {
-            padding-left: 16px !important;
-            padding-right: 16px !important;
-        }
+            .aa-policy-page .px-5 {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
 
         .aa-policy-hero {
-            min-height: 350px;
+            min-height: 220px;
         }
 
             .aa-policy-hero h1 {
-                font-size: 30px;
-                letter-spacing: -.5px;
+                font-size: 32px;
+                letter-spacing: -.6px;
             }
 
             .aa-policy-hero .subtitle {
                 font-size: 13px;
+                line-height: 1.7;
             }
 
         .aa-policy-section {
-            padding: 48px 0 40px;
+            padding: 50px 0 45px;
         }
 
         .aa-policy-heading {
-            font-size: 26px;
+            font-size: 28px;
         }
 
         .aa-policy-nav {
-            margin-bottom: 40px;
+            margin-bottom: 42px;
             padding-bottom: 30px;
-            gap: 6px;
+            gap: 7px;
         }
 
             .aa-policy-nav a {
-                padding: 6px 12px;
+                padding: 7px 13px;
                 font-size: 11px;
             }
 
         .aa-policy-block {
             gap: 18px;
-            padding: 28px 0;
+            padding: 30px 0;
         }
 
         .aa-num {
-            width: 38px;
-            height: 38px;
+            flex-basis: 40px;
+            width: 40px;
+            height: 40px;
             font-size: 11.5px;
         }
 
         .aa-policy-body {
-            padding-top: 4px;
+            padding-top: 3px;
         }
 
             .aa-policy-body h2 {
-                font-size: 16.5px;
+                font-size: 17px;
+            }
+
+            .aa-policy-body p,
+            .aa-policy-body li {
+                font-size: 13px;
+            }
+
+        .aa-policy-box {
+            padding: 22px 24px;
+        }
+
+        .aa-policy-footnote {
+            margin-top: 35px;
+        }
+    }
+
+
+    /* =====================================================
+           MOBILE
+           ===================================================== */
+
+    @@media (max-width: 767.98px) {
+
+        .aa-policy-page {
+            width: 100%;
+            max-width: 100%;
+        }
+
+            .aa-policy-page .container,
+            .aa-policy-page .container-fluid {
+                width: 100%;
+                max-width: 100%;
+                padding-left: 14px !important;
+                padding-right: 14px !important;
+            }
+
+            .aa-policy-page .px-5 {
+                padding-left: 14px !important;
+                padding-right: 14px !important;
+            }
+        /* HERO */
+
+        .aa-policy-hero {
+            min-height: 220px;
+            padding: 30px 0;
+            align-items: center;
+        }
+
+            .aa-policy-hero h1 {
+                font-size: 27px;
+                line-height: 1.15;
+                letter-spacing: -.4px;
+                margin-bottom: 10px;
+            }
+
+            .aa-policy-hero .subtitle {
+                max-width: 100%;
+                font-size: 12.5px;
+                line-height: 1.7;
+            }
+        /* SECTION */
+
+        .aa-policy-section {
+            padding: 42px 0 35px;
+        }
+        /* HEADING */
+
+        .aa-policy-label {
+            font-size: 9px;
+            letter-spacing: 1.7px;
+            margin-bottom: 10px;
+        }
+
+            .aa-policy-label span {
+                width: 18px;
+                margin-right: 8px;
+            }
+
+        .aa-policy-heading {
+            font-size: 24px;
+            line-height: 1.2;
+            letter-spacing: -.4px;
+        }
+
+        .aa-policy-intro {
+            font-size: 12.5px;
+            line-height: 1.8;
+            max-width: 100%;
+            margin-bottom: 30px;
+        }
+        /* QUICK NAV */
+
+        .aa-policy-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+            gap: 7px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+        }
+
+            .aa-policy-nav a {
+                width: 100%;
+                min-height: 38px;
+                padding: 9px 12px;
+                font-size: 11px;
+                border-radius: 8px;
+                line-height: 1.4;
+            }
+
+                .aa-policy-nav a:hover {
+                    transform: none;
+                    box-shadow: none;
+                }
+        /* POLICY BLOCK */
+
+        .aa-policy-block {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 14px;
+            width: 100%;
+            padding: 25px 0;
+        }
+        /* NUMBER */
+
+        .aa-num {
+            flex: 0 0 38px;
+            width: 38px;
+            height: 38px;
+            font-size: 11px;
+            align-self: flex-start;
+        }
+        /* BODY */
+
+        .aa-policy-body {
+            width: 100%;
+            padding-top: 0;
+        }
+
+            .aa-policy-body h2 {
+                font-size: 17px;
+                line-height: 1.4;
+                margin-bottom: 11px;
             }
 
             .aa-policy-body p,
             .aa-policy-body li {
                 font-size: 12.5px;
+                line-height: 1.8;
             }
 
+            .aa-policy-body p {
+                margin-bottom: 10px;
+            }
+
+            .aa-policy-body ul {
+                margin-top: 8px;
+            }
+
+            .aa-policy-body li {
+                padding-left: 20px;
+                margin-bottom: 7px;
+            }
+
+                .aa-policy-body li::before {
+                    left: 1px;
+                    top: 10px;
+                    width: 7px;
+                }
+        /* INFO BOX */
+
         .aa-policy-box {
-            padding: 20px 22px;
+            width: 100%;
+            padding: 19px 18px 19px 21px;
+            margin-top: 5px;
+            border-radius: 8px;
+        }
+
+            .aa-policy-box::before {
+                width: 3px;
+            }
+
+            .aa-policy-box p {
+                font-size: 12.5px;
+                line-height: 1.8;
+            }
+        /* FOOTNOTE */
+
+        .aa-policy-footnote {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 100%;
+            gap: 10px;
+            margin-top: 25px;
+            padding-top: 20px;
+        }
+
+            .aa-policy-footnote p,
+            .aa-policy-footnote .aa-updated {
+                font-size: 10.5px;
+            }
+    }
+
+
+    /* =====================================================
+           SMALL MOBILE
+           ===================================================== */
+
+    @@media (max-width: 480px) {
+
+        .aa-policy-page .container,
+        .aa-policy-page .container-fluid,
+        .aa-policy-page .px-5 {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+        }
+
+        .aa-policy-hero {
+            min-height: 220px;
+            padding: 25px 0;
+        }
+
+            .aa-policy-hero h1 {
+                font-size: 24px;
+                line-height: 1.2;
+            }
+
+            .aa-policy-hero .subtitle {
+                font-size: 11.5px;
+                line-height: 1.65;
+            }
+
+        .aa-policy-section {
+            padding: 35px 0 30px;
+        }
+
+        .aa-policy-heading {
+            font-size: 22px;
+        }
+
+        .aa-policy-intro {
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+
+        .aa-policy-nav {
+            gap: 6px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+
+            .aa-policy-nav a {
+                min-height: 36px;
+                padding: 8px 10px;
+                font-size: 10.5px;
+            }
+
+        .aa-policy-block {
+            gap: 12px;
+            padding: 22px 0;
+        }
+
+        .aa-num {
+            width: 36px;
+            height: 36px;
+            flex-basis: 36px;
+            font-size: 10.5px;
+        }
+
+        .aa-policy-body h2 {
+            font-size: 16px;
+        }
+
+        .aa-policy-body p,
+        .aa-policy-body li,
+        .aa-policy-box p {
+            font-size: 12px;
+        }
+
+        .aa-policy-box {
+            padding: 17px 15px 17px 19px;
         }
 
         .aa-policy-footnote {
-            margin-top: 40px;
+            margin-top: 20px;
+        }
+    }
+
+
+    /* =====================================================
+           VERY SMALL DEVICES
+           ===================================================== */
+
+    @@media (max-width: 360px) {
+
+        .aa-policy-page .container,
+        .aa-policy-page .container-fluid,
+        .aa-policy-page .px-5 {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+
+        .aa-policy-hero h1 {
+            font-size: 22px;
+        }
+
+        .aa-policy-hero .subtitle {
+            font-size: 11px;
+        }
+
+        .aa-policy-heading {
+            font-size: 20px;
+        }
+
+        .aa-policy-body h2 {
+            font-size: 15px;
+        }
+
+        .aa-policy-body p,
+        .aa-policy-body li,
+        .aa-policy-box p {
+            font-size: 11.5px;
         }
     }
 
@@ -711,7 +1089,7 @@
 
             <div class="aa-policy-footnote">
 
-                <p>&copy; @DateTime.Now.Year Access Authority. All rights reserved.</p>
+                @* <p>&copy; @DateTime.Now.Year Access Authority. All rights reserved.</p> *@
 
                 <span class="aa-updated">
                     Last updated: @DateTime.Now.ToString("MMMM yyyy")

@@ -3,7 +3,29 @@
 }
 
 <style>
+    .breadcrumb-custom {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        font-size: 14px;
+    }
 
+        .breadcrumb-custom a {
+            color: #d62828;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+            .breadcrumb-custom a:hover {
+                color: #a91f1f;
+            }
+
+        .breadcrumb-custom span {
+            color: #999;
+            font-weight: 500;
+        }
     .aa-about-page {
         overflow: hidden;
     }
@@ -56,7 +78,7 @@
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
-        min-height: 420px;
+        min-height: 220px;
         display: flex;
         align-items: center;
         border-bottom: 1px solid #eaeaea;
@@ -1870,7 +1892,13 @@
     <section class="page-hero-custom">
 
         <div class="container px-5">
-
+            <div class="breadcrumb-custom">
+                <a asp-controller="Home"
+                   asp-action="Index">
+                    Home
+                </a> <span>/</span>
+                <span>Team</span>
+            </div>
             <h1>
                 We Build <span>Digital Authority</span>
             </h1>
@@ -1881,7 +1909,7 @@
                 enterprise solutions and intelligent products.
             </p>
 
-            <div class="hero-buttons">
+          @*   <div class="hero-buttons">
 
                 <a asp-action="AboutUs" class="btn-primary-custom">
                     <i class="bi bi-arrow-right"></i>
@@ -1893,12 +1921,12 @@
                     Meet Our Team
                 </a>
 
-            </div>
+            </div> *@
 
 
             <!-- STATS -->
 
-            <div class="mini-stats-custom">
+            @* <div class="mini-stats-custom">
 
                 <div class="row align-items-center">
 
@@ -1971,7 +1999,7 @@
 
                 </div>
 
-            </div>
+            </div> *@
 
         </div>
 
