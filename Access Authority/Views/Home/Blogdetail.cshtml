@@ -12,23 +12,60 @@
     var heroBg = !string.IsNullOrEmpty(Model.FeaturedImage)
         ? Model.FeaturedImage
         : "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1600&q=80";
+
+    var fallbackThumb = "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=200&h=150&fit=crop";
+
+    // Real share links for THIS article
+    var pageUrl = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
+    var encUrl = Uri.EscapeDataString(pageUrl);
+    var encTitle = Uri.EscapeDataString(Model.Title ?? "");
 }
 
-<style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet" />
 
-    .blog-page {
-        background: #f5f5f5;
-        min-height: 100vh;
+<style>
+    :root {
+        --brand: #ed102b;
+        --brand-dark: #c60c22;
+        --ink: #16181d;
+        --body: #2c2f36;
+        --muted: #6b7079;
+        --line: #e6e7ea;
+        --paper: #ffffff;
+        --bg: #f3f4f6;
+        --ui-font: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+        --read-font: "Source Serif 4", Georgia, "Times New Roman", serif;
     }
 
+    .blog-page {
+        background: var(--bg);
+        min-height: 100vh;
+        font-family: var(--ui-font);
+    }
+
+    /* ---------- Reading progress ---------- */
+    .read-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 0;
+        background: var(--brand);
+        z-index: 2000;
+        transition: width .1s linear;
+    }
+
+    /* ---------- Hero ---------- */
     .blog-hero {
         position: relative;
-        min-height: 460px;
+        min-height: 220px;
         display: flex;
         align-items: flex-end;
         color: #fff;
         overflow: hidden;
-        background: #111;
+        background: #14161a;
     }
 
     .blog-hero-img {
@@ -39,23 +76,14 @@
         object-fit: cover;
         object-position: center;
         z-index: 0;
-        display: block;
     }
 
     .blog-hero::before {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(13,13,13,.15) 0%, rgba(13,13,13,.30) 45%, rgba(13,13,13,.80) 100%);
         z-index: 1;
-    }
-
-    .blog-hero::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(90deg, rgba(13,13,13,.50) 0%, rgba(13,13,13,.12) 55%, transparent 100%);
-        z-index: 1;
+        background: linear-gradient(180deg, rgba(10,11,14,.35) 0%, rgba(10,11,14,.55) 40%, rgba(10,11,14,.92) 100%);
     }
 
     .blog-hero-inner {
@@ -63,7 +91,7 @@
         z-index: 2;
         max-width: 1080px;
         margin: 0 auto;
-        padding: 0 20px 60px;
+        padding: 0 20px 64px;
         width: 100%;
         box-sizing: border-box;
     }
@@ -71,174 +99,156 @@
     .blog-breadcrumb {
         display: flex;
         align-items: center;
-        gap: 8px;
-        margin-bottom: 18px;
-        font-size: 11px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #ed102b;
-        text-shadow: 0 2px 8px rgba(0,0,0,.5);
         flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 22px;
+        font-size: 13px;
+        font-weight: 500;
+        color: rgba(255,255,255,.75);
     }
 
         .blog-breadcrumb a {
-            color: #fff;
+            color: rgba(255,255,255,.75);
             text-decoration: none;
-            opacity: .9;
         }
 
             .blog-breadcrumb a:hover {
-                opacity: 1;
-                color: #ed102b;
+                color: #fff;
+                text-decoration: underline;
             }
 
         .blog-breadcrumb i {
             font-size: 10px;
-            color: #ed102b;
+            opacity: .6;
+        }
+
+        .blog-breadcrumb .current {
+            color: #fff;
+            max-width: 340px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
     .blog-hero .category {
         display: inline-block;
         padding: 6px 14px;
-        margin-bottom: 18px;
-        background: #ed102b;
+        margin-bottom: 20px;
+        background: var(--brand);
         color: #fff;
-        font-size: 10px;
-        font-weight: 800;
-        letter-spacing: .8px;
-        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: 700;
+        border-radius: 3px;
     }
 
-    .blog-hero h2 {
-        max-width: 850px;
+    .blog-hero h1 {
+        max-width: 840px;
         margin: 0;
-        font-size: 42px;
-        line-height: 1.2;
+        font-size: clamp(30px, 4.6vw, 50px);
+        line-height: 1.12;
         font-weight: 800;
-        letter-spacing: -0.8px;
+        letter-spacing: -1px;
         color: #fff;
-        text-shadow: 0 3px 14px rgba(0,0,0,.5);
+        text-wrap: balance;
     }
 
     .blog-meta {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        gap: 18px;
-        margin-top: 24px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255,255,255,.15);
+        gap: 10px 26px;
+        margin-top: 28px;
+        padding-top: 22px;
+        border-top: 1px solid rgba(255,255,255,.22);
     }
 
     .blog-meta-item {
         display: flex;
         align-items: center;
-        gap: 8px;
-        color: #eee;
-        font-size: 12px;
-        text-shadow: 0 2px 8px rgba(0,0,0,.5);
+        gap: 9px;
+        color: rgba(255,255,255,.88);
+        font-size: 14px;
+        font-weight: 500;
     }
 
+        .blog-meta-item i {
+            color: #fff;
+            opacity: .7;
+        }
+
     .author-avatar {
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
-        background: #ed102b;
+        background: var(--brand);
         color: #fff;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 800;
         flex-shrink: 0;
     }
 
-    .blog-meta-item i {
-        color: #ed102b;
-    }
-
-
-    /* =====================================================
-                   MAIN WRAPPER
-                ===================================================== */
-
+    /* ---------- Layout ---------- */
     .blog-wrapper {
         max-width: 1080px;
-        
-        position: relative;
-        z-index: 3;
+        margin: 0 auto;
+        padding: 30px 0 72px;
     }
 
     .blog-main-row {
         align-items: flex-start;
     }
 
-
-    /* =====================================================
-                   BACK BUTTON
-                ===================================================== */
-
     .back-btn {
         display: inline-flex;
         align-items: center;
-        gap: 7px;
+        gap: 8px;
         margin-bottom: 22px;
         padding: 9px 16px;
-        background: #fff;
-        border: 1px solid #dedede;
-        border-radius: 6px;
-        color: #333;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--ink);
         text-decoration: none;
-        font-size: 11px;
+        font-size: 13px;
         font-weight: 700;
-        transition: all .25s ease;
-        box-shadow: 0 4px 12px rgba(0,0,0,.06);
+        transition: background .2s, color .2s, border-color .2s;
     }
 
         .back-btn:hover {
-            background: #ed102b;
-            border-color: #ed102b;
+            background:#ed102b;
+            border-color: var(--ink);
             color: #fff;
-            transform: translateX(-2px);
         }
 
-
-    /* =====================================================
-                   BLOG CARD
-                ===================================================== */
-
+    /* ---------- Article ---------- */
     .blog-card {
-        background: #fff;
-        border: 1px solid #e5e5e5;
-        border-radius: 4px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
         overflow: hidden;
-        box-shadow: 0 4px 14px rgba(0,0,0,.05);
     }
 
-
-    /* =====================================================
-                   BLOG CONTENT
-                ===================================================== */
-
     .blog-content {
-        padding: 40px 42px;
+        padding: 44px 48px 40px;
+        font-family: var(--read-font);
+        font-size: 18px;
+        line-height: 1.8;
+        color: var(--body);
+        overflow-wrap: anywhere;
     }
 
         .blog-content p {
-            font-size: 15px;
-            line-height: 1.9;
-            color: #4a4a4a;
-            margin-bottom: 20px;
+            margin: 0 0 1.35em;
         }
 
-            .blog-content p:first-of-type::first-letter {
-                float: left;
-                font-size: 54px;
-                line-height: .85;
-                font-weight: 800;
-                color: #ed102b;
-                padding: 4px 8px 0 0;
+            /* first paragraph reads as the intro */
+            .blog-content p:first-of-type {
+                font-size: 20px;
+                line-height: 1.7;
+                color: var(--ink);
             }
 
         .blog-content h1,
@@ -247,19 +257,20 @@
         .blog-content h4,
         .blog-content h5,
         .blog-content h6 {
-            color: #111;
+            font-family: var(--ui-font);
+            color: var(--ink);
             font-weight: 800;
-            line-height: 1.35;
-            margin-top: 34px;
-            margin-bottom: 16px;
+            line-height: 1.25;
+            letter-spacing: -.4px;
+            margin: 2em 0 .6em;
         }
 
         .blog-content h1 {
-            font-size: 30px;
+            font-size: 32px;
         }
 
         .blog-content h2 {
-            font-size: 26px;
+            font-size: 27px;
         }
 
         .blog-content h3 {
@@ -270,142 +281,188 @@
             font-size: 19px;
         }
 
+        .blog-content h2 {
+            padding-top: .9em;
+            border-top: 1px solid var(--line);
+        }
+
         .blog-content ul,
         .blog-content ol {
-            padding-left: 26px;
-            margin: 18px 0;
+            padding-left: 1.4em;
+            margin: 0 0 1.4em;
         }
 
         .blog-content li {
-            color: #4a4a4a;
-            font-size: 15px;
-            line-height: 1.8;
-            margin-bottom: 8px;
+            margin-bottom: .5em;
+            padding-left: .2em;
         }
+
+            .blog-content li::marker {
+                color: var(--brand);
+                font-weight: 700;
+            }
 
         .blog-content blockquote {
-            margin: 28px 0;
-            padding: 20px 24px;
-            background: #fafafa;
-            border-left: 4px solid #ed102b;
-            color: #444;
+            margin: 2em 0;
+            padding: 6px 0 6px 24px;
+            border-left: 4px solid var(--brand);
+            color: var(--ink);
+            font-size: 21px;
+            line-height: 1.6;
             font-style: italic;
-            font-size: 15px;
         }
 
+            .blog-content blockquote p:last-child {
+                margin-bottom: 0;
+            }
+
         .blog-content img {
+            display: block;
             max-width: 100%;
             height: auto;
             border-radius: 6px;
-            margin: 20px 0;
-            box-shadow: 0 8px 20px rgba(0,0,0,.08);
+            margin: 2em auto;
         }
 
         .blog-content a {
-            color: #ed102b;
-            font-weight: 700;
+            color: var(--brand-dark);
+            font-weight: 600;
             text-decoration: underline;
-            text-underline-offset: 2px;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
         }
 
+            .blog-content a:hover {
+                text-decoration-thickness: 2px;
+            }
+
         .blog-content pre {
-            background: #0d0d0d;
-            color: #eee;
-            padding: 18px;
+            background: #14161a;
+            color: #eceef2;
+            padding: 18px 20px;
             border-radius: 6px;
             overflow-x: auto;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .blog-content code {
+            font-size: .9em;
+        }
+
+        .blog-content table {
+            display: block;
+            max-width: 100%;
+            overflow-x: auto;
+            border-collapse: collapse;
+            margin: 2em 0;
+            font-family: var(--ui-font);
+            font-size: 15px;
+        }
+
+        .blog-content th,
+        .blog-content td {
+            padding: 10px 14px;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .blog-content th {
+            background: #f7f7f8;
+            color: var(--ink);
         }
 
         .blog-content strong {
-            color: #111;
+            color: var(--ink);
         }
 
-
-    /* =====================================================
-                   TAGS + SHARE
-                ===================================================== */
-
-    .share-box {
-        border-top: 1px solid #eee;
-        margin-top: 36px;
-        padding-top: 24px;
+    /* ---------- Tags + share ---------- */
+    .article-footer {
+        margin-top: 44px;
+        padding-top: 26px;
+        border-top: 1px solid var(--line);
+        font-family: var(--ui-font);
     }
 
-        .share-box strong {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 11px;
-            font-weight: 800;
-            color: #111;
-            text-transform: uppercase;
-            letter-spacing: .6px;
-            margin-bottom: 12px;
+    .footer-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--ink);
+    }
+
+        .footer-label i {
+            color: var(--brand);
         }
+
+    .article-footer + .article-footer {
+        margin-top: 28px;
+    }
 
     .blog-tag {
         display: inline-block;
-        padding: 7px 15px;
+        padding: 6px 14px;
         margin: 0 8px 8px 0;
-        background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 20px;
-        color: #333;
-        font-size: 11px;
-        font-weight: 700;
-        transition: all .2s ease;
+        background: #f4f5f7;
+        border-radius: 999px;
+        color: #3a3e46;
+        font-size: 13px;
+        font-weight: 600;
     }
-
-        .blog-tag:hover {
-            background: #ed102b;
-            border-color: #ed102b;
-            color: #fff;
-        }
-
 
     .share-buttons {
         display: flex;
-        gap: 8px;
+        flex-wrap: wrap;
+        gap: 10px;
     }
 
-        .share-buttons a {
-            width: 36px;
-            height: 36px;
+        .share-buttons a,
+        .share-buttons button {
+            height: 40px;
+            min-width: 40px;
+            padding: 0 12px;
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            background: #f4f4f4;
-            color: #333;
-            border-radius: 50%;
+            gap: 8px;
+            background: #f4f5f7;
+            color: var(--ink);
+            border: 0;
+            border-radius: 999px;
+            font: 700 13px var(--ui-font);
             text-decoration: none;
-            transition: all .25s ease;
+            cursor: pointer;
+            transition: background .2s, color .2s;
         }
 
-            .share-buttons a:hover {
-                background: #ed102b;
+            .share-buttons a:hover,
+            .share-buttons button:hover {
+                background: var(--brand);
                 color: #fff;
-                transform: translateY(-3px);
             }
 
+            .share-buttons button.copied {
+                background: #16a34a;
+                color: #fff;
+            }
 
-    /* =====================================================
-                   SIDEBAR
-                ===================================================== */
-
+    /* ---------- Sidebar ---------- */
     .sidebar-sticky {
         position: sticky;
-        top: 25px;
+        top: 24px;
         display: flex;
         flex-direction: column;
         gap: 20px;
     }
 
     .recent-posts-card {
-        background: #fff;
-        border: 1px solid #e5e5e5;
-        border-radius: 4px;
-        padding: 22px;
-        box-shadow: 0 4px 14px rgba(0,0,0,.05);
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 22px 22px 8px;
     }
 
     .recent-posts-heading {
@@ -413,36 +470,28 @@
         align-items: center;
         justify-content: space-between;
         padding-bottom: 14px;
-        border-bottom: 2px solid #f1f1f1;
-        margin-bottom: 5px;
+        border-bottom: 2px solid var(--brand);
+        margin-bottom: 4px;
     }
 
-        .recent-posts-heading h3 {
+        .recent-posts-heading h2 {
             margin: 0;
-            font-size: 15px;
+            font-size: 18px;
             font-weight: 800;
-            color: #111;
-            text-transform: uppercase;
-            letter-spacing: .4px;
-        }
-
-        .recent-posts-heading span {
-            width: 26px;
-            height: 3px;
-            background: #ed102b;
-            display: block;
-            margin-top: 6px;
+            color: var(--ink);
+            letter-spacing: -.2px;
         }
 
         .recent-posts-heading i {
-            color: #ed102b !important;
+            color: var(--brand);
+            font-size: 18px;
         }
 
     .recent-post {
         display: flex;
-        gap: 12px;
-        padding: 14px 0;
-        border-bottom: 1px solid #eee;
+        gap: 14px;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--line);
         text-decoration: none;
     }
 
@@ -450,13 +499,21 @@
             border-bottom: none;
         }
 
-    .recent-post-image {
-        width: 74px;
-        height: 64px;
-        object-fit: cover;
-        border-radius: 4px;
+    .recent-post-thumb {
+        width: 84px;
+        height: 68px;
         flex-shrink: 0;
-        transition: transform .25s ease;
+        border-radius: 5px;
+        overflow: hidden;
+        background: #e9eaee;
+    }
+
+    .recent-post-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform .3s ease;
     }
 
     .recent-post:hover .recent-post-image {
@@ -469,46 +526,59 @@
 
     .recent-post-category {
         display: block;
-        color: #ed102b;
-        font-size: 8px;
-        font-weight: 800;
-        letter-spacing: .7px;
-        text-transform: uppercase;
-        margin-bottom: 4px;
+        color: var(--brand-dark);
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 3px;
     }
 
-    .recent-post-content h4 {
-        color: #222;
-        font-size: 12px;
-        line-height: 1.45;
+    .recent-post-content h3 {
+        color: var(--ink);
+        font-size: 14px;
+        line-height: 1.4;
         font-weight: 700;
         margin: 0 0 6px;
-        transition: color .2s ease;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: color .2s;
     }
 
-    .recent-post:hover .recent-post-content h4 {
-        color: #ed102b;
+    .recent-post:hover .recent-post-content h3 {
+        color: var(--brand-dark);
     }
 
     .recent-post-date {
-        color: #999;
-        font-size: 9px;
+        color: var(--muted);
+        font-size: 12px;
     }
 
+    /* ---------- Accessibility ---------- */
+    .back-btn:focus-visible,
+    .recent-post:focus-visible,
+    .share-buttons a:focus-visible,
+    .share-buttons button:focus-visible,
+    .blog-breadcrumb a:focus-visible {
+        outline: 3px solid var(--brand);
+        outline-offset: 2px;
+    }
 
-    /* =====================================================
-                   RESPONSIVE
-                ===================================================== */
+    @@media (prefers-reduced-motion: reduce) {
+        .read-progress,
+        .recent-post-image {
+            transition: none;
+        }
+    }
 
+    /* ---------- Responsive ---------- */
     @@media (max-width: 991px) {
-
         .blog-wrapper {
             max-width: 94%;
         }
 
         .sidebar-sticky {
             position: static;
-            margin-top: 10px;
         }
 
         .blog-hero {
@@ -517,77 +587,72 @@
     }
 
     @@media (max-width: 768px) {
-
         .blog-hero {
-            min-height: 340px;
+            min-height: 360px;
         }
 
         .blog-hero-inner {
             padding: 0 16px 40px;
         }
 
-        .blog-hero h2 {
-            font-size: 28px;
+        .blog-breadcrumb .current {
+            max-width: 180px;
         }
 
         .blog-meta {
-            gap: 12px;
-            margin-top: 18px;
+            gap: 8px 20px;
+            margin-top: 20px;
             padding-top: 16px;
         }
 
         .blog-content {
-            padding: 26px 22px;
+            padding: 28px 22px 26px;
+            font-size: 17px;
         }
 
-            .blog-content p,
-            .blog-content li {
-                font-size: 14px;
+            .blog-content p:first-of-type {
+                font-size: 18px;
             }
 
             .blog-content h2 {
-                font-size: 22px;
+                font-size: 23px;
             }
 
             .blog-content h3 {
                 font-size: 20px;
             }
 
-            .blog-content p:first-of-type::first-letter {
-                font-size: 40px;
+            .blog-content blockquote {
+                font-size: 18px;
             }
     }
-
 </style>
 
+<div class="read-progress" id="readProgress" aria-hidden="true"></div>
 
 <div class="blog-page">
 
     <!-- BLOG HERO -->
+    <header class="blog-hero">
 
-    <section class="blog-hero">
-
-        <img src="@heroBg"
-             class="blog-hero-img"
-             alt="@Model.Title" />
+        <img src="@heroBg" class="blog-hero-img" alt="" />
 
         <div class="blog-hero-inner">
 
-            <div class="blog-breadcrumb">
-                <a asp-controller="Home" asp-action="Index">HOME</a>
+            <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+                <a asp-controller="Home" asp-action="Index">Home</a>
                 <i class="bi bi-chevron-right"></i>
-                <a asp-controller="Home" asp-action="Blog">BLOG</a>
+                <a asp-controller="Home" asp-action="Blog">Blog</a>
                 <i class="bi bi-chevron-right"></i>
-                <span>@Model.Title</span>
-            </div>
+                <span class="current">@Model.Title</span>
+            </nav>
 
-            <span class="category">
-                @Model.Category
-            </span>
+            @if (!string.IsNullOrEmpty(Model.Category))
+            {
+                <span class="category">@Model.Category</span>
+            }
 
-            <h2>
-                @Model.Title
-            </h2>
+            <h1>@Model.Title</h1>
 
             <div class="blog-meta">
 
@@ -601,36 +666,34 @@
                     @Model.CreatedDate.ToLocalTime().ToString("MMMM dd, yyyy")
                 </div>
 
+                <div class="blog-meta-item">
+                    <i class="bi bi-clock"></i>
+                    @readingMinutes min read
+                </div>
+
             </div>
 
         </div>
 
-    </section>
+    </header>
 
 
     <!-- MAIN BLOG AREA -->
-
-    <div class="container px-5">
+    <div class="container px-3 px-md-5">
 
         <div class="blog-wrapper">
 
-            <a asp-controller="Home"
-               asp-action="Blog"
-               class="back-btn">
-
+            <a asp-controller="Home" asp-action="Blog" class="back-btn">
                 <i class="bi bi-arrow-left"></i>
-                Back to Blog
-
+                Back to blog
             </a>
-
 
             <div class="row g-4 blog-main-row">
 
-                <!-- LEFT : BLOG -->
-
+                <!-- LEFT : ARTICLE -->
                 <div class="col-lg-8">
 
-                    <article class="blog-card">
+                    <article class="blog-card" id="articleBody">
 
                         <div class="blog-content">
 
@@ -638,41 +701,37 @@
 
                             @if (!string.IsNullOrEmpty(Model.Tags))
                             {
-                                <div class="share-box">
-
-                                    <strong>
+                                <div class="article-footer">
+                                    <div class="footer-label">
                                         <i class="bi bi-tags"></i>
                                         Tags
-                                    </strong>
-
-                                    <div>
-                                        @foreach (var tag in Model.Tags.Split(','))
-                                        {
-                                            <span class="blog-tag">
-                                                #@tag.Trim()
-                                            </span>
-                                        }
                                     </div>
 
+                                    <div>
+                                        @foreach (var tag in Model.Tags.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+                                        {
+                                            <span class="blog-tag">#@tag</span>
+                                        }
+                                    </div>
                                 </div>
                             }
 
-                            <div class="share-box">
-
-                                <strong>
+                            <div class="article-footer">
+                                <div class="footer-label">
                                     <i class="bi bi-share"></i>
                                     Share this article
-                                </strong>
-
-                                <div class="share-buttons">
-
-                                    <a href="https://www.facebook.com/" target="_blank"><i class="bi bi-facebook"></i></a>
-                                    <a href="https://x.com/" target="_blank"><i class="bi bi-twitter-x"></i></a>
-                                    <a href="https://www.linkedin.com/" target="_blank"><i class="bi bi-linkedin"></i></a>
-                                    <a href="https://wa.me/918874196809" target="_blank"><i class="bi bi-whatsapp"></i></a>
-
                                 </div>
 
+                                <div class="share-buttons">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u=@encUrl" target="_blank" rel="noopener" aria-label="Share on Facebook"><i class="bi bi-facebook"></i></a>
+                                    <a href="https://twitter.com/intent/tweet?url=@encUrl&text=@encTitle" target="_blank" rel="noopener" aria-label="Share on X"><i class="bi bi-twitter-x"></i></a>
+                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=@encUrl" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                    <a href="https://wa.me/?text=@encTitle%20@encUrl" target="_blank" rel="noopener" aria-label="Share on WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                                    <button type="button" id="copyLinkBtn" data-url="@pageUrl">
+                                        <i class="bi bi-link-45deg"></i>
+                                        <span>Copy link</span>
+                                    </button>
+                                </div>
                             </div>
 
                         </div>
@@ -683,24 +742,16 @@
 
 
                 <!-- RIGHT : SIDEBAR -->
-
                 <div class="col-lg-4">
 
                     <div class="sidebar-sticky">
 
-                        <aside class="recent-posts-card">
+                        <aside class="recent-posts-card" aria-labelledby="recentHeading">
 
                             <div class="recent-posts-heading">
-
-                                <div>
-                                    <h3>Recent Posts</h3>
-                                    <span></span>
-                                </div>
-
+                                <h2 id="recentHeading">Recent posts</h2>
                                 <i class="bi bi-journal-text"></i>
-
                             </div>
-
 
                             @if (recentPosts != null && recentPosts.Any())
                             {
@@ -711,34 +762,24 @@
                                        asp-route-id="@recent.Id"
                                        class="recent-post">
 
-                                        @if (!string.IsNullOrEmpty(recent.FeaturedImage))
-                                        {
-                                            <img src="@recent.FeaturedImage"
+                                        <div class="recent-post-thumb">
+                                            <img src="@(string.IsNullOrEmpty(recent.FeaturedImage) ? fallbackThumb : recent.FeaturedImage)"
                                                  class="recent-post-image"
-                                                 alt="@recent.Title">
-                                        }
-                                        else
-                                        {
-                                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=200&h=150&fit=crop"
-                                                 class="recent-post-image"
-                                                 alt="@recent.Title">
-                                        }
+                                                 loading="lazy"
+                                                 alt="" />
+                                        </div>
 
                                         <div class="recent-post-content">
+                                            @if (!string.IsNullOrEmpty(recent.Category))
+                                            {
+                                                <span class="recent-post-category">@recent.Category</span>
+                                            }
 
-                                            <span class="recent-post-category">
-                                                @recent.Category
-                                            </span>
-
-                                            <h4>
-                                                @recent.Title
-                                            </h4>
+                                            <h3>@recent.Title</h3>
 
                                             <div class="recent-post-date">
-                                                <i class="bi bi-calendar3 me-1"></i>
                                                 @recent.CreatedDate.ToLocalTime().ToString("MMM dd, yyyy")
                                             </div>
-
                                         </div>
 
                                     </a>
@@ -747,9 +788,7 @@
                             else
                             {
                                 <div class="py-3">
-                                    <span class="text-muted small">
-                                        No recent posts available.
-                                    </span>
+                                    <span class="text-muted small">No recent posts available.</span>
                                 </div>
                             }
 
@@ -766,3 +805,49 @@
     </div>
 
 </div>
+
+<script>
+    (function () {
+        // Reading progress bar
+        var bar = document.getElementById('readProgress');
+        var article = document.getElementById('articleBody');
+        function updateProgress() {
+            if (!bar || !article) return;
+            var rect = article.getBoundingClientRect();
+            var total = rect.height - window.innerHeight;
+            var done = Math.min(Math.max(-rect.top, 0), Math.max(total, 1));
+            bar.style.width = (total > 0 ? (done / total) * 100 : 100) + '%';
+        }
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        window.addEventListener('resize', updateProgress);
+        updateProgress();
+
+        // Copy link
+        var btn = document.getElementById('copyLinkBtn');
+        if (btn) {
+            btn.addEventListener('click', function () {
+                var url = btn.getAttribute('data-url');
+                var label = btn.querySelector('span');
+                function ok() {
+                    btn.classList.add('copied');
+                    label.textContent = 'Link copied';
+                    setTimeout(function () {
+                        btn.classList.remove('copied');
+                        label.textContent = 'Copy link';
+                    }, 2000);
+                }
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(url).then(ok);
+                } else {
+                    var t = document.createElement('textarea');
+                    t.value = url;
+                    document.body.appendChild(t);
+                    t.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(t);
+                    ok();
+                }
+            });
+        }
+    })();
+</script>

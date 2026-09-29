@@ -4031,3 +4031,290 @@ svg {
             min-width: 100% !important;
         }
 }
+
+
+/* =====================================================
+   FINAL MOBILE BLOG + NAVBAR SAFETY FIX
+   Only mobile responsive overrides — existing desktop
+   design/theme remains unchanged.
+===================================================== */
+
+@media (max-width: 768px) {
+
+    /* ---------- NAVBAR HAMBURGER ---------- */
+    .aa-navbar .navbar-toggler {
+        margin-left: auto !important;
+        margin-right: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    .aa-navbar .container {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* ---------- BLOG CAROUSEL ---------- */
+    #blogCarousel {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+
+        #blogCarousel .carousel-inner {
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow: hidden !important;
+        }
+
+        #blogCarousel .carousel-item {
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow: hidden !important;
+        }
+
+            #blogCarousel .carousel-item > .row {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                overflow: hidden !important;
+            }
+
+                #blogCarousel .carousel-item > .row > [class*="col-"] {
+                    min-width: 0 !important;
+                    box-sizing: border-box !important;
+                    padding-left: 0 !important;
+                    padding-right: 0 !important;
+                }
+
+        #blogCarousel .blog-card {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
+            box-sizing: border-box !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            overflow: hidden !important;
+        }
+
+            #blogCarousel .blog-card .blog-image,
+            #blogCarousel .blog-card .blog-image img {
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            #blogCarousel .blog-card .blog-body,
+            #blogCarousel .blog-card h3,
+            #blogCarousel .blog-card .blog-desc,
+            #blogCarousel .blog-card .blog-author {
+                max-width: 100% !important;
+                min-width: 0 !important;
+                overflow-wrap: break-word !important;
+                word-wrap: break-word !important;
+            }
+}
+
+
+/* ---------- SMALL MOBILE ---------- */
+@media (max-width: 576px) {
+
+    .aa-navbar .navbar-toggler {
+        margin-left: auto !important;
+        margin-right: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    #blogCarousel .carousel-item > .row > [class*="col-"] {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    #blogCarousel .blog-card {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+        #blogCarousel .blog-card .blog-body {
+            padding: 16px !important;
+        }
+}
+
+/* =====================================================
+   CLIENT REVIEW SLIDER - FINAL RESPONSIVE FIX
+   ONLY CLIENT REVIEW SECTION
+   Existing desktop design remains unchanged.
+===================================================== */
+
+@media (max-width: 992px) {
+
+    .client-review-area {
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .client-review-slider {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .client-review-track {
+        width: 100% !important;
+        max-width: none !important;
+        box-sizing: border-box !important;
+    }
+
+    .client-review-card {
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+
+        .client-review-card p {
+            overflow-wrap: anywhere !important;
+            word-break: break-word !important;
+        }
+
+    .client-review-user {
+        min-width: 0 !important;
+    }
+
+        .client-review-user > div {
+            min-width: 0 !important;
+        }
+
+        .client-review-user h6,
+        .client-review-user small {
+            overflow-wrap: anywhere !important;
+            word-break: break-word !important;
+        }
+}
+
+@media (max-width: 768px) {
+
+    .client-review-area {
+        padding: 50px 0 !important;
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .client-review-heading {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 30px !important;
+    }
+
+        .client-review-heading h2 {
+            font-size: 28px !important;
+            line-height: 1.25 !important;
+            overflow-wrap: anywhere !important;
+        }
+
+    .client-review-slider {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .client-review-track {
+        gap: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+        display: flex !important;
+    }
+
+    .client-review-card {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        margin: 0 !important;
+        padding: 24px !important;
+        min-height: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .client-review-quote {
+        font-size: 36px !important;
+    }
+
+    .client-review-card p {
+        font-size: 13px !important;
+        line-height: 1.7 !important;
+    }
+
+    .client-review-user {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .client-review-dots {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 18px !important;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .client-review-area {
+        padding: 40px 0 !important;
+    }
+
+    .client-review-heading {
+        margin-bottom: 25px !important;
+    }
+
+        .client-review-heading h2 {
+            font-size: 24px !important;
+            line-height: 1.3 !important;
+        }
+
+    .client-review-label {
+        font-size: 9px !important;
+    }
+
+    .client-review-card {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        padding: 20px !important;
+    }
+
+        .client-review-card p {
+            font-size: 12px !important;
+            line-height: 1.65 !important;
+        }
+
+    .client-review-stars {
+        font-size: 16px !important;
+    }
+
+    .client-review-user h6 {
+        font-size: 12px !important;
+    }
+
+    .client-review-user small {
+        font-size: 10px !important;
+    }
+
+    .client-review-dots {
+        gap: 8px !important;
+        margin-top: 15px !important;
+    }
+
+    .client-review-dot {
+        width: 8px !important;
+        height: 8px !important;
+    }
+
+        .client-review-dot.active-review-dot {
+            width: 24px !important;
+        }
+}
